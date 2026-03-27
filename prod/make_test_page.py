@@ -105,14 +105,14 @@ def find_block_end(html, start_idx):
     return end
 
 
-def extract_skeleton(html, words, include_banner=False, build_time=""):
+def extract_skeleton(html, words, include_banner=False, build_time="", add_base_href=False):
     """Strip hardcoded word HTML from index.html and inject dynamic pipeline."""
     idx_fv        = html.index(MARKER_FILTERED_VIEW) + len(MARKER_FILTERED_VIEW)
     head          = html[:idx_fv]
 
     # For test/ subfolder, all relative asset paths (hsk.css, hsk.js, etc.)
     # must resolve to the project root. Inject <base href="../"> into <head>.
-    if include_banner:
+    if add_base_href:
         head = head.replace('<head>', '<head>\n<base href="../">', 1)
 
     idx_fam_start = html.index(MARKER_FAM_START)
@@ -145,7 +145,7 @@ def main():
 
     # ── test/index.html  (with debug banner) ─────────────────────────────────
     TEST_OUT.parent.mkdir(exist_ok=True)
-    test_html = extract_skeleton(html, words, include_banner=False)
+    test_html = extract_skeleton(html, words, include_banner=False, add_base_href=True)
     TEST_OUT.write_text(test_html, encoding="utf-8")
     print(f"Wrote {TEST_OUT}  [{build_time}]")
     print(f"  Words : {len(words)}  |  Size: {len(test_html):,} chars")
