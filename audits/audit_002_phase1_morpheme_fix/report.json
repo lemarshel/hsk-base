@@ -1,0 +1,12 @@
+{
+  "audit_id": "002",
+  "name": "Morpheme Meanings Fix",
+  "phase": "Phase 1",
+  "date": "2026-03-22",
+  "summary": {
+    "empty_before": 4616,
+    "filled_via_cedict": 4592,
+    "remaining_empty": 24,
+    "note": "24 remaining are punctuation/special chars"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "audit_id": "004",
+  "name": "Missing Words Discovery",
+  "phase": "Phase 0.5",
+  "date": "2026-03-22",
+  "summary": {
+    "total_missing": 759,
+    "by_level": {
+      "hsk1": 494,
+      "hsk2": 140,
+      "hsk3": 58,
+      "hsk4": 39,
+      "hsk5": 19,
+      "hsk6": 9
+    },
+    "note": "HSK1 mostly absent from OUR_HSK_v3 — that version focused on compounds, not base forms"
+  }
+}

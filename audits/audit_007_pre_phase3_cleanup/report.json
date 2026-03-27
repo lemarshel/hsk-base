@@ -1,0 +1,137 @@
+{
+  "audit_id": "007",
+  "name": "Pre-Phase 3 Cleanup",
+  "phase": "Phase 2.5",
+  "date": "2026-03-22",
+  "dataset_before": 5361,
+  "changes": [
+    {
+      "id": "w2970",
+      "chinese": "称",
+      "action": "update_english",
+      "old": "to fit; to match",
+      "new": "to weigh; to call; to name; to fit; to match",
+      "reason": "Merge meanings from 称¹ (to weigh) and 称² (to call/name)"
+    },
+    {
+      "id": "w1021",
+      "chinese": "面",
+      "action": "update_english",
+      "old": "face; side",
+      "new": "face; side; surface; noodles; flour",
+      "reason": "Merge meanings from 面¹ (face/surface) and 面² (noodles/flour)"
+    },
+    {
+      "id": "w1743",
+      "chinese": "界",
+      "action": "merge_and_delete_duplicate",
+      "old": "boundary; scope; extent; kingdom; group; bound",
+      "new": "boundary; scope; extent; world; circles (e.g. literary world)",
+      "deleted": "w1744",
+      "reason": "w1744 was PDF artifact 界（文艺; meaning merged into w1743"
+    },
+    {
+      "id": "w0331",
+      "chinese": "力",
+      "action": "merge_and_delete_duplicate",
+      "old": "strength; power",
+      "new": "strength; power; ability; capability",
+      "deleted": "w1784",
+      "reason": "w1784 was PDF artifact 力（影响; meaning merged into w0331"
+    },
+    {
+      "id": "w4143",
+      "chinese": "长",
+      "action": "merge_and_delete_duplicate",
+      "old": "to grow; to develop; long; (bound form) length",
+      "new": "long; to grow; to develop; (suffix) head; chief",
+      "deleted": "w2031",
+      "reason": "w2031 was PDF artifact 长（秘书 (HSK6 dup with bad example); merged into w4143"
+    },
+    {
+      "id": "w2067",
+      "chinese": "族",
+      "action": "merge_and_delete_duplicate",
+      "old": "clan; race; nationality",
+      "new": "clan; race; nationality; (suffix) social group or type (e.g. 上班族)",
+      "deleted": "w2068",
+      "reason": "w2068 was PDF artifact 族（上班; meaning merged into w2067"
+    }
+  ],
+  "new_words": [
+    {
+      "id": "w5372",
+      "chinese": "极了",
+      "hsk_level": 4,
+      "part_of_speech": "particle",
+      "english": "extremely; to the utmost (degree complement after adjectives)"
+    },
+    {
+      "id": "w5373",
+      "chinese": "分之",
+      "hsk_level": 4,
+      "part_of_speech": "particle",
+      "english": "fraction marker: X分之Y means Y/X (e.g. 百分之五十 = 50%)"
+    },
+    {
+      "id": "w5374",
+      "chinese": "文艺界",
+      "hsk_level": 6,
+      "part_of_speech": "noun",
+      "english": "literary and art world; cultural circles"
+    },
+    {
+      "id": "w5375",
+      "chinese": "影响力",
+      "hsk_level": 6,
+      "part_of_speech": "noun",
+      "english": "influence; clout; power to affect"
+    },
+    {
+      "id": "w5376",
+      "chinese": "秘书长",
+      "hsk_level": 6,
+      "part_of_speech": "noun",
+      "english": "secretary-general"
+    },
+    {
+      "id": "w5377",
+      "chinese": "上班族",
+      "hsk_level": 5,
+      "part_of_speech": "noun",
+      "english": "office workers; white-collar workers; working commuters"
+    },
+    {
+      "id": "w5378",
+      "chinese": "好容易",
+      "hsk_level": 5,
+      "part_of_speech": "adverb",
+      "english": "with great difficulty; barely; finally (after much effort) — NOT \"very easily\""
+    }
+  ],
+  "topic_replacements": [
+    {
+      "topic": "t13",
+      "removed": "w1784",
+      "added": "w1852",
+      "added_chinese": "情绪",
+      "hsk_level": 6
+    },
+    {
+      "topic": "t35",
+      "removed": "w2031",
+      "added": "w1886",
+      "added_chinese": "师父",
+      "hsk_level": 6
+    }
+  ],
+  "summary": {
+    "entries_fixed": 13,
+    "entries_merged": 4,
+    "entries_deleted": 4,
+    "new_words_added": 7,
+    "topic_replacements": 2,
+    "all_topics_at_100": true
+  },
+  "dataset_after": 5364
+}

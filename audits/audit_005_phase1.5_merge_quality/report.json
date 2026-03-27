@@ -1,0 +1,21 @@
+{
+  "audit_id": "005",
+  "name": "Merge Quality Check",
+  "phase": "Phase 1.5",
+  "date": "2026-03-22",
+  "summary": {
+    "words_merged": 722,
+    "duplicates_skipped": 37,
+    "dataset_before": 4650,
+    "dataset_after": 5372,
+    "new_morpheme_hubs": 43,
+    "hubs_expanded": 1211,
+    "pos_corrections": 61,
+    "sentence_fixes": 354,
+    "hsk_growth": {
+      "hsk1": "9→503",
+      "hsk2": "328→451",
+      "hsk3": "483→532"
+    }
+  }
+}

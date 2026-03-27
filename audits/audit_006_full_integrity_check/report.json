@@ -1,0 +1,277 @@
+{
+  "audit1_pdf_vs_dataset": {
+    "1": {
+      "pdf_total": 497,
+      "in_dataset": 497,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    },
+    "2": {
+      "pdf_total": 765,
+      "in_dataset": 765,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    },
+    "3": {
+      "pdf_total": 966,
+      "in_dataset": 966,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    },
+    "4": {
+      "pdf_total": 994,
+      "in_dataset": 994,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    },
+    "5": {
+      "pdf_total": 1067,
+      "in_dataset": 1067,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    },
+    "6": {
+      "pdf_total": 1136,
+      "in_dataset": 1136,
+      "in_dropped": 0,
+      "completely_missing_count": 0,
+      "completely_missing": []
+    }
+  },
+  "audit2_new_word_quality": {
+    "new_words_checked": 722,
+    "empty_morpheme_meanings": 10,
+    "suspicious_pos": 12,
+    "missing_sentences": 0,
+    "pinyin_problems": 0,
+    "suspicious_pos_list": [
+      {
+        "id": "w4672",
+        "chinese": "北京",
+        "pos": "noun",
+        "english": "Beijing municipality, capital of the People's Republic of China (short name 京[Jing1])"
+      },
+      {
+        "id": "w4723",
+        "chinese": "弟弟",
+        "pos": "noun",
+        "english": "younger brother"
+      },
+      {
+        "id": "w4766",
+        "chinese": "哥哥",
+        "pos": "noun",
+        "english": "older brother"
+      },
+      {
+        "id": "w4825",
+        "chinese": "姐姐",
+        "pos": "noun",
+        "english": "older sister"
+      },
+      {
+        "id": "w5049",
+        "chinese": "小姐",
+        "pos": "noun",
+        "english": "young lady"
+      },
+      {
+        "id": "w5058",
+        "chinese": "新年",
+        "pos": "noun",
+        "english": "New Year"
+      },
+      {
+        "id": "w5103",
+        "chinese": "早饭",
+        "pos": "noun",
+        "english": "breakfast"
+      },
+      {
+        "id": "w5161",
+        "chinese": "大小",
+        "pos": "noun",
+        "english": "large and small"
+      },
+      {
+        "id": "w5240",
+        "chinese": "小时候",
+        "pos": "noun",
+        "english": "one's childhood; when one was young"
+      },
+      {
+        "id": "w5264",
+        "chinese": "只要",
+        "pos": "noun",
+        "english": "so long as; provided; if"
+      },
+      {
+        "id": "w5288",
+        "chinese": "旧",
+        "pos": "noun",
+        "english": "old"
+      },
+      {
+        "id": "w5366",
+        "chinese": "好容",
+        "pos": "noun",
+        "english": "（bù） róng yì with great difficulty; have a 易 hard time (doing sth.)"
+      }
+    ],
+    "pinyin_problems_list": [],
+    "empty_meanings_list": [
+      {
+        "id": "w5155",
+        "chinese": "称¹",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "称",
+          "¹"
+        ]
+      },
+      {
+        "id": "w5204",
+        "chinese": "面¹",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "面",
+          "¹"
+        ]
+      },
+      {
+        "id": "w5205",
+        "chinese": "面²",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "面",
+          "²"
+        ]
+      },
+      {
+        "id": "w5285",
+        "chinese": "…极了",
+        "empty_positions": [
+          0
+        ],
+        "morphemes": [
+          "…",
+          "极",
+          "了"
+        ]
+      },
+      {
+        "id": "w5323",
+        "chinese": "…分之…",
+        "empty_positions": [
+          0,
+          3
+        ],
+        "morphemes": [
+          "…",
+          "分",
+          "之",
+          "…"
+        ]
+      },
+      {
+        "id": "w5347",
+        "chinese": "称²",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "称",
+          "²"
+        ]
+      },
+      {
+        "id": "w5367",
+        "chinese": "界（文艺",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "界",
+          "（",
+          "文",
+          "艺"
+        ]
+      },
+      {
+        "id": "w5368",
+        "chinese": "力（影响",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "力",
+          "（",
+          "影",
+          "响"
+        ]
+      },
+      {
+        "id": "w5372",
+        "chinese": "长（秘书",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "长",
+          "（",
+          "秘",
+          "书"
+        ]
+      },
+      {
+        "id": "w5373",
+        "chinese": "族（上班",
+        "empty_positions": [
+          1
+        ],
+        "morphemes": [
+          "族",
+          "（",
+          "上",
+          "班"
+        ]
+      }
+    ]
+  },
+  "audit3_coverage": {
+    "dataset_total": 5372,
+    "topics_total": 4000,
+    "dropped_total": 1372,
+    "sum": 5372,
+    "match": true,
+    "gap": 0,
+    "duplicates_count": 0,
+    "orphans_count": 0,
+    "orphan_ids": [],
+    "duplicate_ids": []
+  },
+  "audit4_balance": {
+    "all_topics_at_100": true,
+    "off_count": 0,
+    "off_topics": [],
+    "hsk_distribution": {
+      "hsk1": 503,
+      "hsk2": 451,
+      "hsk3": 532,
+      "hsk4": 850,
+      "hsk5": 1035,
+      "hsk6": 629
+    }
+  }
+}

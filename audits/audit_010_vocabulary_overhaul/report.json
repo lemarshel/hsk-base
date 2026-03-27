@@ -1,0 +1,40 @@
+{
+  "test1_word_counts": {
+    "html": 5369,
+    "json": 5364,
+    "match": false
+  },
+  "test2_pos_match": false,
+  "test3_ui": {
+    "sticky_toolbar": true,
+    "back_to_top_btn": true,
+    "back_to_top_css": true,
+    "hamburger_btn": true,
+    "mobile_header": true,
+    "mobile_css": true,
+    "phoneme_toggle": true,
+    "phoneme_default_hidden": false,
+    "jspdf_ref": true,
+    "sheetjs_ref": true,
+    "anki_export_fn": true
+  },
+  "test4_exports": {
+    "jsPDF_CDN_in_html": true,
+    "jsPDF_autotable_CDN": true,
+    "SheetJS_CDN_in_html": true,
+    "anki_btn_in_html": true,
+    "excel_btn_in_html": true,
+    "pdf_btn_in_html": true
+  },
+  "test5_mobile": {
+    "viewport_meta": true,
+    "media_query_1024": true,
+    "hamburger_impl_js": true,
+    "mobile_overlay": true
+  },
+  "test6_loading": {
+    "tracker_deferred": true,
+    "no_body_in_head": true
+  },
+  "test7_4651_count": 0
+}
