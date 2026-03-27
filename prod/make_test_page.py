@@ -145,7 +145,7 @@ def main():
 
     # ── test/index.html  (with debug banner) ─────────────────────────────────
     TEST_OUT.parent.mkdir(exist_ok=True)
-    test_html = extract_skeleton(html, words, include_banner=True, build_time=build_time)
+    test_html = extract_skeleton(html, words, include_banner=False)
     TEST_OUT.write_text(test_html, encoding="utf-8")
     print(f"Wrote {TEST_OUT}  [{build_time}]")
     print(f"  Words : {len(words)}  |  Size: {len(test_html):,} chars")

@@ -691,7 +691,7 @@ body.sepia #tb-sections .tb-section{
 
 /* ── Example sentence translations (example_en / example_ru from words.xlsx) */
 /* Same font/color as main translation — no italic, no size change           */
-.ex-trans { margin-top: 4px; }
+.ex-trans { margin-top: 4px; margin-left: 32px; }
 .ex-trans-ru { display: block; }
 .ex-trans-en { display: none; }
 body.lang-en .ex-trans-ru { display: none; }
@@ -715,3 +715,19 @@ body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
   th[data-col="trans"], td[data-col="trans"] { width: 55% !important; }
   .zh { font-size: 1.3em; }
 }
+
+/* ── Mode (theme) buttons — dot swatch + text ────────────────────────────
+   Replaces emoji icons that render as colored boxes on Windows Chrome.   */
+.mode-dot {
+  display: inline-block;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+  border: 1px solid rgba(0,0,0,.25);
+}
+.mode-btn[data-mode="light"]  .mode-dot { background: #ffffff; }
+.mode-btn[data-mode="dark"]   .mode-dot { background: #1a1a2e; }
+.mode-btn[data-mode="sepia"]  .mode-dot { background: #f7f2e8; border-color: #c8a875; }
+/* Active dot always white so it shows against the accent background */
+.mode-btn.active .mode-dot { background: rgba(255,255,255,.85); border-color: rgba(255,255,255,.5); }

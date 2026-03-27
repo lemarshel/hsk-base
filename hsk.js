@@ -598,8 +598,11 @@ Object.keys(colMap).forEach(function(i){
     if(btn)btn.classList.add('hidden');
   }
 });
-/* Toolbar col-btn right-clicks */
+/* Toolbar col-btn clicks (left-click toggles; right-click also toggles) */
 document.querySelectorAll('.col-btn').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    toggleCol(this.dataset.col);
+  });
   btn.addEventListener('contextmenu',function(e){
     e.preventDefault();
     toggleCol(this.dataset.col);
