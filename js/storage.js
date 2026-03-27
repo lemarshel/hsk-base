@@ -179,17 +179,6 @@ document.addEventListener('DOMContentLoaded', function(){
   if(snapDd) snapDd.addEventListener('click', function(e){ e.stopPropagation(); });
 });
 
-document.addEventListener('DOMContentLoaded', function(){
-  var toolsBtn = document.getElementById('btn-tools-toggle');
-  var tools = document.getElementById('tb-tools');
-  if(toolsBtn && tools){
-    toolsBtn.addEventListener('click', function(){
-      tools.classList.toggle('open');
-      toolsBtn.classList.toggle('active', tools.classList.contains('open'));
-    });
-  }
-});
-
 /* ── Reset Everything ─────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   var btnReset = document.getElementById('btn-reset-all');

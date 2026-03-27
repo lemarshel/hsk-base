@@ -1,12 +1,14 @@
 /* ==========================================================================
-   js/export.js — PDF, Excel and Anki export handlers.
+   js/export.js — PDF, Excel and JSON export handlers.
 
-   All three blocks are self-contained IIFEs.  They read data from DOM
-   attributes (data-key, data-py, data-en, data-ru, data-hsk, data-section)
-   and from document.body.classList for the current language — no dependency
-   on any hsk.js internal variable.
+   All blocks are self-contained IIFEs. They read data from DOM attributes
+   and use document.body.classList for language — no hsk.js internal vars.
 
-   DEPENDS ON (loaded lazily by CDN, only needed when user clicks export):
+   Row visibility: a row is exported only if it has none of the hide classes
+   (hsk-hide, pos-hide, alpha-hide, sr-hide, text-hide) that the filter
+   system applies.
+
+   DEPENDS ON (CDN, loaded with defer in index.html):
      html2pdf   → PDF export
      XLSX       → Excel export (falls back to CSV if unavailable)
 
@@ -14,13 +16,40 @@
    ========================================================================== */
 "use strict";
 
-/* ── PDF Export (direct download) ─────────────────────────────── */
+/* shared visibility helper */
+function _rowVisible(tr){
+  return !tr.classList.contains('hsk-hide') &&
+         !tr.classList.contains('pos-hide') &&
+         !tr.classList.contains('alpha-hide') &&
+         !tr.classList.contains('sr-hide') &&
+         !tr.classList.contains('text-hide');
+}
+
+/* shared: collect all data for a visible row */
+function _rowData(tr){
+  return {
+    word:            tr.getAttribute('data-key')     || '',
+    pinyin:          tr.getAttribute('data-py')      || '',
+    en:              tr.getAttribute('data-en')      || '',
+    ru:              tr.getAttribute('data-ru')      || '',
+    example_zh:      (tr.querySelector('.ex-zh')        || {}).textContent || '',
+    example_pinyin:  (tr.querySelector('.ex-py')        || {}).textContent || '',
+    example_en:      (tr.querySelector('.ex-trans-en')  || {}).textContent || '',
+    example_ru:      (tr.querySelector('.ex-trans-ru')  || {}).textContent || '',
+    pos:             tr.getAttribute('data-section') || '',
+    phonetic_group:  tr.getAttribute('data-tbody')   || '',
+    component:       tr.getAttribute('data-component')|| '',
+    hsk:             tr.getAttribute('data-hsk')     || ''
+  };
+}
+
+/* ── PDF Export ────────────────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('btn-export-pdf');
   if(!btn) return;
   btn.addEventListener('click', function(){
     if(typeof html2pdf === 'undefined'){
-      alert('PDF export is not available yet. Please reload the page.');
+      alert('PDF library not loaded yet — please check your internet connection and reload the page.');
       return;
     }
     var isEn = document.body.classList.contains('lang-en');
@@ -28,14 +57,8 @@
 
     var sections = {};
     var sectionOrder = [];
-    function rowVisible(tr){
-      return !tr.classList.contains('hsk-hide') &&
-             !tr.classList.contains('pos-hide') &&
-             !tr.classList.contains('alpha-hide') &&
-             !tr.classList.contains('sr-hide');
-    }
     document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(!rowVisible(tr)) return;
+      if(!_rowVisible(tr)) return;
       var sec = tr.getAttribute('data-section') || 'other';
       if(!sections[sec]){ sections[sec] = []; sectionOrder.push(sec); }
       sections[sec].push(tr);
@@ -66,16 +89,12 @@
       rows += '<tr class="sec-hdr"><td colspan="7">'+(secLabels[sec]||sec)+'</td></tr>';
       sections[sec].forEach(function(tr){
         n++;
-        var zh  = tr.getAttribute('data-key') || '';
-        var py  = tr.getAttribute('data-py') || '';
-        var trans = isEn ? (tr.getAttribute('data-en')||'') : (tr.getAttribute('data-ru')||'');
+        var d = _rowData(tr);
+        var trans = isEn ? d.en : d.ru;
         trans = limitTranslationText(trans, 2);
-        var hsk = tr.getAttribute('data-hsk') || '';
-        var exZh = (tr.querySelector('.ex-zh')||{}).textContent || '';
-        var exPy = (tr.querySelector('.ex-py')||{}).textContent || '';
-        rows += '<tr><td>'+n+'</td><td class="zh">'+zh+'</td><td>'+py+'</td><td>'+
-          trans.replace(/</g,'&lt;')+'</td><td>HSK'+hsk+'</td><td>'+
-          exZh+'</td><td class="sm">'+exPy+'</td></tr>';
+        rows += '<tr><td>'+n+'</td><td class="zh">'+d.word+'</td><td>'+d.pinyin+'</td><td>'+
+          trans.replace(/</g,'&lt;')+'</td><td>HSK'+d.hsk+'</td><td>'+
+          d.example_zh+'</td><td class="sm">'+d.example_pinyin+'</td></tr>';
       });
     });
 
@@ -110,15 +129,14 @@
     document.body.appendChild(wrap);
     document.body.appendChild(overlay);
 
-    var opt = {
+    html2pdf().set({
       margin: 6,
       filename: 'HSK_Dictionary_' + today + '.pdf',
       image: { type: 'jpeg', quality: 0.95 },
       html2canvas: { scale: 1.6, useCORS: true, letterRendering: true },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'legacy'] }
-    };
-    html2pdf().set(opt).from(wrap).save().then(function(){
+    }).from(wrap).save().then(function(){
       if(wrap.parentNode) wrap.parentNode.removeChild(wrap);
       if(overlay.parentNode) overlay.parentNode.removeChild(overlay);
     }).catch(function(){
@@ -128,25 +146,21 @@
   });
 })();
 
-/* ── Excel Export (SheetJS) ──────────────────────────────────────── */
+/* ── Excel Export (SheetJS / CSV fallback) ────────────────────── */
 (function(){
   var btn = document.getElementById('btn-export-csv');
   if(!btn) return;
   btn.addEventListener('click', function(){
     var today = new Date().toISOString().slice(0,10);
-    var rows = [['Word','Pinyin','English','Russian','POS','HSK','Example (ZH)','Example (PY)']];
+    var header = ['Word','Pinyin','English','Russian','Example ZH','Example Pinyin',
+                  'Example EN','Example RU','POS','HSK','Component','Phonetic Group'];
+    var rows = [header];
     document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(tr.offsetParent === null) return;
-      rows.push([
-        tr.getAttribute('data-key') || '',
-        tr.getAttribute('data-py') || '',
-        tr.getAttribute('data-en') || '',
-        tr.getAttribute('data-ru') || '',
-        (tr.getAttribute('data-section') || '').replace('pos_',''),
-        tr.getAttribute('data-hsk') || '',
-        (tr.querySelector('.ex-zh') || {}).textContent || '',
-        (tr.querySelector('.ex-py') || {}).textContent || ''
-      ]);
+      if(!_rowVisible(tr)) return;
+      var d = _rowData(tr);
+      rows.push([d.word, d.pinyin, d.en, d.ru,
+                 d.example_zh, d.example_pinyin, d.example_en, d.example_ru,
+                 d.pos.replace('pos_',''), d.hsk, d.component, d.phonetic_group]);
     });
     if(typeof XLSX !== 'undefined'){
       var ws = XLSX.utils.aoa_to_sheet(rows);
@@ -165,35 +179,22 @@
   });
 })();
 
-/* ── Anki Export (tab-separated .txt) ──────────────────────────── */
+/* ── JSON Export ────────────────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('btn-export-anki');
   if(!btn) return;
   btn.addEventListener('click', function(){
     var today = new Date().toISOString().slice(0,10);
-    var lines = [];
+    var words = [];
     document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(tr.offsetParent === null) return;
-      var zh  = tr.getAttribute('data-key') || '';
-      var py  = tr.getAttribute('data-py')  || '';
-      var en  = tr.getAttribute('data-en')  || '';
-      var ru  = tr.getAttribute('data-ru')  || '';
-      var hsk = tr.getAttribute('data-hsk') || '';
-      var pos = (tr.getAttribute('data-section') || '').replace('pos_','');
-      var exZh = (tr.querySelector('.ex-zh') || {}).textContent || '';
-      var exPy = (tr.querySelector('.ex-py') || {}).textContent || '';
-      var front = zh + '<br>' + py;
-      var back  = ru + (en ? '<br>' + en : '');
-      if(exZh) back += '<br><br>' + exZh + '<br>' + exPy;
-      var tags  = 'HSK' + hsk + ' ' + pos;
-      function esc(s){ return s.replace(/\t/g,' ').replace(/\r?\n/g,' '); }
-      lines.push(esc(front) + '\t' + esc(back) + '\t' + tags);
+      if(!_rowVisible(tr)) return;
+      words.push(_rowData(tr));
     });
-    var bom = '\ufeff';
-    var blob = new Blob([bom + lines.join('\n')], {type:'text/plain;charset=utf-8'});
+    var json = JSON.stringify(words, null, 2);
+    var blob = new Blob([json], {type:'application/json;charset=utf-8'});
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
-    a.href = url; a.download = 'HSK_Anki_' + today + '.txt'; a.click();
+    a.href = url; a.download = 'HSK_words_' + today + '.json'; a.click();
     URL.revokeObjectURL(url);
   });
 })();
