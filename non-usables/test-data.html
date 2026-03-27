@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Data test</title></head>
+<body>
+<h2 id="status">Loading...</h2>
+<pre id="out"></pre>
+<script src="data/words-data.js"></script>
+<script src="data/groups-data.js"></script>
+<script>
+  var ok = window.HSK_WORDS && window.HSK_GROUPS;
+  document.getElementById('status').textContent = ok
+    ? 'OK — ' + HSK_WORDS.length + ' words, ' + HSK_GROUPS.length + ' groups'
+    : 'FAIL — data not loaded';
+  if (ok) {
+    var w = HSK_WORDS[0];
+    document.getElementById('out').textContent =
+      'First word:\n' +
+      '  word: ' + w.word + '\n' +
+      '  en:   ' + w.en + '\n' +
+      '  ru:   ' + w.ru + '\n' +
+      '  hsk:  ' + w.hsk;
+  }
+</script>
+</body>
+</html>

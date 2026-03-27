@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HSK 1–6 Мастер-словарь</title>
-<link rel="stylesheet" href="hsk.css">
+<link rel="stylesheet" href="css/hsk.css">
 <style>
 #tb-row-texts{align-items:center}
 #text-btn-wrap{display:flex;gap:4px;overflow-x:auto;white-space:nowrap;padding:2px 0}
@@ -23,10 +23,10 @@
 
 
 
-<script src="hsk-head.js"></script>
+<script src="js/hsk-head.js"></script>
 </head>
 <body class="preload">
-<script src=\"hsk-body.js\"></script>
+<script src="js/hsk-body.js"></script>
 
 
 
@@ -152,7 +152,6 @@
       <div class="tb-row">
         <button class="export-btn" id="btn-export-csv" title="Экспорт в Excel/CSV">⬇ Excel</button>
         <button class="export-btn" id="btn-export-anki" title="Экспорт в JSON" style="background:#1e90ff;border-color:#1e90ff;color:#fff">⬇ JSON</button>
-        <button class="export-btn" id="btn-export-pdf" title="Печать / Сохранить как PDF" style="background:#c0392b;border-color:#c0392b">⬇ PDF</button>
       </div>
       <div class="tb-row">
         <label class="tb-label" id="lbl-sorting">Сортировка:</label>
@@ -509,13 +508,15 @@
 }());
 
 </script>
-<script src="sortable.min.js"></script>
-<script src="hanzi-writer.min.js" onerror="window.HanziWriter=null"></script>
+<script src="js/vendor/sortable.min.js"></script>
+<script src="js/vendor/hanzi-writer.min.js" onerror="window.HanziWriter=null"></script>
 <script src="js/app-config.js"></script>
-<script src="hsk.js"></script>
+<script src="js/hsk.js"></script>
 <script src="js/storage.js"></script>
 <script src="js/export.js"></script>
-<script src="text-topics.js"></script>
+<script src="js/quiz.js"></script>
+<script src="js/hanzi.js"></script>
+<script src="js/text-topics.js"></script>
 <script>
 (function(){
   function isRowVisible(tr){
@@ -685,7 +686,7 @@
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js" defer></script>
-<script src="tracker.js" defer></script>
+<script src="js/tracker.js" defer></script>
 <div class="donate-bar">
   <a href="https://www.paypal.me/SultanKulbassov" target="_blank" rel="noopener" class="donate-btn">
     ❤️ Donate to the creator

@@ -23,7 +23,7 @@ TEST_OUT     = ROOT / "test" / "index.html"
 MARKER_FILTERED_VIEW = '<div id="filtered-view" style="display:none"></div>'
 MARKER_FAM_START     = '<div id="fam-section"'
 MARKER_LEARNED_START = '<div id="learned-section"'
-MARKER_SORTABLE      = '<script src="sortable.min.js">'
+MARKER_SORTABLE      = '<script src="js/vendor/sortable.min.js">'
 
 
 def read_words_xlsx():
