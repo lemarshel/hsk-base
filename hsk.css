@@ -688,3 +688,30 @@ body.sepia #tb-sections .tb-section{
   .title-row { flex-direction: column; }
   .title-text{width:100%}
 }
+
+/* ── Example sentence translations (example_en / example_ru from words.xlsx) */
+/* Same font/color as main translation — no italic, no size change           */
+.ex-trans { margin-top: 4px; }
+.ex-trans-ru { display: block; }
+.ex-trans-en { display: none; }
+body.lang-en .ex-trans-ru { display: none; }
+body.lang-en .ex-trans-en { display: block; }
+/* Hide wrapper when active language has no span — prevents empty rectangle  */
+.ex-trans:not(:has(.ex-trans-ru)) { display: none; }
+body.lang-en .ex-trans:not(:has(.ex-trans-en)) { display: none; }
+body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
+
+/* ── Responsive table ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #word-tables-mount table { width: 100%; }
+  th[data-col="num"],   td[data-col="num"]   { width: 2%  !important; }
+  th[data-col="word"],  td[data-col="word"]  { width: 28% !important; }
+  th[data-col="trans"], td[data-col="trans"] { width: 34% !important; }
+  th[data-col="ex"],    td[data-col="ex"]    { width: 36% !important; }
+}
+@media (max-width: 600px) {
+  th[data-col="ex"], td[data-col="ex"] { display: none; }
+  th[data-col="word"],  td[data-col="word"]  { width: 45% !important; }
+  th[data-col="trans"], td[data-col="trans"] { width: 55% !important; }
+  .zh { font-size: 1.3em; }
+}

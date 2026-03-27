@@ -1742,8 +1742,8 @@ window.EN_DICT = {
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-key]').forEach(function(tr){
     var key = tr.getAttribute('data-key');
-    // Priority: EN_DICT → existing data-en in HTML → empty (never fall back to Russian)
-    var en = window.EN_DICT[key] || tr.getAttribute('data-en') || '';
+    // Priority: data-en from words.xlsx → EN_DICT fallback → empty
+    var en = tr.getAttribute('data-en') || window.EN_DICT[key] || '';
     tr.setAttribute('data-en', en);
     var enSpan = tr.querySelector('.trans-en');
     if(enSpan) enSpan.textContent = en;
