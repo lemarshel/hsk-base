@@ -30,7 +30,7 @@ tr:nth-child(even){background:#f9f9f9}
 .rownum{color:#999;font-size:.8em;text-align:center}
 .zh{font-size:1.6em;font-weight:bold;color:#1a1a2e}
 .py{font-size:.8em;color:#666;margin-top:2px}
-.ex-zh{font-size:1em;color:#333}
+.ex-zh{font-size:.8em;color:#333}
 .ex-py{font-size:.8em;color:#888;margin-top:2px}
 .trans-cell,.ex-td,.ex-cell,[data-col="trans"],[data-col="ex"]{overflow-wrap:normal;word-break:normal;hyphens:none}
 .trans-cell{position:relative;padding-left:30px}
