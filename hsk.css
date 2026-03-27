@@ -691,7 +691,7 @@ body.sepia #tb-sections .tb-section{
 
 /* ── Example sentence translations (example_en / example_ru from words.xlsx) */
 /* Same font/color as main translation — no italic, no size change           */
-.ex-trans { margin-top: 4px; margin-left: 32px; }
+.ex-trans { margin-top: 4px; margin-left: 32px; font-size: .8em; }
 .ex-trans-ru { display: block; }
 .ex-trans-en { display: none; }
 body.lang-en .ex-trans-ru { display: none; }
