@@ -1,15 +1,15 @@
 """
-Builds both test-render.html (with debug banner) and index.html (production).
+Builds both test/index.html (with debug banner) and index.html (production).
 
 Both files are fully self-contained — data inlined from words.xlsx — so they
 work when opened via file:// with no server required.
 
 Workflow:
     1. Edit data/words.xlsx
-    2. python tools/make_test_page.py
-    3. Refresh test-render.html  (or index.html) in the browser
+    2. python prod/make_test_page.py
+    3. Refresh test/index.html  (or index.html) in the browser
 
-Run from the project root:  python tools/make_test_page.py
+Run from the project root:  python prod/make_test_page.py
 """
 import json
 from datetime import datetime
@@ -18,7 +18,7 @@ import openpyxl
 
 ROOT         = Path(__file__).parent.parent
 INDEX_HTML   = ROOT / "index.html"
-TEST_OUT     = ROOT / "test-render.html"
+TEST_OUT     = ROOT / "test" / "index.html"
 
 MARKER_FILTERED_VIEW = '<div id="filtered-view" style="display:none"></div>'
 MARKER_FAM_START     = '<div id="fam-section"'
@@ -110,6 +110,11 @@ def extract_skeleton(html, words, include_banner=False, build_time=""):
     idx_fv        = html.index(MARKER_FILTERED_VIEW) + len(MARKER_FILTERED_VIEW)
     head          = html[:idx_fv]
 
+    # For test/ subfolder, all relative asset paths (hsk.css, hsk.js, etc.)
+    # must resolve to the project root. Inject <base href="../"> into <head>.
+    if include_banner:
+        head = head.replace('<head>', '<head>\n<base href="../">', 1)
+
     idx_fam_start = html.index(MARKER_FAM_START)
     idx_fam_end   = find_block_end(html, idx_fam_start)
     fam_block     = html[idx_fam_start:idx_fam_end]
@@ -138,7 +143,8 @@ def main():
     words      = read_words_xlsx()
     build_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    # ── test-render.html  (with debug banner) ────────────────────────────────
+    # ── test/index.html  (with debug banner) ─────────────────────────────────
+    TEST_OUT.parent.mkdir(exist_ok=True)
     test_html = extract_skeleton(html, words, include_banner=True, build_time=build_time)
     TEST_OUT.write_text(test_html, encoding="utf-8")
     print(f"Wrote {TEST_OUT}  [{build_time}]")

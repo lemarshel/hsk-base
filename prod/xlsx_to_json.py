@@ -1,6 +1,6 @@
 """
 Run after every edit to words.xlsx:
-    python tools/xlsx_to_json.py
+    python prod/xlsx_to_json.py
 
 Reads  : data/words.xlsx  (the editable master)
 Writes : data/words.json      (machine-readable, for inspection / future tools)

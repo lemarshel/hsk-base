@@ -1,6 +1,6 @@
 """
 One-time migration: index.html -> data/words.xlsx + data/groups.json + data/groups-data.js
-Run from the project root:  python tools/migrate.py
+Run from the project root:  python prod/migrate.py
 Re-run only if the phonetic group structure itself changes.
 """
 import json, re
