@@ -1,9 +1,16 @@
 /* ==========================================================================
    js/lang.js — RU / EN language switching
 
+   OWNS (registers to window._hsk):
+     getLang
+
+   CONSUMES (reads from window._hsk):
+     getCurrentAlpha, applyAlphaFilter  ← filter.js
+     (both guarded; called only from DOMContentLoaded, after filter.js loads)
+
    INPUT:  localStorage hsk_lang; #btn-lang-toggle; window.HSK_SECTION_NAMES_EN/RU; window.HSK_POS_LABELS_EN/RU
    ACTION: setLang() swaps body.lang-en and translates ~30 UI strings; DOMContentLoaded applies saved language and wires toggle button
-   OUTPUT: body.lang-en class; DOM text of toolbar/TOC/headings; localStorage hsk_lang; window._hsk.getLang
+   OUTPUT: body.lang-en class; DOM text of toolbar/TOC/headings; localStorage hsk_lang
    ========================================================================== */
 (function(){
 "use strict";
@@ -152,8 +159,6 @@ function setLang(lang){
   if(showAll){ showAll.textContent = isEn ? '\u21ba All' : '\u21ba \u0412\u0441\u0435'; showAll.title = isEn ? 'Show all columns' : '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0432\u0441\u0435 \u043a\u043e\u043b\u043e\u043d\u043a\u0438'; }
   var csvBtn = document.getElementById('btn-export-csv');
   if(csvBtn){ csvBtn.title = isEn ? 'Export to Excel/CSV' : '\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0432 Excel/CSV'; }
-  var pdfBtn = document.getElementById('btn-export-pdf');
-  if(pdfBtn){ pdfBtn.title = isEn ? 'Print / Save as PDF' : '\u041f\u0435\u0447\u0430\u0442\u044c / \u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u0430\u043a PDF'; }
 
   /* sort buttons */
   var sortMap = {
@@ -288,7 +293,8 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
-/* ── Expose language internals via window._hsk ── */
-window._hsk = window._hsk || {};
-window._hsk.getLang = function(){ return currentLang; };
+/* ── Register language internals via shared API ── */
+window._hsk._register('lang', {
+  getLang: function() { return currentLang; }
+});
 })();

@@ -21,7 +21,8 @@ window.HSK_LS = {
   L: 'hsk_learned',   // learned-words array
   F: 'hsk_fam',       // familiar-words array
   M: 'hsk_mode',      // light | dark | sepia
-  P: 'hsk_prefs'      // font/size preferences JSON
+  P: 'hsk_prefs',     // font/size preferences JSON
+  R: 'hsk_row_order'  // drag row order JSON
 };
 
 /* ── HSK level progress-bar colours ─────────────────────────────────────────

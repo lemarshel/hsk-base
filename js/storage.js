@@ -98,7 +98,7 @@ function restoreSnapshot(snap){
       for(var i=0;i<tb.rows.length;i++){ var z=tb.rows[i].querySelector('.zh'); if(z) map[z.textContent.trim()]=tb.rows[i]; }
       snap.order[tbId].forEach(function(w){ var tr=map[w]; if(tr) tb.appendChild(tr); });
     });
-    localStorage.setItem('hsk_row_order', JSON.stringify(snap.order));
+    localStorage.setItem(window.HSK_LS.R, JSON.stringify(snap.order));
   }
   var lT = document.getElementById('learned-tbody');
   var fT = document.getElementById('fam-tbody');
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var k=localStorage.key(i);
           if(k && k.startsWith('hsk')) keys.push(k);
         }
-        keys.push('hsk_snapshots','hsk_palette','hsk_lang');
+        keys.push('hsk_snapshots','hsk_palette','hsk_lang','ph_hidden');
         keys.forEach(function(k){ localStorage.removeItem(k); });
         location.reload();
       }

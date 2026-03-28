@@ -349,7 +349,6 @@ function rebuildView(){
   //   • a search query is active
   var useFlat = window._hsk.getCurrentSort() !== 'default' || !bySection || !!q || forceFlat;
 
-  function stripTones(s){ return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); }
   var qn = (lang==='py') ? stripTones(q) : q.toLowerCase();
 
   var allRows = [];
