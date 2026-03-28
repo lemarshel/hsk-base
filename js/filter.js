@@ -20,36 +20,7 @@
 "use strict";
 
 /* search */
-/* ── doSearch — real-time row filtering ───────────────────────────────────────
-   INPUT:  #search-input value; #search-lang value ('zh'|'py'|'ru'|'en');
-           .zh / .py / trans-cell text content on each visible row
-   ACTION: adds sr-hide to rows that don't contain the query in the selected field
-   OUTPUT: sr-hide CSS class toggled on each tbody row
-   ────────────────────────────────────────────────────────────────────────────── */
 function stripTones(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
-var sTimer=null;
-function doSearch(){
-  var q=document.getElementById('search-input').value.trim();
-  var lang=document.getElementById('search-lang').value;
-  var qn=lang==='py'?stripTones(q):q.toLowerCase();
-  document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
-    if(!q){tr.classList.remove('sr-hide');return;}
-    var txt='',cells=tr.cells;
-    if(lang==='zh'){var z=cells[3]&&cells[3].querySelector('.zh');txt=z?z.textContent.trim():'';}
-    else if(lang==='py'){var p=cells[3]&&cells[3].querySelector('.py');txt=p?stripTones(p.textContent.trim()):'';}
-    else{txt=cells[4]?cells[4].textContent.toLowerCase():'';}
-    tr.classList.toggle('sr-hide',!txt.includes(qn));
-  });
-}
-document.getElementById('search-input').addEventListener('input',function(){clearTimeout(sTimer);sTimer=setTimeout(doSearch,130);});
-/* ── Search event wiring ──────────────────────────────────────────────────────
-   INPUT:  #search-input (text), #search-lang (select), #search-clear (button)
-   ACTION: input event debounces doSearch() by 130 ms;
-           lang change and clear button call doSearch() immediately
-   OUTPUT: doSearch() called; sr-hide class on rows
-   ────────────────────────────────────────────────────────────────────────────── */
-document.getElementById('search-lang').addEventListener('change',doSearch);
-document.getElementById('search-clear').addEventListener('click',function(){document.getElementById('search-input').value='';doSearch();});
 
 /* ── Search improvements (EN mode + flat filtered view) ──────────────────── */
 var searchActive = false;
@@ -119,8 +90,6 @@ function buildFilteredView(rows, bySect){
   filteredView.style.display = 'block';
 }
 
-// Override old doSearch to no-op; rebuildView() is the single search handler
-function doSearch(){}
 function cdxDoSearch(){ rebuildView(); }
 
 document.addEventListener('DOMContentLoaded', function(){
