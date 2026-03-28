@@ -1,3 +1,5 @@
+(function(){
+"use strict";
 /* ==========================================================================
    js/storage.js — Snapshot lifecycle: capture, save, restore, reset.
 
@@ -9,7 +11,6 @@
 
    MUST BE LOADED AFTER hsk.js.
    ========================================================================== */
-"use strict";
 
 /* ── Snapshots ────────────────────────────────────────────────────────────── */
 var SNAP_KEY = 'hsk_snapshots';
@@ -200,3 +201,4 @@ document.addEventListener('DOMContentLoaded', function(){
     );
   });
 });
+})();

@@ -1,9 +1,20 @@
 /* ==========================================================================
    js/filter.js — Search, HSK/POS/alpha filters, rebuildView
 
-   INPUT:  #search-input, #search-lang, .hsk-btn, .pos-btn, .alpha-btn; data-hsk/data-py/data-ru/data-en on rows; window._hsk.getCurrentSort/sortRows etc.
-   ACTION: stripTones/doSearch for basic search; cdxDoSearch builds flat filtered-view table for EN mode; HSK/POS/alpha filters add hide classes; rebuildView is the single entry point that applies all active filters + sort
-   OUTPUT: sr-hide/hsk-hide/pos-hide/alpha-hide on rows; #filtered-view table; #hsk-count-val; window._hsk.rebuildView/.renumVisible/.stripTones etc.
+   OWNS (registers to window._hsk):
+     rebuildView, stripTones, applyAlphaFilter, getCurrentAlpha,
+     renumVisible, getVisibleRowCount, updateWordCount
+
+   CONSUMES (reads from window._hsk):
+     getLang         ← lang.js   (guarded; called inside buildFilteredView)
+     getCurrentSort,
+     sortRows,
+     sortRowsByHsk,
+     updateDragState ← sort.js   (sort.js loads before filter.js ✓)
+
+   INPUT:  #search-input, #search-lang, .hsk-btn, .pos-btn, .alpha-btn; data-hsk/data-py/data-ru/data-en on rows
+   ACTION: stripTones/doSearch for basic search; rebuildView is the single entry point that applies all active filters + sort
+   OUTPUT: sr-hide/hsk-hide/pos-hide/alpha-hide on rows; #filtered-view table; #hsk-count-val; window._hsk (via _register)
    ========================================================================== */
 (function(){
 "use strict";
@@ -184,6 +195,7 @@ function updateEmptyGroups(){
     return !tr.classList.contains('hsk-hide') &&
            !tr.classList.contains('pos-hide') &&
            !tr.classList.contains('alpha-hide') &&
+           !tr.classList.contains('text-hide') &&
            !tr.classList.contains('sr-hide');
   }
   function tableHasVisibleRows(tbl){
@@ -232,7 +244,8 @@ function getVisibleRowCount(){
   var n = 0;
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
     if(tr.classList.contains('hsk-hide') || tr.classList.contains('pos-hide') ||
-       tr.classList.contains('alpha-hide') || tr.classList.contains('sr-hide')) return;
+       tr.classList.contains('alpha-hide') || tr.classList.contains('text-hide') ||
+       tr.classList.contains('sr-hide')) return;
     n++;
   });
   return n;
@@ -319,7 +332,7 @@ document.querySelectorAll('.alpha-btn').forEach(function(btn){
            merges small phoneme groups; renumbers; updates word count and HSK stats;
            rebuilds filtered-view flat table for EN search mode
    OUTPUT: DOM row visibility + order; #word-count text; #hsk-stats-bar HTML
-
+   ────────────────────────────────────────────────────────────────────────────── */
 function rebuildView(){
   var inp     = document.getElementById('search-input');
   var langSel = document.getElementById('search-lang');
@@ -402,13 +415,14 @@ function rebuildView(){
   updateEmptyGroups();
 }
 
-/* ── Expose filter internals via window._hsk ── */
-window._hsk = window._hsk || {};
-window._hsk.rebuildView      = rebuildView;
-window._hsk.stripTones       = stripTones;
-window._hsk.applyAlphaFilter = applyAlphaFilter;
-window._hsk.getCurrentAlpha  = function(){ return currentAlpha; };
-window._hsk.renumVisible     = renumVisible;
-window._hsk.getVisibleRowCount = getVisibleRowCount;
-window._hsk.updateWordCount  = updateWordCount;
+/* ── Register filter internals via shared API ── */
+window._hsk._register('filter', {
+  rebuildView:        rebuildView,
+  stripTones:         stripTones,
+  applyAlphaFilter:   applyAlphaFilter,
+  getCurrentAlpha:    function() { return currentAlpha; },
+  renumVisible:       renumVisible,
+  getVisibleRowCount: getVisibleRowCount,
+  updateWordCount:    updateWordCount
+});
 })();

@@ -1,3 +1,5 @@
+(function(){
+"use strict";
 /* ==========================================================================
    js/export.js — Excel and JSON export handlers.
 
@@ -6,7 +8,6 @@
 
    No external CDN dependencies for core exports (XLSX loaded via defer CDN).
    ========================================================================== */
-"use strict";
 
 /* ── helpers ──────────────────────────────────────────────────────────────── */
 function _rowVisible(tr){
@@ -118,4 +119,5 @@ function _progressBar(){
     URL.revokeObjectURL(url);
     prog.finish();
   });
+})();
 })();

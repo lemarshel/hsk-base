@@ -1,3 +1,5 @@
+(function(){
+"use strict";
 /* ==========================================================================
    js/hanzi.js — HanziWriter character popup and stroke-practice mode.
 
@@ -6,7 +8,6 @@
 
    MUST BE LOADED AFTER hsk.js (DOM must be ready — load at bottom of body).
    ========================================================================== */
-"use strict";
 
 /* HanziWriter — wrap CJK chars in wordcell zh (after TTS injection) */
 var hzPop=document.getElementById('hz-popup'),hzTimer=null;
@@ -124,3 +125,4 @@ document.getElementById('hz-practice-btn') && document.getElementById('hz-practi
     });
   });
 });
+})();

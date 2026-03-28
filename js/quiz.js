@@ -1,3 +1,5 @@
+(function(){
+"use strict";
 /* ==========================================================================
    js/quiz.js — Flashcard study mode and multiple-choice quiz.
 
@@ -7,7 +9,6 @@
 
    MUST BE LOADED AFTER hsk.js.
    ========================================================================== */
-"use strict";
 
 /* ── Flashcard study mode ──────────────────────────────────────── */
 (function(){
@@ -262,4 +263,5 @@
       if(btns[idx]&&!answered) btns[idx].click();
     }
   });
+})();
 })();
