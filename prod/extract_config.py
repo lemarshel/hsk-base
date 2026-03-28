@@ -22,6 +22,10 @@ IDX_HTML = ROOT / "index.html"
 
 src = HSK_JS.read_text(encoding="utf-8")
 
+# INPUT:  full source text string, start and end marker strings.
+# ACTION: Locates start_marker then end_marker; slices out the text in between;
+#         returns the extracted block and the source with that block removed.
+# OUTPUT: Tuple (extracted_text, remaining_src). Raises ValueError if not found.
 # ─────────────────────────────────────────────────────────────────────────────
 # Helper: extract a block that starts with `start_marker` and ends just
 # before `end_marker`.  Returns (extracted_text, src_with_block_removed).
@@ -37,6 +41,10 @@ def cut_block(text, start_marker, end_marker):
     remaining = text[:si] + text[ei:]
     return extracted, remaining
 
+# INPUT:  hsk.js source text loaded above.
+# ACTION: Steps 1-7 each cut or replace one constant block from src, storing the
+#         extracted content so it can be written to app-config.js. The modified
+#         src is then written back to hsk.js with alias references.
 # ─────────────────────────────────────────────────────────────────────────────
 # 1.  EN_DICT  (window.EN_DICT = { ... };)
 #     Starts: /* ── EN_DICT ... */\nwindow.EN_DICT = {
@@ -141,12 +149,18 @@ if COLORS_OLD not in src:
     raise ValueError("HSK level colors not found")
 src = src.replace(COLORS_OLD, COLORS_NEW, 1)
 
+# OUTPUT: hsk.js rewritten with alias one-liners replacing each extracted block.
 # ─────────────────────────────────────────────────────────────────────────────
 # Write modified hsk.js
 # ─────────────────────────────────────────────────────────────────────────────
 HSK_JS.write_text(src, encoding="utf-8")
 print(f"hsk.js rewritten  ({len(src):,} chars)")
 
+# INPUT:  all extracted blocks (en_dict_content, overrides_block, palettes_obj,
+#         section_en/ru_obj, pos_ru/en_obj) collected in steps 1-5 above.
+# ACTION: Assembles config_lines with section comments, then joins and writes
+#         the result to js/app-config.js.
+# OUTPUT: js/app-config.js — the single-source-of-truth constants file.
 # ─────────────────────────────────────────────────────────────────────────────
 # Build js/app-config.js
 # ─────────────────────────────────────────────────────────────────────────────
@@ -222,6 +236,10 @@ config_lines = [
 CFG_JS.write_text("\n".join(config_lines), encoding="utf-8")
 print(f"js/app-config.js written  ({CFG_JS.stat().st_size:,} bytes)")
 
+# INPUT:  index.html — checks whether the app-config.js script tag is present.
+# ACTION: If missing, inserts <script src="js/app-config.js"> immediately before
+#         the existing <script src="hsk.js"> tag so constants load first.
+# OUTPUT: Overwrites index.html in place (idempotent — skips if already present).
 # ─────────────────────────────────────────────────────────────────────────────
 # Patch index.html: insert <script src="js/app-config.js"> before hsk.js
 # ─────────────────────────────────────────────────────────────────────────────

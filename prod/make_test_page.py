@@ -26,6 +26,10 @@ MARKER_LEARNED_START = '<div id="learned-section"'
 MARKER_SORTABLE      = '<script src="js/vendor/sortable.min.js">'
 
 
+# INPUT:  data/words.xlsx (Words sheet, all rows).
+# ACTION: Opens the workbook in read-only mode, reads headers from row 1, then
+#         coerces each row to a typed dict (int for id/hsk, str for text fields).
+# OUTPUT: Returns list of word dicts ready for JSON serialisation.
 def read_words_xlsx():
     wb = openpyxl.load_workbook(ROOT / "data" / "words.xlsx", data_only=True, read_only=True)
     ws = wb["Words"]
@@ -56,6 +60,12 @@ def read_words_xlsx():
     return words
 
 
+# INPUT:  words list from read_words_xlsx(); optional include_banner_js flag.
+# ACTION: Reads groups-data.js and render-words.js from disk, serialises words
+#         to JSON, and concatenates them into three inline <script> blocks.
+#         If include_banner_js=True, appends a DOMContentLoaded hook that
+#         populates test-build-banner data-en and DOM-en verification spans.
+# OUTPUT: Returns a multi-line HTML string with three <script> tags to inline.
 def build_data_scripts(words, include_banner_js=False):
     groups_js  = (ROOT / "data" / "groups-data.js").read_text(encoding="utf-8")
     render_js  = (ROOT / "js"   / "render-words.js").read_text(encoding="utf-8")
@@ -83,6 +93,11 @@ def build_data_scripts(words, include_banner_js=False):
     )
 
 
+# INPUT:  words list and build_time string (formatted datetime).
+# ACTION: Constructs a fixed-position HTML debug banner showing word count,
+#         first-word data (ru/en from xlsx), and placeholder spans for JS/DOM
+#         verification values populated at runtime by build_data_scripts.
+# OUTPUT: Returns the banner HTML string (shown only when JS sets display:block).
 def build_banner(words, build_time):
     w0 = words[0] if words else {}
     return (
@@ -100,11 +115,20 @@ def build_banner(words, build_time):
     )
 
 
+# INPUT:  full html string and start_idx of a <div ...> opening tag.
+# ACTION: Finds the closing </div>\n for the block starting at start_idx.
+# OUTPUT: Returns the end index (exclusive) past the closing tag.
 def find_block_end(html, start_idx):
     end = html.index("</div>\n", start_idx) + len("</div>\n")
     return end
 
 
+# INPUT:  html (full text of index.html), words list, build flags.
+# ACTION: Strips the static hardcoded word HTML from index.html by locating
+#         known marker strings, extracts fam/learned section blocks, optionally
+#         injects <base href="../"> for the test/ subfolder, then reassembles
+#         head + banner + word-tables-mount + fam + learned + data scripts + tail.
+# OUTPUT: Returns a new complete HTML string suitable for writing to a file.
 def extract_skeleton(html, words, include_banner=False, build_time="", add_base_href=False):
     """Strip hardcoded word HTML from index.html and inject dynamic pipeline."""
     idx_fv        = html.index(MARKER_FILTERED_VIEW) + len(MARKER_FILTERED_VIEW)
@@ -138,6 +162,11 @@ def extract_skeleton(html, words, include_banner=False, build_time="", add_base_
     )
 
 
+# INPUT:  index.html (template) and data/words.xlsx (word content).
+# ACTION: Reads both sources, then writes two output files:
+#         test/index.html with <base href="../"> for file:// testing, and
+#         index.html (production) with inline word data and no debug banner.
+# OUTPUT: Overwrites test/index.html and index.html; prints sizes to stdout.
 def main():
     html       = INDEX_HTML.read_text(encoding="utf-8")
     words      = read_words_xlsx()

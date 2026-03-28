@@ -21,6 +21,14 @@ COLUMNS = [
     "pos", "phonetic_group", "component", "hsk",
 ]
 
+# INPUT:  index.html — the original hand-authored vocabulary page with all word
+#         data embedded as inline HTML <tr> rows inside phonetic-group <tbody>s.
+# ACTION: Parses the HTML with BeautifulSoup, walks body descendants to extract
+#         h2 POS headings, h3 phonetic-group headings, and all data-* attributes
+#         from each <tr>. Builds a groups list (structural metadata) and a words
+#         list (content). Creates a formatted Excel workbook with styled headers.
+# OUTPUT: Writes data/groups.json, data/groups-data.js, and data/words.xlsx.
+#         Run only when the phonetic group structure itself changes.
 def main():
     print(f"Reading {HTML} ...")
     soup = BeautifulSoup(HTML.read_text(encoding="utf-8"), "html.parser")
@@ -36,6 +44,8 @@ def main():
         if not hasattr(tag, "name"):
             continue
 
+        # INPUT: <h2 class="pos-group"> — extracts ru text and zh span, stores as
+        # pending_h2 dict to attach to the next phonetic-group encountered.
         # ── POS section heading (h2) ────────────────────────────────────────
         if tag.name == "h2" and "pos-group" in (tag.get("class") or []):
             zh_span  = tag.find("span", class_="pos-zh")
@@ -43,6 +53,8 @@ def main():
             ru_text  = tag.get_text(strip=True).replace(zh_text, "").strip()
             pending_h2 = {"id": tag.get("id", ""), "ru": ru_text, "zh": zh_text}
 
+        # INPUT: <h3 class="phonetic-group"> — stores inner HTML exactly as
+        # authored (preserves <span class="comp"> markup) alongside any pending h2.
         # ── Phonetic group heading (h3) ─────────────────────────────────────
         elif tag.name == "h3" and "phonetic-group" in (tag.get("class") or []):
             pending_meta = {
@@ -51,6 +63,8 @@ def main():
             }
             pending_h2 = None
 
+        # INPUT: <tbody id="..."> with data-key <tr> children — each row yields
+        # one word dict; the tbody id becomes phonetic_group for all its words.
         # ── Word tbody ──────────────────────────────────────────────────────
         elif tag.name == "tbody" and tag.get("id") and tag["id"] not in seen_tbody:
             tbody_id = tag["id"]
@@ -98,6 +112,7 @@ def main():
     print(f"  Groups extracted : {len(groups)}")
     print(f"  Words  extracted : {len(words)}")
 
+    # OUTPUT: write all three data artefacts — groups.json, groups-data.js, words.xlsx.
     # ── Write groups.json ───────────────────────────────────────────────────
     GROUPS_J.write_text(json.dumps(groups, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"Wrote {GROUPS_J}")
@@ -109,6 +124,8 @@ def main():
     )
     print(f"Wrote {GROUPS_JS}")
 
+    # OUTPUT: creates words.xlsx with styled header row, frozen pane at A2,
+    # and per-column widths matching expected content length.
     # ── Write words.xlsx ────────────────────────────────────────────────────
     wb = openpyxl.Workbook()
     ws = wb.active

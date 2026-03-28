@@ -1,9 +1,14 @@
 /* ==========================================================================
-   HSK Base — Stylesheet
-   - Core layout + table styling
-   - Toolbar, filters, and UI overlays
-   - Section comments added for maintainability
+   css/hsk.css — Main application stylesheet for HSK Base
+   INPUT:  Body class tokens set by hsk-head.js / hsk-body.js / hsk.js:
+           .dark, .sepia, .lang-en, .hide-{num|word|trans|ex}, .ph-hidden,
+           .flat-view, .searching, and palette CSS vars --pal-accent / --pal-dark.
+   ACTION: Provides all visual rules for layout, tables, toolbar, overlays,
+           filters, responsive breakpoints, and theme variants (light/dark/sepia).
+   OUTPUT: Rendered UI. No JS dependencies — purely declarative CSS.
    ========================================================================== */
+
+/* ── Page-level layout and heading styles ────────────────────────────────── */
 h1{text-align:center;font-size:2em;color:#1a1a2e;border-bottom:none;padding-bottom:0}
 .subtitle{text-align:center;color:#666;margin-bottom:20px}
 html.preload,body.preload{background:#fff}
@@ -22,6 +27,7 @@ body.flat-view h2.pos-group,body.flat-view h3.phonetic-group,body.flat-view .grp
 h2.pos-group .pos-zh{font-size:.7em;opacity:.7;margin-left:8px}
 h3.phonetic-group{background:#f0f0f0;padding:6px 14px;margin:8px 0 4px;font-size:.9em;color:#444;border-left:4px solid #e94560}
 .comp{font-size:1.1em;font-weight:bold;color:#1a1a2e}
+/* ── Vocabulary table — core layout, cell styles, and word cell internals ── */
 /* ===== Vocabulary table ===== */
 table{width:100%;border-collapse:collapse;margin-bottom:12px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 thead tr{background:#e94560;color:#fff}
@@ -54,6 +60,7 @@ tr:nth-child(even){background:#f9f9f9}
 .drag-handle:active{cursor:grabbing}
 .gnote{font-size:.8em;background:#fff8e1;border-left:3px solid #f9a825;padding:6px 8px;margin-top:6px}
 .no-sent{color:#ccc}
+/* ── Table of contents (TOC) block rendered by hsk.js buildTOC() ─────────── */
 /* ===== Contents / TOC ===== */
 .toc{background:#fff;border:1px solid #ddd;padding:12px 20px;margin-bottom:24px;border-radius:6px}
 .toc h3{margin:0 0 8px}
@@ -61,6 +68,7 @@ tr:nth-child(even){background:#f9f9f9}
 .toc a:hover{color:#e94560}
 .toc-count{color:#999;font-size:.85em}
 
+/* ── Learn checkbox column and #learned-section panel ───────────────────── */
 .cb-col{width:30px;text-align:center;padding:4px 6px}
 .cb-cell{text-align:center;vertical-align:middle;padding:4px 6px;width:30px}
 .learn-cb{width:16px;height:16px;cursor:pointer;accent-color:#2ecc71}
@@ -90,6 +98,8 @@ body.dark mark{background:#f39c12;color:#000}
 .fam-cell{text-align:center;vertical-align:middle;padding:4px}
 .fam-cb{width:15px;height:15px;cursor:pointer;accent-color:#f39c12;opacity:.8}
 
+/* ── Flashcard study mode overlay (#study-overlay) ─────────────────────────
+   Full-screen modal; shown/hidden by hsk.js openStudy() / closeStudy(). */
 /* ── Flashcard study mode ─────────────────────────────────────── */
 #study-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.7);z-index:9000;display:flex;align-items:center;justify-content:center}
 #study-card{background:#fff;border-radius:16px;padding:32px;width:min(600px,90vw);min-height:400px;display:flex;flex-direction:column;gap:16px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.3)}
@@ -110,6 +120,9 @@ body.dark mark{background:#f39c12;color:#000}
 #study-again{background:#e94560;color:#fff}
 body.dark #study-card{background:#1a1a2e;color:#e0e0e0}
 body.dark #study-zh{color:#e94560}
+/* ── Multiple choice quiz overlay (#quiz-overlay) ───────────────────────────
+   Full-screen modal; shown/hidden by quiz.js. Choices use .correct/.wrong
+   classes applied by JS after the user selects an answer. */
 /* ── Multiple choice quiz ─────────────────────────────────────── */
 #quiz-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9001;display:flex;align-items:center;justify-content:center}
 #quiz-card{background:#fff;border-radius:16px;padding:28px;width:min(640px,92vw);display:flex;flex-direction:column;gap:16px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
@@ -190,6 +203,9 @@ h2.pos-group.pos-empty{display:none!important}
 /* ── Search hidden ───────────────────────────────────────────── */
 .sr-hide{display:none!important}
 
+/* ── Dark mode — all overrides for body.dark ─────────────────────────────────
+   Applied when hsk-body.js adds .dark to <body>; toggled by mode buttons in hsk.js.
+   Covers tables, toolbar, overlays, TOC, typography, and interactive controls. */
 /* ── Dark mode ───────────────────────────────────────────────── */
 body.dark{background:#111122;color:#e8e8e8}
 body.dark #toolbar{background:#1a1a2e;border-bottom:none;box-shadow:0 2px 10px rgba(0,0,0,.5)}
@@ -235,6 +251,8 @@ body.dark .tb-sep{background:rgba(255,255,255,.15)}
 body.dark .tb-label{color:#8888aa}
 body.dark .coll-btn{background:#22223a;color:#a0a0c0;border-color:#3e3e5a}
 
+/* ── Sepia mode — warm parchment theme overrides for body.sepia ──────────────
+   Applied alongside dark-mode pattern; only the changed properties are listed. */
 /* ── Sepia mode ──────────────────────────────────────────────── */
 body.sepia{background:#f4e8c1;color:#3a2a18}
 body.sepia #toolbar{background:#ede0b5;border-bottom:none}
@@ -252,6 +270,9 @@ body.sepia .tb-row:first-child{border-bottom-color:rgba(0,0,0,.1)}
 body.sepia .tb-label{color:#8a6040}
 body.sepia .drag-handle{background:#fdf5e0;border-color:#c8a875;color:#5c3d18}
 
+/* ── Print media — hides UI chrome, forces light background, preserves colors ─
+   Toolbar, overlays, checkboxes, and drag handles are all hidden.
+   Section backgrounds use print-color-adjust to survive print rendering. */
 /* ── Print ───────────────────────────────────────────────────── */
 @media print{
   #toolbar,#hz-popup,.donate-bar,#study-overlay,#quiz-overlay,#cdx-confirm{display:none!important}
@@ -269,6 +290,10 @@ body.sepia .drag-handle{background:#fdf5e0;border-color:#c8a875;color:#5c3d18}
   h1,h3{display:none}
 }
 
+/* ── Column visibility toggle ────────────────────────────────────────────────
+   INPUT: body.hide-{num|word|trans|ex} classes set by hsk.js column toggles.
+   ACTION: Hides matching [data-col] cells; adjusts remaining column widths so
+           the table fills the available space proportionally. */
 /* ── Column visibility toggle (data cols only) ───────────────── */
 thead th:not(.cb-col):not(.fam-col){cursor:pointer;user-select:none}
 thead th:not(.cb-col):not(.fam-col):hover{opacity:.8}
@@ -296,6 +321,11 @@ body.sepia .col-btn{background:#8b5e3c;border-color:#8b5e3c}
 body.sepia .col-btn.hidden{background:#f4e8c1!important;color:#999!important;border-color:#d4b893!important;opacity:0.65}
 @media print{body.hide-num th:nth-child(3),body.hide-num td:nth-child(3),body.hide-word th:nth-child(4),body.hide-word td:nth-child(4),body.hide-trans th:nth-child(5),body.hide-trans td:nth-child(5),body.hide-ex th:nth-child(6),body.hide-ex td:nth-child(6){display:none!important}}
 
+/* ── Codex additions — palette variables, lang switching, and toolbar grid ───
+   INPUT: --pal-accent / --pal-dark set by hsk-head.js on document.documentElement.
+   ACTION: Overrides hardcoded accent colours everywhere with CSS custom properties
+           so the palette system works without JS touching individual elements.
+           Also contains lang-switching rules and the 3-column toolbar grid layout. */
 /* ── Codex additions ─────────────────────────────────────────────────────── */
 
 /* CSS custom properties for palette */
@@ -355,6 +385,10 @@ body.hide-ex   [data-col="ex"]   { display: none !important; }
 .cdx-dropdown-item:last-child { border-bottom: none; }
 .cdx-wrap { position: relative; display: inline-block; }
 
+/* ── POS / Alpha / Sort / HSK filter buttons ─────────────────────────────────
+   INPUT: .active class toggled by hsk.js filter functions; body.dark / .sepia.
+   ACTION: Highlights active filter with --pal-accent; .pos-hide / .alpha-hide /
+           .hsk-hide on <tr> elements handle actual row visibility. */
 /* ── POS filter buttons ──────────────────────────────────────── */
 .pos-btn{padding:3px 7px;border:1px solid #ccc;border-radius:3px;cursor:pointer;background:#f5f5f5;font-size:.78em}
 .pos-btn:hover{border-color:var(--pal-accent);color:var(--pal-accent)}
@@ -457,6 +491,9 @@ body.dark #quiz-card{background:#1a1a2e;color:#e0e0e0;border:1px solid #2e2e4a}
 body.dark #quiz-zh{color:#e94560}
 body.dark #quiz-py{color:#90caf9}
 
+/* ── Show-all columns and export buttons ─────────────────────────────────────
+   #btn-show-all-cols resets all hide-* classes; .export-btn triggers export.js
+   PDF/CSV/Anki export. Theme overrides for dark and sepia follow each rule. */
 /* ── Show-all columns + export buttons ───────────────────────── */
 #btn-show-all-cols{padding:3px 8px;border:1px solid #888;border-radius:3px;cursor:pointer;background:#f5f5f5;color:#444;font-size:.78em}
 #btn-show-all-cols:hover{background:#e94560;color:#fff;border-color:#e94560}
@@ -469,6 +506,9 @@ body.dark .export-btn{background:#1a5c30;color:#a0e8b0;border-color:#27ae60}
 body.dark .export-btn:hover{background:#27ae60;color:#fff}
 body.sepia .export-btn{background:#5c8a3a;border-color:#5c8a3a}
 
+/* ── Table layout compensation for hidden columns ───────────────────────────
+   When one column is hidden, redistributes its width to the remaining visible
+   columns so the table fills its container without awkward gaps. */
 /* ── Keep alignment when columns hidden ───────────────────────── */
 body[class*='hide-'] table{table-layout:auto!important}
 /* Remove inline-style width constraints so columns expand into hidden space */
@@ -506,6 +546,9 @@ table:not(.pos-first-table):not(#fam-table):not(#learned-table):not(.fv-table) t
   font-size: 0;
 }
 
+/* ── Back-to-top button — fixed position, shown via .visible class ───────────
+   INPUT: hsk.js adds .visible on scroll past threshold; removes on scroll to top.
+   OUTPUT: Floating circular button; click scrolls window to top. */
 /* ── Back to top button ───────────────────────────────────────────────────── */
 #back-to-top {
   position: fixed;
@@ -529,6 +572,10 @@ table:not(.pos-first-table):not(#fam-table):not(#learned-table):not(.fv-table) t
 #back-to-top:hover { background: #e94560; }
 #back-to-top.visible { display: flex; }
 
+/* ── Mobile layout — header bar, slide-in toolbar, column hiding (≤1024 px) ──
+   INPUT: .mobile-open toggled by hsk.js hamburger handler; media query breakpoints.
+   ACTION: Shows a compact header with title + inline search + hamburger button.
+           Toolbar slides in as an overlay; example column hidden by default. */
 /* ── Mobile header ────────────────────────────────────────────────────────── */
 #mobile-header {
   display: none;
@@ -610,6 +657,10 @@ table:not(.pos-first-table):not(#fam-table):not(#learned-table):not(.fv-table) t
 }
 
 
+/* ── Miscellaneous UI components — search state, drag-and-drop, title row ────
+   Includes: body.searching phoneme header hiding, grip/drag-row highlights,
+   title-row flexbox layout, main-page-hero CTA button, toolbar grid sections,
+   and example sentence translation display rules (.ex-trans). */
 /* ===== Head inline styles (moved from index.html) ===== */
 /* Hide phoneme headers during search */
 body.searching h3.phonetic-group { display: none !important; }
@@ -701,6 +752,9 @@ body.lang-en .ex-trans-en { display: block; }
 body.lang-en .ex-trans:not(:has(.ex-trans-en)) { display: none; }
 body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
 
+/* ── Responsive table column widths at narrow breakpoints ────────────────────
+   At ≤900 px: reallocates column percentages to compensate for narrower screen.
+   At ≤600 px: hides example column entirely and redistributes to word/trans. */
 /* ── Responsive table ────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
   #word-tables-mount table { width: 100%; }
@@ -716,6 +770,9 @@ body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
   .zh { font-size: 1.3em; }
 }
 
+/* ── Mode buttons — colour swatch dot + label text ──────────────────────────
+   Each .mode-btn contains a .mode-dot span; colour differs per data-mode value.
+   Active dot turns white so it contrasts against the --pal-accent background. */
 /* ── Mode (theme) buttons — dot swatch + text ────────────────────────────
    Replaces emoji icons that render as colored boxes on Windows Chrome.   */
 .mode-dot {

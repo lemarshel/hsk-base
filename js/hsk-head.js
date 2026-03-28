@@ -1,16 +1,24 @@
 /* ==========================================================================
-   Head preloader
-   - Applies theme/palette before first paint
-   - Preloads font sizing to avoid flashes
+   hsk-head.js — Inline head preloader
+   INPUT:  localStorage keys hsk_mode, hsk_palette, hsk_prefs (read on script eval,
+           before the DOM is parsed).
+   ACTION: Sets background-color and CSS custom properties --pal-accent / --pal-dark
+           on <html> immediately, then injects a <style> tag with font overrides so
+           the first paint already matches the user's saved theme and font preferences.
+   OUTPUT: Mutates document.documentElement styles and appends #preload-font <style>
+           to document.head. No return value.
    ========================================================================== */
-/* Head preloader: theme + palette + font pre-apply */
 (function(){
   try{
     var root=document.documentElement;
+
+    /* INPUT: localStorage hsk_mode — sets background before any element renders */
     root.classList.add('preload');
     var mode=localStorage.getItem('hsk_mode')||'light';
     var bg=(mode==='dark')?'#0f111a':(mode==='sepia')?'#f7f2e8':'#ffffff';
     root.style.backgroundColor=bg;
+
+    /* INPUT: localStorage hsk_palette — sets --pal-accent and --pal-dark CSS vars */
     var palName=localStorage.getItem('hsk_palette')||'rose';
     var PALS={
       rose:['#e94560','#c73652'],
@@ -32,6 +40,7 @@
     var pal=PALS[palName]||PALS.rose;
     root.style.setProperty('--pal-accent',pal[0]);
     root.style.setProperty('--pal-dark',pal[1]);
+    /* INPUT: localStorage hsk_prefs (JSON) — builds CSS string for font/size overrides */
     var prefs={};
     try{prefs=JSON.parse(localStorage.getItem('hsk_prefs')||'{}');}catch(e){}
     var css='';
@@ -41,6 +50,7 @@
     if(prefs.sp)css+='.py,.ex-py{font-size:'+prefs.sp+'px!important}';
     if(prefs.fr)css+='td.trans-cell{font-family:'+prefs.fr+',sans-serif!important}';
     if(prefs.sr)css+='td.trans-cell{font-size:'+prefs.sr+'px!important}';
+    /* OUTPUT: appends <style id="preload-font"> to <head> with font overrides */
     if(css){
       var st=document.createElement('style');
       st.id='preload-font';

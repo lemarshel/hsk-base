@@ -1,3 +1,14 @@
+/* ==========================================================================
+   js/hsk.js — IIFE 1: Core word-state management + UI interactions
+
+   INPUT:  window.HSK_LS (from app-config.js); rendered DOM word rows;
+           localStorage for all persistent state
+   ACTION: builds word index (wMap), restores learned/fam state, wires all
+           interactive UI: TTS, search, filters, sort, theme, font, drag,
+           column toggle, group collapse, snapshot bridge, HanziWriter popup
+   OUTPUT: DOM mutations; localStorage writes; window._hsk bridge;
+           window._cdxOrigOrder; window._cdxSortables
+   ========================================================================== */
 (function(){
 /* ==========================================================================
    HSK Base — Application logic
@@ -20,7 +31,18 @@ document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEa
   }
 });
 
+/* ── renum — renumber a tbody ─────────────────────────────────────────────────
+   INPUT:  a <tbody> element
+   ACTION: iterates all rows, writes sequential integers to .rownum cells
+   OUTPUT: .rownum textContent updated in the given tbody
+   ────────────────────────────────────────────────────────────────────────────── */
 function renum(tb){for(var i=0;i<tb.rows.length;i++){var c=tb.rows[i].querySelector('.rownum');if(c)c.textContent=i+1;}}
+/* ── updVis — section visibility + stat counters ──────────────────────────────
+   INPUT:  #learned-tbody and #fam-tbody row counts
+   ACTION: shows or hides #learned-section / #fam-section based on row count;
+           updates #st-lrn and #st-fam counter text
+   OUTPUT: display style on sections; counter textContent
+   ────────────────────────────────────────────────────────────────────────────── */
 function updVis(){
   lS.style.display=lT.rows.length?'block':'none';
   fS.style.display=fT.rows.length?'block':'none';
@@ -28,6 +50,13 @@ function updVis(){
   document.getElementById('st-fam').textContent=fT.rows.length;
 }
 /* ===== Persist learned/familiar state ===== */
+/* ── save — persist learned/familiar to localStorage ──────────────────────────
+   INPUT:  current rows of #learned-tbody and #fam-tbody
+   ACTION: collects Hanzi text from each row; serialises to JSON;
+           writes to localStorage[LS.L] and localStorage[LS.F];
+           calls updateHSKStats() if available
+   OUTPUT: localStorage LS.L and LS.F updated
+   ────────────────────────────────────────────────────────────────────────────── */
 function save(){
   var l=[],f=[];
   for(var i=0;i<lT.rows.length;i++){var z=lT.rows[i].querySelector('.zh');if(z)l.push(z.textContent.trim());}
@@ -37,6 +66,13 @@ function save(){
 }
 
 /* ===== Restore state from localStorage ===== */
+/* ── Restore learned/familiar state ───────────────────────────────────────────
+   INPUT:  localStorage LS.L (learned) and LS.F (familiar) JSON arrays
+   ACTION: parses stored Hanzi lists; looks up each word in wMap; moves matching
+           rows to learned/fam tbodies; checks their checkboxes; renumbers
+   OUTPUT: rows moved to #learned-tbody / #fam-tbody; .learn-cb/.fam-cb checked;
+           renum() on affected tbodies; updVis()
+   ────────────────────────────────────────────────────────────────────────────── */
 /* restore */
 (function(){
   var l=[],f=[];
@@ -50,6 +86,12 @@ function save(){
 })();
 
 /* ── Finalize initial render (avoid staged flashes) ───────────────────── */
+/* ── Preload class removal ────────────────────────────────────────────────────
+   INPUT:  DOMContentLoaded event
+   ACTION: removes .preload from body and documentElement (deferred 0 ms) to
+           allow CSS transitions after initial paint; removes #preload-font style tag
+   OUTPUT: body.preload and documentElement.preload removed; #preload-font removed
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(function(){
     if(document.body){ document.body.classList.remove('preload'); }
@@ -60,6 +102,13 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ===== Checkbox delegation (learned/familiar) ===== */
+/* ── Checkbox delegation — learned / familiar ─────────────────────────────────
+   INPUT:  change events on .learn-cb and .fam-cb checkboxes (delegated from body)
+   ACTION: moves row to #learned-tbody or #fam-tbody on check;
+           returns row to its original tbody (data-orig) on uncheck;
+           unchecks the other checkbox if both would be set; renumbers; saves
+   OUTPUT: row moved in DOM; renum() called; updVis(); save() to localStorage
+   ────────────────────────────────────────────────────────────────────────────── */
 /* checkbox delegation */
 document.body.addEventListener('change',function(e){
   var cb=e.target,tr=cb.closest('tr');if(!tr)return;
@@ -86,6 +135,12 @@ document.body.addEventListener('change',function(e){
 });
 
 /* tone coloring */
+/* ── Pinyin tone helpers ──────────────────────────────────────────────────────
+   INPUT:  pinyin syllable string
+   ACTION: getTone() detects tone 1-4 from diacritic vowels (āáǎà etc.);
+           capFirstLetter() uppercases the first alphabetic character
+   OUTPUT: tone integer (0-4); capitalised token string
+   ────────────────────────────────────────────────────────────────────────────── */
 function getTone(syl){
   if(/[āēīōūĀĒĪŌŪ]/.test(syl)) return 1;
   if(/[áéíóúÁÉÍÓÚ]/.test(syl)) return 2;
@@ -103,6 +158,13 @@ function capFirstLetter(token){
   return token;
 }
 function colorPinyin(){
+/* ── colorPinyin — tone coloring ──────────────────────────────────────────────
+   INPUT:  all .py and .ex-py elements; their raw pinyin text
+   ACTION: splits each pinyin string into syllables; wraps each in
+           <span class='py-t{0-4}'> using getTone(); capitalises first syllable
+           of example pinyin
+   OUTPUT: .py / .ex-py innerHTML replaced with tone-colored spans
+   ────────────────────────────────────────────────────────────────────────────── */
   document.querySelectorAll('.py,.ex-py').forEach(function(el){
     var raw = el.textContent
       .replace(/[，]/g, ',')
@@ -123,6 +185,12 @@ function colorPinyin(){
 }
 document.addEventListener('DOMContentLoaded', colorPinyin);
 /* HSK level badge in word cells */
+/* ── HSK level badge injection ────────────────────────────────────────────────
+   INPUT:  data-hsk attribute on each non-learned/fam row
+   ACTION: DOMContentLoaded: appends a .hsk-{N} badge span to each .wordcell;
+           then calls updateHSKStats() for initial bar render
+   OUTPUT: .hsk-badge span appended to each word cell; stats bar rendered
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
     var lvl = tr.getAttribute('data-hsk');
@@ -137,6 +205,12 @@ document.addEventListener('DOMContentLoaded', function(){
   updateHSKStats();
 });
 function updateHSKStats(){
+/* ── updateHSKStats — HSK progress bar ────────────────────────────────────────
+   INPUT:  all tbody rows; data-hsk attribute; .learn-cb:checked state
+   ACTION: counts total and learned words per HSK level 1-6;
+           renders colored progress spans into #hsk-stats-bar
+   OUTPUT: #hsk-stats-bar innerHTML
+   ────────────────────────────────────────────────────────────────────────────── */
   var stats = {}, lrn = {};
   [1,2,3,4,5,6].forEach(function(l){ stats[l]=0; lrn[l]=0; });
   document.querySelectorAll('tbody[id] tr').forEach(function(tr){
@@ -162,6 +236,12 @@ function updateHSKStats(){
 }
 
 /* search */
+/* ── doSearch — real-time row filtering ───────────────────────────────────────
+   INPUT:  #search-input value; #search-lang value ('zh'|'py'|'ru'|'en');
+           .zh / .py / trans-cell text content on each visible row
+   ACTION: adds sr-hide to rows that don't contain the query in the selected field
+   OUTPUT: sr-hide CSS class toggled on each tbody row
+   ────────────────────────────────────────────────────────────────────────────── */
 function stripTones(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 var sTimer=null;
 function doSearch(){
@@ -178,10 +258,22 @@ function doSearch(){
   });
 }
 document.getElementById('search-input').addEventListener('input',function(){clearTimeout(sTimer);sTimer=setTimeout(doSearch,130);});
+/* ── Search event wiring ──────────────────────────────────────────────────────
+   INPUT:  #search-input (text), #search-lang (select), #search-clear (button)
+   ACTION: input event debounces doSearch() by 130 ms;
+           lang change and clear button call doSearch() immediately
+   OUTPUT: doSearch() called; sr-hide class on rows
+   ────────────────────────────────────────────────────────────────────────────── */
 document.getElementById('search-lang').addEventListener('change',doSearch);
 document.getElementById('search-clear').addEventListener('click',function(){document.getElementById('search-input').value='';doSearch();});
 
 /* keyboard shortcuts */
+/* ── Global keyboard shortcuts ────────────────────────────────────────────────
+   INPUT:  keydown events on document (skipped inside inputs and study overlay)
+   ACTION: '/' or Ctrl+F focuses and selects #search-input;
+           Escape clears search if populated
+   OUTPUT: focus on search input; search cleared
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('keydown', function(e){
   // Don't fire when typing in inputs
   if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT'||e.target.tagName==='TEXTAREA') return;
@@ -199,6 +291,12 @@ document.addEventListener('keydown', function(e){
 });
 
 /* mode */
+/* ── Theme mode ───────────────────────────────────────────────────────────────
+   INPUT:  localStorage hsk_mode; click on .mode-btn
+   ACTION: setMode() strips light/dark/sepia from body.className, adds new mode;
+           toggles .active on mode buttons; persists to localStorage
+   OUTPUT: body class; .mode-btn.active; localStorage hsk_mode
+   ────────────────────────────────────────────────────────────────────────────── */
 function setMode(m){
   document.body.className=document.body.className.replace(/\b(light|dark|sepia)\b/g,'').trim();
   if(m!=='light')document.body.classList.add(m);
@@ -209,6 +307,12 @@ document.querySelectorAll('.mode-btn').forEach(function(b){b.addEventListener('c
 setMode(localStorage.getItem(LS.M)||'light');
 
 /* font controls */
+/* ── Font controls ────────────────────────────────────────────────────────────
+   INPUT:  localStorage hsk_prefs; #font-zh/py/ru, #size-zh/py/ru inputs
+   ACTION: applyF() builds a CSS string for .zh, .py, .trans-cell overrides
+           and writes it to a #dyn-font <style> tag; persists prefs to localStorage
+   OUTPUT: #dyn-font style innerHTML; localStorage hsk_prefs
+   ────────────────────────────────────────────────────────────────────────────── */
 var prefs={};try{prefs=JSON.parse(localStorage.getItem(LS.P)||'{}');}catch(e){}
 var dynSt=document.createElement('style');dynSt.id='dyn-font';document.head.appendChild(dynSt);
 function applyF(){
@@ -244,6 +348,12 @@ document.getElementById('font-toggle').addEventListener('click',function(){
 });
 
 /* TTS */
+/* ── TTS (Text-to-Speech) core ────────────────────────────────────────────────
+   INPUT:  localStorage hsk-volume; #vol-range slider
+   ACTION: initialises ttsVolume, zhVoice, fallbackAudio state;
+           setTtsVolume() clamps value 0-1, syncs slider, persists to localStorage
+   OUTPUT: ttsVolume float; slider display; localStorage hsk-volume
+   ────────────────────────────────────────────────────────────────────────────── */
 var zhVoice=null;
 var voicesReady=false;
 var fallbackAudio=null;
@@ -266,6 +376,12 @@ function setTtsVolume(v, save){
   if(fallbackAudio){ try{ fallbackAudio.volume=ttsVolume; }catch(e){} }
 }
 function pickZhVoice(vs){
+/* ── Voice selection & loading ────────────────────────────────────────────────
+   INPUT:  speechSynthesis.getVoices() list; onvoiceschanged event
+   ACTION: pickZhVoice() finds the best zh-CN voice; ensureVoices() retries
+           up to 6 times (200 ms apart) until voices are available
+   OUTPUT: zhVoice SpeechSynthesisVoice object; voicesReady boolean
+   ────────────────────────────────────────────────────────────────────────────── */
   return vs.find(function(v){return v.lang==='zh-CN';})
     || vs.find(function(v){return /^zh/i.test(v.lang);})
     || vs.find(function(v){return /chinese|mandarin|huihui|yaoyao|kangkang/i.test(v.name);});
@@ -301,6 +417,12 @@ if(typeof speechSynthesis!=='undefined'){
   refreshVoices();
 }
 function stopFallback(){
+/* ── Audio stop helpers ───────────────────────────────────────────────────────
+   INPUT:  fallbackAudio Audio object; active SpeechSynthesis; .tts-btn.on buttons
+   ACTION: stopFallback() pauses fallback Audio; stopAllAudio() cancels synthesis,
+           stops fallback, and removes .on class from all play buttons
+   OUTPUT: audio stopped; .tts-btn.on removed
+   ────────────────────────────────────────────────────────────────────────────── */
   if(fallbackAudio){
     try{ fallbackAudio.pause(); }catch(e){}
     fallbackAudio = null;
@@ -312,6 +434,12 @@ function stopAllAudio(){
   document.querySelectorAll('.tts-btn.on').forEach(function(b){b.classList.remove('on');});
 }
 function chunkTTS(text, maxLen){
+/* ── chunkTTS — text chunker for TTS ─────────────────────────────────────────
+   INPUT:  text string, maxLen integer
+   ACTION: splits text at punctuation boundaries (。！？,；) to stay under maxLen;
+           hard-splits any remaining segment that still exceeds maxLen
+   OUTPUT: array of string chunks, each <= maxLen chars
+   ────────────────────────────────────────────────────────────────────────────── */
   var clean = String(text||'').replace(/\s+/g,' ').trim();
   if(!clean) return [];
   if(clean.length <= maxLen) return [clean];
@@ -336,6 +464,12 @@ function chunkTTS(text, maxLen){
   return final;
 }
 function playFallbackTTS(text, onDone){
+/* ── playFallbackTTS — Google TTS fallback ────────────────────────────────────
+   INPUT:  text string; chunkTTS() chunks (max 160 chars each)
+   ACTION: fetches audio from translate.googleapis.com for each chunk sequentially;
+           stores Audio object in fallbackAudio so stopFallback() can cancel it
+   OUTPUT: sequential Audio playback; calls onDone() when all chunks finish
+   ────────────────────────────────────────────────────────────────────────────── */
   var chunks = chunkTTS(text, 160);
   var idx = 0;
   stopFallback();
@@ -354,6 +488,13 @@ function playFallbackTTS(text, onDone){
   next();
 }
 document.body.addEventListener('click',function(e){
+/* ── TTS click handler ────────────────────────────────────────────────────────
+   INPUT:  click events on .tts-btn (delegated from document.body);
+           button.dataset.t (cached text) or nearest .zh / .ex-zh text
+   ACTION: stops any current audio; plays text via SpeechSynthesis (zh-CN voice);
+           falls back to playFallbackTTS() if SpeechSynthesis stalls after 1.2 s
+   OUTPUT: audio playback; .tts-btn.on class while playing
+   ────────────────────────────────────────────────────────────────────────────── */
   var btn=e.target.closest('.tts-btn');if(!btn)return;
   e.stopPropagation();
   /* Read text at click-time: prefer cached dataset, else find nearest .zh or .ex-zh */
@@ -404,6 +545,12 @@ document.body.addEventListener('click',function(e){
   });
 });
 /* inject TTS into wordcells */
+/* ── TTS button injection — word cells ────────────────────────────────────────
+   INPUT:  all .wordcell td elements
+   ACTION: wraps cell children in .wc-inner div; appends ▶ button before it;
+           stores word text in button.dataset.t for instant playback
+   OUTPUT: .tts-btn + .wc-inner inside each .wordcell
+   ────────────────────────────────────────────────────────────────────────────── */
 document.querySelectorAll('.wordcell').forEach(function(cell){
   var zh=cell.querySelector('.zh');if(!zh)return;
   var txt=zh.textContent.trim();
@@ -413,6 +560,12 @@ document.querySelectorAll('.wordcell').forEach(function(cell){
   cell.appendChild(btn);cell.appendChild(inner);
 });
 /* inject TTS into example cells */
+/* ── TTS button injection — example cells ─────────────────────────────────────
+   INPUT:  all td elements containing .ex-zh div
+   ACTION: wraps cell content in .ex-td-inner; prepends ▶ button inside .ex-zh;
+           stores example text in button.dataset.t
+   OUTPUT: .tts-btn inside each .ex-zh; td.ex-td class
+   ────────────────────────────────────────────────────────────────────────────── */
 document.querySelectorAll('td').forEach(function(td){
   var ez=td.querySelector('.ex-zh');if(!ez)return;
   var txt=ez.textContent.trim();
@@ -426,6 +579,12 @@ document.querySelectorAll('td').forEach(function(td){
 });
 /* tag trans cells for font targeting */
 document.querySelectorAll('tbody tr').forEach(function(tr){if(tr.cells.length>=6)tr.cells[4].classList.add('trans-cell');});
+/* ── Drag handle injection ────────────────────────────────────────────────────
+   INPUT:  all .trans-cell td elements (translation column)
+   ACTION: prepends a ⠿ drag-handle <button> to each translation cell for
+           SortableJS row dragging
+   OUTPUT: .drag-handle button element at start of each .trans-cell
+   ────────────────────────────────────────────────────────────────────────────── */
 /* inject drag handles into translation cells */
 (function(){
   var isEn = document.body.classList.contains('lang-en');
@@ -443,6 +602,12 @@ document.querySelectorAll('tbody tr').forEach(function(tr){if(tr.cells.length>=6
 })();
 
 /* Group collapse */
+/* ── Phonetic group collapse ───────────────────────────────────────────────────
+   INPUT:  all h3.phonetic-group elements
+   ACTION: appends a collapse button to each h3; wraps the sibling table in .grp-wrap;
+           click toggles .grp-col on the wrapper
+   OUTPUT: collapse button injected into DOM; .grp-wrap wrapper added; table hidden/shown
+   ────────────────────────────────────────────────────────────────────────────── */
 document.querySelectorAll('h3.phonetic-group').forEach(function(h3){
   var btn=document.createElement('button');btn.className='coll-btn';btn.textContent='\u25bc';h3.appendChild(btn);
   var tbl=h3.nextElementSibling;while(tbl&&tbl.tagName!=='TABLE')tbl=tbl.nextElementSibling;
@@ -454,6 +619,11 @@ document.querySelectorAll('h3.phonetic-group').forEach(function(h3){
   });
 });
 document.getElementById('btn-col-all').addEventListener('click',function(){
+/* ── Collapse / expand all groups ─────────────────────────────────────────────
+   INPUT:  click on #btn-col-all or #btn-exp-all
+   ACTION: adds or removes .grp-col on every .grp-wrap; updates arrow button text
+   OUTPUT: .grp-col class on all group wrappers; coll-btn text
+   ────────────────────────────────────────────────────────────────────────────── */
   document.querySelectorAll('h3.phonetic-group').forEach(function(h3){
     var w=h3.nextElementSibling;if(w&&w.classList.contains('grp-wrap')){w.classList.add('grp-col');var b=h3.querySelector('.coll-btn');if(b)b.textContent='\u25b6';}
   });
@@ -465,6 +635,12 @@ document.getElementById('btn-exp-all').addEventListener('click',function(){
 });
 
 /* Column visibility toggle (data cols: #, Слово, Перевод, Пример) */
+/* ── Column visibility toggle ─────────────────────────────────────────────────
+   INPUT:  click / right-click on .col-btn or thead th; localStorage hsk-hide-*
+   ACTION: toggleCol() flips body.hide-{key} class; persists to localStorage;
+           right-click on column header also calls toggleCol via delegation
+   OUTPUT: body.hide-num/word/trans/ex class; col-btn .hidden class; localStorage
+   ────────────────────────────────────────────────────────────────────────────── */
 var colMap={2:'num',3:'word',4:'trans',5:'ex'};
 function toggleCol(key){
   var h=document.body.classList.toggle('hide-'+key);
@@ -503,6 +679,11 @@ document.addEventListener('contextmenu',function(e){
   }
 },true);
 /* Show all columns */
+/* ── Show all columns button ───────────────────────────────────────────────────
+   INPUT:  click on #btn-show-all-cols
+   ACTION: removes all hide-* body classes and clears localStorage flags
+   OUTPUT: body classes cleaned; col-btn .hidden removed; localStorage cleared
+   ────────────────────────────────────────────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('btn-show-all-cols');
   if(!btn) return;
@@ -517,6 +698,10 @@ document.addEventListener('contextmenu',function(e){
 })();
 
 /* old CSV handler removed — handled by SheetJS below */
+/* ── DEAD CODE — old CSV export stub ──────────────────────────────────────────
+   This handler was replaced by js/export.js. The IIFE returns immediately.
+   TODO: delete this block entirely.
+   ────────────────────────────────────────────────────────────────────────────── */
 (function(){
   var _REMOVED_CSV = true;
   if(_REMOVED_CSV) return;
@@ -547,6 +732,12 @@ document.addEventListener('contextmenu',function(e){
 /* old PDF print handler removed — handled by iframe+print below */
 
 /* Restore speed pref */
+/* ── Speed and volume preferences ─────────────────────────────────────────────
+   INPUT:  localStorage hsk-speed, hsk-volume; #speed-sel, #vol-range elements
+   ACTION: restores saved TTS speed and volume sliders on load;
+           persists changes on user interaction
+   OUTPUT: speedSel.value; ttsVolume; localStorage hsk-speed, hsk-volume
+   ────────────────────────────────────────────────────────────────────────────── */
 var speedSel=document.getElementById('speed-sel');
 var savedSpeed=localStorage.getItem('hsk-speed');
 if(savedSpeed&&speedSel){speedSel.value=savedSpeed;}
@@ -566,6 +757,12 @@ if(volRange){
 })();
 
 /* ── Capture original row order BEFORE drag-restore runs ────────────── */
+/* ── Capture original row order ───────────────────────────────────────────────
+   INPUT:  all non-learned/fam tbodies and their current row order
+   ACTION: runs immediately (before drag-restore); snapshots each tbody's row order
+           by Hanzi text into window._cdxOrigOrder
+   OUTPUT: window._cdxOrigOrder object {tbodyId: [hanziStrings]}
+   ────────────────────────────────────────────────────────────────────────────── */
 window._cdxOrigOrder = {};
 (function(){
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
@@ -661,11 +858,22 @@ window._cdxOrigOrder = {};
 "use strict";
 
 /* ── Original row order (use pre-drag capture from window._cdxOrigOrder) */
+/* ── Restore saved drag order ─────────────────────────────────────────────────
+   INPUT:  window._cdxOrigOrder (pre-drag snapshot); localStorage hsk_row_order
+   ACTION: on load, reorders tbody rows to match the last saved drag order
+   OUTPUT: DOM row order within each tbody
+   ────────────────────────────────────────────────────────────────────────────── */
 var _origOrder = window._cdxOrigOrder || {};
 
 
 
 /* ── Populate data-en on page load ──────────────────────────────────────── */
+/* ── Populate data-en on page load ────────────────────────────────────────────
+   INPUT:  .trans-en span textContent on each row
+   ACTION: DOMContentLoaded: reads each row's .trans-en text and writes it to
+           data-en attribute so sort/export can access it without querying the DOM
+   OUTPUT: data-en attribute on every tbody tr
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-key]').forEach(function(tr){
     var key = tr.getAttribute('data-key');
@@ -677,6 +885,12 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 });
 
+/* ── Palette (colour scheme) ──────────────────────────────────────────────────
+   INPUT:  localStorage hsk_palette; click on .pal-btn buttons
+   ACTION: sets --pal-accent and --pal-dark CSS custom properties on :root;
+           highlights active button; persists selection
+   OUTPUT: CSS custom properties on document.documentElement; localStorage hsk_palette
+   ────────────────────────────────────────────────────────────────────────────── */
 /* ── Palette ──────────────────────────────────────────────────────────────── */
 
 
@@ -710,6 +924,12 @@ function applyPalette(name){
   document.addEventListener('click', function(){ if(dd) dd.classList.remove('open'); });
 })();
 
+/* ── Language switching (RU / EN) ─────────────────────────────────────────────
+   INPUT:  localStorage hsk_lang; click on lang toggle buttons
+   ACTION: setLang() swaps body.lang-en class; translates all toolbar text,
+           section headings, stat labels, button labels via string maps
+   OUTPUT: body.lang-en class; DOM text of ~30 UI elements; localStorage hsk_lang
+   ────────────────────────────────────────────────────────────────────────────── */
 /* ── Language switching (RU / EN) ────────────────────────────────────────── */
 var currentLang = localStorage.getItem('hsk_lang') || 'ru';
 
@@ -982,6 +1202,12 @@ document.addEventListener('DOMContentLoaded', function(){
   }
 });
 
+/* ── Search / filtered-view (EN mode) ─────────────────────────────────────────
+   INPUT:  #search-input value; body.lang-en class; all visible tbody rows
+   ACTION: in EN mode builds a flat #filtered-view table from matching rows;
+           in RU mode uses sr-hide CSS class toggling on the main table
+   OUTPUT: #filtered-view innerHTML; sr-hide class on rows; #word-count update
+   ────────────────────────────────────────────────────────────────────────────── */
 /* ── Search improvements (EN mode + flat filtered view) ──────────────────── */
 var searchActive = false;
 var filteredView = document.getElementById('filtered-view');
@@ -1085,6 +1311,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── HSK level filter (multi-select) ──────────────────────────── */
+/* ── HSK level filter ─────────────────────────────────────────────────────────
+   INPUT:  checkbox clicks on .hsk-filter-cb; data-hsk attribute on each row
+   ACTION: maintains activeHSKLevels Set; calls rebuildView() on change;
+           rebuildView() adds hsk-hide to rows not in activeHSKLevels
+   OUTPUT: activeHSKLevels Set; hsk-hide CSS class on rows; rebuildView() call
+   ────────────────────────────────────────────────────────────────────────────── */
 var activeHSKLevels = new Set(); // empty = show all
 document.querySelectorAll('.hsk-btn').forEach(function(btn){
   btn.addEventListener('click', function(){
@@ -1155,6 +1387,11 @@ function updateEmptyGroups(){
 }
 
 /* ── Word count display ────────────────────────────────────────── */
+/* ── Word count display ───────────────────────────────────────────────────────
+   INPUT:  n (integer count of currently visible rows)
+   ACTION: updates #word-count element text
+   OUTPUT: #word-count textContent
+   ────────────────────────────────────────────────────────────────────────────── */
 function updateWordCount(n){
   var el = document.getElementById('hsk-count-val');
   if(el) el.textContent = n;
@@ -1170,6 +1407,11 @@ function getVisibleRowCount(){
 }
 
 /* ── Continuous row numbering across all visible rows ───────────── */
+/* ── renumVisible — continuous row numbering ───────────────────────────────────
+   INPUT:  all visible rows across all non-learned tbodies
+   ACTION: assigns sequential integers 1-N to .rownum cells, skipping hidden rows
+   OUTPUT: .rownum textContent updated in DOM
+   ────────────────────────────────────────────────────────────────────────────── */
 function renumVisible(){
   var n = 0;
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
@@ -1189,6 +1431,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── Mark first table in each POS section (to show only one header) ─── */
+/* ── Mark first table per POS section ─────────────────────────────────────────
+   INPUT:  all h2.pos-group elements and their sibling tables
+   ACTION: adds .first-in-section class to the first table after each h2
+           so CSS can display the section heading only once
+   OUTPUT: .first-in-section class on select tables
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('h2.pos-group').forEach(function(h2){
     var el = h2.nextElementSibling;
@@ -1207,6 +1455,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── Merge small phoneme groups (< 3 words) into 其他 Other ──────── */
+/* ── Merge small phoneme groups ───────────────────────────────────────────────
+   INPUT:  all phonetic-group h3 + their tbody row counts
+   ACTION: on DOMContentLoaded, groups with fewer than 3 visible rows are
+           folded into a synthetic 'Other / 其他' group heading in the UI
+   OUTPUT: DOM h3 text and tbody grouping for small groups
+   ────────────────────────────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('h2.pos-group').forEach(function(h2){
     // Collect all (h3, table) pairs until next h2
@@ -1265,6 +1519,12 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── Show/Hide phoneme group headers ───────────────────────────── */
+/* ── Phoneme group header toggle ──────────────────────────────────────────────
+   INPUT:  localStorage ph_hidden; click on #btn-ph-toggle
+   ACTION: toggles body.ph-hidden class which CSS uses to hide h3 headings;
+           persists state to localStorage
+   OUTPUT: body.ph-hidden class; localStorage ph_hidden
+   ────────────────────────────────────────────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('btn-phoneme-toggle');
   if(!btn) return;
@@ -1340,6 +1600,13 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 
 /* ── Sort modes ───────────────────────────────────────────────────────────── */
+/* ── Sort modes ───────────────────────────────────────────────────────────────
+   INPUT:  sort button clicks; currentSort string; data-py / data-radical /
+           data-component / data-hsk attributes on rows
+   ACTION: clicking a sort button sets currentSort and calls rebuildView();
+           rebuildView() re-orders rows within each tbody by the chosen key
+   OUTPUT: currentSort var; DOM row order inside each tbody
+   ────────────────────────────────────────────────────────────────────────────── */
 var currentSort = 'default';
 
 function getTbodiesForSort(){
@@ -1377,6 +1644,12 @@ function sortRowsByHsk(rows, desc){
 }
 
 /* ── POS filter ──────────────────────────────────────────────── */
+/* ── POS filter ───────────────────────────────────────────────────────────────
+   INPUT:  currentPOS string ('all' or 'pos_noun' etc.); data-section on rows
+   ACTION: clicking a POS button sets currentPOS and calls rebuildView();
+           rebuildView() adds pos-hide to rows not matching the selected section
+   OUTPUT: currentPOS var; pos-hide CSS class on rows; rebuildView() call
+   ────────────────────────────────────────────────────────────────────────────── */
 var currentPOS = 'all';
 var POS_LABELS_RU = window.HSK_POS_LABELS_RU;
 var POS_LABELS_EN = window.HSK_POS_LABELS_EN;
@@ -1394,6 +1667,12 @@ document.querySelectorAll('.pos-btn').forEach(function(btn){
 });
 
 /* ── Alpha filter ────────────────────────────────────────────── */
+/* ── Alpha filter ─────────────────────────────────────────────────────────────
+   INPUT:  currentAlpha string ('all' or a letter); data-py attribute on each row
+   ACTION: clicking a letter button sets currentAlpha and calls rebuildView();
+           rebuildView() adds alpha-hide to rows whose pinyin doesn't start with it
+   OUTPUT: currentAlpha var; alpha-hide CSS class on rows; rebuildView() call
+   ────────────────────────────────────────────────────────────────────────────── */
 var currentAlpha = 'all';
 function applyAlphaFilter(letter){
   currentAlpha = letter;
@@ -1413,6 +1692,13 @@ document.querySelectorAll('.alpha-btn').forEach(function(btn){
 });
 
 /* ── rebuildView: single source of truth for what is shown ──────────────── */
+/* ── rebuildView — master view rebuild ────────────────────────────────────────
+   INPUT:  activeHSKLevels, currentPOS, currentAlpha, currentSort, all tbody rows
+   ACTION: applies hsk-hide / pos-hide / alpha-hide to rows; re-sorts tbodies;
+           merges small phoneme groups; renumbers; updates word count and HSK stats;
+           rebuilds filtered-view flat table for EN search mode
+   OUTPUT: DOM row visibility + order; #word-count text; #hsk-stats-bar HTML
+   ────────────────────────────────────────────────────────────────────────────── */
 function rebuildView(){
   var inp     = document.getElementById('search-input');
   var langSel = document.getElementById('search-lang');
@@ -1576,6 +1862,11 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── Drag integration — patch existing SortableJS init ──────────────────── */
+/* ── Drag integration ─────────────────────────────────────────────────────────
+   INPUT:  window._cdxSortables array; currentSort and searchActive state
+   ACTION: disables all Sortable instances when search is active or sort != default
+   OUTPUT: Sortable.option('disabled') toggled on all instances
+   ────────────────────────────────────────────────────────────────────────────── */
 // Override the existing SortableJS init to store references and use new options
 document.addEventListener('DOMContentLoaded', function(){
   window._cdxSortables = [];
@@ -1586,6 +1877,11 @@ document.addEventListener('DOMContentLoaded', function(){
 /* ── Snapshots, reset → js/storage.js ───────────────────────────────────── */
 
 /* ── Confirmation popup helper ────────────────────────────────────────────── */
+/* ── cdxConfirm — custom confirmation modal ───────────────────────────────────
+   INPUT:  msg string, onOk callback, okLabel, cancelLabel strings
+   ACTION: shows #cdx-confirm modal with custom text; wires OK/Cancel buttons
+   OUTPUT: calls onOk() if user confirms; hides modal on either button
+   ────────────────────────────────────────────────────────────────────────────── */
 function cdxConfirm(msg, onOk, okLabel, cancelLabel){
   var overlay = document.getElementById('cdx-confirm');
   var msgEl = document.getElementById('cdx-confirm-msg');
@@ -1603,6 +1899,12 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
 }
 
 /* ── Patch Sortable init to track instances + ghost class ─────────────────── */
+/* ── Sortable.js init patch ───────────────────────────────────────────────────
+   INPUT:  all tbody[id] elements (excluding learned/fam); localStorage hsk_row_order
+   ACTION: initialises SortableJS on each tbody; restores saved drag order;
+           on drag-end persists new order to localStorage and renumbers rows
+   OUTPUT: DOM row order; localStorage hsk_row_order; window._cdxSortables array
+   ────────────────────────────────────────────────────────────────────────────── */
 // Wait for the drag script to run, then patch
 setTimeout(function(){
   // Re-init sortables with new options (animation:80, ghostClass)
@@ -1649,6 +1951,12 @@ window._hsk.getTtsVolume  = function(){ return ttsVolume; };
 
 
 /* ── Back to top ──────────────────────────────────────────────── */
+/* ── Back to top ──────────────────────────────────────────────────────────────
+   INPUT:  window scroll events
+   ACTION: adds/removes .visible on #back-to-top when scrollY > 500;
+           click scrolls to top smoothly
+   OUTPUT: button visibility; window scroll position
+   ────────────────────────────────────────────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('back-to-top');
   if(!btn) return;
@@ -1661,6 +1969,12 @@ window._hsk.getTtsVolume  = function(){ return ttsVolume; };
 })();
 
 /* ── Mobile hamburger ────────────────────────────────────────── */
+/* ── Mobile hamburger ─────────────────────────────────────────────────────────
+   INPUT:  click on #hamburger-btn; input on #mobile-search-input
+   ACTION: toggles toolbar.mobile-open + overlay visibility;
+           syncs mobile search input bidirectionally with #search-input
+   OUTPUT: DOM class toggle; search-input.value mirrored
+   ────────────────────────────────────────────────────────────────────────────── */
 (function(){
   var hbBtn = document.getElementById('hamburger-btn');
   var toolbar = document.getElementById('toolbar');
@@ -1674,6 +1988,12 @@ window._hsk.getTtsVolume  = function(){ return ttsVolume; };
     if(overlay) overlay.style.display = open ? 'block' : 'none';
   });
 
+/* ── window._hsk bridge ──────────────────────────────────────────────────────
+   INPUT:  ttsVolume (IIFE 1 var), renum(), cdxConfirm(), currentLang (IIFE 2 vars)
+   ACTION: exposes four internals as properties of window._hsk so extracted
+           files (storage.js, quiz.js) can call them without accessing the IIFE scope
+   OUTPUT: window._hsk.getLang / .renum / .confirm / .getTtsVolume
+   ────────────────────────────────────────────────────────────────────────────── */
   if(mSearch && mainSearch){
     mSearch.addEventListener('input', function(){
       mainSearch.value = this.value;

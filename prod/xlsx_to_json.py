@@ -20,6 +20,12 @@ WORDS_J   = ROOT / "data" / "words.json"
 WORDS_JS  = ROOT / "data" / "words-data.js"
 
 
+# INPUT:  data/words.xlsx (Words sheet) — the editable master spreadsheet.
+# ACTION: Reads every data row, coerces types (int for id/hsk, str for text),
+#         then serialises the word list to both pretty-printed JSON and a
+#         browser-ready JS assignment.
+# OUTPUT: Writes data/words.json (indented, UTF-8) and data/words-data.js
+#         (window.HSK_WORDS = [...]; minified) to disk. Prints progress.
 def main():
     print(f"Reading {XLSX} ...")
     wb = openpyxl.load_workbook(XLSX, data_only=True, read_only=True)

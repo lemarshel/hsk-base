@@ -1,17 +1,34 @@
+/* ==========================================================================
+   render-words.js — Dynamic vocabulary table renderer
+   INPUT:  window.HSK_WORDS (array of word objects from words-data.js) and
+           window.HSK_GROUPS (array of group metadata from groups-data.js),
+           both must be loaded before this script runs.
+   ACTION: Indexes words by phonetic group, then builds all h2/h3 headings
+           and <table> HTML strings in a single pass and stamps them into the
+           #word-tables-mount element.
+   OUTPUT: Sets innerHTML of #word-tables-mount with all vocabulary tables.
+           Every <tr> carries data-* attributes consumed by hsk.js filters,
+           sorting, search, and quiz logic.
+   ========================================================================== */
 (function () {
   'use strict';
 
+  /* Guard: both global data arrays must be present before rendering */
   if (!window.HSK_WORDS || !window.HSK_GROUPS) {
     console.error('render-words: HSK_WORDS or HSK_GROUPS not loaded');
     return;
   }
 
+  /* Guard: mount point must exist in the DOM */
   var mount = document.getElementById('word-tables-mount');
   if (!mount) {
     console.error('render-words: #word-tables-mount not found');
     return;
   }
 
+  /* ── helpers ───────────────────────────────────────────────────────────────
+     INPUT: any value. ACTION: converts to string and escapes HTML special chars.
+     OUTPUT: safe HTML string suitable for attribute values and text content. */
   // ── helpers ───────────────────────────────────────────────────────────────
   function esc(s) {
     return String(s == null ? '' : s)
@@ -21,6 +38,11 @@
       .replace(/"/g, '&quot;');
   }
 
+  /* ── index words by group ───────────────────────────────────────────────────
+     INPUT:  window.HSK_GROUPS and window.HSK_WORDS arrays.
+     ACTION: builds groupById lookup and wordsByGroup map, preserving the row
+             order from words.xlsx (HSK_WORDS is ordered by spreadsheet row).
+     OUTPUT: populated groupById {id→group} and wordsByGroup {id→[word, ...]}. */
   // ── index words by group, preserving order from words.xlsx ───────────────
   var groupById = {};
   window.HSK_GROUPS.forEach(function (g) {
@@ -36,6 +58,9 @@
     }
   });
 
+  /* ── shared thead ────────────────────────────────────────────────────────────
+     OUTPUT: constant HTML string for the <thead> row reused in every group table.
+     Each <th> carries data-col for the column-hide / sort system in hsk.js. */
   // ── shared thead (identical to every table in the original HTML) ──────────
   var THEAD =
     '<thead><tr>' +
@@ -47,6 +72,11 @@
     '<th data-col="ex"    style="width:45%">Пример</th>' +
     '</tr></thead>';
 
+  /* ── buildRow ────────────────────────────────────────────────────────────────
+     INPUT:  word object w (from HSK_WORDS), 1-based row number, group object g.
+     ACTION: assembles a <tr> HTML string with all data-* attributes and cell
+             content (hanzi, pinyin, translations, example sentence).
+     OUTPUT: HTML string for one <tr>; all user content is HTML-escaped. */
   // ── build one <tr> ─────────────────────────────────────────────────────────
   // Every data-* attribute that hsk.js, the sort logic, text-topics and the
   // alpha/POS/HSK filters depend on is set here.
@@ -107,6 +137,12 @@
     );
   }
 
+  /* ── assemble all sections ───────────────────────────────────────────────────
+     INPUT:  window.HSK_GROUPS (ordered), wordsByGroup map, groupById lookup.
+     ACTION: iterates groups in display order; emits h2 POS headings, h3 phonetic
+             group headings, and a full <table> per group into the parts array.
+     OUTPUT: sets mount.innerHTML to the joined HTML of all sections and logs a
+             summary to the console. */
   // ── assemble all sections ─────────────────────────────────────────────────
   var parts = [];
 
