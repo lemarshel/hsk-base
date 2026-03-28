@@ -2,35 +2,10 @@
 <html lang="ru">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HSK 1–6 Мастер-словарь</title>
 <link rel="stylesheet" href="css/hsk.css">
-<style>
-#tb-row-texts{align-items:center}
-#text-btn-wrap{display:flex;gap:4px;overflow-x:auto;white-space:nowrap;padding:2px 0}
-#text-btn-wrap::-webkit-scrollbar{height:6px}
-.text-btn{min-width:22px;height:22px;padding:0 4px;font-size:11px;border:1px solid #8aa;border-radius:4px;background:#eef4f6;color:#356;cursor:pointer}
-.text-btn.active{background:#cfe3e7;border-color:#4f7c82;color:#234}
-.text-indicator{position:absolute;top:2px;left:2px;font-size:10px;line-height:1;padding:1px 3px;border:1px solid #c6d5d7;border-radius:3px;color:#4b6a6e;background:#f7fbfc;opacity:.85;font-weight:600}
-.text-hide{display:none !important}
-.grp-empty{display:none !important}
-.pos-empty{display:none !important}
-.ex-filter-btn{margin-left:6px;padding:1px 4px;font-size:11px;border:1px solid #bbb;border-radius:4px;background:#f3f3f3;color:#444;cursor:pointer}
-#ex-filter-menu{position:absolute;z-index:1200;display:none;min-width:160px;background:#fff;border:1px solid #ccc;border-radius:6px;box-shadow:0 6px 18px rgba(0,0,0,.12);padding:6px 8px;font-size:12px}
-#ex-filter-menu.open{display:block}
-#ex-filter-menu label{display:flex;gap:6px;align-items:center;padding:2px 0;white-space:nowrap}
-.hide-ex-zh .ex-zh{display:none !important}
-.hide-ex-py .ex-py{display:none !important}
-.hide-trans .trans-ru,.hide-trans .trans-en{display:none !important}
-</style>
-
-
-
 <script src="js/hsk-head.js"></script>
 </head>
 <body class="preload">
 <script src="js/hsk-body.js"></script>
-
-
-
-
 <div id="cdx-confirm">
   <div id="cdx-confirm-box">
     <p id="cdx-confirm-msg">Подтвердите действие</p>
