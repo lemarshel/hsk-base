@@ -250,34 +250,6 @@ window._cdxOrigOrder = {};
   });
 })();
 
-// ── Drag-and-drop reorder + persistence ──────────────────────────────────────
-(function(){
-  var KEY = window.HSK_LS.R;
-
-  // Renumber the # column in a tbody
-  function updateNumbers(tb){
-    for(var i=0;i<tb.rows.length;i++){
-      var c=tb.rows[i].querySelector('.rownum');
-      if(c) c.textContent=i+1;
-    }
-  }
-
-  // Save order of every main tbody (by Chinese word text)
-  function saveOrder(){
-    var order={};
-    document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
-      var ids=[];
-      for(var i=0;i<tb.rows.length;i++){
-        var z=tb.rows[i].querySelector('.zh');
-        if(z) ids.push(z.textContent.trim());
-      }
-      if(ids.length) order[tb.id]=ids;
-    });
-    localStorage.setItem(KEY, JSON.stringify(order));
-  }
-
-
-})();
 
 /* ══════════════════════════════════════════════════════════════
    CODEX ADDITIONS  –  EN_DICT, lang switch, palette, snapshots,
