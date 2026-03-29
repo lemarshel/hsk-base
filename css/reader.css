@@ -1,0 +1,251 @@
+/* ========================================================================== */
+/* css/reader.css - Reader layout and typography                              */
+/* ========================================================================== */
+
+:root {
+  --reader-max: 1200px;
+  --reader-pad: clamp(16px, 4vw, 44px);
+  --reader-accent: var(--pal-accent, #e94560);
+  --reader-bg: #f7f7fb;
+  --reader-surface: #ffffff;
+  --reader-text: #1a1a2e;
+  --reader-muted: #6b7280;
+  --reader-zh: #1a1a2e;
+  --reader-py: #5b6b7a;
+  --reader-tr: #7a8594;
+}
+
+body.reader-page {
+  margin: 0;
+  background: var(--reader-bg);
+  color: var(--reader-text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body.reader-page.dark {
+  --reader-bg: #0f111a;
+  --reader-surface: #141627;
+  --reader-text: #eef1f7;
+  --reader-muted: #9aa6b2;
+  --reader-zh: #ffffff;
+  --reader-py: #9db2c9;
+  --reader-tr: #7f8da3;
+}
+
+body.reader-page.sepia {
+  --reader-bg: #f4e8c1;
+  --reader-surface: #efe0b5;
+  --reader-text: #3a2a18;
+  --reader-muted: #7a6548;
+  --reader-zh: #3a2a18;
+  --reader-py: #6d5a42;
+  --reader-tr: #806a4a;
+}
+
+.reader-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--reader-surface);
+  border-bottom: 1px solid rgba(233, 69, 96, 0.18);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.reader-topbar .bar-inner {
+  max-width: var(--reader-max);
+  margin: 0 auto;
+  padding: 6px clamp(12px, 3vw, 28px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 38px;
+}
+
+.bar-left,
+.bar-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.reader-back {
+  color: var(--reader-accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.bar-divider {
+  color: var(--reader-muted);
+  font-size: 0.8rem;
+}
+
+.bar-story {
+  font-size: 0.85rem;
+  color: var(--reader-muted);
+  letter-spacing: 0.01em;
+}
+
+.reader-btn {
+  border: 1px solid rgba(26, 26, 46, 0.2);
+  background: rgba(26, 26, 46, 0.04);
+  color: var(--reader-text);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+body.reader-page.dark .reader-btn {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.reader-page.sepia .reader-btn {
+  border-color: rgba(58, 42, 24, 0.2);
+  background: rgba(58, 42, 24, 0.06);
+}
+
+.reader-btn.toggle.active {
+  background: var(--reader-accent);
+  border-color: var(--reader-accent);
+  color: #ffffff;
+}
+
+.reader-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reader-btn.nav {
+  padding: 4px 7px;
+  font-size: 0.86rem;
+  line-height: 1;
+}
+
+.reader-count {
+  font-size: 0.78rem;
+  color: var(--reader-muted);
+}
+
+.reader-main {
+  max-width: var(--reader-max);
+  margin: 0 auto;
+  padding: 18px var(--reader-pad) 64px;
+}
+
+.story {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.story-meta {
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--reader-muted);
+}
+
+.story-title {
+  margin: 6px 0 6px;
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  color: var(--reader-zh);
+}
+
+.story-subtitle {
+  margin: 0 0 18px;
+  max-width: 780px;
+  color: var(--reader-muted);
+  line-height: 1.5;
+}
+
+.story-content {
+  font-size: 1rem;
+}
+
+.paragraph {
+  margin: 0 0 20px;
+}
+
+.sentence {
+  margin: 0 0 10px;
+  line-height: 1.2;
+}
+
+.word-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin: 0 8px 6px 0;
+  white-space: nowrap;
+}
+
+.word-block:last-child {
+  margin-right: 0;
+}
+
+.word-block .zh {
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--reader-zh);
+}
+
+.word-block .py {
+  font-size: 0.72rem;
+  color: var(--reader-py);
+  line-height: 1.1;
+}
+
+.word-block .tr {
+  font-size: 0.68rem;
+  color: var(--reader-tr);
+  line-height: 1.1;
+}
+
+.reader-hide-py .word-block .py {
+  display: none;
+}
+
+.reader-hide-tr .word-block .tr {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .reader-topbar .bar-inner {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .reader-main {
+    padding: 16px clamp(12px, 4vw, 24px) 48px;
+  }
+
+  .story {
+    max-width: 100%;
+  }
+
+  .word-block {
+    margin-right: 6px;
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 600px) {
+  .word-block .zh {
+    font-size: 1.35rem;
+  }
+
+  .word-block .py {
+    font-size: 0.68rem;
+  }
+
+  .word-block .tr {
+    font-size: 0.64rem;
+  }
+}
