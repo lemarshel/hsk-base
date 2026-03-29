@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reader — HSK Base</title>
+  <link rel="stylesheet" href="css/reader.css" />
+</head>
+<body class="reader">
+  <header class="reader-header">
+    <a class="reader-link" href="index.html">← Назад</a>
+    <div id="story-title" class="reader-title">Story</div>
+    <div class="reader-spacer"></div>
+    <div class="reader-controls">
+      <button id="toggle-py" class="reader-btn">拼音</button>
+      <button id="toggle-tr" class="reader-btn">翻译</button>
+      <label class="reader-label">速度
+        <select id="tts-speed" class="reader-select">
+          <option value="0.8">0.8x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.2">1.2x</option>
+        </select>
+      </label>
+      <button id="prev-story" class="reader-btn">‹</button>
+      <span id="story-count" class="reader-label">1 / 1</span>
+      <button id="next-story" class="reader-btn">›</button>
+    </div>
+  </header>
+
+  <div class="reader-audio">
+    <button class="reader-btn" id="play-all">▶</button>
+    <div class="audio-bar"><div class="audio-progress" id="audio-progress"></div></div>
+    <span class="audio-pct" id="audio-pct">0%</span>
+  </div>
+
+  <main class="reader-main">
+    <div id="story-container" class="story"></div>
+  </main>
+
+  <script src="data/stories-data.js"></script>
+  <script src="js/reader.js"></script>
+</body>
+</html>
