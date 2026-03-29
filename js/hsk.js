@@ -276,30 +276,6 @@ window._cdxOrigOrder = {};
     localStorage.setItem(KEY, JSON.stringify(order));
   }
 
-  // Init SortableJS on all main tbodies
-  function initSortable(){
-    document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
-      Sortable.create(tb,{
-        animation: 120,
-        cursor: 'grab',
-        handle: '.drag-handle',
-        onEnd: function(){
-          updateNumbers(tb); saveOrder();
-          if(window._hsk.renumVisible) window._hsk.renumVisible();
-          if(window._hsk.updateWordCount) window._hsk.updateWordCount(window._hsk.getVisibleRowCount ? window._hsk.getVisibleRowCount() : 0);
-        }
-      });
-    });
-    // Also make learned + fam tbodies sortable (order saved via existing save())
-    ['learned-tbody','fam-tbody'].forEach(function(id){
-      var tb=document.getElementById(id);
-      if(tb) Sortable.create(tb,{ animation:120, cursor:'grab',
-        handle: '.drag-handle',
-        onEnd:function(){ updateNumbers(tb); if(window._hsk.renumVisible) window._hsk.renumVisible();
-          if(window._hsk.updateWordCount) window._hsk.updateWordCount(window._hsk.getVisibleRowCount ? window._hsk.getVisibleRowCount() : 0); }
-      });
-    });
-  }
 
 })();
 
