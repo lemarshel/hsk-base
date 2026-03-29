@@ -209,6 +209,13 @@ document.body.addEventListener('click',function(e){
         playFallbackTTS(txt, function(){ btn.classList.remove('on'); });
       }
     }, 1200);
+    // Outer failsafe: if synthesis started but onend/onerror never fires (browser bug)
+    setTimeout(function(){
+      if(finished) return;
+      finished = true;
+      try{ speechSynthesis.cancel(); }catch(e){}
+      btn.classList.remove('on');
+    }, 15000);
     setTimeout(function(){ speechSynthesis.speak(u); }, 0);
   });
 });

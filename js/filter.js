@@ -256,8 +256,6 @@ document.addEventListener('DOMContentLoaded', function(){
    OUTPUT: currentPOS var; pos-hide CSS class on rows; rebuildView() call
    ────────────────────────────────────────────────────────────────────────────── */
 var currentPOS = 'all';
-var POS_LABELS_RU = window.HSK_POS_LABELS_RU;
-var POS_LABELS_EN = window.HSK_POS_LABELS_EN;
 function applyPOSFilter(pos){
   currentPOS = pos;
   document.querySelectorAll('.pos-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.pos===pos); });
