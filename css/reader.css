@@ -1,0 +1,155 @@
+/* ========================================================================== 
+   css/reader.css — HSK Reader (layout + typography only)
+   Goal: wide, centered reading surface with compact flowing sentences.
+   ========================================================================== */
+
+:root{
+  --reader-max: 1400px;
+  --reader-pad: 24px;
+  --reader-bg: #0f1118;
+  --reader-panel: #161a24;
+  --reader-text: #e9eef7;
+  --reader-muted: #9aa6bf;
+  --reader-dim: #7f8aa3;
+  --reader-accent: #e94560;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: "Noto Sans SC","Segoe UI",system-ui,-apple-system,sans-serif;
+  background: var(--reader-bg);
+  color: var(--reader-text);
+}
+
+/* ── Header (compact) ───────────────────────────────────────────────────── */
+.reader-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:8px 16px;
+  background: var(--reader-panel);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.reader-title{
+  font-weight:600;
+  font-size:0.95rem;
+  white-space:nowrap;
+  color: var(--reader-text);
+}
+.reader-spacer{flex:1}
+.reader-controls{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-size:0.82rem;
+}
+.reader-btn{
+  background:#1f2431;
+  color: var(--reader-text);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:6px;
+  padding:4px 8px;
+  cursor:pointer;
+}
+.reader-btn:hover{border-color:var(--reader-accent); color:var(--reader-accent)}
+.reader-select{
+  background:#1f2431;
+  color: var(--reader-text);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:6px;
+  padding:3px 6px;
+}
+.reader-link{
+  color: var(--reader-accent);
+  text-decoration:none;
+  font-size:0.86rem;
+}
+
+/* ── Audio bar (subtle) ─────────────────────────────────────────────────── */
+.reader-audio{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 16px;
+  background: linear-gradient(180deg,#121622,#0f1118);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.audio-bar{
+  flex:1;
+  height:6px;
+  background: rgba(255,255,255,0.08);
+  border-radius:999px;
+  overflow:hidden;
+}
+.audio-progress{
+  height:100%;
+  width:0%;
+  background: var(--reader-accent);
+}
+.audio-pct{font-size:0.75rem;color:var(--reader-dim)}
+
+/* ── Main layout (centered & wide) ─────────────────────────────────────── */
+.reader-main{
+  width:100%;
+  max-width: min(var(--reader-max), 92vw);
+  margin:0 auto;
+  padding: 24px var(--reader-pad) 48px;
+}
+
+/* ── Story flow ────────────────────────────────────────────────────────── */
+.story{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.sentence{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  gap:6px 10px;
+  padding:6px 0;
+}
+.sentence + .sentence{margin-top:8px}
+
+/* ── Word blocks ───────────────────────────────────────────────────────── */
+.word-block{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  padding:2px 1px;
+  white-space:nowrap;
+}
+.word-block .zh{
+  font-size:1.55rem;
+  font-weight:700;
+  letter-spacing:0.3px;
+  color: var(--reader-text);
+}
+.word-block .py{
+  font-size:0.74rem;
+  color: var(--reader-muted);
+}
+.word-block .tr{
+  font-size:0.68rem;
+  color: var(--reader-dim);
+}
+
+/* Toggle visibility */
+.hide-py .py{display:none}
+.hide-tr .tr{display:none}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 900px){
+  .reader-main{max-width: 96vw; padding:20px 16px 40px}
+  .word-block .zh{font-size:1.4rem}
+}
+@media (max-width: 640px){
+  .reader-controls{flex-wrap:wrap; justify-content:flex-end}
+  .reader-title{display:none}
+  .reader-main{padding:16px 14px 32px}
+  .sentence{gap:6px 8px}
+}
