@@ -53,7 +53,7 @@ function showHz(el){
   var top=r.top-20;if(top+200>window.innerHeight)top=window.innerHeight-210;if(top<4)top=4;
   hzPop.style.left=Math.max(4,left)+'px';hzPop.style.top=top+'px';
   /* create a dedicated svg container so the practice button is not overwritten */
-  var svgWrap=document.createElement('div');svgWrap.id='hz-anim-canvas';svgWrap.style.cssText='padding-top:4px';hzPop.insertBefore(svgWrap,practBtn);
+  var svgWrap=document.createElement('div');svgWrap.id='hz-anim-canvas';hzPop.insertBefore(svgWrap,practBtn);
   try{
     HanziWriter.create(svgWrap,ch,{width:165,height:165,padding:12,showOutline:true,
       strokeColor:'#e94560',outlineColor:'#ddd',strokeAnimationSpeed:1.2,
@@ -75,7 +75,6 @@ document.getElementById('hz-practice-btn') && document.getElementById('hz-practi
   if(!practiceDiv){
     practiceDiv = document.createElement('div');
     practiceDiv.id = 'hz-practice-area';
-    practiceDiv.style.cssText = 'margin-top:12px;text-align:center';
     popup.appendChild(practiceDiv);
   }
   practiceDiv.innerHTML = '<div id="hz-practice-canvas" style="display:inline-block;border:2px solid #e94560;border-radius:4px"></div><div id="hz-practice-msg" style="margin-top:8px;font-size:.9em;color:#666">Write the character stroke by stroke</div><button id="hz-practice-retry" style="margin-top:8px;padding:4px 12px;cursor:pointer">&#8635; Retry</button>';

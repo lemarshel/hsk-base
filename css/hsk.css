@@ -467,7 +467,7 @@ body.sepia .sort-btn { background: #fdf5e0; color: #3a2a18; border-color: #c8a87
 #filtered-view h2.pos-group,#filtered-view h3.phonetic-group{display:block!important}
 
 /* filtered-view table class for theme support */
-.fv-table{background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.fv-table{width:100%;border-collapse:collapse;margin-bottom:8px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.1)}
 
 /* Dark mode filtered view */
 body.dark #filtered-view h2.pos-group{background:#1a1a2e;color:#fff}
@@ -824,3 +824,10 @@ body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
 .hide-ex-zh  .ex-zh  { display: none !important }
 .hide-ex-py  .ex-py  { display: none !important }
 .hide-trans  .trans-ru, .hide-trans .trans-en { display: none !important }
+
+/* ── Snapshot dropdown delete button ── */
+.snap-del-btn{color:#e94560;cursor:pointer;float:right;font-size:.9em}
+
+/* ── HanziWriter popup containers ── */
+#hz-anim-canvas{padding-top:4px}
+#hz-practice-area{margin-top:12px;text-align:center}

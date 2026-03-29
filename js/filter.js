@@ -13,7 +13,7 @@
      updateDragState ← sort.js   (sort.js loads before filter.js ✓)
 
    INPUT:  #search-input, #search-lang, .hsk-btn, .pos-btn, .alpha-btn; data-hsk/data-py/data-ru/data-en on rows
-   ACTION: stripTones/doSearch for basic search; rebuildView is the single entry point that applies all active filters + sort
+   ACTION: rebuildView is the single entry point that applies all active filters + sort; stripTones normalises pinyin for search
    OUTPUT: sr-hide/hsk-hide/pos-hide/alpha-hide on rows; #filtered-view table; #hsk-count-val; window._hsk (via _register)
    ========================================================================== */
 (function(){
@@ -23,8 +23,12 @@
 function stripTones(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
 
 /* ── Search improvements (EN mode + flat filtered view) ──────────────────── */
-var searchActive = false;
-var filteredView = document.getElementById('filtered-view');
+var searchActive  = false;
+var filteredView  = document.getElementById('filtered-view');
+var elSearchInput = document.getElementById('search-input');
+var elSearchLang  = document.getElementById('search-lang');
+var elSortRespDiv = document.getElementById('sort-respect-div');
+var elCountVal    = document.getElementById('hsk-count-val');
 
 function buildFilteredView(rows, bySect){
   filteredView.innerHTML = '';
@@ -33,7 +37,6 @@ function buildFilteredView(rows, bySect){
 
   function makeTable(rowSet, startNum){
     var tbl = document.createElement('table');
-    tbl.style.cssText = 'width:100%;border-collapse:collapse;margin-bottom:8px';
     tbl.className = 'fv-table';
     var thead = document.createElement('thead');
     thead.innerHTML = '<tr><th data-col="cb" class="cb-col">&#10004;</th><th data-col="fam" class="fam-col">?</th><th data-col="num" style="width:3%">#</th>'
@@ -46,8 +49,8 @@ function buildFilteredView(rows, bySect){
       var clone = tr.cloneNode(true);
       var rn = clone.querySelector('.rownum'); if(rn) rn.textContent = startNum + i;
       // Highlight search match
-      var _q = (document.getElementById('search-input')||{}).value||'';
-      var _ql = (document.getElementById('search-lang')||{}).value||'ru';
+      var _q = elSearchInput ? elSearchInput.value : '';
+      var _ql = elSearchLang ? elSearchLang.value : 'ru';
       if(_q.trim()){
         var _qt = _q.trim().replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
         var _sel = _ql==='zh'?'.zh':_ql==='py'?'.py':_ql==='en'?'.trans-en':'.trans-ru';
@@ -206,8 +209,7 @@ function updateEmptyGroups(){
    OUTPUT: #word-count textContent
    ────────────────────────────────────────────────────────────────────────────── */
 function updateWordCount(n){
-  var el = document.getElementById('hsk-count-val');
-  if(el) el.textContent = n;
+  if(elCountVal) elCountVal.textContent = n;
 }
 function getVisibleRowCount(){
   var n = 0;
@@ -303,12 +305,9 @@ document.querySelectorAll('.alpha-btn').forEach(function(btn){
    OUTPUT: DOM row visibility + order; #word-count text; #hsk-stats-bar HTML
    ────────────────────────────────────────────────────────────────────────────── */
 function rebuildView(){
-  var inp     = document.getElementById('search-input');
-  var langSel = document.getElementById('search-lang');
-  var rd      = document.getElementById('sort-respect-div');
-  var q       = inp ? inp.value.trim() : '';
-  var lang    = langSel ? langSel.value : 'ru';
-  var bySection = !rd || rd.checked;
+  var q         = elSearchInput  ? elSearchInput.value.trim() : '';
+  var lang      = elSearchLang   ? elSearchLang.value         : 'ru';
+  var bySection = !elSortRespDiv || elSortRespDiv.checked;
   var forceFlat = activeHSKLevels && activeHSKLevels.size > 0;
   if(forceFlat) bySection = false;
 

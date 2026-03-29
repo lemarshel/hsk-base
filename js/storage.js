@@ -13,7 +13,7 @@
    ========================================================================== */
 
 /* ── Snapshots ────────────────────────────────────────────────────────────── */
-var SNAP_KEY = 'hsk_snapshots';
+var SNAP_KEY = window.HSK_LS.SN;
 
 function getSnapshots(){
   try{ return JSON.parse(localStorage.getItem(SNAP_KEY)||'[]'); }catch(e){ return []; }
@@ -80,7 +80,7 @@ function renderSnapshotDropdown(){
     }; })(i));
     var del = document.createElement('span');
     del.textContent = ' \u2715';
-    del.style.cssText = 'color:#e94560;cursor:pointer;float:right;font-size:.9em';
+    del.className = 'snap-del-btn';
     del.addEventListener('click', (function(idx){ return function(e){
       e.stopPropagation();
       var s = getSnapshots(); s.splice(idx,1); saveSnapshots(s); renderSnapshotDropdown();
@@ -139,7 +139,7 @@ function restoreSnapshot(snap){
   (snap.hiddenCols||[]).forEach(function(c){ document.body.classList.add('hide-'+c); });
   ['num','word','trans','ex'].forEach(function(c){
     var h = document.body.classList.contains('hide-'+c);
-    localStorage.setItem('hsk-hide-'+c, h ? '1' : '');
+    localStorage.setItem(window.HSK_LS.H+c, h ? '1' : '');
     var btn = document.querySelector('.col-btn[data-col="'+c+'"]');
     if(btn) btn.classList.toggle('hidden', h);
   });
@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function(){
           var k=localStorage.key(i);
           if(k && k.startsWith('hsk')) keys.push(k);
         }
-        keys.push('hsk_snapshots','hsk_palette','hsk_lang','ph_hidden');
+        keys.push(window.HSK_LS.SN, window.HSK_LS.PA, window.HSK_LS.LG, window.HSK_LS.PH);
         keys.forEach(function(k){ localStorage.removeItem(k); });
         location.reload();
       }

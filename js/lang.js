@@ -22,14 +22,14 @@
    OUTPUT: body.lang-en class; DOM text of ~30 UI elements; localStorage hsk_lang
    ────────────────────────────────────────────────────────────────────────────── */
 /* ── Language switching (RU / EN) ────────────────────────────────────────── */
-var currentLang = localStorage.getItem('hsk_lang') || 'ru';
+var currentLang = localStorage.getItem(window.HSK_LS.LG) || 'ru';
 
 var SECTION_NAMES_EN = window.HSK_SECTION_NAMES_EN;
 var SECTION_NAMES_RU = window.HSK_SECTION_NAMES_RU;
 
 function setLang(lang){
   currentLang = lang;
-  localStorage.setItem('hsk_lang', lang);
+  localStorage.setItem(window.HSK_LS.LG, lang);
   var isEn = lang === 'en';
 
   if(isEn){ document.body.classList.add('lang-en'); }

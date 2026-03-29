@@ -23,7 +23,7 @@ function applyPalette(name){
   var pal = PALETTES[name] || PALETTES.rose;
   document.documentElement.style.setProperty('--pal-accent', pal[0]);
   document.documentElement.style.setProperty('--pal-dark', pal[1]);
-  localStorage.setItem('hsk_palette', name);
+  localStorage.setItem(window.HSK_LS.PA, name);
   // Also fix dark mode thead (it overrides)
   var dynPal = document.getElementById('dyn-palette');
   if(!dynPal){ dynPal=document.createElement('style'); dynPal.id='dyn-palette'; document.head.appendChild(dynPal); }
@@ -31,7 +31,7 @@ function applyPalette(name){
 }
 
 (function initPalette(){
-  var saved = localStorage.getItem('hsk_palette') || 'rose';
+  var saved = localStorage.getItem(window.HSK_LS.PA) || 'rose';
   applyPalette(saved);
   var dd = document.getElementById('palette-dropdown');
   var btn = document.getElementById('btn-palette-dd');

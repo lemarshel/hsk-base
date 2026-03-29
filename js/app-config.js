@@ -18,11 +18,18 @@
 /* ── localStorage key map ────────────────────────────────────────────────────
    Used by hsk.js (as var LS = window.HSK_LS) and by hsk-head.js             */
 window.HSK_LS = {
-  L: 'hsk_learned',   // learned-words array
-  F: 'hsk_fam',       // familiar-words array
-  M: 'hsk_mode',      // light | dark | sepia
-  P: 'hsk_prefs',     // font/size preferences JSON
-  R: 'hsk_row_order'  // drag row order JSON
+  L:  'hsk_learned',   // learned-words array
+  F:  'hsk_fam',       // familiar-words array
+  M:  'hsk_mode',      // light | dark | sepia
+  P:  'hsk_prefs',     // font/size preferences JSON
+  R:  'hsk_row_order', // drag row order JSON
+  V:  'hsk-volume',    // TTS volume float (0–1)
+  S:  'hsk-speed',     // TTS playback speed
+  H:  'hsk-hide-',     // column-hide prefix; append col key (num/word/trans/ex)
+  PH: 'ph_hidden',     // phoneme header toggle (0 = visible)
+  LG: 'hsk_lang',      // interface language (ru | en)
+  PA: 'hsk_palette',   // color palette name
+  SN: 'hsk_snapshots'  // snapshots JSON array
 };
 
 /* ── HSK level progress-bar colours ─────────────────────────────────────────

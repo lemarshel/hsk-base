@@ -1,6 +1,13 @@
 /* ==========================================================================
    js/ui.js — UI interactions
 
+   OWNS (registers to window._hsk): nothing
+   CONSUMES (reads from window._hsk):
+     renumVisible  ← filter.js  (called from phoneme-toggle handler)
+     rebuildView   ← filter.js  (called from Escape-key handler)
+
+   ALSO READS: window.HSK_LS (app-config.js) for localStorage key names
+
    INPUT:  DOM elements: .py/.ex-py cells, .mode-btn, font inputs, h3.phonetic-group, .col-btn, h2.pos-group, #btn-phoneme-toggle
    ACTION: colorPinyin tone spans; keyboard shortcuts; theme mode; font controls; phonetic group collapse; column toggle; mark first POS table; merge small phoneme groups; phoneme header toggle
    OUTPUT: DOM mutations; body class; localStorage hsk_mode/hsk_prefs/hsk-hide-*
@@ -78,7 +85,7 @@ document.addEventListener('keydown', function(e){
     if(inp){ inp.focus(); inp.select(); }
   } else if(e.key==='Escape'){
     var inp = document.getElementById('search-input');
-    if(inp && inp.value){ inp.value=''; if(typeof cdxDoSearch==='function') cdxDoSearch(); }
+    if(inp && inp.value){ inp.value=''; window._hsk.rebuildView(); }
   }
 });
 
@@ -93,10 +100,10 @@ function setMode(m){
   document.body.className=document.body.className.replace(/\b(light|dark|sepia)\b/g,'').trim();
   if(m!=='light')document.body.classList.add(m);
   document.querySelectorAll('.mode-btn').forEach(function(b){b.classList.toggle('active',b.dataset.mode===m);});
-  localStorage.setItem(LS.M,m);
+  localStorage.setItem(window.HSK_LS.M,m);
 }
 document.querySelectorAll('.mode-btn').forEach(function(b){b.addEventListener('click',function(){setMode(this.dataset.mode);});});
-setMode(localStorage.getItem(LS.M)||'light');
+setMode(localStorage.getItem(window.HSK_LS.M)||'light');
 
 /* font controls */
 /* ── Font controls ────────────────────────────────────────────────────────────
@@ -105,7 +112,7 @@ setMode(localStorage.getItem(LS.M)||'light');
            and writes it to a #dyn-font <style> tag; persists prefs to localStorage
    OUTPUT: #dyn-font style innerHTML; localStorage hsk_prefs
    ────────────────────────────────────────────────────────────────────────────── */
-var prefs={};try{prefs=JSON.parse(localStorage.getItem(LS.P)||'{}');}catch(e){}
+var prefs={};try{prefs=JSON.parse(localStorage.getItem(window.HSK_LS.P)||'{}');}catch(e){}
 var dynSt=document.createElement('style');dynSt.id='dyn-font';document.head.appendChild(dynSt);
 function applyF(){
   var fz=document.getElementById('font-zh').value,sz=document.getElementById('size-zh').value;
@@ -122,7 +129,7 @@ function applyF(){
   if(fr)css+='td.trans-cell{font-family:'+fr+',sans-serif!important}';
   css+='td.trans-cell{font-size:'+sr+'px!important}';
   dynSt.textContent=css;
-  prefs={fz:fz,sz:sz,fp:fp,sp:sp,fr:fr,sr:sr};localStorage.setItem(LS.P,JSON.stringify(prefs));
+  prefs={fz:fz,sz:sz,fp:fp,sp:sp,fr:fr,sr:sr};localStorage.setItem(window.HSK_LS.P,JSON.stringify(prefs));
 }
 if(prefs.sz)document.getElementById('size-zh').value=prefs.sz;
 if(prefs.sp)document.getElementById('size-py').value=prefs.sp;
@@ -183,14 +190,14 @@ document.getElementById('btn-exp-all').addEventListener('click',function(){
 var colMap={2:'num',3:'word',4:'trans',5:'ex'};
 function toggleCol(key){
   var h=document.body.classList.toggle('hide-'+key);
-  localStorage.setItem('hsk-hide-'+key,h?'1':'');
+  localStorage.setItem(window.HSK_LS.H+key,h?'1':'');
   var btn=document.querySelector('.col-btn[data-col="'+key+'"]');
   if(btn)btn.classList.toggle('hidden',h);
 }
 /* Restore hidden cols */
 Object.keys(colMap).forEach(function(i){
   var key=colMap[i];
-  if(localStorage.getItem('hsk-hide-'+key)){
+  if(localStorage.getItem(window.HSK_LS.H+key)){
     document.body.classList.add('hide-'+key);
     var btn=document.querySelector('.col-btn[data-col="'+key+'"]');
     if(btn)btn.classList.add('hidden');
@@ -229,7 +236,7 @@ document.addEventListener('contextmenu',function(e){
   btn.addEventListener('click', function(){
     ['num','word','trans','ex'].forEach(function(key){
       document.body.classList.remove('hide-'+key);
-      localStorage.removeItem('hsk-hide-'+key);
+      localStorage.removeItem(window.HSK_LS.H+key);
       var b = document.querySelector('.col-btn[data-col="'+key+'"]');
       if(b) b.classList.remove('hidden');
     });
@@ -336,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function(){
 (function(){
   var btn = document.getElementById('btn-phoneme-toggle');
   if(!btn) return;
-  var hidden = localStorage.getItem('ph_hidden') !== '0';
+  var hidden = localStorage.getItem(window.HSK_LS.PH) !== '0';
   var mergeData = null; // saved structure for restoration
 
   /* Apply initial state after full DOM is ready */
@@ -402,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function(){
     btn.textContent = hidden
       ? (isEn ? 'Show phonemes' : 'Показать фонемы')
       : (isEn ? 'Hide phonemes' : 'Скрыть фонемы');
-    localStorage.setItem('ph_hidden', hidden ? '1' : '0');
+    localStorage.setItem(window.HSK_LS.PH, hidden ? '1' : '0');
     if(window._hsk && window._hsk.renumVisible) window._hsk.renumVisible();
   });
 })();
@@ -446,12 +453,6 @@ document.addEventListener('DOMContentLoaded', function(){
     if(overlay) overlay.style.display = open ? 'block' : 'none';
   });
 
-/* ── window._hsk bridge ──────────────────────────────────────────────────────
-   INPUT:  ttsVolume (IIFE 1 var), renum(), cdxConfirm(), currentLang (IIFE 2 vars)
-   ACTION: exposes four internals as properties of window._hsk so extracted
-           files (storage.js, quiz.js) can call them without accessing the IIFE scope
-   OUTPUT: window._hsk.getLang / .renum / .confirm / .getTtsVolume
-   ────────────────────────────────────────────────────────────────────────────── */
   if(mSearch && mainSearch){
     mSearch.addEventListener('input', function(){
       mainSearch.value = this.value;

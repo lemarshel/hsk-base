@@ -1,9 +1,14 @@
 /* ==========================================================================
    js/tts.js — Text-to-Speech engine
 
+   OWNS (registers to window._hsk):
+     getTtsVolume, stopAllAudio
+
+   CONSUMES (reads from window._hsk): nothing
+
    INPUT:  #vol-range, #speed-sel, window.speechSynthesis; all .wordcell and .ex-zh cells
    ACTION: voice selection (zh-CN), chunked playback with Google TTS fallback; injects ▶ buttons into word and example cells; restores speed/volume prefs
-   OUTPUT: audio playback; .tts-btn DOM elements; localStorage hsk-volume/hsk-speed; window._hsk.getTtsVolume, .stopAllAudio
+   OUTPUT: audio playback; .tts-btn DOM elements; localStorage hsk-volume/hsk-speed
    ========================================================================== */
 (function(){
 "use strict";
@@ -18,7 +23,7 @@
 var zhVoice=null;
 var voicesReady=false;
 var fallbackAudio=null;
-var ttsVolume=parseFloat(localStorage.getItem('hsk-volume'));
+var ttsVolume=parseFloat(localStorage.getItem(window.HSK_LS.V));
 if(isNaN(ttsVolume)) ttsVolume=1;
 function clampVolume(v){
   v=parseFloat(v);
@@ -33,7 +38,7 @@ function setTtsVolume(v, save){
   var val=document.getElementById('vol-val');
   if(range){ range.value=Math.round(ttsVolume*100); }
   if(val){ val.textContent=Math.round(ttsVolume*100)+'%'; }
-  if(save) localStorage.setItem('hsk-volume', String(ttsVolume));
+  if(save) localStorage.setItem(window.HSK_LS.V, String(ttsVolume));
   if(fallbackAudio){ try{ fallbackAudio.volume=ttsVolume; }catch(e){} }
 }
 function pickZhVoice(vs){
@@ -141,10 +146,12 @@ function playFallbackTTS(text, onDone){
     fallbackAudio = a;
     a.volume = ttsVolume;
     a.src = url;
-    a.onended = function(){ idx++; next(); };
-    a.onerror = function(){ idx++; next(); };
+    var done = false;
+    function advance(){ if(!done){ done=true; idx++; next(); } }
+    a.onended = advance;
+    a.onerror = advance;
     var p = a.play();
-    if(p && p.catch) p.catch(function(){});
+    if(p && p.catch) p.catch(advance);
   }
   next();
 }
@@ -247,13 +254,13 @@ document.querySelectorAll('td').forEach(function(td){
    OUTPUT: speedSel.value; ttsVolume; localStorage hsk-speed, hsk-volume
    ────────────────────────────────────────────────────────────────────────────── */
 var speedSel=document.getElementById('speed-sel');
-var savedSpeed=localStorage.getItem('hsk-speed');
+var savedSpeed=localStorage.getItem(window.HSK_LS.S);
 if(savedSpeed&&speedSel){speedSel.value=savedSpeed;}
-speedSel&&speedSel.addEventListener('change',function(){localStorage.setItem('hsk-speed',this.value);});
+speedSel&&speedSel.addEventListener('change',function(){localStorage.setItem(window.HSK_LS.S,this.value);});
 
 /* Restore volume pref */
 var volRange=document.getElementById('vol-range');
-var savedVol=localStorage.getItem('hsk-volume');
+var savedVol=localStorage.getItem(window.HSK_LS.V);
 if(volRange){
   if(savedVol!==null){ setTtsVolume(parseFloat(savedVol), false); }
   else { setTtsVolume(ttsVolume, false); }
@@ -263,8 +270,9 @@ if(volRange){
 }
 
 
-/* ── Expose TTS internals via window._hsk ── */
-window._hsk = window._hsk || {};
-window._hsk.getTtsVolume = function(){ return ttsVolume; };
-window._hsk.stopAllAudio = stopAllAudio;
+/* ── Register TTS internals via shared API ── */
+window._hsk._register('tts', {
+  getTtsVolume: function() { return ttsVolume; },
+  stopAllAudio: stopAllAudio
+});
 })();
