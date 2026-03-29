@@ -258,16 +258,6 @@ window._cdxOrigOrder = {};
 (function(){
 "use strict";
 
-/* ── Original row order (use pre-drag capture from window._cdxOrigOrder) */
-/* ── Restore saved drag order ─────────────────────────────────────────────────
-   INPUT:  window._cdxOrigOrder (pre-drag snapshot); localStorage hsk_row_order
-   ACTION: on load, reorders tbody rows to match the last saved drag order
-   OUTPUT: DOM row order within each tbody
-   ────────────────────────────────────────────────────────────────────────────── */
-var _origOrder = window._cdxOrigOrder || {};
-
-
-
 /* ── Populate data-en on page load ──────────────────────────────────────── */
 /* ── Populate data-en on page load ────────────────────────────────────────────
    INPUT:  .trans-en span textContent on each row
