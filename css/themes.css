@@ -1,0 +1,184 @@
+/* ==========================================================================
+   css/themes.css — Dark and sepia theme overrides for HSK Base
+   INPUT:  body.dark / body.sepia class tokens set by hsk-body.js at page load.
+   ACTION: Overrides light-mode colours defined in base.css and vocabulary.css
+           for every component. Applied last in the @import chain so these
+           rules win specificity without needing extra selectors.
+   DOES NOT contain: light-mode rules, layout, or design tokens.
+   ========================================================================== */
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   DARK MODE — body.dark
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Base page ───────────────────────────────────────────────────────────── */
+body.dark { background: #111122; color: #e8e8e8; }
+body.dark h1 { color: #fff !important; text-shadow: 0 0 20px rgba(233,69,96,0.5); }
+body.dark .subtitle { color: #a0a0c0; }
+body.dark mark { background: #f39c12; color: #000; }
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────── */
+body.dark #toolbar { background: #1a1a2e; border-bottom: none; box-shadow: 0 2px 10px rgba(0,0,0,.5); }
+body.dark .tb-row:first-child { border-bottom-color: rgba(255,255,255,.08); }
+body.dark .tb-sep { background: rgba(255,255,255,.15); }
+body.dark .tb-label { color: #8888aa; }
+body.dark #stats-bar { color: #a0a0c0; }
+body.dark #stats-bar b { color: #90caf9; }
+body.dark .mode-btn,
+body.dark #font-toggle,
+body.dark #btn-col-all,
+body.dark #btn-exp-all,
+body.dark #search-clear,
+body.dark #search-lang { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .mode-btn { color: #c8c8e0; }
+body.dark .mode-btn.active { background: #e94560; color: #fff; border-color: #e94560; }
+body.dark #search-input { background: #22223a; color: #e8e8e8; border-color: #3e3e5a; }
+body.dark #font-panel { background: #181828; border-top-color: #2e2e4a; }
+body.dark .fr select { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .fr label { color: #c8c8e0; }
+body.dark select option { background: #22223a; color: #c8c8e0; }
+body.dark #speed-sel { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark #vol-val { color: #8888aa; }
+body.dark #tb-sections .tb-section { background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.08); }
+
+/* ── Vocabulary table ────────────────────────────────────────────────────── */
+body.dark table { background: #1c1c30; box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+body.dark tr:nth-child(even) { background: #222238; }
+body.dark thead tr { background: #9b1f35; }
+body.dark th, body.dark td { border-color: #2e2e4a; }
+body.dark .zh { color: #ffffff !important; }
+body.dark .py { color: #a8c8e8; }
+body.dark td.trans-cell { color: #e8e8e8; }
+body.dark .ex-zh { color: #ffffff; }
+body.dark .ex-py { color: #88b8d8; }
+body.dark .rownum { color: #6868a0; }
+body.dark .drag-handle { background: #22223a; border-color: #3e3e5a; color: #c8c8e0; }
+body.dark .gnote { background: #222238; border-left-color: #f9a825; color: #e0d080; }
+body.dark .hsk-prog-bar { background: #333; }
+
+/* ── POS headings and TOC ────────────────────────────────────────────────── */
+body.dark h2.pos-group { background: #1a1a2e; color: #fff; border-radius: 4px; }
+body.dark h3.phonetic-group { background: #222238; color: #c8c8e0; border-left-color: #e94560; }
+body.dark .comp { color: #90caf9; }
+body.dark .toc { background: #1c1c30; border-color: #2e2e4a; }
+body.dark .toc a { color: #90caf9; }
+body.dark .toc a:hover { color: #e94560; }
+body.dark .toc a:visited { color: #90caf9; }
+body.dark .toc-count { color: #6868a0; }
+
+/* ── TTS, collapse, col-btn ──────────────────────────────────────────────── */
+body.dark .tts-btn { border-color: #3e3e5a; background: #22223a; color: #90caf9; }
+body.dark .tts-btn:hover { background: #e94560; color: #fff; border-color: #e94560; }
+body.dark .coll-btn { background: #22223a; color: #a0a0c0; border-color: #3e3e5a; }
+body.dark .col-btn { background: #9b1f35; border-color: #9b1f35; }
+body.dark .col-btn.hidden { background: #1a1a2e !important; color: #555 !important; border-color: #3e3e5a !important; opacity: 0.65; }
+
+/* ── Filter buttons ──────────────────────────────────────────────────────── */
+body.dark .pos-btn { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .pos-btn:hover { border-color: #e94560; color: #e94560; }
+body.dark .pos-btn.active { background: #e94560; color: #fff; border-color: #e94560; }
+body.dark .alpha-btn { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .alpha-btn:hover { border-color: #e94560; color: #e94560; }
+body.dark .alpha-btn.active { background: #e94560; color: #fff; }
+body.dark .sort-btn { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .sort-btn.active { background: var(--pal-accent); color: #fff; }
+body.dark #btn-show-all-cols { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark #btn-show-all-cols:hover { background: #e94560; border-color: #e94560; }
+
+/* ── Flashcard and quiz overlays ─────────────────────────────────────────── */
+body.dark #study-card { background: #1a1a2e; color: #e0e0e0; border: 1px solid #2e2e4a; }
+body.dark #study-zh { color: #e94560; }
+body.dark #study-py { color: #90caf9; }
+body.dark #study-trans { color: #e8e8e8; }
+body.dark #study-ex { color: #a0a0c0; }
+body.dark #quiz-card { background: #1a1a2e; color: #e0e0e0; border: 1px solid #2e2e4a; }
+body.dark #quiz-zh { color: #e94560; }
+body.dark #quiz-py { color: #90caf9; }
+body.dark .quiz-choice { background: #16213e; border-color: #333; color: #e0e0e0; }
+body.dark .quiz-choice:hover { border-color: #e94560; }
+
+/* ── Hz popup ────────────────────────────────────────────────────────────── */
+body.dark #hz-popup { background: #1c1c30; border-color: #e94560; color: #e8e8e8; }
+
+/* ── Familiar and learned sections ──────────────────────────────────────── */
+body.dark #fam-section { background: #1e1800; }
+body.dark #fam-section h2 { color: #f9a825; border-bottom-color: #f9a825; }
+body.dark #fam-table thead tr { background: #6b4f00; }
+body.dark #learned-section { background: #0a1f0a; }
+body.dark #learned-section h2 { color: #4caf50; border-bottom-color: #4caf50; }
+body.dark #learned-table thead tr { background: #1b5e20; }
+
+/* ── Dropdown and confirmation modal ─────────────────────────────────────── */
+body.dark .cdx-btn { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark .cdx-dropdown { background: #1c1c30; border-color: #3e3e5a; }
+body.dark .cdx-dropdown-item { border-bottom-color: #2e2e4a; color: #c8c8e0; }
+body.dark .cdx-dropdown-item:hover { background: #22223a; }
+body.dark #cdx-confirm-box { background: #1c1c30; color: #e8e8e8; }
+body.dark #cdx-confirm-box button { background: #22223a; color: #c8c8e0; border-color: #3e3e5a; }
+body.dark #cdx-confirm-box .cdx-conf-ok { background: var(--pal-accent); color: #fff; }
+
+/* ── Filtered view ───────────────────────────────────────────────────────── */
+body.dark #filtered-view h2.pos-group { background: #1a1a2e; color: #fff; }
+body.dark #filtered-view h3.phonetic-group { background: #222238; color: #c8c8e0; border-left-color: #e94560; }
+body.dark .fv-table { background: #1c1c30 !important; box-shadow: 0 1px 4px rgba(0,0,0,.5); }
+body.dark .fv-table tr:nth-child(even) { background: #222238; }
+body.dark .fv-table thead tr { background: #9b1f35; }
+body.dark .fv-table th, body.dark .fv-table td { border-color: #2e2e4a; color: #e8e8e8; }
+
+/* ── Export buttons ──────────────────────────────────────────────────────── */
+body.dark .export-btn { background: #1a5c30; color: #a0e8b0; border-color: #27ae60; }
+body.dark .export-btn:hover { background: #27ae60; color: #fff; }
+
+/* ── Donate bar ──────────────────────────────────────────────────────────── */
+body.dark .donate-bar { background: linear-gradient(135deg,#1e1020,#1a1a2e); border-color: #3e2040; }
+body.dark .donate-info { color: #6868a0; }
+
+/* ── Mobile header ───────────────────────────────────────────────────────── */
+body.dark #mobile-header { background: #1a1a2e; }
+
+
+/* ══════════════════════════════════════════════════════════════════════════
+   SEPIA MODE — body.sepia
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Base page ───────────────────────────────────────────────────────────── */
+body.sepia { background: #f4e8c1; color: #3a2a18; }
+
+/* ── Toolbar ─────────────────────────────────────────────────────────────── */
+body.sepia #toolbar { background: #ede0b5; border-bottom: none; }
+body.sepia .tb-row:first-child { border-bottom-color: rgba(0,0,0,.1); }
+body.sepia .tb-label { color: #8a6040; }
+body.sepia #speed-sel { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia #vol-val { color: #8a6040; }
+body.sepia #tb-sections .tb-section { background: rgba(0,0,0,.04); border-color: rgba(0,0,0,.1); }
+
+/* ── Vocabulary table ────────────────────────────────────────────────────── */
+body.sepia table { background: #fdf5e0; }
+body.sepia tr:nth-child(even) { background: #f5e8c5; }
+body.sepia thead tr { background: #8b5e3c; color: #fff; }
+body.sepia th, body.sepia td { border-color: #d4b893; }
+body.sepia .zh { color: #4a2000; }
+body.sepia .py { color: #8a6040; }
+body.sepia .tts-btn { border-color: #c8a875; background: #fdf5e0; color: #8b5e3c; }
+body.sepia .drag-handle { background: #fdf5e0; border-color: #c8a875; color: #5c3d18; }
+
+/* ── POS headings and TOC ────────────────────────────────────────────────── */
+body.sepia h2.pos-group { background: #5c3d18; }
+body.sepia h3.phonetic-group { background: #e8d5a0; color: #3a2a18; border-left-color: #8b5e3c; }
+body.sepia .toc { background: #fdf5e0; border-color: #c8a875; }
+
+/* ── Filter and action buttons ───────────────────────────────────────────── */
+body.sepia .pos-btn { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia .pos-btn.active { background: #8b5e3c; color: #fff; border-color: #8b5e3c; }
+body.sepia .alpha-btn { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia .alpha-btn.active { background: #8b5e3c; color: #fff; }
+body.sepia .sort-btn { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia .col-btn { background: #8b5e3c; border-color: #8b5e3c; }
+body.sepia .col-btn.hidden { background: #f4e8c1 !important; color: #999 !important; border-color: #d4b893 !important; opacity: 0.65; }
+body.sepia .cdx-btn { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia #btn-show-all-cols { background: #fdf5e0; color: #3a2a18; border-color: #c8a875; }
+body.sepia .export-btn { background: #5c8a3a; border-color: #5c8a3a; }
+
+/* ── Mobile header ───────────────────────────────────────────────────────── */
+body.sepia #mobile-header { background: #ede0b5; }

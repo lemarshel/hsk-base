@@ -27,6 +27,24 @@
     document.dispatchEvent(new Event('hsk:words-ready'));
   }
 
+  function ensureGroups() {
+    return new Promise(function (resolve, reject) {
+      if (window.HSK_GROUPS && Array.isArray(window.HSK_GROUPS)) {
+        resolve();
+        return;
+      }
+      var s = document.createElement('script');
+      s.src = 'data/groups-data.js';
+      s.async = true;
+      s.onload = function () {
+        if (window.HSK_GROUPS && Array.isArray(window.HSK_GROUPS)) resolve();
+        else reject(new Error('groups-data.js loaded but HSK_GROUPS missing'));
+      };
+      s.onerror = function () { reject(new Error('Failed to load groups-data.js')); };
+      document.head.appendChild(s);
+    });
+  }
+
   /* ── core render ─────────────────────────────────────────────────────────── */
   function render(words) {
     /* Guard: group metadata must be present before rendering */
@@ -155,8 +173,7 @@
       );
     });
 
-    mount.innerHTML = parts.join('
-');
+    mount.innerHTML = parts.join('\\n');
 
     console.log(
       'render-words: rendered ' + (words ? words.length : 0) + ' words in ' +
@@ -198,20 +215,44 @@
   }
 
   function loadWords() {
+    if (location && location.protocol === 'file:') {
+      return loadWordsFromScript();
+    }
     return loadWordsFromJson().catch(function (err) {
       console.warn('render-words: fetch words.json failed, falling back to words-data.js', err);
       return loadWordsFromScript();
     });
   }
 
-  document.addEventListener('DOMContentLoaded', function () {
-    loadWords().then(function (words) {
+  function start(){
+    ensureGroups().then(function(){
+      return loadWords();
+    }).then(function (words) {
       window.HSK_WORDS = words || [];
-      if (render(window.HSK_WORDS)) {
-        markReady();
+      try {
+        if (render(window.HSK_WORDS)) {
+          markReady();
+        } else {
+          var mount = document.getElementById('word-tables-mount');
+          if(mount) mount.innerHTML = '<div style="padding:16px;color:#c44">Render failed. Check console.</div>';
+        }
+      } catch(e) {
+        console.error('render-words: render exception', e);
+        var mount = document.getElementById('word-tables-mount');
+        if(mount) mount.innerHTML = '<div style="padding:16px;color:#c44">Render exception. Check console.</div>';
       }
     }).catch(function (err) {
       console.error('render-words: failed to load words', err);
+      var mount = document.getElementById('word-tables-mount');
+      if(mount) mount.innerHTML = '<div style="padding:16px;color:#c44">Load failed. Check console.</div>';
     });
-  });
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
 }());
+
+

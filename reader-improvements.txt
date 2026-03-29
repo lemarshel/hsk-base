@@ -1,0 +1,175 @@
+You built the first version of `stories.html`, but the layout is still wrong for the intended reader UX.
+
+Now do a serious v2 improvement pass.
+
+Goal:
+Turn `stories.html` into a clean, wide, readable Chinese interlinear reader that feels polished and intentional.
+
+Current problems to fix:
+1. The content block is too narrow and wastes most of the screen.
+2. The reader feels like scattered word tiles instead of flowing readable text.
+3. Spacing is awkward and too sparse vertically.
+4. The page looks underbuilt: too much empty space, weak hierarchy, weak rhythm.
+5. It still does not fully match the intended MVP: a simple reader with only essential features. :contentReference[oaicite:0]{index=0}
+
+What the page SHOULD feel like:
+- A proper reading interface
+- Wide and immersive
+- Clean and calm
+- Strong visual hierarchy
+- Text-first
+- Fast and minimal
+- Not a dashboard
+- Not a writing/stroke tool
+- Not a vocabulary management page
+
+Main design direction:
+The reading area must use the available width properly.
+Do NOT trap the text in a tiny centered island.
+Use a generous main content width that feels like a real reader on desktop.
+Still keep it readable — not edge-to-edge chaos.
+
+Required structural changes:
+
+1. WIDEN THE READER PROPERLY
+- Increase the usable width of the main reading area substantially.
+- Use most of the horizontal space on desktop.
+- Keep balanced left/right padding.
+- The text area should feel intentionally wide, not cramped.
+- Target: a comfortable large reading column/container, roughly in the range of 1100–1400px max usable width on desktop, unless the current page structure requires a slightly different value.
+
+2. MAKE THE TEXT FLOW LIKE REAL SENTENCES
+Right now it looks too much like isolated cards.
+Change it so sentences feel like real reading lines made of compact interlinear word groups.
+
+Each word group should still have:
+- Chinese
+- pinyin below
+- translation below
+
+But:
+- tighten horizontal rhythm
+- reduce the “floating island tile” feeling
+- make rows feel like actual sentence flow
+- keep words visually grouped, but not boxy unless very subtle
+- sentence blocks should feel coherent
+
+3. IMPROVE WORD BLOCK DESIGN
+For each word block:
+- Chinese should be dominant and clearly largest
+- pinyin should be smaller and secondary
+- translation should be smaller and quieter
+- alignment must be clean
+- 2-character and multi-character words must stay together as one unit
+- width should adapt naturally to the word
+- avoid ugly forced equal-width columns
+- spacing between word blocks should be consistent and tight enough to read naturally
+
+Use visual hierarchy like this:
+- Chinese: strong, bright, readable
+- pinyin: softer, smaller
+- translation: dimmer, smaller, still legible
+
+4. FIX VERTICAL RHYTHM
+The current version has too much dead vertical air.
+Tighten the layout so:
+- word internals are compact
+- sentence spacing is deliberate
+- paragraphs feel structured
+- the page has momentum as you scroll
+
+Do not compress it into clutter.
+Do not leave giant empty gaps either.
+
+5. MAKE SENTENCES / PARAGRAPHS LOOK REAL
+Add proper sentence grouping.
+- Each sentence should read as one flowing band/block
+- Paragraphs should have meaningful spacing
+- If the current data model supports it, group sentences into paragraphs
+- If not, at least style sentence spacing so the page reads like text, not a wall of disconnected chunks
+
+6. CLEAN UP THE TOP BAR
+The top bar should be more polished and efficient.
+Keep only the useful controls:
+- back link
+- story title
+- pinyin toggle
+- translation toggle
+- speed
+- prev / next navigation
+- maybe play current text if already implemented cleanly
+
+Remove or simplify anything visually weak, redundant, or noisy.
+
+The top area should feel like a reader header, not app chrome.
+
+7. KEEP MVP DISCIPLINE
+Do NOT add:
+- Hanzi Writer
+- stroke order
+- hover encyclopedias
+- checklists
+- progress dashboards
+- sidebars packed with noise
+- extra learner systems
+- feature creep
+
+This is still a reader MVP. Keep it lean. :contentReference[oaicite:1]{index=1}
+
+8. IMPROVE RESPONSIVENESS
+Desktop:
+- use width properly
+- strong layout hierarchy
+- clean sentence flow
+
+Tablet:
+- preserve readability
+- reduce padding sensibly
+
+Mobile:
+- word blocks can wrap more
+- controls can stack cleanly
+- keep reading usable
+- do not let the UI become cramped chaos
+
+Implementation guidance:
+- Refactor CSS first, not just patch random margins
+- Improve layout systematically:
+  - page shell
+  - top bar
+  - reader container
+  - paragraph/sentence spacing
+  - word-block spacing
+  - typography hierarchy
+- Keep HTML structure clean
+- If needed, slightly revise the rendering markup to support better sentence/paragraph grouping
+- Prefer subtle CSS classes over inline style clutter
+- Keep JS minimal; only touch it if needed for better rendering structure or control simplification
+
+Specific visual targets:
+- Page should look 3x more intentional
+- Reader area should immediately feel “correct”
+- Text should feel pleasant to scan
+- The eye should naturally follow sentence flow
+- The layout should stop looking like a prototype with random words dropped on a huge canvas
+
+What to preserve:
+- The basic interlinear concept
+- TTS behavior if already working
+- toggle behavior if already working
+- simple MVP architecture
+- dark theme direction
+
+What to output:
+1. Brief diagnosis of what was wrong in v1
+2. Exact files changed
+3. Patch/diff
+4. Short explanation of layout decisions
+5. Confirm that no non-MVP features were added
+
+Success criteria:
+- The page uses space well
+- Sentences read naturally
+- Word groups look clean and intentional
+- The page feels like a real reading product, not an early mockup
+- It remains simple

@@ -1,0 +1,285 @@
+/* ==========================================================================
+   css/vocabulary.css — Vocabulary page styles for HSK Base
+   INPUT:  Body class tokens set by hsk-body.js / hsk.js:
+           .flat-view, .searching, .hide-{num|word|trans|ex}, .lang-en,
+           .ph-hidden, and palette CSS vars --pal-accent / --pal-dark.
+   ACTION: Styles the vocabulary table, phonetic/POS groups, study overlays,
+           filter buttons, hz popup, filtered view, and responsive breakpoints.
+   DOES NOT contain: platform primitives (base.css) or theme overrides (themes.css).
+   ========================================================================== */
+
+/* ── Content-visibility optimisation for large phonetic group wrappers ───── */
+@supports (content-visibility: auto) {
+  .grp-wrap { content-visibility: auto; contain-intrinsic-size: 800px 600px; }
+}
+
+/* ── POS and phonetic group headings ─────────────────────────────────────── */
+h2.pos-group {
+  background: #1a1a2e; color: #fff;
+  padding: 10px 16px; margin: 30px 0 10px; border-radius: 6px;
+}
+h2.pos-group .pos-zh { font-size: .7em; opacity: .7; margin-left: 8px; }
+h3.phonetic-group {
+  background: #f0f0f0; padding: 6px 14px; margin: 8px 0 4px;
+  font-size: .9em; color: #444;
+  border-left: 4px solid var(--pal-accent);
+}
+.comp { font-size: 1.1em; font-weight: bold; color: #1a1a2e; }
+
+/* ── Flat-view: hide group wrappers when active filter flattens the list ─── */
+body.flat-view h2.pos-group,
+body.flat-view h3.phonetic-group,
+body.flat-view .grp-wrap { display: none !important; }
+
+/* ── Hide phonetic headers during search and in filtered-view ────────────── */
+body.searching h3.phonetic-group { display: none !important; }
+#filtered-view h3.phonetic-group { display: none !important; }
+
+/* ── Vocabulary table ────────────────────────────────────────────────────── */
+table {
+  width: 100%; border-collapse: collapse; margin-bottom: 12px;
+  background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1);
+}
+thead tr { background: var(--pal-accent); color: #fff; }
+th, td { padding: 8px 10px; border: 1px solid #ddd; vertical-align: top; }
+tr:nth-child(even) { background: #f9f9f9; }
+.rownum { color: #999; font-size: .8em; text-align: center; }
+.zh  { font-size: 1.6em; font-weight: bold; color: #1a1a2e; }
+.py  { font-size: .8em; color: #666; margin-top: 2px; }
+.ex-zh { font-size: .8em; color: #333; }
+.ex-py { font-size: .8em; color: #888; margin-top: 2px; }
+.trans-cell, .ex-td, .ex-cell,
+[data-col="trans"], [data-col="ex"] { overflow-wrap: normal; word-break: normal; hyphens: none; }
+.trans-cell { position: relative; padding-left: 30px; }
+
+/* Drag handle inside .trans-cell */
+.drag-handle {
+  position: absolute; left: 8px; top: 8px;
+  width: 16px; height: 16px;
+  border-radius: 4px; border: 1px solid #cfcfd6;
+  background: #f4f4f8; color: #666;
+  font-size: 9px; line-height: 14px; text-align: center;
+  cursor: grab; user-select: none; padding: 0;
+}
+.drag-handle:active { cursor: grabbing; }
+
+.gnote { font-size: .8em; background: #fff8e1; border-left: 3px solid #f9a825; padding: 6px 8px; margin-top: 6px; }
+.no-sent { color: #ccc; }
+
+/* ── Table of contents (TOC) ─────────────────────────────────────────────── */
+.toc { background: #fff; border: 1px solid #ddd; padding: 12px 20px; margin-bottom: 24px; border-radius: 6px; }
+.toc h3 { margin: 0 0 8px; }
+.toc a { display: inline-block; margin: 3px 8px; color: #1a1a2e; text-decoration: none; font-size: .9em; }
+.toc a:hover { color: var(--pal-accent); }
+.toc-count { color: #999; font-size: .85em; }
+
+/* ── Learn / familiar checkbox columns ──────────────────────────────────── */
+.cb-col  { width: 30px; text-align: center; padding: 4px 6px; }
+.cb-cell { text-align: center; vertical-align: middle; padding: 4px 6px; width: 30px; }
+.learn-cb { width: 16px; height: 16px; cursor: pointer; accent-color: var(--pal-accent) !important; }
+.fam-col  { width: 30px; text-align: center; padding: 4px 6px; }
+.fam-cell { text-align: center; vertical-align: middle; padding: 4px; }
+.fam-cb   { width: 15px; height: 15px; cursor: pointer; accent-color: #f39c12; opacity: .8; }
+
+/* ── Learned words section ───────────────────────────────────────────────── */
+#learned-section { background: #f5fff5; border-top: 3px solid #2ecc71; padding: 20px 0; margin-top: 40px; }
+#learned-section h2 { color: #27ae60; border-bottom: 2px solid #2ecc71; padding-bottom: 8px; }
+#learned-table thead tr { background: #2ecc71; color: #fff; }
+
+/* ── Tone colours ────────────────────────────────────────────────────────── */
+.py-t1 { color: #e74c3c; }
+.py-t2 { color: #f39c12; }
+.py-t3 { color: #27ae60; }
+.py-t4 { color: #2980b9; }
+.py-t0 { color: #888; }
+
+/* ── HSK progress bar ────────────────────────────────────────────────────── */
+.hsk-prog      { display: flex; align-items: center; gap: 4px; font-size: .72em; }
+.hsk-prog-bar  { width: 60px; height: 8px; background: #eee; border-radius: 4px; overflow: hidden; display: inline-block; }
+.hsk-prog-fill { height: 100%; border-radius: 4px; transition: width .3s; }
+
+/* ── HSK level badges ────────────────────────────────────────────────────── */
+.hsk-badge { display: inline-block; font-size: .6em; font-weight: bold; padding: 1px 4px; border-radius: 3px; vertical-align: middle; margin-left: 4px; color: #fff; line-height: 1.4; }
+.hsk-1 { background: #27ae60; } .hsk-2 { background: #2ecc71; } .hsk-3 { background: #f39c12; }
+.hsk-4 { background: #e67e22; } .hsk-5 { background: #e74c3c; } .hsk-6 { background: #8e44ad; }
+
+/* ── Flashcard study overlay (#study-overlay) ────────────────────────────── */
+#study-overlay  { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.7); z-index: 9000; display: flex; align-items: center; justify-content: center; }
+#study-card     { background: #fff; border-radius: 16px; padding: 32px; width: min(600px,90vw); min-height: 400px; display: flex; flex-direction: column; gap: 16px; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+#study-progress { font-size: .85em; color: #666; display: flex; align-items: center; gap: 8px; }
+#study-close, #study-close2 { margin-left: auto; background: none; border: none; cursor: pointer; font-size: 1.2em; color: #999; }
+#study-front    { flex: 1; display: flex; align-items: center; justify-content: center; }
+#study-zh       { font-size: clamp(2.5em,6vw,5em); font-weight: bold; color: #1a1a2e; cursor: pointer; text-align: center; line-height: 1.2; }
+#study-back     { flex: 1; text-align: center; display: flex; flex-direction: column; gap: 8px; align-items: center; }
+#study-py       { font-size: 1.5em; color: #555; }
+#study-trans    { font-size: 1.2em; color: #333; max-width: 90%; }
+#study-ex       { font-size: .9em; color: #888; max-width: 90%; font-style: italic; }
+#study-buttons  { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+#study-show     { padding: 12px 32px; background: var(--pal-accent); color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+#study-hard     { padding: 12px 28px; background: #e74c3c; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+#study-good     { padding: 12px 28px; background: #27ae60; color: #fff; border: none; border-radius: 8px; font-size: 1em; cursor: pointer; }
+#study-summary  { text-align: center; flex: 1; display: flex; flex-direction: column; gap: 12px; align-items: center; justify-content: center; }
+#study-again, #study-close2 { padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; }
+#study-again    { background: var(--pal-accent); color: #fff; }
+
+/* ── Multiple choice quiz overlay (#quiz-overlay) ────────────────────────── */
+#quiz-overlay  { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,.75); z-index: 9001; display: flex; align-items: center; justify-content: center; }
+#quiz-card     { background: #fff; border-radius: 16px; padding: 28px; width: min(640px,92vw); display: flex; flex-direction: column; gap: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.35); }
+#quiz-progress { font-size: .85em; color: #666; display: flex; align-items: center; gap: 8px; }
+#quiz-close, #quiz-close2 { margin-left: auto; background: none; border: none; cursor: pointer; font-size: 1.2em; color: #999; }
+#quiz-question { text-align: center; padding: 12px 0; }
+#quiz-zh       { font-size: 3.5em; font-weight: bold; color: #1a1a2e; cursor: pointer; }
+#quiz-choices  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.quiz-choice   { padding: 12px 16px; border: 2px solid #e0e0e0; border-radius: 10px; cursor: pointer; font-size: 1em; background: #fff; text-align: left; transition: border-color .15s, background .15s; }
+.quiz-choice:hover   { border-color: var(--pal-accent); background: #fff5f7; }
+.quiz-choice.correct { border-color: #27ae60; background: #f0fff4; color: #27ae60; font-weight: bold; }
+.quiz-choice.wrong   { border-color: #e74c3c; background: #fff5f5; color: #e74c3c; }
+.quiz-choice.reveal  { border-color: #27ae60; background: #f0fff4; }
+#quiz-feedback.ok  { color: #27ae60; }
+#quiz-feedback.err { color: #e74c3c; }
+#quiz-again, #quiz-close2 { padding: 10px 24px; border: none; border-radius: 8px; cursor: pointer; font-size: 1em; margin: 4px; }
+#quiz-again { background: var(--pal-accent); color: #fff; }
+
+/* ── Familiar section ────────────────────────────────────────────────────── */
+#fam-section { background: #fffde7; border-top: 3px solid #f39c12; padding: 20px 0; margin-top: 30px; }
+#fam-section > h2 { color: #e67e22; border-bottom: 2px solid #f39c12; padding-bottom: 8px; padding-left: 12px; margin: 0 0 12px; }
+#fam-table thead tr { background: #f39c12; color: #fff; }
+
+/* ── Stroke order popup ──────────────────────────────────────────────────── */
+#hz-popup  { position: fixed; background: #fff; border: 2px solid var(--pal-accent) !important; border-radius: 10px; padding: 10px; z-index: 9999; display: none; box-shadow: 0 6px 24px rgba(0,0,0,.18); }
+.hz-char   { cursor: help; border-bottom: 1px dotted var(--pal-accent) !important; display: inline-block; transition: color .15s; }
+.hz-char:hover { color: var(--pal-accent) !important; }
+
+/* ── Group collapse ──────────────────────────────────────────────────────── */
+.grp-wrap.grp-col       { display: none; }
+.grp-empty              { display: none !important; }
+h2.pos-group.pos-empty  { display: none !important; }
+.pos-empty              { display: none !important; }
+.coll-btn               { float: right; padding: 1px 7px; border: 1px solid #bbb; border-radius: 3px; cursor: pointer; font-size: .78em; background: #fff; color: #555; }
+.coll-btn:hover         { background: var(--pal-accent) !important; color: #fff; border-color: var(--pal-accent) !important; }
+
+/* ── Column visibility toggles ───────────────────────────────────────────── */
+thead th:not(.cb-col):not(.fam-col) { cursor: pointer; user-select: none; }
+thead th:not(.cb-col):not(.fam-col):hover { opacity: .8; }
+
+/* nth-child selectors (legacy fallback) */
+body.hide-num   th:nth-child(3), body.hide-num   td:nth-child(3) { display: none !important; }
+body.hide-word  th:nth-child(4), body.hide-word  td:nth-child(4) { display: none !important; }
+body.hide-trans th:nth-child(5), body.hide-trans td:nth-child(5) { display: none !important; }
+body.hide-ex    th:nth-child(6), body.hide-ex    td:nth-child(6) { display: none !important; }
+
+/* data-col selectors (primary) */
+body.hide-num   [data-col="num"]   { display: none !important; }
+body.hide-word  [data-col="word"]  { display: none !important; }
+body.hide-trans [data-col="trans"] { display: none !important; }
+body.hide-ex    [data-col="ex"]    { display: none !important; }
+
+/* Column toggle buttons in toolbar */
+.col-btn { padding: 3px 8px; border: 1px solid var(--pal-accent) !important; border-radius: 3px; cursor: pointer; background: var(--pal-accent) !important; color: #fff; font-size: .78em; }
+.col-btn.hidden { background: #f5f5f5 !important; color: #aaa !important; border-color: #ccc !important; text-decoration: line-through; opacity: 0.65; }
+
+/* ── Table layout compensation for hidden columns ───────────────────────── */
+body[class*='hide-'] table { table-layout: auto !important; }
+body.hide-num   th[data-col="num"],  body.hide-num   td[data-col="num"]   { width: 0 !important; padding: 0 !important; overflow: hidden; }
+body.hide-word  th[data-col="word"], body.hide-word  td[data-col="word"]  { width: 0 !important; padding: 0 !important; }
+body.hide-trans th[data-col="trans"],body.hide-trans td[data-col="trans"] { width: 0 !important; padding: 0 !important; }
+body.hide-ex    th[data-col="ex"],   body.hide-ex    td[data-col="ex"]    { width: 0 !important; padding: 0 !important; }
+body.hide-word  th[data-col="trans"],body.hide-word  td[data-col="trans"] { width: 40% !important; }
+body.hide-word  th[data-col="ex"],   body.hide-word  td[data-col="ex"]   { width: 57% !important; }
+body.hide-trans th[data-col="word"], body.hide-trans td[data-col="word"] { width: 30% !important; }
+body.hide-trans th[data-col="ex"],   body.hide-trans td[data-col="ex"]   { width: 67% !important; }
+body.hide-ex    th[data-col="word"], body.hide-ex    td[data-col="word"] { width: 35% !important; }
+body.hide-ex    th[data-col="trans"],body.hide-ex    td[data-col="trans"]{ width: 60% !important; }
+
+/* ── Example sub-column visibility ──────────────────────────────────────── */
+.hide-ex-zh .ex-zh  { display: none !important; }
+.hide-ex-py .ex-py  { display: none !important; }
+
+/* ── POS / Alpha / Sort / HSK filter buttons ─────────────────────────────── */
+.pos-btn { padding: 3px 7px; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; background: #f5f5f5; font-size: .78em; }
+.pos-btn:hover  { border-color: var(--pal-accent); color: var(--pal-accent); }
+.pos-btn.active { background: var(--pal-accent); color: #fff; border-color: var(--pal-accent); }
+tr.pos-hide { display: none !important; }
+
+.alpha-btn { padding: 2px 5px; border: 1px solid #ccc; border-radius: 2px; cursor: pointer; background: #f5f5f5; font-size: .72em; min-width: 22px; text-align: center; }
+.alpha-btn:hover  { border-color: var(--pal-accent); color: var(--pal-accent); }
+.alpha-btn.active { background: var(--pal-accent); color: #fff; border-color: var(--pal-accent); }
+tr.alpha-hide { display: none !important; }
+
+.sort-btn { padding: 3px 8px; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; background: #f5f5f5; font-size: .78em; }
+.sort-btn.active { background: var(--pal-accent); color: #fff; border-color: var(--pal-accent); }
+
+.hsk-btn { padding: 3px 8px; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; background: #f5f5f5; font-size: .78em; }
+.hsk-btn.active { background: #8e44ad; color: #fff; border-color: #8e44ad; }
+tr.hsk-hide { display: none !important; }
+
+/* ── Show-all columns + export buttons ──────────────────────────────────── */
+#btn-show-all-cols { padding: 3px 8px; border: 1px solid #888; border-radius: 3px; cursor: pointer; background: #f5f5f5; color: #444; font-size: .78em; }
+#btn-show-all-cols:hover { background: var(--pal-accent); color: #fff; border-color: var(--pal-accent); }
+.export-btn { padding: 4px 10px; border: 1px solid #27ae60; border-radius: 4px; cursor: pointer; background: #27ae60; color: #fff; font-size: .82em; font-weight: 600; }
+.export-btn:hover { background: #1e8449; border-color: #1e8449; }
+
+/* ── Filtered view ───────────────────────────────────────────────────────── */
+#filtered-view { margin-top: 12px; }
+#filtered-view table { width: 100%; border-collapse: collapse; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+
+/* Bug fix: filtered-view group headers must show even in flat-view */
+#filtered-view h2.pos-group, #filtered-view h3.phonetic-group { display: block !important; }
+
+.fv-table { width: 100%; border-collapse: collapse; margin-bottom: 8px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+
+/* ── Duplicate table headers — hide repeated thead rows within POS sections ─
+   JS adds .pos-first-table to only the first table in each POS group.       */
+table:not(.pos-first-table):not(#fam-table):not(#learned-table):not(.fv-table) thead {
+  visibility: hidden;
+}
+table:not(.pos-first-table):not(#fam-table):not(#learned-table):not(.fv-table) thead th {
+  padding: 0; border: 0; height: 0; line-height: 0; font-size: 0;
+}
+
+/* ── Example sentence translations ──────────────────────────────────────── */
+.ex-trans    { margin-top: 4px; margin-left: 32px; font-size: .8em; }
+.ex-trans-ru { display: block; }
+.ex-trans-en { display: none; }
+body.lang-en .ex-trans-ru { display: none; }
+body.lang-en .ex-trans-en { display: block; }
+.ex-trans:not(:has(.ex-trans-ru)) { display: none; }
+body.lang-en .ex-trans:not(:has(.ex-trans-en)) { display: none; }
+body.lang-en .ex-trans:has(.ex-trans-en) { display: block; }
+
+/* ── Responsive table breakpoints ────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #word-tables-mount table { width: 100%; }
+  th[data-col="num"],   td[data-col="num"]   { width:  2% !important; }
+  th[data-col="word"],  td[data-col="word"]  { width: 28% !important; }
+  th[data-col="trans"], td[data-col="trans"] { width: 34% !important; }
+  th[data-col="ex"],    td[data-col="ex"]    { width: 36% !important; }
+}
+@media (max-width: 600px) {
+  th[data-col="ex"], td[data-col="ex"] { display: none; }
+  th[data-col="word"],  td[data-col="word"]  { width: 45% !important; }
+  th[data-col="trans"], td[data-col="trans"] { width: 55% !important; }
+  .zh { font-size: 1.3em; }
+}
+
+/* ── Text-topics button strip ────────────────────────────────────────────── */
+#tb-row-texts { align-items: center; }
+#text-btn-wrap { display: flex; gap: 4px; overflow-x: auto; white-space: nowrap; padding: 2px 0; }
+#text-btn-wrap::-webkit-scrollbar { height: 6px; }
+.text-btn { min-width: 22px; height: 22px; padding: 0 4px; font-size: 11px; border: 1px solid #8aa; border-radius: 4px; background: #eef4f6; color: #356; cursor: pointer; }
+.text-btn.active { background: #cfe3e7; border-color: #4f7c82; color: #234; }
+.text-indicator { position: absolute; top: 2px; left: 2px; font-size: 10px; line-height: 1; padding: 1px 3px; border: 1px solid #c6d5d7; border-radius: 3px; color: #4b6a6e; background: #f7fbfc; opacity: .85; font-weight: 600; }
+.text-hide { display: none !important; }
+
+/* ── Example-filter dropdown ─────────────────────────────────────────────── */
+.ex-filter-btn { margin-left: 6px; padding: 1px 4px; font-size: 11px; border: 1px solid #bbb; border-radius: 4px; background: #f3f3f3; color: #444; cursor: pointer; }
+#ex-filter-menu { position: absolute; z-index: 1200; display: none; min-width: 160px; background: #fff; border: 1px solid #ccc; border-radius: 6px; box-shadow: 0 6px 18px rgba(0,0,0,.12); padding: 6px 8px; font-size: 12px; }
+#ex-filter-menu.open { display: block; }
+#ex-filter-menu label { display: flex; gap: 6px; align-items: center; padding: 2px 0; white-space: nowrap; }
+
+/* ── Snapshot dropdown delete button ─────────────────────────────────────── */
+.snap-del-btn { color: var(--pal-accent); cursor: pointer; float: right; font-size: .9em; }
+
+/* ── HanziWriter popup containers ────────────────────────────────────────── */
+#hz-anim-canvas  { padding-top: 4px; }
+#hz-practice-area{ margin-top: 12px; text-align: center; }
