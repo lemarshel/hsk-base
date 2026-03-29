@@ -64,7 +64,7 @@ function colorPinyin(){
     }).join(' ');
   });
 }
-document.addEventListener('DOMContentLoaded', colorPinyin);
+window.onHskWordsReady(colorPinyin);
 
 /* keyboard shortcuts */
 /* ── Global keyboard shortcuts ────────────────────────────────────────────────
@@ -250,7 +250,7 @@ document.addEventListener('contextmenu',function(e){
            so CSS can display the section heading only once
    OUTPUT: .first-in-section class on select tables
    ────────────────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   document.querySelectorAll('h2.pos-group').forEach(function(h2){
     var el = h2.nextElementSibling;
     while(el && el.tagName !== 'H2'){
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', function(){
            folded into a synthetic 'Other / 其他' group heading in the UI
    OUTPUT: DOM h3 text and tbody grouping for small groups
    ────────────────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   document.querySelectorAll('h2.pos-group').forEach(function(h2){
     // Collect all (h3, table) pairs until next h2
     var groups = [];
@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var mergeData = null; // saved structure for restoration
 
   /* Apply initial state after full DOM is ready */
-  document.addEventListener('DOMContentLoaded', function(){
+  window.onHskWordsReady(function(){
     document.querySelectorAll('h3.phonetic-group').forEach(function(h3){
       h3.style.display = hidden ? 'none' : '';
     });

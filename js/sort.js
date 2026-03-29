@@ -1,9 +1,21 @@
 /* ==========================================================================
    js/sort.js — Sort modes and drag state
 
+   OWNS (registers to window._hsk):
+     applySort, getCurrentSort, sortRows, sortRowsByHsk,
+     updateDragState, getTbodiesForSort
+
+   CONSUMES (reads from window._hsk):
+     renum       ← hsk.js
+     rebuildView ← filter.js  (safe: called only from button handlers,
+                                after all scripts have loaded)
+
+   ALSO READS: window._cdxOrigOrder (for default-sort restore)
+               window._cdxSortables (to enable/disable drag in updateDragState)
+
    INPUT:  sort button clicks; data-py/data-radical/data-component/data-hsk on rows; window._cdxOrigOrder; window._cdxSortables
    ACTION: applySort() reorders rows within each tbody by chosen key; updateDragState() disables/enables Sortable when search or sort is active; DOMContentLoaded wires sort buttons and the "by section" checkbox
-   OUTPUT: DOM row order; window._hsk.applySort/.getCurrentSort/.sortRows/.updateDragState
+   OUTPUT: DOM row order; window._hsk (via _register)
    ========================================================================== */
 (function(){
 "use strict";
@@ -112,7 +124,7 @@ function updateDragState(){
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   var btns = {
     'sort-default': 'default',
     'sort-pinyin': 'pinyin',
@@ -139,18 +151,19 @@ document.addEventListener('DOMContentLoaded', function(){
    OUTPUT: Sortable.option('disabled') toggled on all instances
    ────────────────────────────────────────────────────────────────────────────── */
 // Override the existing SortableJS init to store references and use new options
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   window._cdxSortables = [];
   // Existing code already created Sortable instances; we create new ones tracking state
   // We patch by listening for sortable events
 });
 
-/* ── Expose sort internals via window._hsk ── */
-window._hsk = window._hsk || {};
-window._hsk.applySort        = applySort;
-window._hsk.getCurrentSort   = function(){ return currentSort; };
-window._hsk.sortRows         = sortRows;
-window._hsk.sortRowsByHsk    = sortRowsByHsk;
-window._hsk.updateDragState  = updateDragState;
-window._hsk.getTbodiesForSort = getTbodiesForSort;
+/* ── Register sort internals via shared API ── */
+window._hsk._register('sort', {
+  applySort:         applySort,
+  getCurrentSort:    function() { return currentSort; },
+  sortRows:          sortRows,
+  sortRowsByHsk:     sortRowsByHsk,
+  updateDragState:   updateDragState,
+  getTbodiesForSort: getTbodiesForSort
+});
 })();

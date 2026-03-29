@@ -1,13 +1,14 @@
 """
 Builds both test/index.html (with debug banner) and index.html (production).
 
-Both files are fully self-contained — data inlined from words.xlsx — so they
-work when opened via file:// with no server required.
+The HTML outputs are lightweight shells. Word data is written to:
+  - data/words.json      (runtime fetch)
+  - data/words-data.js   (file:// fallback)
 
 Workflow:
     1. Edit data/words.xlsx
     2. python prod/make_test_page.py
-    3. Refresh test/index.html  (or index.html) in the browser
+    3. Refresh test/index.html (or index.html) in the browser
 
 Run from the project root:  python prod/make_test_page.py
 """
@@ -15,10 +16,14 @@ import json
 from datetime import datetime
 from pathlib import Path
 import openpyxl
+import subprocess
+import sys
 
 ROOT         = Path(__file__).parent.parent
 INDEX_HTML   = ROOT / "index.html"
 TEST_OUT     = ROOT / "test" / "index.html"
+WORDS_J      = ROOT / "data" / "words.json"
+WORDS_JS     = ROOT / "data" / "words-data.js"
 
 MARKER_FILTERED_VIEW = '<div id="filtered-view" style="display:none"></div>'
 MARKER_FAM_START     = '<div id="fam-section"'
@@ -60,21 +65,32 @@ def read_words_xlsx():
     return words
 
 
-# INPUT:  words list from read_words_xlsx(); optional include_banner_js flag.
-# ACTION: Reads groups-data.js and render-words.js from disk, serialises words
-#         to JSON, and concatenates them into three inline <script> blocks.
-#         If include_banner_js=True, appends a DOMContentLoaded hook that
-#         populates test-build-banner data-en and DOM-en verification spans.
-# OUTPUT: Returns a multi-line HTML string with three <script> tags to inline.
-def build_data_scripts(words, include_banner_js=False):
-    groups_js  = (ROOT / "data" / "groups-data.js").read_text(encoding="utf-8")
-    render_js  = (ROOT / "js"   / "render-words.js").read_text(encoding="utf-8")
-    words_json = json.dumps(words, ensure_ascii=False, separators=(",", ":"))
+# INPUT:  words list from read_words_xlsx()
+# ACTION: Writes data/words.json (pretty) and data/words-data.js (window.HSK_WORDS)
+# OUTPUT: Overwrites both files; prints sizes to stdout.
+def write_words_outputs(words):
+    WORDS_J.write_text(
+        json.dumps(words, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+    WORDS_JS.write_text(
+        "window.HSK_WORDS=" + json.dumps(words, ensure_ascii=False, separators=(",", ":")) + ";\n",
+        encoding="utf-8",
+    )
+    print(f"Wrote {WORDS_J}  ({len(words)} words)")
+    print(f"Wrote {WORDS_JS}")
 
+
+# INPUT:  optional include_banner_js flag.
+# ACTION: Returns external <script> tags for groups-data.js and render-words.js.
+#         If include_banner_js=True, appends an hsk:words-ready hook that
+#         populates test-build-banner data-en and DOM-en verification spans.
+# OUTPUT: Returns a multi-line HTML string with external <script> tags.
+def build_data_scripts(include_banner_js=False):
     extra = ""
     if include_banner_js:
         extra = (
-            "\ndocument.addEventListener('DOMContentLoaded',function(){"
+            "\ndocument.addEventListener('hsk:words-ready',function(){"
             "var b=document.getElementById('test-build-banner');if(!b)return;"
             "b.style.display='block';"
             "var w0=window.HSK_WORDS&&window.HSK_WORDS[0];"
@@ -86,11 +102,15 @@ def build_data_scripts(words, include_banner_js=False):
             "});"
         )
 
-    return (
-        "<script>window.HSK_WORDS=" + words_json + ";" + extra + "</script>\n"
-        "<script>" + groups_js + "</script>\n"
-        "<script>\n" + render_js + "\n</script>\n"
+    scripts = (
+        '<script src="data/groups-data.js"></script>\n'
+        '<script src="js/render-words.js"></script>\n'
     )
+
+    if extra:
+        scripts += "<script>" + extra + "</script>\n"
+
+    return scripts
 
 
 # INPUT:  words list and build_time string (formatted datetime).
@@ -148,7 +168,7 @@ def extract_skeleton(html, words, include_banner=False, build_time="", add_base_
     learned_block = html[idx_lrn_start:idx_lrn_end]
 
     idx_sort = html.index(MARKER_SORTABLE)
-    tail     = build_data_scripts(words, include_banner_js=include_banner) + html[idx_sort:]
+    tail     = build_data_scripts(include_banner_js=include_banner) + html[idx_sort:]
 
     banner = build_banner(words, build_time) if include_banner else ""
 
@@ -165,12 +185,13 @@ def extract_skeleton(html, words, include_banner=False, build_time="", add_base_
 # INPUT:  index.html (template) and data/words.xlsx (word content).
 # ACTION: Reads both sources, then writes two output files:
 #         test/index.html with <base href="../"> for file:// testing, and
-#         index.html (production) with inline word data and no debug banner.
+#         index.html (production) with external word data and no debug banner.
 # OUTPUT: Overwrites test/index.html and index.html; prints sizes to stdout.
 def main():
     html       = INDEX_HTML.read_text(encoding="utf-8")
     words      = read_words_xlsx()
     build_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    write_words_outputs(words)
 
     # ── test/index.html  (with debug banner) ─────────────────────────────────
     TEST_OUT.parent.mkdir(exist_ok=True)
@@ -184,6 +205,12 @@ def main():
     INDEX_HTML.write_text(prod_html, encoding="utf-8")
     print(f"Wrote {INDEX_HTML}")
     print(f"  Words : {len(words)}  |  Size: {len(prod_html):,} chars")
+
+    # ── Validate build outputs ─────────────────────────────────────────────
+    try:
+        subprocess.check_call([sys.executable, str(ROOT / 'prod' / 'validate_build.py')])
+    except subprocess.CalledProcessError:
+        raise SystemExit('Build validation failed')
 
 
 if __name__ == "__main__":

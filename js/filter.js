@@ -95,7 +95,7 @@ function buildFilteredView(rows, bySect){
 
 function cdxDoSearch(){ rebuildView(); }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   function limitTranslationText(txt, maxParts){
     if(!txt) return '';
     var t = String(txt).trim();
@@ -240,7 +240,7 @@ function renumVisible(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   var total = document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').length;
   updateWordCount(total);
   renumVisible();

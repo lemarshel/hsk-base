@@ -151,7 +151,7 @@ function restoreSnapshot(snap){
   }
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   var btnSave = document.getElementById('btn-save-snap');
   var btnDd = document.getElementById('btn-snap-dd');
   var snapDd = document.getElementById('snap-dropdown');
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 /* ── Reset Everything ─────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   var btnReset = document.getElementById('btn-reset-all');
   if(btnReset) btnReset.addEventListener('click', function(){
     window._hsk.confirm(

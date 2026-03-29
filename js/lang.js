@@ -283,7 +283,7 @@ function setLang(lang){
   });
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+window.onHskWordsReady(function(){
   setLang(currentLang);
   var btn = document.getElementById('btn-lang-toggle');
   if(btn){

@@ -12,7 +12,7 @@
      hsk.js  — references window.EN_DICT, window.HSK_PALETTES,
                window.HSK_LS, window.HSK_SECTION_NAMES_EN/RU,
                window.HSK_POS_LABELS_RU/EN, window.HSK_LEVEL_COLORS
-     hsk-head.js — references localStorage keys by string (independent)
+     hsk-head.js / hsk-body.js — reference window.HSK_LS (loaded first in HTML)
    ========================================================================== */
 
 /* ── localStorage key map ────────────────────────────────────────────────────
@@ -30,6 +30,21 @@ window.HSK_LS = {
   LG: 'hsk_lang',      // interface language (ru | en)
   PA: 'hsk_palette',   // color palette name
   SN: 'hsk_snapshots'  // snapshots JSON array
+};
+
+/* ── Runtime data readiness helpers ───────────────────────────────────────
+   Used by render-words.js to signal when table HTML exists, and by all
+   row-dependent modules to defer init until words are ready. */
+window.HSK_WORDS_READY = false;
+window.onHskWordsReady = function(fn){
+  if (window.HSK_WORDS_READY) { fn(); return; }
+  document.addEventListener('hsk:words-ready', fn, { once: true });
+};
+
+window.HSK_WORDS_RENDERED = false;
+window.onHskWordsRendered = function(fn){
+  if (window.HSK_WORDS_RENDERED) { fn(); return; }
+  document.addEventListener('words-rendered', fn, { once: true });
 };
 
 /* ── HSK level progress-bar colours ─────────────────────────────────────────

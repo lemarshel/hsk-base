@@ -1,6 +1,6 @@
 /* ==========================================================================
    hsk-head.js — Inline head preloader
-   INPUT:  localStorage keys hsk_mode, hsk_palette, hsk_prefs (read on script eval,
+   INPUT:  localStorage keys window.HSK_LS.M/PA/P (hsk_mode, hsk_palette, hsk_prefs — read on script eval,
            before the DOM is parsed).
    ACTION: Sets background-color and CSS custom properties --pal-accent / --pal-dark
            on <html> immediately, then injects a <style> tag with font overrides so
@@ -14,12 +14,12 @@
 
     /* INPUT: localStorage hsk_mode — sets background before any element renders */
     root.classList.add('preload');
-    var mode=localStorage.getItem('hsk_mode')||'light';
+    var mode=localStorage.getItem(window.HSK_LS.M)||'light';
     var bg=(mode==='dark')?'#0f111a':(mode==='sepia')?'#f7f2e8':'#ffffff';
     root.style.backgroundColor=bg;
 
     /* INPUT: localStorage hsk_palette — sets --pal-accent and --pal-dark CSS vars */
-    var palName=localStorage.getItem('hsk_palette')||'rose';
+    var palName=localStorage.getItem(window.HSK_LS.PA)||'rose';
     var PALS={
       rose:['#e94560','#c73652'],
       ocean:['#0077b6','#005f8e'],
@@ -42,7 +42,7 @@
     root.style.setProperty('--pal-dark',pal[1]);
     /* INPUT: localStorage hsk_prefs (JSON) — builds CSS string for font/size overrides */
     var prefs={};
-    try{prefs=JSON.parse(localStorage.getItem('hsk_prefs')||'{}');}catch(e){}
+    try{prefs=JSON.parse(localStorage.getItem(window.HSK_LS.P)||'{}');}catch(e){}
     var css='';
     if(prefs.fz)css+='.zh{font-family:'+prefs.fz+',sans-serif!important}';
     if(prefs.sz)css+='.zh{font-size:'+prefs.sz+'px!important}';

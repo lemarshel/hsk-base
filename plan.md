@@ -415,3 +415,35 @@ After the core system is stable, the next stage includes broader improvements su
 - expanding interface languages
 - improving personalization and style selection
 - extending the same method across more languages
+
+---
+
+## Cross-Device State Strategy (Pre-Mobile)
+
+**Decision:** Start with **Path A (manual export/import)** for the first mobile release. Plan a clean upgrade to **Path B (lightweight cloud sync)** once real users justify it. Avoid CRDTs (Path C) for the initial phase.
+
+### State File (v1)
+Single JSON file: `hsk_state_v1.json`
+
+**Contents:**
+- learned list
+- familiar list
+- preferences (theme, palette, language, speed, volume, column visibility, snapshots, row order)
+- tracker event log
+- schema version + export timestamp
+
+### Tracker Event Schema (v1)
+Each event:
+```
+{
+  "ts": 1711234567890,
+  "type": "word_hover|word_check|search|session_start|session_end|stroke_play|story_open",
+  "word": "任何",
+  "topic": "12",
+  "meta": { "source": "vocab", "lang": "ru" }
+}
+```
+
+### Upgrade Path (v2)
+- Keep the **same JSON schema** for Path B cloud sync.
+- Add optional account/login later; no schema redesign required.

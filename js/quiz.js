@@ -238,6 +238,31 @@
     showQuestion(0);
   }
 
+  function openWithList(wordList){
+    var rows = getRows();
+    if(Array.isArray(wordList) && wordList.length){
+      var set = {};
+      wordList.forEach(function(w){
+        if(w == null) return;
+        if(w && typeof w.getAttribute === 'function'){
+          var k = w.getAttribute('data-key') || '';
+          if(k) set[k] = true;
+        } else {
+          set[String(w)] = true;
+        }
+      });
+      rows = rows.filter(function(tr){
+        var key = tr.getAttribute('data-key') || '';
+        return !!set[key];
+      });
+    }
+    deck = shuffle(rows.slice());
+    qPos = 0; score = 0;
+    if(!deck.length){ alert('No words to quiz!'); return; }
+    overlay.style.display='flex';
+    showQuestion(0);
+  }
+
   function close(){
     overlay.style.display='none';
     if(window.speechSynthesis) speechSynthesis.cancel();
@@ -263,5 +288,12 @@
       if(btns[idx]&&!answered) btns[idx].click();
     }
   });
+
+  /* ── Register quiz launcher via shared API ── */
+  if(window._hsk && window._hsk._register){
+    window._hsk._register('quiz', {
+      startQuiz: openWithList
+    });
+  }
 })();
 })();

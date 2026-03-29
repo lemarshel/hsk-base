@@ -62,25 +62,66 @@ function _progressBar(){
   };
 }
 
+/* ── Shared export API ───────────────────────────────────────────── */
+function exportWords(format, filterFn){
+  var prog = _progressBar();
+  prog.set(50);
+  var today = new Date().toISOString().slice(0,10);
+  var filter = (typeof filterFn === 'function') ? filterFn : _rowVisible;
+
+  if(format === 'json' || format === 'anki'){
+    var words = [];
+    document.querySelectorAll('tr[data-key]').forEach(function(tr){
+      if(!filter(tr)) return;
+      words.push(_rowData(tr));
+    });
+    var blob = new Blob([JSON.stringify(words, null, 2)], {type:'application/json;charset=utf-8'});
+    var url  = URL.createObjectURL(blob);
+    var a    = document.createElement('a');
+    a.href = url; a.download = 'HSK_words_' + today + '.json'; a.click();
+    URL.revokeObjectURL(url);
+    prog.finish();
+    return;
+  }
+
+  var header = ['Word','Pinyin','English','Russian',
+                'Example ZH','Example Pinyin','Example EN','Example RU',
+                'POS','HSK','Component','Phonetic Group'];
+  var rows = [header];
+  document.querySelectorAll('tr[data-key]').forEach(function(tr){
+    if(!filter(tr)) return;
+    var d = _rowData(tr);
+    rows.push([d.word, d.pinyin, d.en, d.ru,
+               d.example_zh, d.example_pinyin, d.example_en, d.example_ru,
+               d.pos.replace('pos_',''), d.hsk, d.component, d.phonetic_group]);
+  });
+
+  var wantCsv = (format === 'csv');
+  if(!wantCsv && typeof XLSX !== 'undefined'){
+    var ws = XLSX.utils.aoa_to_sheet(rows);
+    var wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'HSK Dictionary');
+    XLSX.writeFile(wb, 'HSK_Dictionary_' + today + '.xlsx');
+  } else {
+    var csv = rows.map(function(r){
+      return r.map(function(c){ return '"' + String(c).replace(/"/g,'""') + '"'; }).join(',');
+    }).join('
+');
+    var a = document.createElement('a');
+    a.href = 'data:text/csv;charset=utf-8,﻿' + encodeURIComponent(csv);
+    a.download = 'HSK_Dictionary_' + today + '.csv';
+    a.click();
+  }
+  prog.finish();
+}
+
 /* ── Excel Export (SheetJS / CSV fallback) ────────────────────── */
 (function(){
   var btn = document.getElementById('btn-export-csv');
   if(!btn) return;
   btn.addEventListener('click', function(){
-    var prog = _progressBar();
-    prog.set(50);
-    var today = new Date().toISOString().slice(0,10);
-    var header = ['Word','Pinyin','English','Russian',
-                  'Example ZH','Example Pinyin','Example EN','Example RU',
-                  'POS','HSK','Component','Phonetic Group'];
-    var rows = [header];
-    document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(!_rowVisible(tr)) return;
-      var d = _rowData(tr);
-      rows.push([d.word, d.pinyin, d.en, d.ru,
-                 d.example_zh, d.example_pinyin, d.example_en, d.example_ru,
-                 d.pos.replace('pos_',''), d.hsk, d.component, d.phonetic_group]);
-    });
+    exportWords('xlsx');
+  });
     if(typeof XLSX !== 'undefined'){
       var ws = XLSX.utils.aoa_to_sheet(rows);
       var wb = XLSX.utils.book_new();
@@ -104,14 +145,8 @@ function _progressBar(){
   var btn = document.getElementById('btn-export-anki');
   if(!btn) return;
   btn.addEventListener('click', function(){
-    var prog = _progressBar();
-    prog.set(50);
-    var today = new Date().toISOString().slice(0,10);
-    var words = [];
-    document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(!_rowVisible(tr)) return;
-      words.push(_rowData(tr));
-    });
+    exportWords('json');
+  });
     var blob = new Blob([JSON.stringify(words, null, 2)], {type:'application/json;charset=utf-8'});
     var url  = URL.createObjectURL(blob);
     var a    = document.createElement('a');
@@ -119,5 +154,13 @@ function _progressBar(){
     URL.revokeObjectURL(url);
     prog.finish();
   });
+
+
+/* ── Register export launcher via shared API ── */
+if(window._hsk && window._hsk._register){
+  window._hsk._register('export', {
+    exportWords: exportWords
+  });
+}
 })();
 })();

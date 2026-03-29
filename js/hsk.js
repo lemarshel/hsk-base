@@ -10,7 +10,7 @@
 
    GLOBAL SIDE EFFECTS:
      window._cdxOrigOrder  — written unconditionally before sort.js reads it
-     window._cdxSortables  — written in the 800 ms Sortable-patch setTimeout
+     window._cdxSortables  — written during Sortable init after words-rendered
 
    INPUT:  window.HSK_LS (app-config.js); rendered DOM word rows;
            localStorage for learn/fam state and row order
@@ -31,6 +31,7 @@
    - Keeps UI state in localStorage
    ========================================================================== */
 "use strict";
+function initHsk(){
 var LS=window.HSK_LS; // storage keys — defined in js/app-config.js
 var lT=document.getElementById('learned-tbody'),lS=document.getElementById('learned-section');
 var fT=document.getElementById('fam-tbody'),fS=document.getElementById('fam-section');
@@ -106,14 +107,12 @@ function save(){
            allow CSS transitions after initial paint; removes #preload-font style tag
    OUTPUT: body.preload and documentElement.preload removed; #preload-font removed
    ────────────────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
-  setTimeout(function(){
-    if(document.body){ document.body.classList.remove('preload'); }
-    document.documentElement.classList.remove('preload');
-    var pf = document.getElementById('preload-font');
-    if(pf && pf.parentNode) pf.parentNode.removeChild(pf);
-  }, 0);
-});
+setTimeout(function(){
+  if(document.body){ document.body.classList.remove('preload'); }
+  document.documentElement.classList.remove('preload');
+  var pf = document.getElementById('preload-font');
+  if(pf && pf.parentNode) pf.parentNode.removeChild(pf);
+}, 0);
 
 /* ===== Checkbox delegation (learned/familiar) ===== */
 /* ── Checkbox delegation — learned / familiar ─────────────────────────────────
@@ -155,19 +154,17 @@ document.body.addEventListener('change',function(e){
            then calls updateHSKStats() for initial bar render
    OUTPUT: .hsk-badge span appended to each word cell; stats bar rendered
    ────────────────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
-    var lvl = tr.getAttribute('data-hsk');
-    if(!lvl) return;
-    var wc = tr.querySelector('.wordcell, td[data-col="word"]');
-    if(!wc) return;
-    var badge = document.createElement('span');
-    badge.className = 'hsk-badge hsk-'+lvl;
-    badge.textContent = lvl;
-    wc.appendChild(badge);
-  });
-  updateHSKStats();
+document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
+  var lvl = tr.getAttribute('data-hsk');
+  if(!lvl) return;
+  var wc = tr.querySelector('.wordcell, td[data-col="word"]');
+  if(!wc) return;
+  var badge = document.createElement('span');
+  badge.className = 'hsk-badge hsk-'+lvl;
+  badge.textContent = lvl;
+  wc.appendChild(badge);
 });
+updateHSKStats();
 function updateHSKStats(){
 /* ── updateHSKStats — HSK progress bar ────────────────────────────────────────
    INPUT:  all tbody rows; data-hsk attribute; .learn-cb:checked state
@@ -229,7 +226,6 @@ window._hsk._register('hsk', {
   renum:          renum,
   updateHSKStats: updateHSKStats
 });
-})();
 
 
 /* ── Capture original row order BEFORE drag-restore runs ────────────── */
@@ -240,7 +236,7 @@ window._hsk._register('hsk', {
    OUTPUT: window._cdxOrigOrder object {tbodyId: [hanziStrings]}
    ────────────────────────────────────────────────────────────────────────────── */
 window._cdxOrigOrder = {};
-(function(){
+
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
     var ids = [];
     for(var i=0;i<tb.rows.length;i++){
@@ -248,15 +244,12 @@ window._cdxOrigOrder = {};
     }
     if(ids.length) window._cdxOrigOrder[tb.id] = ids;
   });
-})();
 
 
 /* ══════════════════════════════════════════════════════════════
    CODEX ADDITIONS  –  EN_DICT, lang switch, palette, snapshots,
                        sort, filtered search, drag integration
    ══════════════════════════════════════════════════════════════ */
-(function(){
-"use strict";
 
 /* ── Populate data-en on page load ──────────────────────────────────────── */
 /* ── Populate data-en on page load ────────────────────────────────────────────
@@ -265,15 +258,13 @@ window._cdxOrigOrder = {};
            data-en attribute so sort/export can access it without querying the DOM
    OUTPUT: data-en attribute on every tbody tr
    ────────────────────────────────────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('[data-key]').forEach(function(tr){
-    var key = tr.getAttribute('data-key');
-    // Priority: data-en from words.xlsx → EN_DICT fallback → empty
-    var en = tr.getAttribute('data-en') || window.EN_DICT[key] || '';
-    tr.setAttribute('data-en', en);
-    var enSpan = tr.querySelector('.trans-en');
-    if(enSpan) enSpan.textContent = en;
-  });
+document.querySelectorAll('[data-key]').forEach(function(tr){
+  var key = tr.getAttribute('data-key');
+  // Priority: data-en from words.xlsx → EN_DICT fallback → empty
+  var en = tr.getAttribute('data-en') || window.EN_DICT[key] || '';
+  tr.setAttribute('data-en', en);
+  var enSpan = tr.querySelector('.trans-en');
+  if(enSpan) enSpan.textContent = en;
 });
 
 /* ── Snapshots, reset → js/storage.js ───────────────────────────────────── */
@@ -307,11 +298,8 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
            on drag-end persists new order to localStorage and renumbers rows
    OUTPUT: DOM row order; localStorage hsk_row_order; window._cdxSortables array
    ────────────────────────────────────────────────────────────────────────────── */
-// Wait for the drag script to run, then patch
-setTimeout(function(){
-  // Re-init sortables with new options (animation:80, ghostClass)
+function initSortables(){
   if(typeof Sortable === 'undefined') return;
-  // Restore saved drag order before creating Sortables
   function loadOrder(){
     var order={};
     try{ order=JSON.parse(localStorage.getItem(window.HSK_LS.R)||'{}'); }catch(e){}
@@ -328,7 +316,6 @@ setTimeout(function(){
   loadOrder();
   window._cdxSortables = [];
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
-    // Try to get existing sortable and destroy it
     var existing = Sortable.get ? Sortable.get(tb) : null;
     if(existing) try{ existing.destroy(); }catch(e){}
     var s = Sortable.create(tb, {
@@ -341,7 +328,6 @@ setTimeout(function(){
         for(var i=0;i<tb.rows.length;i++){
           var c=tb.rows[i].querySelector('.rownum'); if(c) c.textContent=i+1;
         }
-        // save order
         var order={};
         document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(t){
           var ids=[];
@@ -356,10 +342,23 @@ setTimeout(function(){
     window._cdxSortables.push(s);
   });
   if(window._hsk.updateDragState) window._hsk.updateDragState();
-}, 800);
+}
+
+if(window.onHskWordsRendered){
+  window.onHskWordsRendered(initSortables);
+} else {
+  document.addEventListener('words-rendered', initSortables, { once: true });
+}
 
 /* ── Register confirm via shared API ── */
 window._hsk._register('hsk', {
   confirm: cdxConfirm
 });
+}
+
+if (window.onHskWordsReady) {
+  window.onHskWordsReady(initHsk);
+} else {
+  document.addEventListener('hsk:words-ready', initHsk, { once: true });
+}
 })();
