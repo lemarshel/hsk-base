@@ -1,0 +1,13 @@
+{
+  "audit_id": "003",
+  "name": "Radical Verification",
+  "phase": "Phase 1",
+  "date": "2026-03-22",
+  "summary": {
+    "words_with_radical": 3966,
+    "coverage_pct": 92.3,
+    "unique_radicals": 155,
+    "remaining_empty": 359,
+    "note": "359 empty are rare characters not in standard radical lookup"
+  }
+}

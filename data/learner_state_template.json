@@ -1,0 +1,89 @@
+{
+  "_comment": "Template for learner state structure. tracker.js writes to localStorage under key 'hsk_tracker_v1'. This file documents the schema.",
+
+  "learner_id": "uuid-v4-string",
+  "created": "ISO-8601 timestamp of first session",
+  "session_count": 0,
+
+  "events": [
+    {
+      "_comment": "word_checked — fired when learner marks a word as learned or familiar",
+      "event": "word_checked",
+      "word": "学习",
+      "hsk_level": 2,
+      "checkbox_type": "learned",
+      "checked": true,
+      "ts": 1742640000000,
+      "session": "a1b2c3d4"
+    },
+    {
+      "_comment": "word_hover — fired when learner hovers a word row for 400ms–90s",
+      "event": "word_hover",
+      "word": "朋友",
+      "hsk_level": 2,
+      "duration_ms": 2400,
+      "ts": 1742640001000,
+      "session": "a1b2c3d4"
+    },
+    {
+      "_comment": "search_query — fired 600ms after the learner stops typing in the search box",
+      "event": "search_query",
+      "query": "学",
+      "results_visible": 47,
+      "ts": 1742640002000,
+      "session": "a1b2c3d4"
+    },
+    {
+      "_comment": "stroke_play — fired when learner plays a Hanzi stroke animation",
+      "event": "stroke_play",
+      "word": "爱",
+      "hsk_level": 1,
+      "ts": 1742640003000,
+      "session": "a1b2c3d4"
+    },
+    {
+      "_comment": "session_start — fired once per page load",
+      "event": "session_start",
+      "page": "vocabulary.html",
+      "referrer": "",
+      "ts": 1742640000000,
+      "session": "a1b2c3d4"
+    },
+    {
+      "_comment": "session_end — fired on page unload",
+      "event": "session_end",
+      "duration_ms": 1800000,
+      "learned_count": 42,
+      "familiar_count": 8,
+      "ts": 1742641800000,
+      "session": "a1b2c3d4"
+    }
+  ],
+
+  "_export_format": {
+    "_comment": "This is the structure written to disk when HSKTracker.export() is called",
+    "learner_id": "uuid-v4-string",
+    "export_date": "2026-03-22",
+    "session_count": 7,
+    "summary": {
+      "learner_id": "uuid-v4-string",
+      "session_count": 7,
+      "total_events": 1243,
+      "words_learned": 152,
+      "words_familiar": 34,
+      "words_hovered": 289,
+      "searches": 41,
+      "created": "2026-03-15T10:00:00.000Z",
+      "latest_event": "2026-03-22T18:30:00.000Z"
+    },
+    "events": ["...all event objects..."]
+  },
+
+  "_ml_notes": {
+    "minimum_events_for_knowledge_tracing": 500,
+    "minimum_events_for_sequencer": 2000,
+    "training_data_folder": "ml/training_data/",
+    "export_files_naming": "hsk_events_YYYY-MM-DD.json",
+    "word_identifier": "chinese character string (e.g. '学习') — maps to phase1_morpheme_data.json via 'chinese' field"
+  }
+}

@@ -1,0 +1,5326 @@
+{
+  "total_missing": 759,
+  "by_level": {
+    "hsk1": 494,
+    "hsk2": 140,
+    "hsk3": 58,
+    "hsk4": 39,
+    "hsk5": 19,
+    "hsk6": 9
+  },
+  "words": [
+    {
+      "number": 1,
+      "chinese": "爱",
+      "pinyin": "ài love",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 2,
+      "chinese": "爱好",
+      "pinyin": "ài hào hobby",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 3,
+      "chinese": "八",
+      "pinyin": "bā eight",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 4,
+      "chinese": "爸爸",
+      "pinyin": "bàba bà dad",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 5,
+      "chinese": "吧",
+      "pinyin": "ba",
+      "english": "(interjection particle)",
+      "hsk_level": 1
+    },
+    {
+      "number": 6,
+      "chinese": "白",
+      "pinyin": "bái white",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 7,
+      "chinese": "白天",
+      "pinyin": "bái tiān day",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 8,
+      "chinese": "百",
+      "pinyin": "bǎi hundred",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 9,
+      "chinese": "班",
+      "pinyin": "bān class",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 10,
+      "chinese": "半",
+      "pinyin": "bàn half",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 11,
+      "chinese": "半年",
+      "pinyin": "bàn nián half a year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 12,
+      "chinese": "半天",
+      "pinyin": "bàn tiān half day",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 13,
+      "chinese": "帮",
+      "pinyin": "bāng help",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 14,
+      "chinese": "帮忙",
+      "pinyin": "bāng máng help",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 15,
+      "chinese": "包",
+      "pinyin": "bāo package",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 16,
+      "chinese": "包子",
+      "pinyin": "bāo zi bun",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 17,
+      "chinese": "杯",
+      "pinyin": "bēi cup",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 18,
+      "chinese": "杯子",
+      "pinyin": "bēi zi cup",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 19,
+      "chinese": "北",
+      "pinyin": "běi north",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 20,
+      "chinese": "北边",
+      "pinyin": "běi biān North side",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 21,
+      "chinese": "北京",
+      "pinyin": "běi jīng Beijing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 22,
+      "chinese": "本",
+      "pinyin": "běn",
+      "english": "(measure word for books or volumes)",
+      "hsk_level": 1
+    },
+    {
+      "number": 23,
+      "chinese": "本子",
+      "pinyin": "běn zi book",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 24,
+      "chinese": "比",
+      "pinyin": "bǐ particle used for comparison",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 25,
+      "chinese": "别",
+      "pinyin": "bié",
+      "english": "Don't",
+      "hsk_level": 1
+    },
+    {
+      "number": 26,
+      "chinese": "别的",
+      "pinyin": "bié de other",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 27,
+      "chinese": "别人",
+      "pinyin": "bié·rén other people",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 28,
+      "chinese": "病",
+      "pinyin": "bìng disease",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 29,
+      "chinese": "病人",
+      "pinyin": "bìng rén patient",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 30,
+      "chinese": "不大",
+      "pinyin": "bú dà not big",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 31,
+      "chinese": "不对",
+      "pinyin": "bú duì wrong",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 32,
+      "chinese": "不客气",
+      "pinyin": "bú kè qì",
+      "english": "You're welcome",
+      "hsk_level": 1
+    },
+    {
+      "number": 33,
+      "chinese": "不用",
+      "pinyin": "bú yòng No need to",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 34,
+      "chinese": "不",
+      "pinyin": "bù No",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 35,
+      "chinese": "菜",
+      "pinyin": "cài dish",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 36,
+      "chinese": "茶",
+      "pinyin": "chá tea",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 37,
+      "chinese": "差",
+      "pinyin": "chà differ",
+      "english": "from; bad; short of",
+      "hsk_level": 1
+    },
+    {
+      "number": 38,
+      "chinese": "常",
+      "pinyin": "cháng often",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 39,
+      "chinese": "常常",
+      "pinyin": "cháng cháng often",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 40,
+      "chinese": "唱",
+      "pinyin": "chàng sing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 41,
+      "chinese": "唱歌",
+      "pinyin": "chàng gē sing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 42,
+      "chinese": "车",
+      "pinyin": "chē car",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 43,
+      "chinese": "车票",
+      "pinyin": "chē piào ticket",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 44,
+      "chinese": "车上",
+      "pinyin": "chē shàng in the car",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 45,
+      "chinese": "车站",
+      "pinyin": "chē zhàn station",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 46,
+      "chinese": "吃",
+      "pinyin": "chī eat",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 47,
+      "chinese": "吃饭",
+      "pinyin": "chī fàn have meal",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 48,
+      "chinese": "出",
+      "pinyin": "chū out",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 49,
+      "chinese": "出来",
+      "pinyin": "chū lái come",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 50,
+      "chinese": "出去",
+      "pinyin": "chū qù go out",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 51,
+      "chinese": "穿",
+      "pinyin": "chuān wear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 52,
+      "chinese": "床",
+      "pinyin": "chuáng bed",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 53,
+      "chinese": "次",
+      "pinyin": "cì",
+      "english": "(measure word for times, frequency)",
+      "hsk_level": 1
+    },
+    {
+      "number": 54,
+      "chinese": "从",
+      "pinyin": "cóng from",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 55,
+      "chinese": "错",
+      "pinyin": "cuò wrong",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 57,
+      "chinese": "打车",
+      "pinyin": "dǎ chē take a taxi",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 58,
+      "chinese": "打电话",
+      "pinyin": "dǎ diàn huà make a phonecall",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 59,
+      "chinese": "打开",
+      "pinyin": "dǎ kāi turn on",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 60,
+      "chinese": "打球",
+      "pinyin": "dǎ qiú play ball",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 61,
+      "chinese": "大",
+      "pinyin": "dà",
+      "english": "large, big",
+      "hsk_level": 1
+    },
+    {
+      "number": 62,
+      "chinese": "大学",
+      "pinyin": "dà xué university",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 63,
+      "chinese": "大学生",
+      "pinyin": "dà xué shēng university student",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 64,
+      "chinese": "到",
+      "pinyin": "dào reach",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 65,
+      "chinese": "得到",
+      "pinyin": "dé dào get",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 66,
+      "chinese": "地",
+      "pinyin": "de auxiliary word",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 67,
+      "chinese": "的",
+      "pinyin": "de",
+      "english": "(aux.)",
+      "hsk_level": 1
+    },
+    {
+      "number": 68,
+      "chinese": "等",
+      "pinyin": "děng wait",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 70,
+      "chinese": "地点",
+      "pinyin": "dìdiǎn location",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 71,
+      "chinese": "地方",
+      "pinyin": "dìfang local",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 72,
+      "chinese": "地上",
+      "pinyin": "dì shàng on the ground",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 73,
+      "chinese": "地图",
+      "pinyin": "dìtú Map",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 74,
+      "chinese": "弟弟",
+      "pinyin": "dì di dì younger brother",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 75,
+      "chinese": "第",
+      "pinyin": "dì",
+      "english": "（ dì èr ） auxiliary word for ordinal numbers (second )",
+      "hsk_level": 1
+    },
+    {
+      "number": 76,
+      "chinese": "点",
+      "pinyin": "diǎn spot",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 77,
+      "chinese": "电",
+      "pinyin": "diàn electricity",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 78,
+      "chinese": "电话",
+      "pinyin": "diàn huà phone",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 79,
+      "chinese": "电脑",
+      "pinyin": "diànnǎo Computer",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 80,
+      "chinese": "电视",
+      "pinyin": "diànshì television",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 81,
+      "chinese": "电视机",
+      "pinyin": "diàn shì jī television",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 82,
+      "chinese": "电影",
+      "pinyin": "diànyǐng Film",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 83,
+      "chinese": "电影院",
+      "pinyin": "diàn yǐng",
+      "english": "cinema; movie theater yuàn",
+      "hsk_level": 1
+    },
+    {
+      "number": 84,
+      "chinese": "东",
+      "pinyin": "dōng east",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 85,
+      "chinese": "东边",
+      "pinyin": "dōng biān east side",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 86,
+      "chinese": "东西",
+      "pinyin": "dōngxi thing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 87,
+      "chinese": "动",
+      "pinyin": "dòng move",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 88,
+      "chinese": "动作",
+      "pinyin": "dòngzuò action",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 89,
+      "chinese": "都",
+      "pinyin": "dōu all",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 90,
+      "chinese": "读",
+      "pinyin": "dú read",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 91,
+      "chinese": "读书",
+      "pinyin": "dú shū",
+      "english": "reading; study",
+      "hsk_level": 1
+    },
+    {
+      "number": 92,
+      "chinese": "对",
+      "pinyin": "duì right",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 93,
+      "chinese": "对不起",
+      "pinyin": "duìbuqǐ",
+      "english": "I'm sorry.",
+      "hsk_level": 1
+    },
+    {
+      "number": 94,
+      "chinese": "多",
+      "pinyin": "duō",
+      "english": "many; much; more",
+      "hsk_level": 1
+    },
+    {
+      "number": 95,
+      "chinese": "多少",
+      "pinyin": "duōshao how much",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 96,
+      "chinese": "饿",
+      "pinyin": "è hungry",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 97,
+      "chinese": "儿子",
+      "pinyin": "érzi Son",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 98,
+      "chinese": "二",
+      "pinyin": "èr Two",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 99,
+      "chinese": "饭",
+      "pinyin": "fàn",
+      "english": "rice; meal",
+      "hsk_level": 1
+    },
+    {
+      "number": 100,
+      "chinese": "饭店",
+      "pinyin": "fàndiàn restaurant",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 101,
+      "chinese": "房间",
+      "pinyin": "fángjiān Room",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 102,
+      "chinese": "房子",
+      "pinyin": "fáng zi",
+      "english": "house; building",
+      "hsk_level": 1
+    },
+    {
+      "number": 103,
+      "chinese": "放",
+      "pinyin": "fàng discharge",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 104,
+      "chinese": "放假",
+      "pinyin": "fàng jià",
+      "english": "holiday; have a holiday",
+      "hsk_level": 1
+    },
+    {
+      "number": 105,
+      "chinese": "放学",
+      "pinyin": "fàng xué off school",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 106,
+      "chinese": "飞",
+      "pinyin": "fēi fly",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 107,
+      "chinese": "飞机",
+      "pinyin": "fēijī aircraft",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 108,
+      "chinese": "非常",
+      "pinyin": "fēicháng very",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 109,
+      "chinese": "分",
+      "pinyin": "fēn",
+      "english": "minute; point; part; (measure word)",
+      "hsk_level": 1
+    },
+    {
+      "number": 110,
+      "chinese": "风",
+      "pinyin": "fēng wind",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 111,
+      "chinese": "干",
+      "pinyin": "gān dry",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 112,
+      "chinese": "干净",
+      "pinyin": "gānjìng clean",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 114,
+      "chinese": "干什么",
+      "pinyin": "gàn shén me What to do",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 115,
+      "chinese": "高",
+      "pinyin": "gāo high",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 116,
+      "chinese": "高兴",
+      "pinyin": "gāoxìng happy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 117,
+      "chinese": "告诉",
+      "pinyin": "gàosu tell",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 118,
+      "chinese": "哥哥",
+      "pinyin": "gē ge gē elder brother",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 119,
+      "chinese": "歌",
+      "pinyin": "gē song",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 120,
+      "chinese": "个",
+      "pinyin": "gè individual",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 121,
+      "chinese": "给",
+      "pinyin": "gěi give",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 122,
+      "chinese": "跟",
+      "pinyin": "gēn with",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 123,
+      "chinese": "工人",
+      "pinyin": "gōngrén Worker",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 124,
+      "chinese": "工作",
+      "pinyin": "gōngzuò work",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 125,
+      "chinese": "关",
+      "pinyin": "guān",
+      "english": "shut; close; turn off",
+      "hsk_level": 1
+    },
+    {
+      "number": 126,
+      "chinese": "关上",
+      "pinyin": "guān shàng",
+      "english": "close;shut to; turn off",
+      "hsk_level": 1
+    },
+    {
+      "number": 127,
+      "chinese": "贵",
+      "pinyin": "guì noble",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 128,
+      "chinese": "国",
+      "pinyin": "guó",
+      "english": "country; state; nation",
+      "hsk_level": 1
+    },
+    {
+      "number": 129,
+      "chinese": "国家",
+      "pinyin": "guójiā Country",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 130,
+      "chinese": "国外",
+      "pinyin": "guó wài",
+      "english": "foreign; oversea; abroad",
+      "hsk_level": 1
+    },
+    {
+      "number": 131,
+      "chinese": "过",
+      "pinyin": "guò pass",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 132,
+      "chinese": "还",
+      "pinyin": "hái",
+      "english": "also; still; yet",
+      "hsk_level": 1
+    },
+    {
+      "number": 133,
+      "chinese": "还是",
+      "pinyin": "háishi still",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 134,
+      "chinese": "还有",
+      "pinyin": "hái yǒu",
+      "english": "also; in addition; besides",
+      "hsk_level": 1
+    },
+    {
+      "number": 135,
+      "chinese": "孩子",
+      "pinyin": "háizi Children",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 136,
+      "chinese": "汉语",
+      "pinyin": "hànyǔ Chinese",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 137,
+      "chinese": "汉字",
+      "pinyin": "hàn zì Chinese character",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 138,
+      "chinese": "好",
+      "pinyin": "hǎo good",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 139,
+      "chinese": "好吃",
+      "pinyin": "hǎochī Yummy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 140,
+      "chinese": "好看",
+      "pinyin": "hǎo kàn good looking",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 141,
+      "chinese": "好听",
+      "pinyin": "hǎo tīng pleasant to hear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 142,
+      "chinese": "好玩儿",
+      "pinyin": "hǎo wánr",
+      "english": "fun; interesting",
+      "hsk_level": 1
+    },
+    {
+      "number": 143,
+      "chinese": "号",
+      "pinyin": "hào",
+      "english": "Number/date",
+      "hsk_level": 1
+    },
+    {
+      "number": 144,
+      "chinese": "喝",
+      "pinyin": "hē drink",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 145,
+      "chinese": "和",
+      "pinyin": "hé and",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 146,
+      "chinese": "很",
+      "pinyin": "hěn very",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 147,
+      "chinese": "后",
+      "pinyin": "hòu",
+      "english": "back; behind; after; later",
+      "hsk_level": 1
+    },
+    {
+      "number": 148,
+      "chinese": "后边",
+      "pinyin": "hòu biān",
+      "english": "behind; back",
+      "hsk_level": 1
+    },
+    {
+      "number": 149,
+      "chinese": "后天",
+      "pinyin": "hòu tiān day after tomorrow",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 150,
+      "chinese": "花",
+      "pinyin": "huā flower",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 151,
+      "chinese": "话",
+      "pinyin": "huà",
+      "english": "word; words",
+      "hsk_level": 1
+    },
+    {
+      "number": 152,
+      "chinese": "坏",
+      "pinyin": "huài bad",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 154,
+      "chinese": "回",
+      "pinyin": "huí go",
+      "english": "back; return",
+      "hsk_level": 1
+    },
+    {
+      "number": 155,
+      "chinese": "回答",
+      "pinyin": "huídá Answer",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 156,
+      "chinese": "回到",
+      "pinyin": "huí dào back to",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 157,
+      "chinese": "回家",
+      "pinyin": "huí jiā go",
+      "english": "home; return home",
+      "hsk_level": 1
+    },
+    {
+      "number": 158,
+      "chinese": "回来",
+      "pinyin": "huí lái come",
+      "english": "back; return",
+      "hsk_level": 1
+    },
+    {
+      "number": 159,
+      "chinese": "回去",
+      "pinyin": "huí qù go back",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 160,
+      "chinese": "会",
+      "pinyin": "huì",
+      "english": "can; be able to",
+      "hsk_level": 1
+    },
+    {
+      "number": 161,
+      "chinese": "火车",
+      "pinyin": "huǒ chē train",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 162,
+      "chinese": "机场",
+      "pinyin": "jīchǎng Airport",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 163,
+      "chinese": "机票",
+      "pinyin": "jī piào air ticket",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 164,
+      "chinese": "鸡蛋",
+      "pinyin": "jīdàn Egg",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 165,
+      "chinese": "几",
+      "pinyin": "jǐ several",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 166,
+      "chinese": "记",
+      "pinyin": "jì remember",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 167,
+      "chinese": "记得",
+      "pinyin": "jìdé remember",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 168,
+      "chinese": "记住",
+      "pinyin": "jì zhù",
+      "english": "remember; keep in mind",
+      "hsk_level": 1
+    },
+    {
+      "number": 169,
+      "chinese": "家",
+      "pinyin": "jiā home",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 170,
+      "chinese": "家里",
+      "pinyin": "jiā lǐ In the home",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 171,
+      "chinese": "家人",
+      "pinyin": "jiā rén family",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 172,
+      "chinese": "间",
+      "pinyin": "jiān",
+      "english": "between; measure word for rooms",
+      "hsk_level": 1
+    },
+    {
+      "number": 173,
+      "chinese": "见",
+      "pinyin": "jiàn",
+      "english": "see; meet",
+      "hsk_level": 1
+    },
+    {
+      "number": 174,
+      "chinese": "见面",
+      "pinyin": "jiànmiàn meet",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 175,
+      "chinese": "教",
+      "pinyin": "jiāo teach",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 176,
+      "chinese": "叫",
+      "pinyin": "jiào",
+      "english": "call; be called",
+      "hsk_level": 1
+    },
+    {
+      "number": 177,
+      "chinese": "教学楼",
+      "pinyin": "jiào xué lóu teaching building",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 178,
+      "chinese": "姐姐",
+      "pinyin": "jiě jie jiě elder sister",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 179,
+      "chinese": "介绍",
+      "pinyin": "jièshào introduce",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 180,
+      "chinese": "今年",
+      "pinyin": "jīn nián this year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 181,
+      "chinese": "今天",
+      "pinyin": "jīntiān Today",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 182,
+      "chinese": "进",
+      "pinyin": "jìn enter",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 183,
+      "chinese": "进来",
+      "pinyin": "jìn lái come in",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 184,
+      "chinese": "进去",
+      "pinyin": "jìn qù go in",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 185,
+      "chinese": "九",
+      "pinyin": "jiǔ Nine",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 186,
+      "chinese": "就",
+      "pinyin": "jiù as soon",
+      "english": "as; right away; then",
+      "hsk_level": 1
+    },
+    {
+      "number": 187,
+      "chinese": "觉得",
+      "pinyin": "juéde Think",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 188,
+      "chinese": "开",
+      "pinyin": "kāi open",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 189,
+      "chinese": "开车",
+      "pinyin": "kāi chē",
+      "english": "drive; drive a car",
+      "hsk_level": 1
+    },
+    {
+      "number": 190,
+      "chinese": "开会",
+      "pinyin": "kāi huì have a meeting",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 191,
+      "chinese": "开玩笑",
+      "pinyin": "kāiwánxiào Make fun of",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 193,
+      "chinese": "看病",
+      "pinyin": "kàn bìng see a doctor",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 194,
+      "chinese": "看到",
+      "pinyin": "kàn dào see",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 195,
+      "chinese": "看见",
+      "pinyin": "kànjiàn seeing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 196,
+      "chinese": "考",
+      "pinyin": "kǎo",
+      "english": "test; examine",
+      "hsk_level": 1
+    },
+    {
+      "number": 197,
+      "chinese": "考试",
+      "pinyin": "kǎoshì Examination",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 198,
+      "chinese": "渴",
+      "pinyin": "kě thirsty",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 199,
+      "chinese": "课",
+      "pinyin": "kè course",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 200,
+      "chinese": "课本",
+      "pinyin": "kè běn textbook",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 201,
+      "chinese": "课文",
+      "pinyin": "kè wén text",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 202,
+      "chinese": "口",
+      "pinyin": "kǒu mouth",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 203,
+      "chinese": "块",
+      "pinyin": "kuài block",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 204,
+      "chinese": "快",
+      "pinyin": "kuài fast",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 205,
+      "chinese": "来",
+      "pinyin": "lái come",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 206,
+      "chinese": "来到",
+      "pinyin": "lái dào",
+      "english": "come; arrive",
+      "hsk_level": 1
+    },
+    {
+      "number": 207,
+      "chinese": "老",
+      "pinyin": "lǎo",
+      "english": "old; aged",
+      "hsk_level": 1
+    },
+    {
+      "number": 208,
+      "chinese": "老人",
+      "pinyin": "lǎo rén old",
+      "english": "people; the aged",
+      "hsk_level": 1
+    },
+    {
+      "number": 209,
+      "chinese": "老师",
+      "pinyin": "lǎoshī Teacher",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 210,
+      "chinese": "了",
+      "pinyin": "le past tense marker",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 211,
+      "chinese": "累",
+      "pinyin": "lèi tired",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 212,
+      "chinese": "冷",
+      "pinyin": "lěng cold",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 213,
+      "chinese": "里",
+      "pinyin": "lǐ in",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 214,
+      "chinese": "里边",
+      "pinyin": "lǐ biān inside",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 215,
+      "chinese": "两",
+      "pinyin": "liǎng two",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 216,
+      "chinese": "零",
+      "pinyin": "líng líng zero",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 217,
+      "chinese": "六",
+      "pinyin": "liù Six",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 218,
+      "chinese": "楼",
+      "pinyin": "lóu floor",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 219,
+      "chinese": "楼上",
+      "pinyin": "lóu shàng upstairs",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 220,
+      "chinese": "楼下",
+      "pinyin": "lóu xià downstairs",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 221,
+      "chinese": "路",
+      "pinyin": "lù road",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 222,
+      "chinese": "路口",
+      "pinyin": "lù kǒu",
+      "english": "intersection; crossing",
+      "hsk_level": 1
+    },
+    {
+      "number": 223,
+      "chinese": "路上",
+      "pinyin": "lù shàng on the road",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 224,
+      "chinese": "妈妈",
+      "pinyin": "mā ma",
+      "english": "mom; mother mā",
+      "hsk_level": 1
+    },
+    {
+      "number": 225,
+      "chinese": "马路",
+      "pinyin": "mǎ lù",
+      "english": "road; street",
+      "hsk_level": 1
+    },
+    {
+      "number": 226,
+      "chinese": "马上",
+      "pinyin": "mǎshàng Right off",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 227,
+      "chinese": "吗",
+      "pinyin": "ma auxiliary word",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 228,
+      "chinese": "买",
+      "pinyin": "mǎi buy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 229,
+      "chinese": "慢",
+      "pinyin": "màn slow",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 230,
+      "chinese": "忙",
+      "pinyin": "máng busy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 231,
+      "chinese": "毛",
+      "pinyin": "máo a fractional unit of money in China",
+      "english": "(measure word)",
+      "hsk_level": 1
+    },
+    {
+      "number": 232,
+      "chinese": "没",
+      "pinyin": "méi no",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 233,
+      "chinese": "没关系",
+      "pinyin": "méiguānxi No problem",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 234,
+      "chinese": "没什么",
+      "pinyin": "méi shén me",
+      "english": "It's nothing",
+      "hsk_level": 1
+    },
+    {
+      "number": 235,
+      "chinese": "没事儿",
+      "pinyin": "méi shìr",
+      "english": "It's okay",
+      "hsk_level": 1
+    },
+    {
+      "number": 236,
+      "chinese": "没有",
+      "pinyin": "méi yǒu have",
+      "english": "not; no",
+      "hsk_level": 1
+    },
+    {
+      "number": 237,
+      "chinese": "妹妹",
+      "pinyin": "mèi mei younger sister",
+      "english": "mèi",
+      "hsk_level": 1
+    },
+    {
+      "number": 238,
+      "chinese": "门",
+      "pinyin": "mén door",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 239,
+      "chinese": "门口",
+      "pinyin": "mén kǒu doorway",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 240,
+      "chinese": "门票",
+      "pinyin": "mén piào tickets",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 241,
+      "chinese": "们",
+      "pinyin": "men",
+      "english": "（ péng plural marker for pronouns and a few yǒu men ） animate nouns (friends)",
+      "hsk_level": 1
+    },
+    {
+      "number": 242,
+      "chinese": "米饭",
+      "pinyin": "mǐfàn Steamed Rice",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 243,
+      "chinese": "面包",
+      "pinyin": "miànbāo Bread",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 244,
+      "chinese": "面条儿",
+      "pinyin": "miàn tiáor noodles",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 245,
+      "chinese": "名字",
+      "pinyin": "míngzi Name",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 246,
+      "chinese": "明白",
+      "pinyin": "míngbai clear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 247,
+      "chinese": "明年",
+      "pinyin": "míng nián next year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 248,
+      "chinese": "明天",
+      "pinyin": "míngtiān Tomorrow",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 249,
+      "chinese": "拿",
+      "pinyin": "ná take",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 250,
+      "chinese": "哪",
+      "pinyin": "nǎ which",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 251,
+      "chinese": "哪里",
+      "pinyin": "nǎ lǐ where",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 252,
+      "chinese": "哪儿",
+      "pinyin": "nǎr where",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 253,
+      "chinese": "哪些",
+      "pinyin": "nǎ xiē which",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 254,
+      "chinese": "那",
+      "pinyin": "nà that",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 255,
+      "chinese": "那边",
+      "pinyin": "nà biān there",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 256,
+      "chinese": "那里",
+      "pinyin": "nà lǐ there",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 257,
+      "chinese": "那儿",
+      "pinyin": "nàr there",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 258,
+      "chinese": "那些",
+      "pinyin": "nà xiē those",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 259,
+      "chinese": "奶",
+      "pinyin": "nǎi milk",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 260,
+      "chinese": "奶奶",
+      "pinyin": "nǎinai grandma",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 261,
+      "chinese": "男",
+      "pinyin": "nán Man",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 262,
+      "chinese": "男孩儿",
+      "pinyin": "nán háir boy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 263,
+      "chinese": "男朋友",
+      "pinyin": "nán péng yǒu boyfriend",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 264,
+      "chinese": "男人",
+      "pinyin": "nán ren man",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 265,
+      "chinese": "男生",
+      "pinyin": "nán shēng boy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 266,
+      "chinese": "南",
+      "pinyin": "nán south",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 267,
+      "chinese": "南边",
+      "pinyin": "nán biān",
+      "english": "south; south side",
+      "hsk_level": 1
+    },
+    {
+      "number": 268,
+      "chinese": "难",
+      "pinyin": "nán",
+      "english": "hard, difficult",
+      "hsk_level": 1
+    },
+    {
+      "number": 269,
+      "chinese": "呢",
+      "pinyin": "ne auxiliary word",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 270,
+      "chinese": "能",
+      "pinyin": "néng can",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 271,
+      "chinese": "你",
+      "pinyin": "nǐ you",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 272,
+      "chinese": "你们",
+      "pinyin": "nǐ men you",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 273,
+      "chinese": "年",
+      "pinyin": "nián year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 274,
+      "chinese": "您",
+      "pinyin": "nín you",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 275,
+      "chinese": "牛奶",
+      "pinyin": "niúnǎi milk",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 276,
+      "chinese": "女",
+      "pinyin": "nǚ woman",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 277,
+      "chinese": "女儿",
+      "pinyin": "daughter",
+      "english": "nǚ'ér",
+      "hsk_level": 1
+    },
+    {
+      "number": 278,
+      "chinese": "女孩儿",
+      "pinyin": "nǚ háir girl",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 279,
+      "chinese": "女朋友",
+      "pinyin": "nǚ péng yǒu girlfriend",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 280,
+      "chinese": "女人",
+      "pinyin": "nǚ ren woman",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 281,
+      "chinese": "女生",
+      "pinyin": "nǚ shēng girl",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 282,
+      "chinese": "旁边",
+      "pinyin": "pángbiān Side",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 283,
+      "chinese": "跑",
+      "pinyin": "pǎo run",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 284,
+      "chinese": "朋友",
+      "pinyin": "péngyou Friend",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 285,
+      "chinese": "票",
+      "pinyin": "piào ticket",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 286,
+      "chinese": "七",
+      "pinyin": "qī Seven",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 287,
+      "chinese": "起",
+      "pinyin": "qǐ get",
+      "english": "up; start; rise",
+      "hsk_level": 1
+    },
+    {
+      "number": 288,
+      "chinese": "起床",
+      "pinyin": "qǐchuáng Get up",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 289,
+      "chinese": "起来",
+      "pinyin": "qǐlái get up",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 290,
+      "chinese": "汽车",
+      "pinyin": "qì chē car",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 291,
+      "chinese": "前",
+      "pinyin": "qián front",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 292,
+      "chinese": "前边",
+      "pinyin": "qián biān in front",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 293,
+      "chinese": "前天",
+      "pinyin": "qián tiān the day before yesterday",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 294,
+      "chinese": "钱",
+      "pinyin": "qián money",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 295,
+      "chinese": "钱包",
+      "pinyin": "qián bāo wallet",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 296,
+      "chinese": "请",
+      "pinyin": "qǐng please",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 297,
+      "chinese": "请假",
+      "pinyin": "qǐngjià ask for leave",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 298,
+      "chinese": "请进",
+      "pinyin": "qǐng jìn please come in",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 299,
+      "chinese": "请问",
+      "pinyin": "qǐng wèn excuse me",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 300,
+      "chinese": "请坐",
+      "pinyin": "qǐng zuò please have a seat",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 301,
+      "chinese": "球",
+      "pinyin": "qiú ball",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 302,
+      "chinese": "去",
+      "pinyin": "qù go",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 303,
+      "chinese": "去年",
+      "pinyin": "qùnián Last year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 304,
+      "chinese": "热",
+      "pinyin": "rè heat",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 305,
+      "chinese": "人",
+      "pinyin": "rén people",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 306,
+      "chinese": "认识",
+      "pinyin": "rènshi know",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 307,
+      "chinese": "认真",
+      "pinyin": "rènzhēn earnest",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 308,
+      "chinese": "日",
+      "pinyin": "rì date",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 309,
+      "chinese": "日期",
+      "pinyin": "rìqī Date",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 310,
+      "chinese": "肉",
+      "pinyin": "ròu meat",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 311,
+      "chinese": "三",
+      "pinyin": "sān Three",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 312,
+      "chinese": "山",
+      "pinyin": "shān mountain",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 313,
+      "chinese": "商场",
+      "pinyin": "shāng chǎng",
+      "english": "mall; shopping mall",
+      "hsk_level": 1
+    },
+    {
+      "number": 314,
+      "chinese": "商店",
+      "pinyin": "shāngdiàn Shop",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 315,
+      "chinese": "上",
+      "pinyin": "shàng upper",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 316,
+      "chinese": "上班",
+      "pinyin": "shàngbān go to work",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 317,
+      "chinese": "上边",
+      "pinyin": "shàng biān",
+      "english": "above; on",
+      "hsk_level": 1
+    },
+    {
+      "number": 318,
+      "chinese": "上车",
+      "pinyin": "shàng chē get on",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 319,
+      "chinese": "上次",
+      "pinyin": "shàng cì last time",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 320,
+      "chinese": "上课",
+      "pinyin": "shàng kè attend",
+      "english": "class; have a class",
+      "hsk_level": 1
+    },
+    {
+      "number": 321,
+      "chinese": "上网",
+      "pinyin": "shàngwǎng Surf the Internet",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 322,
+      "chinese": "上午",
+      "pinyin": "shàngwǔ morning",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 323,
+      "chinese": "上学",
+      "pinyin": "shàng xué go to school",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 324,
+      "chinese": "少",
+      "pinyin": "shǎo less",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 325,
+      "chinese": "谁",
+      "pinyin": "shéi who",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 326,
+      "chinese": "身上",
+      "pinyin": "shēn shàng",
+      "english": "body; on one's body",
+      "hsk_level": 1
+    },
+    {
+      "number": 327,
+      "chinese": "身体",
+      "pinyin": "shēntǐ body",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 328,
+      "chinese": "什么",
+      "pinyin": "shénme What",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 329,
+      "chinese": "生病",
+      "pinyin": "shēngbìng Fall ill",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 330,
+      "chinese": "生气",
+      "pinyin": "shēngqì get angry",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 331,
+      "chinese": "生日",
+      "pinyin": "shēngrì Birthday",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 332,
+      "chinese": "十",
+      "pinyin": "shí Ten",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 333,
+      "chinese": "时候",
+      "pinyin": "shíhou time",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 334,
+      "chinese": "时间",
+      "pinyin": "shíjiān time",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 335,
+      "chinese": "事",
+      "pinyin": "shì thing",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 336,
+      "chinese": "试",
+      "pinyin": "shì try",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 337,
+      "chinese": "是",
+      "pinyin": "shì yes",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 338,
+      "chinese": "是不是",
+      "pinyin": "shì bú shì",
+      "english": "isn't it?",
+      "hsk_level": 1
+    },
+    {
+      "number": 339,
+      "chinese": "手",
+      "pinyin": "shǒu hand",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 340,
+      "chinese": "手机",
+      "pinyin": "shǒujī Mobile phone",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 341,
+      "chinese": "书",
+      "pinyin": "shū book",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 342,
+      "chinese": "书包",
+      "pinyin": "shū bāo school bag",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 343,
+      "chinese": "书店",
+      "pinyin": "shū diàn bookstore",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 344,
+      "chinese": "树",
+      "pinyin": "shù tree",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 345,
+      "chinese": "水",
+      "pinyin": "shuǐ water",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 346,
+      "chinese": "水果",
+      "pinyin": "shuǐguǒ Fruits",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 347,
+      "chinese": "睡",
+      "pinyin": "shuì sleep",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 348,
+      "chinese": "睡觉",
+      "pinyin": "shuìjiào sleep",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 349,
+      "chinese": "说",
+      "pinyin": "shuō speak",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 350,
+      "chinese": "说话",
+      "pinyin": "shuōhuà talk",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 351,
+      "chinese": "四",
+      "pinyin": "sì Four",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 352,
+      "chinese": "送",
+      "pinyin": "sòng give",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 353,
+      "chinese": "岁",
+      "pinyin": "suì",
+      "english": "year, age",
+      "hsk_level": 1
+    },
+    {
+      "number": 354,
+      "chinese": "他",
+      "pinyin": "tā he",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 355,
+      "chinese": "他们",
+      "pinyin": "tā men they",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 356,
+      "chinese": "她",
+      "pinyin": "tā she",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 357,
+      "chinese": "她们",
+      "pinyin": "tā men they",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 358,
+      "chinese": "太",
+      "pinyin": "tài too",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 359,
+      "chinese": "天",
+      "pinyin": "tiān day",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 360,
+      "chinese": "天气",
+      "pinyin": "tiānqì weather",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 361,
+      "chinese": "听",
+      "pinyin": "tīng hear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 362,
+      "chinese": "听到",
+      "pinyin": "tīng dào hear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 363,
+      "chinese": "听见",
+      "pinyin": "tīng jiàn hear",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 364,
+      "chinese": "听写",
+      "pinyin": "tīng xiě",
+      "english": "dictation; dictate",
+      "hsk_level": 1
+    },
+    {
+      "number": 365,
+      "chinese": "同学",
+      "pinyin": "tóngxué Classmate",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 366,
+      "chinese": "图书馆",
+      "pinyin": "túshūguǎn Library",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 367,
+      "chinese": "外",
+      "pinyin": "wài",
+      "english": "abroad, outside",
+      "hsk_level": 1
+    },
+    {
+      "number": 368,
+      "chinese": "外边",
+      "pinyin": "wài biān outside",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 369,
+      "chinese": "外国",
+      "pinyin": "wài guó foreign country",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 370,
+      "chinese": "外语",
+      "pinyin": "wài yǔ foreign language",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 371,
+      "chinese": "玩儿",
+      "pinyin": "wánr play",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 372,
+      "chinese": "晚",
+      "pinyin": "wǎn late",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 373,
+      "chinese": "晚饭",
+      "pinyin": "wǎn fàn dinner",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 374,
+      "chinese": "晚上",
+      "pinyin": "wǎnshang Night",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 375,
+      "chinese": "网上",
+      "pinyin": "wǎng shàng online",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 376,
+      "chinese": "网友",
+      "pinyin": "wǎng yǒu net friend",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 377,
+      "chinese": "忘",
+      "pinyin": "wàng forget",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 378,
+      "chinese": "忘记",
+      "pinyin": "wàngjì forget",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 379,
+      "chinese": "问",
+      "pinyin": "wèn ask",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 380,
+      "chinese": "我",
+      "pinyin": "wǒ I",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 381,
+      "chinese": "我们",
+      "pinyin": "wǒmen We",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 382,
+      "chinese": "五",
+      "pinyin": "wǔ Five",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 383,
+      "chinese": "午饭",
+      "pinyin": "wǔ fàn lunch",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 384,
+      "chinese": "西",
+      "pinyin": "xī west",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 385,
+      "chinese": "西边",
+      "pinyin": "xī biān",
+      "english": "west; west side",
+      "hsk_level": 1
+    },
+    {
+      "number": 386,
+      "chinese": "洗",
+      "pinyin": "xǐ wash",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 387,
+      "chinese": "洗手间",
+      "pinyin": "xǐshǒujiān Restroom",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 388,
+      "chinese": "喜欢",
+      "pinyin": "xǐhuan like",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 389,
+      "chinese": "下",
+      "pinyin": "xià",
+      "english": "below; under; next; go down; get off",
+      "hsk_level": 1
+    },
+    {
+      "number": 390,
+      "chinese": "下班",
+      "pinyin": "xià bān get off work",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 391,
+      "chinese": "下边",
+      "pinyin": "xià biān",
+      "english": "below; under",
+      "hsk_level": 1
+    },
+    {
+      "number": 392,
+      "chinese": "下车",
+      "pinyin": "xià chē get off",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 393,
+      "chinese": "下次",
+      "pinyin": "xià cì next time",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 394,
+      "chinese": "下课",
+      "pinyin": "xià kè finish class",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 395,
+      "chinese": "下午",
+      "pinyin": "xiàwǔ Afternoon",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 396,
+      "chinese": "下雨",
+      "pinyin": "xiàyǔ rain",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 397,
+      "chinese": "先",
+      "pinyin": "xiān before",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 398,
+      "chinese": "先生",
+      "pinyin": "xiānsheng Sir",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 399,
+      "chinese": "现在",
+      "pinyin": "xiànzài Now",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 400,
+      "chinese": "想",
+      "pinyin": "xiǎng think",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 401,
+      "chinese": "小",
+      "pinyin": "xiǎo Small",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 402,
+      "chinese": "小孩儿",
+      "pinyin": "xiǎo háir",
+      "english": "child; kid",
+      "hsk_level": 1
+    },
+    {
+      "number": 403,
+      "chinese": "小姐",
+      "pinyin": "xiǎojiě Miss",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 404,
+      "chinese": "小朋友",
+      "pinyin": "xiǎo péng yǒu",
+      "english": "child; kid",
+      "hsk_level": 1
+    },
+    {
+      "number": 405,
+      "chinese": "小时",
+      "pinyin": "xiǎoshí hour",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 406,
+      "chinese": "小学",
+      "pinyin": "xiǎo xué primary",
+      "english": "school; elementary schoo",
+      "hsk_level": 1
+    },
+    {
+      "number": 407,
+      "chinese": "小学生",
+      "pinyin": "xiǎo xué elementary school student",
+      "english": "shēng",
+      "hsk_level": 1
+    },
+    {
+      "number": 408,
+      "chinese": "笑",
+      "pinyin": "xiào laugh",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 409,
+      "chinese": "写",
+      "pinyin": "xiě write",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 410,
+      "chinese": "谢谢",
+      "pinyin": "xièxie Thank you",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 411,
+      "chinese": "新",
+      "pinyin": "xīn new",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 412,
+      "chinese": "新年",
+      "pinyin": "xīn nián New Year",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 413,
+      "chinese": "星期",
+      "pinyin": "xīngqī week",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 414,
+      "chinese": "星期日",
+      "pinyin": "xīng qī rì Sunday",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 415,
+      "chinese": "星期天",
+      "pinyin": "xīng qī tiān Sunday",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 416,
+      "chinese": "行",
+      "pinyin": "xíng",
+      "english": "That's ok",
+      "hsk_level": 1
+    },
+    {
+      "number": 417,
+      "chinese": "休息",
+      "pinyin": "xiūxi Rest",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 418,
+      "chinese": "学",
+      "pinyin": "xué",
+      "english": "learn; study",
+      "hsk_level": 1
+    },
+    {
+      "number": 419,
+      "chinese": "学生",
+      "pinyin": "xuésheng Student",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 420,
+      "chinese": "学习",
+      "pinyin": "xuéxí Study",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 421,
+      "chinese": "学校",
+      "pinyin": "xuéxiào School",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 422,
+      "chinese": "学院",
+      "pinyin": "xué yuàn",
+      "english": "college; academy",
+      "hsk_level": 1
+    },
+    {
+      "number": 423,
+      "chinese": "要",
+      "pinyin": "yào want",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 424,
+      "chinese": "爷爷",
+      "pinyin": "yéye grandpa",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 425,
+      "chinese": "也",
+      "pinyin": "yě also",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 426,
+      "chinese": "页",
+      "pinyin": "yè page",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 427,
+      "chinese": "一",
+      "pinyin": "yī One",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 428,
+      "chinese": "衣服",
+      "pinyin": "yīfu clothes",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 429,
+      "chinese": "医生",
+      "pinyin": "yīshēng Doctor",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 430,
+      "chinese": "医院",
+      "pinyin": "yīyuàn Hospital",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 431,
+      "chinese": "一半",
+      "pinyin": "yí bàn half",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 432,
+      "chinese": "一会儿",
+      "pinyin": "yíhuìr A little while",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 433,
+      "chinese": "一块儿",
+      "pinyin": "yí kuàir together",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 435,
+      "chinese": "一样",
+      "pinyin": "yíyàng equally",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 436,
+      "chinese": "一边",
+      "pinyin": "yìbiān One side",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 437,
+      "chinese": "一点儿",
+      "pinyin": "yīdiǎnr a little bit",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 438,
+      "chinese": "一起",
+      "pinyin": "yìqǐ together",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 439,
+      "chinese": "一些",
+      "pinyin": "yì xiē some",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 440,
+      "chinese": "用",
+      "pinyin": "yòng use",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 441,
+      "chinese": "有",
+      "pinyin": "yǒu have",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 442,
+      "chinese": "有的",
+      "pinyin": "yǒu de some",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 443,
+      "chinese": "有名",
+      "pinyin": "yǒumíng Famous",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 444,
+      "chinese": "有时候",
+      "pinyin": "yǒu shí sometimes",
+      "english": "hòu ｜ yǒu s hí",
+      "hsk_level": 1
+    },
+    {
+      "number": 445,
+      "chinese": "有些",
+      "pinyin": "yǒu",
+      "english": "（ yì ） some xiē",
+      "hsk_level": 1
+    },
+    {
+      "number": 446,
+      "chinese": "有用",
+      "pinyin": "yǒu yòng useful",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 447,
+      "chinese": "右",
+      "pinyin": "yòu right",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 448,
+      "chinese": "右边",
+      "pinyin": "yòubian Right",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 449,
+      "chinese": "雨",
+      "pinyin": "yǔ rain",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 450,
+      "chinese": "元",
+      "pinyin": "yuán",
+      "english": "element; Yuan",
+      "hsk_level": 1
+    },
+    {
+      "number": 451,
+      "chinese": "远",
+      "pinyin": "yuǎn far",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 452,
+      "chinese": "月",
+      "pinyin": "yuè month",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 453,
+      "chinese": "再",
+      "pinyin": "zài again",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 454,
+      "chinese": "再见",
+      "pinyin": "zàijiàn Bye",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 455,
+      "chinese": "在",
+      "pinyin": "zài",
+      "english": "stay; in process of",
+      "hsk_level": 1
+    },
+    {
+      "number": 456,
+      "chinese": "在家",
+      "pinyin": "zài jiā at home",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 457,
+      "chinese": "早",
+      "pinyin": "zǎo early",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 458,
+      "chinese": "早饭",
+      "pinyin": "zǎo fàn breakfast",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 459,
+      "chinese": "早上",
+      "pinyin": "zǎoshang Morning",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 460,
+      "chinese": "怎么",
+      "pinyin": "zěnme How",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 461,
+      "chinese": "站",
+      "pinyin": "zhàn station",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 462,
+      "chinese": "找",
+      "pinyin": "zhǎo look for",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 463,
+      "chinese": "找到",
+      "pinyin": "zhǎo dào find",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 464,
+      "chinese": "这",
+      "pinyin": "zhè Here",
+      "english": "(here)",
+      "hsk_level": 1
+    },
+    {
+      "number": 465,
+      "chinese": "这边",
+      "pinyin": "zhè biān here",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 466,
+      "chinese": "这里",
+      "pinyin": "zhè lǐ here",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 467,
+      "chinese": "这儿",
+      "pinyin": "zhèr here",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 468,
+      "chinese": "这些",
+      "pinyin": "zhè xiē these",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 469,
+      "chinese": "着",
+      "pinyin": "zhe in process of",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 470,
+      "chinese": "真",
+      "pinyin": "zhēn really",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 471,
+      "chinese": "真的",
+      "pinyin": "zhēn de really",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 472,
+      "chinese": "正",
+      "pinyin": "zhèng",
+      "english": "just; exactly",
+      "hsk_level": 1
+    },
+    {
+      "number": 473,
+      "chinese": "正在",
+      "pinyin": "zhèngzài in process of",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 474,
+      "chinese": "知道",
+      "pinyin": "zhīdào know",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 475,
+      "chinese": "知识",
+      "pinyin": "zhīshi knowledge",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 476,
+      "chinese": "中",
+      "pinyin": "zhōng",
+      "english": "middle; in",
+      "hsk_level": 1
+    },
+    {
+      "number": 477,
+      "chinese": "中国",
+      "pinyin": "zhōngguó China",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 478,
+      "chinese": "中间",
+      "pinyin": "zhōngjiān Middle",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 479,
+      "chinese": "中文",
+      "pinyin": "zhōngwén Chinese",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 480,
+      "chinese": "中午",
+      "pinyin": "zhōngwǔ Noon",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 481,
+      "chinese": "中学",
+      "pinyin": "zhōng xué middle school",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 482,
+      "chinese": "中学生",
+      "pinyin": "zhōng xué middle School student",
+      "english": "shēng",
+      "hsk_level": 1
+    },
+    {
+      "number": 483,
+      "chinese": "重",
+      "pinyin": "zhòng heavy",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 484,
+      "chinese": "重要",
+      "pinyin": "zhòngyào important",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 485,
+      "chinese": "住",
+      "pinyin": "zhù live",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 486,
+      "chinese": "准备",
+      "pinyin": "zhǔnbèi Get ready",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 487,
+      "chinese": "桌子",
+      "pinyin": "zhuōzi Table",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 488,
+      "chinese": "字",
+      "pinyin": "zì",
+      "english": "word, character",
+      "hsk_level": 1
+    },
+    {
+      "number": 489,
+      "chinese": "子",
+      "pinyin": "zi",
+      "english": "（ zhuō zi noun suffix (table) ）",
+      "hsk_level": 1
+    },
+    {
+      "number": 490,
+      "chinese": "走",
+      "pinyin": "zǒu",
+      "english": "go, walk",
+      "hsk_level": 1
+    },
+    {
+      "number": 491,
+      "chinese": "走路",
+      "pinyin": "zǒu lù walk",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 492,
+      "chinese": "最",
+      "pinyin": "zuì most",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 493,
+      "chinese": "最好",
+      "pinyin": "zuìhǎo Best",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 494,
+      "chinese": "最后",
+      "pinyin": "zuìhòu Last",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 495,
+      "chinese": "昨天",
+      "pinyin": "zuótiān Yesterday",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 496,
+      "chinese": "左",
+      "pinyin": "zuǒ left",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 497,
+      "chinese": "左边",
+      "pinyin": "zuǒbian left",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 498,
+      "chinese": "坐",
+      "pinyin": "zuò sit",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 499,
+      "chinese": "坐下",
+      "pinyin": "zuò xià sit down",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 500,
+      "chinese": "做",
+      "pinyin": "zuò do",
+      "english": "",
+      "hsk_level": 1
+    },
+    {
+      "number": 6,
+      "chinese": "白色",
+      "pinyin": "bái sè white",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 29,
+      "chinese": "表示",
+      "pinyin": "biǎoshì Express",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 31,
+      "chinese": "不但",
+      "pinyin": "bú dàn not only",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 33,
+      "chinese": "不过",
+      "pinyin": "búguò However",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 34,
+      "chinese": "不太",
+      "pinyin": "bú tài not",
+      "english": "too; not very much",
+      "hsk_level": 2
+    },
+    {
+      "number": 40,
+      "chinese": "不少",
+      "pinyin": "bù shǎo not a",
+      "english": "few; a lot",
+      "hsk_level": 2
+    },
+    {
+      "number": 41,
+      "chinese": "不同",
+      "pinyin": "bù tóng different",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 44,
+      "chinese": "不一会儿",
+      "pinyin": "bù yī huìr in a",
+      "english": "moment; in a little while; soon",
+      "hsk_level": 2
+    },
+    {
+      "number": 54,
+      "chinese": "差不多",
+      "pinyin": "chàbuduō Almost",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 62,
+      "chinese": "称¹",
+      "pinyin": "chēng",
+      "english": "call; say",
+      "hsk_level": 2
+    },
+    {
+      "number": 67,
+      "chinese": "重新",
+      "pinyin": "chóngxīn again",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 70,
+      "chinese": "出口",
+      "pinyin": "chū kǒu export",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 88,
+      "chinese": "打印",
+      "pinyin": "dǎyìn Print",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 93,
+      "chinese": "大家",
+      "pinyin": "dàjiā everybody",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 96,
+      "chinese": "大人",
+      "pinyin": "dà rén adult",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 98,
+      "chinese": "大小",
+      "pinyin": "dà xiǎo size",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 102,
+      "chinese": "带来",
+      "pinyin": "dài lái bring",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 105,
+      "chinese": "但是",
+      "pinyin": "dàn shì",
+      "english": "but; however",
+      "hsk_level": 2
+    },
+    {
+      "number": 108,
+      "chinese": "当时",
+      "pinyin": "dāngshí at that time",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 120,
+      "chinese": "等",
+      "pinyin": "děng",
+      "english": "etc.; and so on",
+      "hsk_level": 2
+    },
+    {
+      "number": 126,
+      "chinese": "地铁站",
+      "pinyin": "dì tiě zhàn subway station",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 145,
+      "chinese": "对",
+      "pinyin": "duì",
+      "english": "to; at; face; be opposite; answer",
+      "hsk_level": 2
+    },
+    {
+      "number": 148,
+      "chinese": "多",
+      "pinyin": "duō much",
+      "english": "more; far more",
+      "hsk_level": 2
+    },
+    {
+      "number": 153,
+      "chinese": "而且",
+      "pinyin": "ér qiě and",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 155,
+      "chinese": "发现",
+      "pinyin": "fāxiàn find",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 159,
+      "chinese": "方法",
+      "pinyin": "fāngfǎ Method",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 160,
+      "chinese": "方面",
+      "pinyin": "fāngmiàn Aspect",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 161,
+      "chinese": "方向",
+      "pinyin": "fāngxiàng direction",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 164,
+      "chinese": "分",
+      "pinyin": "fēn",
+      "english": "divide; part; distribute",
+      "hsk_level": 2
+    },
+    {
+      "number": 165,
+      "chinese": "分开",
+      "pinyin": "fēn kāi",
+      "english": "separate; part",
+      "hsk_level": 2
+    },
+    {
+      "number": 182,
+      "chinese": "刚才",
+      "pinyin": "gāngcái just",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 183,
+      "chinese": "刚刚",
+      "pinyin": "gāng gāng",
+      "english": "just; only; just a moment ago",
+      "hsk_level": 2
+    },
+    {
+      "number": 185,
+      "chinese": "高中",
+      "pinyin": "gāo zhōng senior high school",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 189,
+      "chinese": "公交车",
+      "pinyin": "gōng jiāo chē bus",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 194,
+      "chinese": "公司",
+      "pinyin": "gōngsī company",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 196,
+      "chinese": "狗",
+      "pinyin": "gǒu Dog",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 209,
+      "chinese": "过去",
+      "pinyin": "guò qù go",
+      "english": "over; pass by",
+      "hsk_level": 2
+    },
+    {
+      "number": 210,
+      "chinese": "过",
+      "pinyin": "guò",
+      "english": "cross; pass; spend; live",
+      "hsk_level": 2
+    },
+    {
+      "number": 214,
+      "chinese": "好",
+      "pinyin": "hǎo",
+      "english": "well; fine; okay",
+      "hsk_level": 2
+    },
+    {
+      "number": 220,
+      "chinese": "好像",
+      "pinyin": "hǎoxiàng Be like",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 223,
+      "chinese": "黑",
+      "pinyin": "hēi black",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 224,
+      "chinese": "黑板",
+      "pinyin": "hēibǎn blackboard",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 225,
+      "chinese": "黑色",
+      "pinyin": "hēi sè black",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 226,
+      "chinese": "红",
+      "pinyin": "hóng red",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 227,
+      "chinese": "红色",
+      "pinyin": "hóng sè red",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 232,
+      "chinese": "花",
+      "pinyin": "huā",
+      "english": "spend; expend",
+      "hsk_level": 2
+    },
+    {
+      "number": 241,
+      "chinese": "黄",
+      "pinyin": "huáng yellow",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 242,
+      "chinese": "黄色",
+      "pinyin": "huáng sè yellow",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 243,
+      "chinese": "回",
+      "pinyin": "huí",
+      "english": "(measure word)",
+      "hsk_level": 2
+    },
+    {
+      "number": 245,
+      "chinese": "会",
+      "pinyin": "huì",
+      "english": "meeting; gathering; conference; union; party",
+      "hsk_level": 2
+    },
+    {
+      "number": 246,
+      "chinese": "活动",
+      "pinyin": "huódòng activity",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 250,
+      "chinese": "鸡",
+      "pinyin": "jī chicken",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 257,
+      "chinese": "家",
+      "pinyin": "jiā noun suffix",
+      "english": "(scientist)",
+      "hsk_level": 2
+    },
+    {
+      "number": 267,
+      "chinese": "讲",
+      "pinyin": "jiǎng speak",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 276,
+      "chinese": "脚",
+      "pinyin": "jiǎo foot",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 286,
+      "chinese": "接着",
+      "pinyin": "jiēzhe Next",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 294,
+      "chinese": "今后",
+      "pinyin": "jīn hòu from now",
+      "english": "on; in the future",
+      "hsk_level": 2
+    },
+    {
+      "number": 296,
+      "chinese": "进行",
+      "pinyin": "jìnxíng Conduct",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 297,
+      "chinese": "近",
+      "pinyin": "jìn near",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 298,
+      "chinese": "经常",
+      "pinyin": "jīngcháng Often",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 321,
+      "chinese": "可是",
+      "pinyin": "kěshì however",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 336,
+      "chinese": "蓝",
+      "pinyin": "lán blue",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 337,
+      "chinese": "蓝色",
+      "pinyin": "lán sè blue",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 339,
+      "chinese": "老",
+      "pinyin": "lǎo",
+      "english": "always; constantly",
+      "hsk_level": 2
+    },
+    {
+      "number": 351,
+      "chinese": "脸",
+      "pinyin": "liǎn face",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 356,
+      "chinese": "两",
+      "pinyin": "liǎng a unit of weight",
+      "english": "(=50 grams)",
+      "hsk_level": 2
+    },
+    {
+      "number": 370,
+      "chinese": "绿",
+      "pinyin": "lǜ green",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 371,
+      "chinese": "绿色",
+      "pinyin": "lǜ sè green",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 372,
+      "chinese": "卖",
+      "pinyin": "mài sell",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 375,
+      "chinese": "猫",
+      "pinyin": "māo cat",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 377,
+      "chinese": "面¹",
+      "pinyin": "miàn",
+      "english": "¹ (measure word); side; aspect",
+      "hsk_level": 2
+    },
+    {
+      "number": 378,
+      "chinese": "面²",
+      "pinyin": "miàn",
+      "english": "² face; surface; outside; side; scale; flour",
+      "hsk_level": 2
+    },
+    {
+      "number": 387,
+      "chinese": "那",
+      "pinyin": "nà",
+      "english": "then; in that case",
+      "hsk_level": 2
+    },
+    {
+      "number": 389,
+      "chinese": "那么",
+      "pinyin": "nà me like",
+      "english": "that; in that way",
+      "hsk_level": 2
+    },
+    {
+      "number": 391,
+      "chinese": "那样",
+      "pinyin": "nà yàng that",
+      "english": "kind; like that; such",
+      "hsk_level": 2
+    },
+    {
+      "number": 401,
+      "chinese": "鸟",
+      "pinyin": "niǎo bird",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 414,
+      "chinese": "便宜",
+      "pinyin": "piányi Cheap",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 416,
+      "chinese": "漂亮",
+      "pinyin": "piàoliang Well",
+      "english": "done!； beautiful",
+      "hsk_level": 2
+    },
+    {
+      "number": 421,
+      "chinese": "平时",
+      "pinyin": "píngshí peacetime",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 426,
+      "chinese": "其他",
+      "pinyin": "qítā Other",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 427,
+      "chinese": "其中",
+      "pinyin": "qízhōng among",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 433,
+      "chinese": "千",
+      "pinyin": "qiān thousand",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 435,
+      "chinese": "前年",
+      "pinyin": "qián nián the year before last",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 440,
+      "chinese": "清楚",
+      "pinyin": "qīngchu clear",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 453,
+      "chinese": "全部",
+      "pinyin": "quánbù whole",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 458,
+      "chinese": "全体",
+      "pinyin": "quán tǐ",
+      "english": "all; entire; whole",
+      "hsk_level": 2
+    },
+    {
+      "number": 459,
+      "chinese": "然后",
+      "pinyin": "ránhòu Then",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 469,
+      "chinese": "入口",
+      "pinyin": "rùkǒu Entrance",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 472,
+      "chinese": "上周",
+      "pinyin": "shàng zhōu last week",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 479,
+      "chinese": "生活",
+      "pinyin": "shēnghuó Life",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 483,
+      "chinese": "十分",
+      "pinyin": "shífēn very",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 493,
+      "chinese": "事情",
+      "pinyin": "shìqing Thing",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 505,
+      "chinese": "说明",
+      "pinyin": "shuōmíng Explain",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 513,
+      "chinese": "所以",
+      "pinyin": "suǒ yǐ so",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 514,
+      "chinese": "所有",
+      "pinyin": "suǒyǒu All",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 515,
+      "chinese": "它",
+      "pinyin": "tā it",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 537,
+      "chinese": "听说",
+      "pinyin": "tīng shuō be",
+      "english": "told; hear of",
+      "hsk_level": 2
+    },
+    {
+      "number": 546,
+      "chinese": "同时",
+      "pinyin": "tóngshí meanwhile",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 547,
+      "chinese": "同事",
+      "pinyin": "tóngshì Colleague",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 549,
+      "chinese": "头",
+      "pinyin": "tóu",
+      "english": "head; beginning or end; side; (measure word)",
+      "hsk_level": 2
+    },
+    {
+      "number": 558,
+      "chinese": "完成",
+      "pinyin": "wánchéng complete",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 565,
+      "chinese": "万",
+      "pinyin": "wàn ten thousand",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 571,
+      "chinese": "为什么",
+      "pinyin": "wèishénme Why",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 574,
+      "chinese": "喂",
+      "pinyin": "wèi",
+      "english": "hello; hey",
+      "hsk_level": 2
+    },
+    {
+      "number": 578,
+      "chinese": "问题",
+      "pinyin": "wèntí problem",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 589,
+      "chinese": "下",
+      "pinyin": "xià",
+      "english": "(measure word)",
+      "hsk_level": 2
+    },
+    {
+      "number": 591,
+      "chinese": "下周",
+      "pinyin": "xià zhōu next week",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 593,
+      "chinese": "相同",
+      "pinyin": "xiāngtóng identical",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 602,
+      "chinese": "小",
+      "pinyin": "xiǎo prefix",
+      "english": "(Xiao Wang) （ xiǎo wáng ）",
+      "hsk_level": 2
+    },
+    {
+      "number": 604,
+      "chinese": "小时候",
+      "pinyin": "xiǎo shí hou in",
+      "english": "one's childhood; when one was young",
+      "hsk_level": 2
+    },
+    {
+      "number": 629,
+      "chinese": "许多",
+      "pinyin": "xǔduō many",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 633,
+      "chinese": "颜色",
+      "pinyin": "yánsè colour",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 634,
+      "chinese": "眼",
+      "pinyin": "yǎn eye",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 635,
+      "chinese": "眼睛",
+      "pinyin": "yǎnjing Eye",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 648,
+      "chinese": "一共",
+      "pinyin": "yígòng Altogether",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 649,
+      "chinese": "一会儿",
+      "pinyin": "yí huìr",
+      "english": "awhile; in a moment; presently",
+      "hsk_level": 2
+    },
+    {
+      "number": 650,
+      "chinese": "一路平安",
+      "pinyin": "yí lù píng ān safe",
+      "english": "journey; have a pleasant journey",
+      "hsk_level": 2
+    },
+    {
+      "number": 651,
+      "chinese": "一路顺风",
+      "pinyin": "yí lù shùn fēng Bon voyage",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 652,
+      "chinese": "已经",
+      "pinyin": "yǐjīng Already",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 653,
+      "chinese": "以后",
+      "pinyin": "yǐ hòu",
+      "english": "after; later on; afterwards; later",
+      "hsk_level": 2
+    },
+    {
+      "number": 654,
+      "chinese": "以前",
+      "pinyin": "yǐqián before",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 661,
+      "chinese": "一点点",
+      "pinyin": "yì diǎn diǎn a little bit",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 664,
+      "chinese": "亿",
+      "pinyin": "yì",
+      "english": "100 million",
+      "hsk_level": 2
+    },
+    {
+      "number": 667,
+      "chinese": "因为",
+      "pinyin": "yīn wèi because",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 685,
+      "chinese": "有人",
+      "pinyin": "yǒu rén",
+      "english": "someone; there's someone",
+      "hsk_level": 2
+    },
+    {
+      "number": 689,
+      "chinese": "鱼",
+      "pinyin": "yú fish",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 691,
+      "chinese": "原来",
+      "pinyin": "yuánlái",
+      "english": "Original; formerly",
+      "hsk_level": 2
+    },
+    {
+      "number": 697,
+      "chinese": "月份",
+      "pinyin": "yuè fèn month",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 703,
+      "chinese": "咱",
+      "pinyin": "zán",
+      "english": "we; us",
+      "hsk_level": 2
+    },
+    {
+      "number": 704,
+      "chinese": "咱们",
+      "pinyin": "zánmen We",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 707,
+      "chinese": "早晨",
+      "pinyin": "zǎo chén morning",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 710,
+      "chinese": "怎么样",
+      "pinyin": "zěnmeyàng How about",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 713,
+      "chinese": "站",
+      "pinyin": "zhàn",
+      "english": "stand; stop; halt",
+      "hsk_level": 2
+    },
+    {
+      "number": 721,
+      "chinese": "这么",
+      "pinyin": "zhè me",
+      "english": "so; such; this way; like this",
+      "hsk_level": 2
+    },
+    {
+      "number": 723,
+      "chinese": "这样",
+      "pinyin": "zhè yàng",
+      "english": "so; such; like this; this way",
+      "hsk_level": 2
+    },
+    {
+      "number": 732,
+      "chinese": "只要",
+      "pinyin": "zhǐyào as long as",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 742,
+      "chinese": "周",
+      "pinyin": "zhōu week",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 751,
+      "chinese": "自己",
+      "pinyin": "zìjǐ",
+      "english": "Own, self",
+      "hsk_level": 2
+    },
+    {
+      "number": 762,
+      "chinese": "嘴",
+      "pinyin": "zuǐ mouth",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 772,
+      "chinese": "做饭",
+      "pinyin": "zuò fàn cook",
+      "english": "",
+      "hsk_level": 2
+    },
+    {
+      "number": 9,
+      "chinese": "白",
+      "pinyin": "bái without",
+      "english": "results; in vain; waste efforts",
+      "hsk_level": 3
+    },
+    {
+      "number": 34,
+      "chinese": "本来",
+      "pinyin": "běnlái originally",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 64,
+      "chinese": "不仅",
+      "pinyin": "bùjǐn not only",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 74,
+      "chinese": "曾经",
+      "pinyin": "céngjīng once",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 76,
+      "chinese": "长城",
+      "pinyin": "Chángchéng The Great Wall",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 101,
+      "chinese": "重",
+      "pinyin": "zhòng heavy",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 106,
+      "chinese": "初中",
+      "pinyin": "chū zhōng junior high school",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 117,
+      "chinese": "从来",
+      "pinyin": "cónglái Always",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 148,
+      "chinese": "地区",
+      "pinyin": "dìqū region",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 185,
+      "chinese": "方式",
+      "pinyin": "fāngshì mode",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 205,
+      "chinese": "父母",
+      "pinyin": "fù mǔ father and",
+      "english": "mother; parents",
+      "hsk_level": 3
+    },
+    {
+      "number": 206,
+      "chinese": "父亲",
+      "pinyin": "fùqīn father",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 217,
+      "chinese": "赶紧",
+      "pinyin": "gǎnjǐn Quickly",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 218,
+      "chinese": "赶快",
+      "pinyin": "gǎnkuài Come on",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 239,
+      "chinese": "工厂",
+      "pinyin": "gōngchǎng factory",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 274,
+      "chinese": "国内",
+      "pinyin": "guó nèi",
+      "english": "domestic; internal",
+      "hsk_level": 3
+    },
+    {
+      "number": 279,
+      "chinese": "过去",
+      "pinyin": "guò qù",
+      "english": "past; old; foretime",
+      "hsk_level": 3
+    },
+    {
+      "number": 283,
+      "chinese": "行",
+      "pinyin": "háng",
+      "english": "row，line",
+      "hsk_level": 3
+    },
+    {
+      "number": 296,
+      "chinese": "后年",
+      "pinyin": "hòu nián the year after next",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 298,
+      "chinese": "互相",
+      "pinyin": "hùxiāng each other",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 318,
+      "chinese": "…极了",
+      "pinyin": "jí le",
+      "english": "… extremely; exceedingly",
+      "hsk_level": 3
+    },
+    {
+      "number": 349,
+      "chinese": "将来",
+      "pinyin": "jiānglái future",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 355,
+      "chinese": "叫",
+      "pinyin": "jiào",
+      "english": "(preposition)",
+      "hsk_level": 3
+    },
+    {
+      "number": 365,
+      "chinese": "结束",
+      "pinyin": "jiéshù End",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 392,
+      "chinese": "旧",
+      "pinyin": "jiù used",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 400,
+      "chinese": "据说",
+      "pinyin": "jùshuō allegedly",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 408,
+      "chinese": "开始",
+      "pinyin": "kāishǐ start",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 411,
+      "chinese": "看起来",
+      "pinyin": "kàn qǐ lái look like",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 438,
+      "chinese": "里面",
+      "pinyin": "lǐ miàn",
+      "english": "inside; interior",
+      "hsk_level": 3
+    },
+    {
+      "number": 445,
+      "chinese": "立刻",
+      "pinyin": "lìkè immediately",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 455,
+      "chinese": "了",
+      "pinyin": "le past tense marker",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 459,
+      "chinese": "另外",
+      "pinyin": "lìngwài in addition",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 475,
+      "chinese": "毛",
+      "pinyin": "máo a fractional unit of money in",
+      "english": "China; hair; fur",
+      "hsk_level": 3
+    },
+    {
+      "number": 480,
+      "chinese": "美",
+      "pinyin": "měi",
+      "english": "beautiful; pretty",
+      "hsk_level": 3
+    },
+    {
+      "number": 496,
+      "chinese": "母亲",
+      "pinyin": "mǔqīn mother",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 547,
+      "chinese": "其实",
+      "pinyin": "qíshí actually",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 605,
+      "chinese": "容易",
+      "pinyin": "róngyì easily",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 614,
+      "chinese": "上来",
+      "pinyin": "shàng lái come up",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 615,
+      "chinese": "上面",
+      "pinyin": "shàng miàn",
+      "english": "above; on top of",
+      "hsk_level": 3
+    },
+    {
+      "number": 616,
+      "chinese": "上去",
+      "pinyin": "shàng qù go up",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 641,
+      "chinese": "时",
+      "pinyin": "shí",
+      "english": "time; times; hour; season; tense",
+      "hsk_level": 3
+    },
+    {
+      "number": 657,
+      "chinese": "事件",
+      "pinyin": "shìjiàn Event",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 658,
+      "chinese": "事实",
+      "pinyin": "shìshí Fact",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 659,
+      "chinese": "事实上",
+      "pinyin": "shì shí shàng in",
+      "english": "fact; actually",
+      "hsk_level": 3
+    },
+    {
+      "number": 724,
+      "chinese": "头",
+      "pinyin": "tóu",
+      "english": "lead; head",
+      "hsk_level": 3
+    },
+    {
+      "number": 742,
+      "chinese": "外面",
+      "pinyin": "wài miàn",
+      "english": "outside; outdoors; outward appearance",
+      "hsk_level": 3
+    },
+    {
+      "number": 773,
+      "chinese": "下来",
+      "pinyin": "xià lái come",
+      "english": "down; get down",
+      "hsk_level": 3
+    },
+    {
+      "number": 774,
+      "chinese": "下面",
+      "pinyin": "xià miàn",
+      "english": "below; under; next",
+      "hsk_level": 3
+    },
+    {
+      "number": 775,
+      "chinese": "下去",
+      "pinyin": "xià qù go",
+      "english": "down; descend; go on; continue",
+      "hsk_level": 3
+    },
+    {
+      "number": 787,
+      "chinese": "相当",
+      "pinyin": "xiāngdāng Quite",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 837,
+      "chinese": "以来",
+      "pinyin": "yǐlái Since",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 842,
+      "chinese": "因此",
+      "pinyin": "yīncǐ therefore",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 890,
+      "chinese": "整个",
+      "pinyin": "zhěnggè Whole",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 896,
+      "chinese": "正",
+      "pinyin": "zhèng",
+      "english": "straight; upright; positive; correct; main",
+      "hsk_level": 3
+    },
+    {
+      "number": 914,
+      "chinese": "只是",
+      "pinyin": "zhǐ shì",
+      "english": "merely; only; just",
+      "hsk_level": 3
+    },
+    {
+      "number": 915,
+      "chinese": "只有",
+      "pinyin": "zhǐ yǒu only",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 930,
+      "chinese": "钟",
+      "pinyin": "zhōng",
+      "english": "bell; clock; call bell; time",
+      "hsk_level": 3
+    },
+    {
+      "number": 970,
+      "chinese": "左右",
+      "pinyin": "zuǒyòu About",
+      "english": "",
+      "hsk_level": 3
+    },
+    {
+      "number": 9,
+      "chinese": "按时",
+      "pinyin": "ànshí on time",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 46,
+      "chinese": "别",
+      "pinyin": "bié do",
+      "english": "not; leave; separate; pin",
+      "hsk_level": 4
+    },
+    {
+      "number": 107,
+      "chinese": "出口",
+      "pinyin": "chūkǒu Exit",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 123,
+      "chinese": "此外",
+      "pinyin": "cǐwài in addition",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 124,
+      "chinese": "次",
+      "pinyin": "cì",
+      "english": "second-rate; secondary",
+      "hsk_level": 4
+    },
+    {
+      "number": 127,
+      "chinese": "从此",
+      "pinyin": "cóngcǐ from then on",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 181,
+      "chinese": "地方",
+      "pinyin": "dìfang local",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 182,
+      "chinese": "地面",
+      "pinyin": "dì miàn",
+      "english": "ground; floor; surface",
+      "hsk_level": 4
+    },
+    {
+      "number": 184,
+      "chinese": "地下",
+      "pinyin": "dì xià",
+      "english": "underground; subterranean; secret",
+      "hsk_level": 4
+    },
+    {
+      "number": 242,
+      "chinese": "…分之…",
+      "pinyin": "fēn zhī",
+      "english": "… … fractional number",
+      "hsk_level": 4
+    },
+    {
+      "number": 268,
+      "chinese": "格外",
+      "pinyin": "géwài especially",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 288,
+      "chinese": "关",
+      "pinyin": "guān",
+      "english": "pass; check point; customhouse; mechanism; barrier",
+      "hsk_level": 4
+    },
+    {
+      "number": 317,
+      "chinese": "好",
+      "pinyin": "hǎo good",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 327,
+      "chinese": "花",
+      "pinyin": "huā",
+      "english": "multicoloured; coloured; flowery",
+      "hsk_level": 4
+    },
+    {
+      "number": 357,
+      "chinese": "极其",
+      "pinyin": "jíqí extremely",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 406,
+      "chinese": "解释",
+      "pinyin": "jiěshì explain",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 434,
+      "chinese": "看来",
+      "pinyin": "kàn lái it",
+      "english": "seems; it appears",
+      "hsk_level": 4
+    },
+    {
+      "number": 472,
+      "chinese": "立即",
+      "pinyin": "lìjí immediately",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 482,
+      "chinese": "了解",
+      "pinyin": "liǎojiě understand",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 531,
+      "chinese": "哪",
+      "pinyin": "nǎ which",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 565,
+      "chinese": "妻子",
+      "pinyin": "qīzi Wife",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 571,
+      "chinese": "其余",
+      "pinyin": "qíyú Rest",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 595,
+      "chinese": "却",
+      "pinyin": "què but",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 597,
+      "chinese": "然而",
+      "pinyin": "however",
+      "english": "rán'ér",
+      "hsk_level": 4
+    },
+    {
+      "number": 621,
+      "chinese": "上个月",
+      "pinyin": "shàng gè yu last month",
+      "english": "è",
+      "hsk_level": 4
+    },
+    {
+      "number": 622,
+      "chinese": "上楼",
+      "pinyin": "shàng lóu go upstairs",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 760,
+      "chinese": "喂",
+      "pinyin": "wèi feed",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 785,
+      "chinese": "下个月",
+      "pinyin": "xià gè yuè next month",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 787,
+      "chinese": "下楼",
+      "pinyin": "xià lóu go",
+      "english": "downstairs; come downstairs",
+      "hsk_level": 4
+    },
+    {
+      "number": 848,
+      "chinese": "研究生",
+      "pinyin": "yán jiū shēng",
+      "english": "postgraduate; graduate student",
+      "hsk_level": 4
+    },
+    {
+      "number": 860,
+      "chinese": "要",
+      "pinyin": "yào if",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 896,
+      "chinese": "邮局",
+      "pinyin": "yóujú Post Office",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 900,
+      "chinese": "幼儿园",
+      "pinyin": "Kindergarten",
+      "english": "yòu'éryuán",
+      "hsk_level": 4
+    },
+    {
+      "number": 933,
+      "chinese": "丈夫",
+      "pinyin": "zhàngfu husband",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 935,
+      "chinese": "着",
+      "pinyin": "zhe in process of",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 948,
+      "chinese": "之后",
+      "pinyin": "zhī hòu",
+      "english": "later; after; afterwards",
+      "hsk_level": 4
+    },
+    {
+      "number": 949,
+      "chinese": "之间",
+      "pinyin": "zhī jiān",
+      "english": "between; among",
+      "hsk_level": 4
+    },
+    {
+      "number": 950,
+      "chinese": "之前",
+      "pinyin": "zhī qián",
+      "english": "before; prior to",
+      "hsk_level": 4
+    },
+    {
+      "number": 972,
+      "chinese": "著名",
+      "pinyin": "zhùmíng famous",
+      "english": "",
+      "hsk_level": 4
+    },
+    {
+      "number": 75,
+      "chinese": "餐馆",
+      "pinyin": "cān guǎn restaurant",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 101,
+      "chinese": "称²",
+      "pinyin": "chēng",
+      "english": "call; say; name; commend; weigh",
+      "hsk_level": 5
+    },
+    {
+      "number": 222,
+      "chinese": "耳朵",
+      "pinyin": "ěrduo Ears",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 478,
+      "chinese": "邻居",
+      "pinyin": "línjū neighbor",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 535,
+      "chinese": "偶尔",
+      "pinyin": "occasionally",
+      "english": "ǒu'ěr",
+      "hsk_level": 5
+    },
+    {
+      "number": 880,
+      "chinese": "也好",
+      "pinyin": "yě hǎo may as",
+      "english": "well; no matter whether",
+      "hsk_level": 5
+    },
+    {
+      "number": 915,
+      "chinese": "用来",
+      "pinyin": "yòng lái be used",
+      "english": "for; used to",
+      "hsk_level": 5
+    },
+    {
+      "number": 921,
+      "chinese": "由此",
+      "pinyin": "yóu cǐ from",
+      "english": "this; therefrom; thus",
+      "hsk_level": 5
+    },
+    {
+      "number": 954,
+      "chinese": "再次",
+      "pinyin": "zài cì once",
+      "english": "more; once again; one more time",
+      "hsk_level": 5
+    },
+    {
+      "number": 1011,
+      "chinese": "只不过",
+      "pinyin": "zhǐ bú guò",
+      "english": "only; just; merely",
+      "hsk_level": 5
+    },
+    {
+      "number": 1049,
+      "chinese": "转让",
+      "pinyin": "zhuǎnràng make",
+      "english": "over; transfer",
+      "hsk_level": 5
+    },
+    {
+      "number": 1050,
+      "chinese": "转向",
+      "pinyin": "zhuǎn xiàng turn",
+      "english": "to; sheer off; change direction",
+      "hsk_level": 5
+    },
+    {
+      "number": 1051,
+      "chinese": "装饰",
+      "pinyin": "zhuāngshì decorate",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 1052,
+      "chinese": "撞",
+      "pinyin": "zhuàng Hit",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 1053,
+      "chinese": "资本",
+      "pinyin": "zīběn capital",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 1054,
+      "chinese": "资产",
+      "pinyin": "zīchǎn",
+      "english": "capital; asset",
+      "hsk_level": 5
+    },
+    {
+      "number": 1055,
+      "chinese": "资助",
+      "pinyin": "zīzhù give financial aid",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 1056,
+      "chinese": "子弹",
+      "pinyin": "zǐdàn Bullet",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 1057,
+      "chinese": "仔细",
+      "pinyin": "zǐxì careful",
+      "english": "",
+      "hsk_level": 5
+    },
+    {
+      "number": 290,
+      "chinese": "副",
+      "pinyin": "fù",
+      "english": "secondary; auxiliary; subsidiary",
+      "hsk_level": 6
+    },
+    {
+      "number": 368,
+      "chinese": "好容",
+      "pinyin": "hǎo",
+      "english": "（bù） róng yì with great difficulty; have a 易 hard time (doing sth.)",
+      "hsk_level": 6
+    },
+    {
+      "number": 453,
+      "chinese": "界（文艺",
+      "pinyin": "jiè",
+      "english": "（wén yì jiè） circles; world (circle of 界） literature and art)",
+      "hsk_level": 6
+    },
+    {
+      "number": 536,
+      "chinese": "力（影响",
+      "pinyin": "lì",
+      "english": "（yǐng xiǎng lì） ability; capability (influence) 力）",
+      "hsk_level": 6
+    },
+    {
+      "number": 546,
+      "chinese": "料",
+      "pinyin": "liào",
+      "english": "expect; anticipate; guess",
+      "hsk_level": 6
+    },
+    {
+      "number": 592,
+      "chinese": "命",
+      "pinyin": "mìng",
+      "english": "life; order; fate",
+      "hsk_level": 6
+    },
+    {
+      "number": 874,
+      "chinese": "戏曲",
+      "pinyin": "xì qǔ",
+      "english": "drama; Chinese opera",
+      "hsk_level": 6
+    },
+    {
+      "number": 1043,
+      "chinese": "长（秘书",
+      "pinyin": "zhǎng",
+      "english": "（mì shū zhǎng chief; head; leader (secretary 长） ） general)",
+      "hsk_level": 6
+    },
+    {
+      "number": 1128,
+      "chinese": "族（上班",
+      "pinyin": "zú",
+      "english": "（shàng bān zú） a class of things with 族） common features or attribute (office worker; commuter)",
+      "hsk_level": 6
+    }
+  ]
+}

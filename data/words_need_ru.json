@@ -1,0 +1,5738 @@
+[
+  {
+    "id": "w4652",
+    "chinese": "爱",
+    "pinyin": "ài love",
+    "english": "to love; to be fond of; to like",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4653",
+    "chinese": "爱好",
+    "pinyin": "ài hào hobby",
+    "english": "to like; to be fond of; to take pleasure in; to be keen on",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4654",
+    "chinese": "八",
+    "pinyin": "bā eight",
+    "english": "eight",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4655",
+    "chinese": "爸爸",
+    "pinyin": "bàba bà dad",
+    "english": "(coll.) father; dad",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4656",
+    "chinese": "吧",
+    "pinyin": "ba",
+    "english": "(interjection particle)",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4657",
+    "chinese": "白",
+    "pinyin": "bái white",
+    "english": "surname Bai",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4658",
+    "chinese": "白天",
+    "pinyin": "bái tiān day",
+    "english": "daytime",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4659",
+    "chinese": "百",
+    "pinyin": "bǎi hundred",
+    "english": "surname Bai",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4660",
+    "chinese": "班",
+    "pinyin": "bān class",
+    "english": "surname Ban",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4661",
+    "chinese": "半",
+    "pinyin": "bàn half",
+    "english": "half",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4662",
+    "chinese": "半年",
+    "pinyin": "bàn nián half a year",
+    "english": "half a year",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4663",
+    "chinese": "半天",
+    "pinyin": "bàn tiān half day",
+    "english": "half of the day",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4664",
+    "chinese": "帮",
+    "pinyin": "bāng help",
+    "english": "old variant of 幫|帮[bang1]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4665",
+    "chinese": "帮忙",
+    "pinyin": "bāng máng help",
+    "english": "to help",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4666",
+    "chinese": "包",
+    "pinyin": "bāo package",
+    "english": "surname Bao",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4667",
+    "chinese": "包子",
+    "pinyin": "bāo zi bun",
+    "english": "baozi; bao (steamed stuffed bun)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4668",
+    "chinese": "杯",
+    "pinyin": "bēi cup",
+    "english": "cup",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4669",
+    "chinese": "杯子",
+    "pinyin": "bēi zi cup",
+    "english": "cup",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4670",
+    "chinese": "北",
+    "pinyin": "běi north",
+    "english": "north",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4671",
+    "chinese": "北边",
+    "pinyin": "běi biān North side",
+    "english": "north",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4672",
+    "chinese": "北京",
+    "pinyin": "běi jīng Beijing",
+    "english": "Beijing municipality, capital of the People's Republic of China (short name 京[Jing1])",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4673",
+    "chinese": "本",
+    "pinyin": "běn",
+    "english": "(measure word for books or volumes)",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4674",
+    "chinese": "本子",
+    "pinyin": "běn zi book",
+    "english": "book",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4675",
+    "chinese": "比",
+    "pinyin": "bǐ particle used for comparison",
+    "english": "Belgium",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w4676",
+    "chinese": "别",
+    "pinyin": "bié",
+    "english": "Don't",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4677",
+    "chinese": "别的",
+    "pinyin": "bié de other",
+    "english": "else",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4678",
+    "chinese": "别人",
+    "pinyin": "bié·rén other people",
+    "english": "other people; others; other person",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4679",
+    "chinese": "病",
+    "pinyin": "bìng disease",
+    "english": "illness",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4680",
+    "chinese": "病人",
+    "pinyin": "bìng rén patient",
+    "english": "sick person",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4681",
+    "chinese": "不大",
+    "pinyin": "bú dà not big",
+    "english": "not very (clear, far away etc); not too",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4682",
+    "chinese": "不对",
+    "pinyin": "bú duì wrong",
+    "english": "incorrect",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4683",
+    "chinese": "不客气",
+    "pinyin": "bú kè qì",
+    "english": "You're welcome",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4684",
+    "chinese": "不用",
+    "pinyin": "bú yòng No need to",
+    "english": "need not",
+    "pos": "auxiliary_verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4685",
+    "chinese": "不",
+    "pinyin": "bù No",
+    "english": "no; not so",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4686",
+    "chinese": "菜",
+    "pinyin": "cài dish",
+    "english": "vegetable; greens (CL:棵[ke1])",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4687",
+    "chinese": "茶",
+    "pinyin": "chá tea",
+    "english": "tea",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4688",
+    "chinese": "差",
+    "pinyin": "chà differ",
+    "english": "from; bad; short of",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4689",
+    "chinese": "常",
+    "pinyin": "cháng often",
+    "english": "surname Chang",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4690",
+    "chinese": "常常",
+    "pinyin": "cháng cháng often",
+    "english": "frequently; often",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4691",
+    "chinese": "唱",
+    "pinyin": "chàng sing",
+    "english": "to sing",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4692",
+    "chinese": "唱歌",
+    "pinyin": "chàng gē sing",
+    "english": "to sing a song",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4693",
+    "chinese": "车",
+    "pinyin": "chē car",
+    "english": "surname Che",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4694",
+    "chinese": "车票",
+    "pinyin": "chē piào ticket",
+    "english": "ticket (for a bus or train)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4696",
+    "chinese": "车站",
+    "pinyin": "chē zhàn station",
+    "english": "rail station",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4697",
+    "chinese": "吃",
+    "pinyin": "chī eat",
+    "english": "to eat; to consume",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4698",
+    "chinese": "吃饭",
+    "pinyin": "chī fàn have meal",
+    "english": "to have a meal",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4699",
+    "chinese": "出",
+    "pinyin": "chū out",
+    "english": "to go out; to come out",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4700",
+    "chinese": "出来",
+    "pinyin": "chū lái come",
+    "english": "to come out",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4701",
+    "chinese": "出去",
+    "pinyin": "chū qù go out",
+    "english": "to go out",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4702",
+    "chinese": "穿",
+    "pinyin": "chuān wear",
+    "english": "to wear",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4703",
+    "chinese": "床",
+    "pinyin": "chuáng bed",
+    "english": "bed; couch (furniture that one can lie down on) (CL:張|张[zhang1])",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4704",
+    "chinese": "次",
+    "pinyin": "cì",
+    "english": "(measure word for times, frequency)",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4705",
+    "chinese": "从",
+    "pinyin": "cóng from",
+    "english": "variant of 從|从[cong2]",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w4706",
+    "chinese": "错",
+    "pinyin": "cuò wrong",
+    "english": "surname Cuo",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4707",
+    "chinese": "打车",
+    "pinyin": "dǎ chē take a taxi",
+    "english": "to take a taxi (in town)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4708",
+    "chinese": "打电话",
+    "pinyin": "dǎ diàn huà make a phonecall",
+    "english": "to make a telephone call",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4709",
+    "chinese": "打开",
+    "pinyin": "dǎ kāi turn on",
+    "english": "to open",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4710",
+    "chinese": "打球",
+    "pinyin": "dǎ qiú play ball",
+    "english": "to play ball",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4711",
+    "chinese": "大",
+    "pinyin": "dà",
+    "english": "large, big",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4712",
+    "chinese": "大学",
+    "pinyin": "dà xué university",
+    "english": "the Great Learning, one of the Four Books 四書|四书[Si4 shu1] in Confucianism",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4713",
+    "chinese": "大学生",
+    "pinyin": "dà xué shēng university student",
+    "english": "university student; college student",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4714",
+    "chinese": "到",
+    "pinyin": "dào reach",
+    "english": "to reach; to arrive",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w4715",
+    "chinese": "得到",
+    "pinyin": "dé dào get",
+    "english": "to get; to obtain; to receive",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4716",
+    "chinese": "地",
+    "pinyin": "de auxiliary word",
+    "english": "-ly",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4717",
+    "chinese": "的",
+    "pinyin": "de",
+    "english": "(aux.)",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4718",
+    "chinese": "等",
+    "pinyin": "děng wait",
+    "english": "to wait for; to await",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4719",
+    "chinese": "地点",
+    "pinyin": "dìdiǎn location",
+    "english": "place",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4720",
+    "chinese": "地方",
+    "pinyin": "dìfang local",
+    "english": "region",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4721",
+    "chinese": "地上",
+    "pinyin": "dì shàng on the ground",
+    "english": "on the ground",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4722",
+    "chinese": "地图",
+    "pinyin": "dìtú Map",
+    "english": "map",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4723",
+    "chinese": "弟弟",
+    "pinyin": "dì di dì younger brother",
+    "english": "younger brother",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4724",
+    "chinese": "第",
+    "pinyin": "dì",
+    "english": "（ dì èr ） auxiliary word for ordinal numbers (second )",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4725",
+    "chinese": "点",
+    "pinyin": "diǎn spot",
+    "english": "to touch briefly; to tap",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4726",
+    "chinese": "电",
+    "pinyin": "diàn electricity",
+    "english": "lightning",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4727",
+    "chinese": "电话",
+    "pinyin": "diàn huà phone",
+    "english": "telephone",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4728",
+    "chinese": "电脑",
+    "pinyin": "diànnǎo Computer",
+    "english": "computer",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4729",
+    "chinese": "电视",
+    "pinyin": "diànshì television",
+    "english": "television; TV",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4730",
+    "chinese": "电视机",
+    "pinyin": "diàn shì jī television",
+    "english": "television set",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4731",
+    "chinese": "电影",
+    "pinyin": "diànyǐng Film",
+    "english": "movie; film",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4732",
+    "chinese": "电影院",
+    "pinyin": "diàn yǐng",
+    "english": "cinema; movie theater yuàn",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4733",
+    "chinese": "东",
+    "pinyin": "dōng east",
+    "english": "surname Dong",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4734",
+    "chinese": "东边",
+    "pinyin": "dōng biān east side",
+    "english": "east",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4735",
+    "chinese": "东西",
+    "pinyin": "dōngxi thing",
+    "english": "east and west",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4736",
+    "chinese": "动",
+    "pinyin": "dòng move",
+    "english": "(of sth) to move",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4737",
+    "chinese": "动作",
+    "pinyin": "dòngzuò action",
+    "english": "movement; motion; action",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4738",
+    "chinese": "都",
+    "pinyin": "dōu all",
+    "english": "surname Du",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4739",
+    "chinese": "读",
+    "pinyin": "dú read",
+    "english": "comma",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4740",
+    "chinese": "读书",
+    "pinyin": "dú shū",
+    "english": "reading; study",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4741",
+    "chinese": "对",
+    "pinyin": "duì right",
+    "english": "right; correct",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4742",
+    "chinese": "对不起",
+    "pinyin": "duìbuqǐ",
+    "english": "I'm sorry.",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4743",
+    "chinese": "多",
+    "pinyin": "duō",
+    "english": "many; much; more",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4744",
+    "chinese": "多少",
+    "pinyin": "duōshao how much",
+    "english": "number; amount",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4745",
+    "chinese": "饿",
+    "pinyin": "è hungry",
+    "english": "hungry",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4746",
+    "chinese": "儿子",
+    "pinyin": "érzi Son",
+    "english": "son",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4747",
+    "chinese": "二",
+    "pinyin": "èr Two",
+    "english": "two",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4748",
+    "chinese": "饭",
+    "pinyin": "fàn",
+    "english": "rice; meal",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4749",
+    "chinese": "饭店",
+    "pinyin": "fàndiàn restaurant",
+    "english": "restaurant",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4750",
+    "chinese": "房间",
+    "pinyin": "fángjiān Room",
+    "english": "room",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4751",
+    "chinese": "房子",
+    "pinyin": "fáng zi",
+    "english": "house; building",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4752",
+    "chinese": "放",
+    "pinyin": "fàng discharge",
+    "english": "to put",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4753",
+    "chinese": "放假",
+    "pinyin": "fàng jià",
+    "english": "holiday; have a holiday",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4754",
+    "chinese": "放学",
+    "pinyin": "fàng xué off school",
+    "english": "to dismiss students at the end of the school day",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4755",
+    "chinese": "飞",
+    "pinyin": "fēi fly",
+    "english": "to fly",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4756",
+    "chinese": "飞机",
+    "pinyin": "fēijī aircraft",
+    "english": "airplane",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4757",
+    "chinese": "非常",
+    "pinyin": "fēicháng very",
+    "english": "very; really",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4758",
+    "chinese": "分",
+    "pinyin": "fēn",
+    "english": "minute; point; part; (measure word)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4759",
+    "chinese": "风",
+    "pinyin": "fēng wind",
+    "english": "wind",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4760",
+    "chinese": "干",
+    "pinyin": "gān dry",
+    "english": "old variant of 乾|干[gan1]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4761",
+    "chinese": "干净",
+    "pinyin": "gānjìng clean",
+    "english": "clean",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4762",
+    "chinese": "干什么",
+    "pinyin": "gàn shén me What to do",
+    "english": "what are you doing?",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4763",
+    "chinese": "高",
+    "pinyin": "gāo high",
+    "english": "surname Gao",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4764",
+    "chinese": "高兴",
+    "pinyin": "gāoxìng happy",
+    "english": "happy",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4765",
+    "chinese": "告诉",
+    "pinyin": "gàosu tell",
+    "english": "to press charges; to file a complaint",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4766",
+    "chinese": "哥哥",
+    "pinyin": "gē ge gē elder brother",
+    "english": "older brother",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4767",
+    "chinese": "歌",
+    "pinyin": "gē song",
+    "english": "song (CL:首[shou3],支[zhi1])",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4768",
+    "chinese": "个",
+    "pinyin": "gè individual",
+    "english": "used in 自個兒|自个儿[zi4 ge3 r5]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4769",
+    "chinese": "给",
+    "pinyin": "gěi give",
+    "english": "to",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w4770",
+    "chinese": "跟",
+    "pinyin": "gēn with",
+    "english": "heel",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w4771",
+    "chinese": "工人",
+    "pinyin": "gōngrén Worker",
+    "english": "worker",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4772",
+    "chinese": "工作",
+    "pinyin": "gōngzuò work",
+    "english": "to work",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4773",
+    "chinese": "关",
+    "pinyin": "guān",
+    "english": "shut; close; turn off",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4774",
+    "chinese": "关上",
+    "pinyin": "guān shàng",
+    "english": "close;shut to; turn off",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4775",
+    "chinese": "贵",
+    "pinyin": "guì noble",
+    "english": "Guizhou Province (abbr. for 貴州省|贵州省[Gui4 zhou1 Sheng3])",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4776",
+    "chinese": "国",
+    "pinyin": "guó",
+    "english": "country; state; nation",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4777",
+    "chinese": "国家",
+    "pinyin": "guójiā Country",
+    "english": "country; nation; state",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4778",
+    "chinese": "国外",
+    "pinyin": "guó wài",
+    "english": "foreign; oversea; abroad",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4779",
+    "chinese": "过",
+    "pinyin": "guò pass",
+    "english": "surname Guo",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4780",
+    "chinese": "还",
+    "pinyin": "hái",
+    "english": "also; still; yet",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4781",
+    "chinese": "还是",
+    "pinyin": "háishi still",
+    "english": "still (as before)",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4782",
+    "chinese": "还有",
+    "pinyin": "hái yǒu",
+    "english": "also; in addition; besides",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4783",
+    "chinese": "孩子",
+    "pinyin": "háizi Children",
+    "english": "child",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4784",
+    "chinese": "汉语",
+    "pinyin": "hànyǔ Chinese",
+    "english": "Chinese language",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4785",
+    "chinese": "汉字",
+    "pinyin": "hàn zì Chinese character",
+    "english": "Chinese character(s)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4786",
+    "chinese": "好",
+    "pinyin": "hǎo good",
+    "english": "good",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4787",
+    "chinese": "好吃",
+    "pinyin": "hǎochī Yummy",
+    "english": "tasty; delicious",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4788",
+    "chinese": "好看",
+    "pinyin": "hǎo kàn good looking",
+    "english": "good-looking; nice-looking",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4789",
+    "chinese": "好听",
+    "pinyin": "hǎo tīng pleasant to hear",
+    "english": "pleasant to hear",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4790",
+    "chinese": "好玩儿",
+    "pinyin": "hǎo wánr",
+    "english": "fun; interesting",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4791",
+    "chinese": "号",
+    "pinyin": "hào",
+    "english": "Number/date",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4792",
+    "chinese": "喝",
+    "pinyin": "hē drink",
+    "english": "to drink",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4793",
+    "chinese": "和",
+    "pinyin": "hé and",
+    "english": "old variant of 和[he2]",
+    "pos": "conjunction",
+    "hsk": 1
+  },
+  {
+    "id": "w4794",
+    "chinese": "很",
+    "pinyin": "hěn very",
+    "english": "very; quite",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4795",
+    "chinese": "后",
+    "pinyin": "hòu",
+    "english": "back; behind; after; later",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4796",
+    "chinese": "后边",
+    "pinyin": "hòu biān",
+    "english": "behind; back",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4797",
+    "chinese": "后天",
+    "pinyin": "hòu tiān day after tomorrow",
+    "english": "the day after tomorrow",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4798",
+    "chinese": "花",
+    "pinyin": "huā flower",
+    "english": "surname Hua",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4799",
+    "chinese": "话",
+    "pinyin": "huà",
+    "english": "word; words",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4800",
+    "chinese": "坏",
+    "pinyin": "huài bad",
+    "english": "bad",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4801",
+    "chinese": "回",
+    "pinyin": "huí go",
+    "english": "back; return",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4802",
+    "chinese": "回答",
+    "pinyin": "huídá Answer",
+    "english": "to reply; to answer",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4803",
+    "chinese": "回到",
+    "pinyin": "huí dào back to",
+    "english": "to return to",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4804",
+    "chinese": "回家",
+    "pinyin": "huí jiā go",
+    "english": "home; return home",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4805",
+    "chinese": "回来",
+    "pinyin": "huí lái come",
+    "english": "back; return",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4806",
+    "chinese": "回去",
+    "pinyin": "huí qù go back",
+    "english": "to return",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4807",
+    "chinese": "会",
+    "pinyin": "huì",
+    "english": "can; be able to",
+    "pos": "auxiliary_verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4808",
+    "chinese": "火车",
+    "pinyin": "huǒ chē train",
+    "english": "train",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4809",
+    "chinese": "机场",
+    "pinyin": "jīchǎng Airport",
+    "english": "airport; airfield",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4810",
+    "chinese": "机票",
+    "pinyin": "jī piào air ticket",
+    "english": "plane ticket; airline ticket",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4811",
+    "chinese": "鸡蛋",
+    "pinyin": "jīdàn Egg",
+    "english": "(chicken) egg",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4812",
+    "chinese": "几",
+    "pinyin": "jǐ several",
+    "english": "small table",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4813",
+    "chinese": "记",
+    "pinyin": "jì remember",
+    "english": "to record",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4814",
+    "chinese": "记得",
+    "pinyin": "jìdé remember",
+    "english": "to remember",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4815",
+    "chinese": "记住",
+    "pinyin": "jì zhù",
+    "english": "remember; keep in mind",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4816",
+    "chinese": "家",
+    "pinyin": "jiā home",
+    "english": "used in 傢伙|家伙[jia1 huo5] and 傢俱|家俱[jia1 ju4]",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4817",
+    "chinese": "家里",
+    "pinyin": "jiā lǐ In the home",
+    "english": "home",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4818",
+    "chinese": "家人",
+    "pinyin": "jiā rén family",
+    "english": "family member",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4819",
+    "chinese": "间",
+    "pinyin": "jiān",
+    "english": "between; measure word for rooms",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4820",
+    "chinese": "见",
+    "pinyin": "jiàn",
+    "english": "see; meet",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4821",
+    "chinese": "见面",
+    "pinyin": "jiànmiàn meet",
+    "english": "to meet; to see each other",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4822",
+    "chinese": "教",
+    "pinyin": "jiāo teach",
+    "english": "surname Jiao",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4823",
+    "chinese": "叫",
+    "pinyin": "jiào",
+    "english": "call; be called",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4824",
+    "chinese": "教学楼",
+    "pinyin": "jiào xué lóu teaching building",
+    "english": "school building; academic building",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4825",
+    "chinese": "姐姐",
+    "pinyin": "jiě jie jiě elder sister",
+    "english": "older sister",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4826",
+    "chinese": "介绍",
+    "pinyin": "jièshào introduce",
+    "english": "to introduce (sb to sb)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4827",
+    "chinese": "今年",
+    "pinyin": "jīn nián this year",
+    "english": "this year",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4828",
+    "chinese": "今天",
+    "pinyin": "jīntiān Today",
+    "english": "today",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4829",
+    "chinese": "进",
+    "pinyin": "jìn enter",
+    "english": "to go forward",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4830",
+    "chinese": "进来",
+    "pinyin": "jìn lái come in",
+    "english": "to come in",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4831",
+    "chinese": "进去",
+    "pinyin": "jìn qù go in",
+    "english": "to go in",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4832",
+    "chinese": "九",
+    "pinyin": "jiǔ Nine",
+    "english": "nine",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4833",
+    "chinese": "就",
+    "pinyin": "jiù as soon",
+    "english": "as; right away; then",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4834",
+    "chinese": "觉得",
+    "pinyin": "juéde Think",
+    "english": "to think that ...; to feel that ...",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4835",
+    "chinese": "开",
+    "pinyin": "kāi open",
+    "english": "to open (transitive or intransitive)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4836",
+    "chinese": "开车",
+    "pinyin": "kāi chē",
+    "english": "drive; drive a car",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4837",
+    "chinese": "开会",
+    "pinyin": "kāi huì have a meeting",
+    "english": "to hold a meeting",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4838",
+    "chinese": "开玩笑",
+    "pinyin": "kāiwánxiào Make fun of",
+    "english": "to play a joke; to make fun of; to joke",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4839",
+    "chinese": "看病",
+    "pinyin": "kàn bìng see a doctor",
+    "english": "to visit a doctor",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4840",
+    "chinese": "看到",
+    "pinyin": "kàn dào see",
+    "english": "to see",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4841",
+    "chinese": "看见",
+    "pinyin": "kànjiàn seeing",
+    "english": "to see; to catch sight of",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4842",
+    "chinese": "考",
+    "pinyin": "kǎo",
+    "english": "test; examine",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4843",
+    "chinese": "考试",
+    "pinyin": "kǎoshì Examination",
+    "english": "to take an exam",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4844",
+    "chinese": "渴",
+    "pinyin": "kě thirsty",
+    "english": "thirsty",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4845",
+    "chinese": "课",
+    "pinyin": "kè course",
+    "english": "subject",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4846",
+    "chinese": "课本",
+    "pinyin": "kè běn textbook",
+    "english": "textbook",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4847",
+    "chinese": "课文",
+    "pinyin": "kè wén text",
+    "english": "text",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4848",
+    "chinese": "口",
+    "pinyin": "kǒu mouth",
+    "english": "mouth",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4849",
+    "chinese": "块",
+    "pinyin": "kuài block",
+    "english": "lump; chunk; piece",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4850",
+    "chinese": "快",
+    "pinyin": "kuài fast",
+    "english": "rapid",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4851",
+    "chinese": "来",
+    "pinyin": "lái come",
+    "english": "to come",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4852",
+    "chinese": "来到",
+    "pinyin": "lái dào",
+    "english": "come; arrive",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4853",
+    "chinese": "老",
+    "pinyin": "lǎo",
+    "english": "old; aged",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4854",
+    "chinese": "老人",
+    "pinyin": "lǎo rén old",
+    "english": "people; the aged",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4855",
+    "chinese": "老师",
+    "pinyin": "lǎoshī Teacher",
+    "english": "teacher",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4856",
+    "chinese": "了",
+    "pinyin": "le past tense marker",
+    "english": "(completed action marker)",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4857",
+    "chinese": "累",
+    "pinyin": "lèi tired",
+    "english": "to accumulate",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4858",
+    "chinese": "冷",
+    "pinyin": "lěng cold",
+    "english": "surname Leng",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4859",
+    "chinese": "里",
+    "pinyin": "lǐ in",
+    "english": "variant of 裡|里[li3]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4860",
+    "chinese": "里边",
+    "pinyin": "lǐ biān inside",
+    "english": "inside",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4861",
+    "chinese": "两",
+    "pinyin": "liǎng two",
+    "english": "two",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4862",
+    "chinese": "零",
+    "pinyin": "líng líng zero",
+    "english": "zero",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4863",
+    "chinese": "六",
+    "pinyin": "liù Six",
+    "english": "six",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4864",
+    "chinese": "楼",
+    "pinyin": "lóu floor",
+    "english": "surname Lou",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4865",
+    "chinese": "楼上",
+    "pinyin": "lóu shàng upstairs",
+    "english": "upstairs",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4866",
+    "chinese": "楼下",
+    "pinyin": "lóu xià downstairs",
+    "english": "downstairs",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4867",
+    "chinese": "路",
+    "pinyin": "lù road",
+    "english": "surname Lu",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4868",
+    "chinese": "路口",
+    "pinyin": "lù kǒu",
+    "english": "intersection; crossing",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4869",
+    "chinese": "路上",
+    "pinyin": "lù shàng on the road",
+    "english": "on the road",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4870",
+    "chinese": "妈妈",
+    "pinyin": "mā ma",
+    "english": "mom; mother mā",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4871",
+    "chinese": "马路",
+    "pinyin": "mǎ lù",
+    "english": "road; street",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4872",
+    "chinese": "马上",
+    "pinyin": "mǎshàng Right off",
+    "english": "at once",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4873",
+    "chinese": "吗",
+    "pinyin": "ma auxiliary word",
+    "english": "(coll.) what?",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4874",
+    "chinese": "买",
+    "pinyin": "mǎi buy",
+    "english": "to buy",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4875",
+    "chinese": "慢",
+    "pinyin": "màn slow",
+    "english": "slow",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4876",
+    "chinese": "忙",
+    "pinyin": "máng busy",
+    "english": "busy",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4877",
+    "chinese": "毛",
+    "pinyin": "máo a fractional unit of money in China",
+    "english": "(measure word)",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4878",
+    "chinese": "没",
+    "pinyin": "méi no",
+    "english": "(negative prefix for verbs) have not; not",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4879",
+    "chinese": "没关系",
+    "pinyin": "méiguānxi No problem",
+    "english": "it doesn't matter",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4880",
+    "chinese": "没什么",
+    "pinyin": "méi shén me",
+    "english": "It's nothing",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4881",
+    "chinese": "没事儿",
+    "pinyin": "méi shìr",
+    "english": "It's okay",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4882",
+    "chinese": "没有",
+    "pinyin": "méi yǒu have",
+    "english": "not; no",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w4883",
+    "chinese": "妹妹",
+    "pinyin": "mèi mei younger sister",
+    "english": "mèi",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4884",
+    "chinese": "门",
+    "pinyin": "mén door",
+    "english": "surname Men",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4885",
+    "chinese": "门口",
+    "pinyin": "mén kǒu doorway",
+    "english": "doorway",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4886",
+    "chinese": "门票",
+    "pinyin": "mén piào tickets",
+    "english": "ticket (for theater, cinema etc)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4887",
+    "chinese": "们",
+    "pinyin": "men",
+    "english": "（ péng plural marker for pronouns and a few yǒu men ） animate nouns (friends)",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4888",
+    "chinese": "米饭",
+    "pinyin": "mǐfàn Steamed Rice",
+    "english": "(cooked) rice",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4889",
+    "chinese": "面包",
+    "pinyin": "miànbāo Bread",
+    "english": "bread",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4890",
+    "chinese": "面条儿",
+    "pinyin": "miàn tiáor noodles",
+    "english": "erhua variant of 麵條|面条[mian4 tiao2]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4891",
+    "chinese": "名字",
+    "pinyin": "míngzi Name",
+    "english": "name (of a person or thing)",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4892",
+    "chinese": "明白",
+    "pinyin": "míngbai clear",
+    "english": "clear; obvious; unequivocal",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4893",
+    "chinese": "明年",
+    "pinyin": "míng nián next year",
+    "english": "next year",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4894",
+    "chinese": "明天",
+    "pinyin": "míngtiān Tomorrow",
+    "english": "tomorrow",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4895",
+    "chinese": "拿",
+    "pinyin": "ná take",
+    "english": "old variant of 拿[na2]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4896",
+    "chinese": "哪",
+    "pinyin": "nǎ which",
+    "english": "how",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4897",
+    "chinese": "哪里",
+    "pinyin": "nǎ lǐ where",
+    "english": "where?",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4898",
+    "chinese": "哪儿",
+    "pinyin": "nǎr where",
+    "english": "where?",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4899",
+    "chinese": "哪些",
+    "pinyin": "nǎ xiē which",
+    "english": "which ones?",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4900",
+    "chinese": "那",
+    "pinyin": "nà that",
+    "english": "surname Na",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4901",
+    "chinese": "那边",
+    "pinyin": "nà biān there",
+    "english": "over there",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4902",
+    "chinese": "那里",
+    "pinyin": "nà lǐ there",
+    "english": "there; that place",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4903",
+    "chinese": "那儿",
+    "pinyin": "nàr there",
+    "english": "there",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4904",
+    "chinese": "那些",
+    "pinyin": "nà xiē those",
+    "english": "those",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4905",
+    "chinese": "奶",
+    "pinyin": "nǎi milk",
+    "english": "breast",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4906",
+    "chinese": "奶奶",
+    "pinyin": "nǎinai grandma",
+    "english": "(informal) grandma (paternal grandmother)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4907",
+    "chinese": "男",
+    "pinyin": "nán Man",
+    "english": "(bound form) male",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4908",
+    "chinese": "男孩儿",
+    "pinyin": "nán háir boy",
+    "english": "erhua form of 男孩[nan2 hai2]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4909",
+    "chinese": "男朋友",
+    "pinyin": "nán péng yǒu boyfriend",
+    "english": "boyfriend",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4910",
+    "chinese": "男人",
+    "pinyin": "nán ren man",
+    "english": "a man",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4911",
+    "chinese": "男生",
+    "pinyin": "nán shēng boy",
+    "english": "schoolboy",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4912",
+    "chinese": "南",
+    "pinyin": "nán south",
+    "english": "surname Nan",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4913",
+    "chinese": "南边",
+    "pinyin": "nán biān",
+    "english": "south; south side",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4914",
+    "chinese": "难",
+    "pinyin": "nán",
+    "english": "hard, difficult",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4915",
+    "chinese": "呢",
+    "pinyin": "ne auxiliary word",
+    "english": "(sentence-final particle) used in questions to link back to prior discourse or context (\"what about...?\", \"and...?\")",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w4916",
+    "chinese": "能",
+    "pinyin": "néng can",
+    "english": "surname Neng",
+    "pos": "auxiliary_verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4917",
+    "chinese": "你",
+    "pinyin": "nǐ you",
+    "english": "you (informal, as opposed to courteous 您[nin2])",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4918",
+    "chinese": "你们",
+    "pinyin": "nǐ men you",
+    "english": "you (plural)",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4919",
+    "chinese": "年",
+    "pinyin": "nián year",
+    "english": "surname Nian",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4920",
+    "chinese": "您",
+    "pinyin": "nín you",
+    "english": "you (courteous, as opposed to informal 你[ni3])",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4921",
+    "chinese": "牛奶",
+    "pinyin": "niúnǎi milk",
+    "english": "cow's milk",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4922",
+    "chinese": "女",
+    "pinyin": "nǚ woman",
+    "english": "female",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4923",
+    "chinese": "女儿",
+    "pinyin": "daughter",
+    "english": "nǚ'ér",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4924",
+    "chinese": "女孩儿",
+    "pinyin": "nǚ háir girl",
+    "english": "erhua form of 女孩[nu : 3 hai2]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4925",
+    "chinese": "女朋友",
+    "pinyin": "nǚ péng yǒu girlfriend",
+    "english": "girlfriend",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4926",
+    "chinese": "女人",
+    "pinyin": "nǚ ren woman",
+    "english": "woman",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4927",
+    "chinese": "女生",
+    "pinyin": "nǚ shēng girl",
+    "english": "schoolgirl",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4928",
+    "chinese": "旁边",
+    "pinyin": "pángbiān Side",
+    "english": "side; adjacent place",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4929",
+    "chinese": "跑",
+    "pinyin": "pǎo run",
+    "english": "(of an animal) to paw (the ground)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4930",
+    "chinese": "朋友",
+    "pinyin": "péngyou Friend",
+    "english": "friend",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4931",
+    "chinese": "票",
+    "pinyin": "piào ticket",
+    "english": "ticket",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4932",
+    "chinese": "七",
+    "pinyin": "qī Seven",
+    "english": "seven",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4933",
+    "chinese": "起",
+    "pinyin": "qǐ get",
+    "english": "up; start; rise",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4934",
+    "chinese": "起床",
+    "pinyin": "qǐchuáng Get up",
+    "english": "to get out of bed; to get up",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4935",
+    "chinese": "起来",
+    "pinyin": "qǐlái get up",
+    "english": "to stand up; to get up",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4936",
+    "chinese": "汽车",
+    "pinyin": "qì chē car",
+    "english": "car",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4937",
+    "chinese": "前",
+    "pinyin": "qián front",
+    "english": "front",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4938",
+    "chinese": "前边",
+    "pinyin": "qián biān in front",
+    "english": "front",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4939",
+    "chinese": "前天",
+    "pinyin": "qián tiān the day before yesterday",
+    "english": "the day before yesterday",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4940",
+    "chinese": "钱",
+    "pinyin": "qián money",
+    "english": "surname Qian",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4941",
+    "chinese": "钱包",
+    "pinyin": "qián bāo wallet",
+    "english": "purse",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4942",
+    "chinese": "请",
+    "pinyin": "qǐng please",
+    "english": "to ask",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4943",
+    "chinese": "请假",
+    "pinyin": "qǐngjià ask for leave",
+    "english": "to request leave of absence",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4944",
+    "chinese": "请进",
+    "pinyin": "qǐng jìn please come in",
+    "english": "\"please come in\"",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4945",
+    "chinese": "请问",
+    "pinyin": "qǐng wèn excuse me",
+    "english": "Excuse me, may I ask...?",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4946",
+    "chinese": "请坐",
+    "pinyin": "qǐng zuò please have a seat",
+    "english": "please, have a seat",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4947",
+    "chinese": "球",
+    "pinyin": "qiú ball",
+    "english": "ball used for playing games (variant of 球[qiu2])",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4948",
+    "chinese": "去",
+    "pinyin": "qù go",
+    "english": "to go",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4949",
+    "chinese": "去年",
+    "pinyin": "qùnián Last year",
+    "english": "last year",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4950",
+    "chinese": "热",
+    "pinyin": "rè heat",
+    "english": "to warm up",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4951",
+    "chinese": "人",
+    "pinyin": "rén people",
+    "english": "person; people",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4952",
+    "chinese": "认识",
+    "pinyin": "rènshi know",
+    "english": "to know",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4953",
+    "chinese": "认真",
+    "pinyin": "rènzhēn earnest",
+    "english": "conscientious",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4954",
+    "chinese": "日",
+    "pinyin": "rì date",
+    "english": "abbr. for 日本[Ri4 ben3], Japan",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4955",
+    "chinese": "日期",
+    "pinyin": "rìqī Date",
+    "english": "date",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4956",
+    "chinese": "肉",
+    "pinyin": "ròu meat",
+    "english": "meat",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4957",
+    "chinese": "三",
+    "pinyin": "sān Three",
+    "english": "surname San",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4958",
+    "chinese": "山",
+    "pinyin": "shān mountain",
+    "english": "surname Shan",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4959",
+    "chinese": "商场",
+    "pinyin": "shāng chǎng",
+    "english": "mall; shopping mall",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4960",
+    "chinese": "商店",
+    "pinyin": "shāngdiàn Shop",
+    "english": "store; shop",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4961",
+    "chinese": "上",
+    "pinyin": "shàng upper",
+    "english": "used in 上聲|上声[shang3 sheng1]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4962",
+    "chinese": "上班",
+    "pinyin": "shàngbān go to work",
+    "english": "to go to work",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4963",
+    "chinese": "上边",
+    "pinyin": "shàng biān",
+    "english": "above; on",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4964",
+    "chinese": "上车",
+    "pinyin": "shàng chē get on",
+    "english": "to get on or into (a bus, train, car etc)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4965",
+    "chinese": "上次",
+    "pinyin": "shàng cì last time",
+    "english": "last time",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4966",
+    "chinese": "上课",
+    "pinyin": "shàng kè attend",
+    "english": "class; have a class",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4967",
+    "chinese": "上网",
+    "pinyin": "shàngwǎng Surf the Internet",
+    "english": "to go online",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4968",
+    "chinese": "上午",
+    "pinyin": "shàngwǔ morning",
+    "english": "morning",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4969",
+    "chinese": "上学",
+    "pinyin": "shàng xué go to school",
+    "english": "to go to school",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4970",
+    "chinese": "少",
+    "pinyin": "shǎo less",
+    "english": "few",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w4971",
+    "chinese": "谁",
+    "pinyin": "shéi who",
+    "english": "who",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4972",
+    "chinese": "身上",
+    "pinyin": "shēn shàng",
+    "english": "body; on one's body",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4973",
+    "chinese": "身体",
+    "pinyin": "shēntǐ body",
+    "english": "the body",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4974",
+    "chinese": "什么",
+    "pinyin": "shénme What",
+    "english": "what?",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w4975",
+    "chinese": "生病",
+    "pinyin": "shēngbìng Fall ill",
+    "english": "to fall ill",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4976",
+    "chinese": "生气",
+    "pinyin": "shēngqì get angry",
+    "english": "to get angry; to be furious",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4977",
+    "chinese": "生日",
+    "pinyin": "shēngrì Birthday",
+    "english": "birthday",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4978",
+    "chinese": "十",
+    "pinyin": "shí Ten",
+    "english": "ten",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4979",
+    "chinese": "时候",
+    "pinyin": "shíhou time",
+    "english": "time",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4980",
+    "chinese": "时间",
+    "pinyin": "shíjiān time",
+    "english": "(concept of) time",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4981",
+    "chinese": "事",
+    "pinyin": "shì thing",
+    "english": "matter",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4982",
+    "chinese": "试",
+    "pinyin": "shì try",
+    "english": "to test",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4983",
+    "chinese": "是",
+    "pinyin": "shì yes",
+    "english": "to be (followed by substantives only)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4984",
+    "chinese": "是不是",
+    "pinyin": "shì bú shì",
+    "english": "isn't it?",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4985",
+    "chinese": "手",
+    "pinyin": "shǒu hand",
+    "english": "hand",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4986",
+    "chinese": "手机",
+    "pinyin": "shǒujī Mobile phone",
+    "english": "cell phone; mobile phone",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4987",
+    "chinese": "书",
+    "pinyin": "shū book",
+    "english": "abbr. for 書經|书经[Shu1 jing1]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4988",
+    "chinese": "书包",
+    "pinyin": "shū bāo school bag",
+    "english": "schoolbag",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4989",
+    "chinese": "书店",
+    "pinyin": "shū diàn bookstore",
+    "english": "bookstore",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4990",
+    "chinese": "树",
+    "pinyin": "shù tree",
+    "english": "tree",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4991",
+    "chinese": "水",
+    "pinyin": "shuǐ water",
+    "english": "surname Shui",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w4992",
+    "chinese": "水果",
+    "pinyin": "shuǐguǒ Fruits",
+    "english": "fruit",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w4993",
+    "chinese": "睡",
+    "pinyin": "shuì sleep",
+    "english": "to sleep",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4994",
+    "chinese": "睡觉",
+    "pinyin": "shuìjiào sleep",
+    "english": "to go to bed",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4995",
+    "chinese": "说",
+    "pinyin": "shuō speak",
+    "english": "to persuade",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4996",
+    "chinese": "说话",
+    "pinyin": "shuōhuà talk",
+    "english": "to speak",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4997",
+    "chinese": "四",
+    "pinyin": "sì Four",
+    "english": "four",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w4998",
+    "chinese": "送",
+    "pinyin": "sòng give",
+    "english": "to send; to deliver; to transmit",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w4999",
+    "chinese": "岁",
+    "pinyin": "suì",
+    "english": "year, age",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w5000",
+    "chinese": "他",
+    "pinyin": "tā he",
+    "english": "(third-person singular) (since the early 20th century, usu. male) he; him; his",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5001",
+    "chinese": "他们",
+    "pinyin": "tā men they",
+    "english": "they; them",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5002",
+    "chinese": "她",
+    "pinyin": "tā she",
+    "english": "she",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5003",
+    "chinese": "她们",
+    "pinyin": "tā men they",
+    "english": "they; them (females)",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5004",
+    "chinese": "太",
+    "pinyin": "tài too",
+    "english": "highest",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5005",
+    "chinese": "天",
+    "pinyin": "tiān day",
+    "english": "day",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5006",
+    "chinese": "天气",
+    "pinyin": "tiānqì weather",
+    "english": "weather",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5007",
+    "chinese": "听",
+    "pinyin": "tīng hear",
+    "english": "smile (archaic)",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w5008",
+    "chinese": "听到",
+    "pinyin": "tīng dào hear",
+    "english": "to hear",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5009",
+    "chinese": "听见",
+    "pinyin": "tīng jiàn hear",
+    "english": "to hear",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5010",
+    "chinese": "听写",
+    "pinyin": "tīng xiě",
+    "english": "dictation; dictate",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5011",
+    "chinese": "同学",
+    "pinyin": "tóngxué Classmate",
+    "english": "to study at the same school",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5012",
+    "chinese": "图书馆",
+    "pinyin": "túshūguǎn Library",
+    "english": "library",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5013",
+    "chinese": "外",
+    "pinyin": "wài",
+    "english": "abroad, outside",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5014",
+    "chinese": "外边",
+    "pinyin": "wài biān outside",
+    "english": "outside",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5015",
+    "chinese": "外国",
+    "pinyin": "wài guó foreign country",
+    "english": "foreign country",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5016",
+    "chinese": "外语",
+    "pinyin": "wài yǔ foreign language",
+    "english": "foreign language",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5017",
+    "chinese": "玩儿",
+    "pinyin": "wánr play",
+    "english": "to play",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5018",
+    "chinese": "晚",
+    "pinyin": "wǎn late",
+    "english": "evening",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5019",
+    "chinese": "晚饭",
+    "pinyin": "wǎn fàn dinner",
+    "english": "evening meal",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5020",
+    "chinese": "晚上",
+    "pinyin": "wǎnshang Night",
+    "english": "evening",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5021",
+    "chinese": "网上",
+    "pinyin": "wǎng shàng online",
+    "english": "online",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5022",
+    "chinese": "网友",
+    "pinyin": "wǎng yǒu net friend",
+    "english": "online friend",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5023",
+    "chinese": "忘",
+    "pinyin": "wàng forget",
+    "english": "to forget",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5024",
+    "chinese": "忘记",
+    "pinyin": "wàngjì forget",
+    "english": "to forget",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5025",
+    "chinese": "问",
+    "pinyin": "wèn ask",
+    "english": "to ask; to inquire",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5026",
+    "chinese": "我",
+    "pinyin": "wǒ I",
+    "english": "I; me; my",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5027",
+    "chinese": "我们",
+    "pinyin": "wǒmen We",
+    "english": "we; us; ourselves; our",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5028",
+    "chinese": "五",
+    "pinyin": "wǔ Five",
+    "english": "five",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w5029",
+    "chinese": "午饭",
+    "pinyin": "wǔ fàn lunch",
+    "english": "lunch",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5030",
+    "chinese": "西",
+    "pinyin": "xī west",
+    "english": "the West",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5031",
+    "chinese": "西边",
+    "pinyin": "xī biān",
+    "english": "west; west side",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5032",
+    "chinese": "洗",
+    "pinyin": "xǐ wash",
+    "english": "to wash; to bathe",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5033",
+    "chinese": "洗手间",
+    "pinyin": "xǐshǒujiān Restroom",
+    "english": "toilet",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5034",
+    "chinese": "喜欢",
+    "pinyin": "xǐhuan like",
+    "english": "to like; to be fond of",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5035",
+    "chinese": "下",
+    "pinyin": "xià",
+    "english": "below; under; next; go down; get off",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5036",
+    "chinese": "下班",
+    "pinyin": "xià bān get off work",
+    "english": "to finish work; to get off work",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5037",
+    "chinese": "下边",
+    "pinyin": "xià biān",
+    "english": "below; under",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5038",
+    "chinese": "下车",
+    "pinyin": "xià chē get off",
+    "english": "to get off or out of (a bus, train, car etc)",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5039",
+    "chinese": "下次",
+    "pinyin": "xià cì next time",
+    "english": "next time",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5040",
+    "chinese": "下课",
+    "pinyin": "xià kè finish class",
+    "english": "to finish class",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5041",
+    "chinese": "下午",
+    "pinyin": "xiàwǔ Afternoon",
+    "english": "afternoon",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5042",
+    "chinese": "下雨",
+    "pinyin": "xiàyǔ rain",
+    "english": "to rain",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5043",
+    "chinese": "先",
+    "pinyin": "xiān before",
+    "english": "beforehand; first; earlier",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5044",
+    "chinese": "先生",
+    "pinyin": "xiānsheng Sir",
+    "english": "teacher",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5045",
+    "chinese": "现在",
+    "pinyin": "xiànzài Now",
+    "english": "now; at present; currently",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5046",
+    "chinese": "想",
+    "pinyin": "xiǎng think",
+    "english": "to think (about)",
+    "pos": "auxiliary_verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5047",
+    "chinese": "小",
+    "pinyin": "xiǎo Small",
+    "english": "small",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5048",
+    "chinese": "小孩儿",
+    "pinyin": "xiǎo háir",
+    "english": "child; kid",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5049",
+    "chinese": "小姐",
+    "pinyin": "xiǎojiě Miss",
+    "english": "young lady",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5050",
+    "chinese": "小朋友",
+    "pinyin": "xiǎo péng yǒu",
+    "english": "child; kid",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5051",
+    "chinese": "小时",
+    "pinyin": "xiǎoshí hour",
+    "english": "hour",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5052",
+    "chinese": "小学",
+    "pinyin": "xiǎo xué primary",
+    "english": "school; elementary schoo",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5053",
+    "chinese": "小学生",
+    "pinyin": "xiǎo xué elementary school student",
+    "english": "shēng",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5054",
+    "chinese": "笑",
+    "pinyin": "xiào laugh",
+    "english": "old variant of 笑[xiao4]",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5055",
+    "chinese": "写",
+    "pinyin": "xiě write",
+    "english": "to write",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5056",
+    "chinese": "谢谢",
+    "pinyin": "xièxie Thank you",
+    "english": "to thank",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5057",
+    "chinese": "新",
+    "pinyin": "xīn new",
+    "english": "abbr. for Xinjiang 新疆[Xin1 jiang1]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5058",
+    "chinese": "新年",
+    "pinyin": "xīn nián New Year",
+    "english": "New Year",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5059",
+    "chinese": "星期",
+    "pinyin": "xīngqī week",
+    "english": "week",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5060",
+    "chinese": "星期日",
+    "pinyin": "xīng qī rì Sunday",
+    "english": "Sunday",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5061",
+    "chinese": "星期天",
+    "pinyin": "xīng qī tiān Sunday",
+    "english": "Sunday",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5062",
+    "chinese": "行",
+    "pinyin": "xíng",
+    "english": "That's ok",
+    "pos": "measure_word",
+    "hsk": 1
+  },
+  {
+    "id": "w5063",
+    "chinese": "休息",
+    "pinyin": "xiūxi Rest",
+    "english": "rest",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5064",
+    "chinese": "学",
+    "pinyin": "xué",
+    "english": "learn; study",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5065",
+    "chinese": "学生",
+    "pinyin": "xuésheng Student",
+    "english": "student",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5066",
+    "chinese": "学习",
+    "pinyin": "xuéxí Study",
+    "english": "to learn",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5067",
+    "chinese": "学校",
+    "pinyin": "xuéxiào School",
+    "english": "school",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5068",
+    "chinese": "学院",
+    "pinyin": "xué yuàn",
+    "english": "college; academy",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5069",
+    "chinese": "要",
+    "pinyin": "yào want",
+    "english": "(bound form) to demand; to coerce",
+    "pos": "auxiliary_verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5070",
+    "chinese": "爷爷",
+    "pinyin": "yéye grandpa",
+    "english": "(coll.) paternal grandfather; grandpa",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5071",
+    "chinese": "也",
+    "pinyin": "yě also",
+    "english": "surname Ye",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5072",
+    "chinese": "页",
+    "pinyin": "yè page",
+    "english": "head",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5073",
+    "chinese": "一",
+    "pinyin": "yī One",
+    "english": "one",
+    "pos": "numeral",
+    "hsk": 1
+  },
+  {
+    "id": "w5074",
+    "chinese": "衣服",
+    "pinyin": "yīfu clothes",
+    "english": "clothes",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5075",
+    "chinese": "医生",
+    "pinyin": "yīshēng Doctor",
+    "english": "doctor",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5076",
+    "chinese": "医院",
+    "pinyin": "yīyuàn Hospital",
+    "english": "hospital",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5077",
+    "chinese": "一半",
+    "pinyin": "yí bàn half",
+    "english": "half",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5078",
+    "chinese": "一会儿",
+    "pinyin": "yíhuìr A little while",
+    "english": "a moment",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5079",
+    "chinese": "一块儿",
+    "pinyin": "yí kuàir together",
+    "english": "erhua variant of 一塊|一块[yi1 kuai4]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5080",
+    "chinese": "一样",
+    "pinyin": "yíyàng equally",
+    "english": "same",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5081",
+    "chinese": "一边",
+    "pinyin": "yìbiān One side",
+    "english": "one side",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5082",
+    "chinese": "一点儿",
+    "pinyin": "yīdiǎnr a little bit",
+    "english": "erhua variant of 一點|一点[yi1 dian3]",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5083",
+    "chinese": "一起",
+    "pinyin": "yìqǐ together",
+    "english": "(in) the same place",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5084",
+    "chinese": "一些",
+    "pinyin": "yì xiē some",
+    "english": "some; a few; a little; (following an adjective) slightly ...er",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5085",
+    "chinese": "用",
+    "pinyin": "yòng use",
+    "english": "to use; to make use of; to employ",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w5086",
+    "chinese": "有",
+    "pinyin": "yǒu have",
+    "english": "to have; there is",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5087",
+    "chinese": "有的",
+    "pinyin": "yǒu de some",
+    "english": "(there are) some (who are...)",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5088",
+    "chinese": "有名",
+    "pinyin": "yǒumíng Famous",
+    "english": "famous",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5089",
+    "chinese": "有时候",
+    "pinyin": "yǒu shí sometimes",
+    "english": "hòu ｜ yǒu s hí",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5090",
+    "chinese": "有些",
+    "pinyin": "yǒu",
+    "english": "（ yì ） some xiē",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5091",
+    "chinese": "有用",
+    "pinyin": "yǒu yòng useful",
+    "english": "useful",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5092",
+    "chinese": "右",
+    "pinyin": "yòu right",
+    "english": "(bound form) right; right-hand side",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5093",
+    "chinese": "右边",
+    "pinyin": "yòubian Right",
+    "english": "right side",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5094",
+    "chinese": "雨",
+    "pinyin": "yǔ rain",
+    "english": "rain",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5095",
+    "chinese": "元",
+    "pinyin": "yuán",
+    "english": "element; Yuan",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5096",
+    "chinese": "远",
+    "pinyin": "yuǎn far",
+    "english": "far",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5097",
+    "chinese": "月",
+    "pinyin": "yuè month",
+    "english": "moon",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5098",
+    "chinese": "再",
+    "pinyin": "zài again",
+    "english": "again; once more; re-",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5099",
+    "chinese": "再见",
+    "pinyin": "zàijiàn Bye",
+    "english": "goodbye",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5100",
+    "chinese": "在",
+    "pinyin": "zài",
+    "english": "stay; in process of",
+    "pos": "preposition",
+    "hsk": 1
+  },
+  {
+    "id": "w5101",
+    "chinese": "在家",
+    "pinyin": "zài jiā at home",
+    "english": "to be at home",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5102",
+    "chinese": "早",
+    "pinyin": "zǎo early",
+    "english": "early",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5103",
+    "chinese": "早饭",
+    "pinyin": "zǎo fàn breakfast",
+    "english": "breakfast",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5104",
+    "chinese": "早上",
+    "pinyin": "zǎoshang Morning",
+    "english": "early morning",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5105",
+    "chinese": "怎么",
+    "pinyin": "zěnme How",
+    "english": "how?",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5106",
+    "chinese": "站",
+    "pinyin": "zhàn station",
+    "english": "station",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5107",
+    "chinese": "找",
+    "pinyin": "zhǎo look for",
+    "english": "to try to find",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5108",
+    "chinese": "找到",
+    "pinyin": "zhǎo dào find",
+    "english": "to find",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5109",
+    "chinese": "这",
+    "pinyin": "zhè Here",
+    "english": "(here)",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5110",
+    "chinese": "这边",
+    "pinyin": "zhè biān here",
+    "english": "this side",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5111",
+    "chinese": "这里",
+    "pinyin": "zhè lǐ here",
+    "english": "variant of 這裡|这里[zhe4 li3]",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5112",
+    "chinese": "这儿",
+    "pinyin": "zhèr here",
+    "english": "here",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5113",
+    "chinese": "这些",
+    "pinyin": "zhè xiē these",
+    "english": "these",
+    "pos": "pronoun",
+    "hsk": 1
+  },
+  {
+    "id": "w5114",
+    "chinese": "着",
+    "pinyin": "zhe in process of",
+    "english": "variant of 著|着[zhao1]",
+    "pos": "particle",
+    "hsk": 1
+  },
+  {
+    "id": "w5115",
+    "chinese": "真",
+    "pinyin": "zhēn really",
+    "english": "really",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5116",
+    "chinese": "真的",
+    "pinyin": "zhēn de really",
+    "english": "really; truly; indeed",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5117",
+    "chinese": "正",
+    "pinyin": "zhèng",
+    "english": "just; exactly",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5118",
+    "chinese": "正在",
+    "pinyin": "zhèngzài in process of",
+    "english": "to be in the process of (doing sth); to be currently ...-ing",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5119",
+    "chinese": "知道",
+    "pinyin": "zhīdào know",
+    "english": "to know; to become aware of",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5120",
+    "chinese": "知识",
+    "pinyin": "zhīshi knowledge",
+    "english": "knowledge",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5121",
+    "chinese": "中",
+    "pinyin": "zhōng",
+    "english": "middle; in",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5122",
+    "chinese": "中国",
+    "pinyin": "zhōngguó China",
+    "english": "China",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5123",
+    "chinese": "中间",
+    "pinyin": "zhōngjiān Middle",
+    "english": "the middle; the inside",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5124",
+    "chinese": "中文",
+    "pinyin": "zhōngwén Chinese",
+    "english": "Chinese language",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5125",
+    "chinese": "中午",
+    "pinyin": "zhōngwǔ Noon",
+    "english": "noon",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5126",
+    "chinese": "中学",
+    "pinyin": "zhōng xué middle school",
+    "english": "middle school",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5127",
+    "chinese": "中学生",
+    "pinyin": "zhōng xué middle School student",
+    "english": "shēng",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5128",
+    "chinese": "重",
+    "pinyin": "zhòng heavy",
+    "english": "to repeat",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5129",
+    "chinese": "重要",
+    "pinyin": "zhòngyào important",
+    "english": "important; significant; major",
+    "pos": "adjective",
+    "hsk": 1
+  },
+  {
+    "id": "w5130",
+    "chinese": "住",
+    "pinyin": "zhù live",
+    "english": "to live; to reside; to stay",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5131",
+    "chinese": "准备",
+    "pinyin": "zhǔnbèi Get ready",
+    "english": "preparation",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5132",
+    "chinese": "桌子",
+    "pinyin": "zhuōzi Table",
+    "english": "table",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5133",
+    "chinese": "字",
+    "pinyin": "zì",
+    "english": "word, character",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5134",
+    "chinese": "子",
+    "pinyin": "zi",
+    "english": "（ zhuō zi noun suffix (table) ）",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5135",
+    "chinese": "走",
+    "pinyin": "zǒu",
+    "english": "go, walk",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5136",
+    "chinese": "走路",
+    "pinyin": "zǒu lù walk",
+    "english": "to walk; to go on foot",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5137",
+    "chinese": "最",
+    "pinyin": "zuì most",
+    "english": "variant of 最[zui4]",
+    "pos": "adverb",
+    "hsk": 1
+  },
+  {
+    "id": "w5138",
+    "chinese": "最好",
+    "pinyin": "zuìhǎo Best",
+    "english": "best",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5139",
+    "chinese": "最后",
+    "pinyin": "zuìhòu Last",
+    "english": "final; last; ultimate",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5140",
+    "chinese": "昨天",
+    "pinyin": "zuótiān Yesterday",
+    "english": "yesterday",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5141",
+    "chinese": "左",
+    "pinyin": "zuǒ left",
+    "english": "surname Zuo",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5142",
+    "chinese": "左边",
+    "pinyin": "zuǒbian left",
+    "english": "left",
+    "pos": "noun",
+    "hsk": 1
+  },
+  {
+    "id": "w5143",
+    "chinese": "坐",
+    "pinyin": "zuò sit",
+    "english": "surname Zuo",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5144",
+    "chinese": "坐下",
+    "pinyin": "zuò xià sit down",
+    "english": "to sit down",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5145",
+    "chinese": "做",
+    "pinyin": "zuò do",
+    "english": "to make; to produce",
+    "pos": "verb",
+    "hsk": 1
+  },
+  {
+    "id": "w5146",
+    "chinese": "白色",
+    "pinyin": "bái sè white",
+    "english": "white",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5147",
+    "chinese": "表示",
+    "pinyin": "biǎoshì Express",
+    "english": "(of sb) to express; to state; to show",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5148",
+    "chinese": "不但",
+    "pinyin": "bú dàn not only",
+    "english": "not only (... but also ...)",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5149",
+    "chinese": "不过",
+    "pinyin": "búguò However",
+    "english": "only",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5150",
+    "chinese": "不太",
+    "pinyin": "bú tài not",
+    "english": "too; not very much",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5151",
+    "chinese": "不少",
+    "pinyin": "bù shǎo not a",
+    "english": "few; a lot",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5152",
+    "chinese": "不同",
+    "pinyin": "bù tóng different",
+    "english": "different",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5153",
+    "chinese": "不一会儿",
+    "pinyin": "bù yī huìr in a",
+    "english": "moment; in a little while; soon",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5154",
+    "chinese": "差不多",
+    "pinyin": "chàbuduō Almost",
+    "english": "almost",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5156",
+    "chinese": "重新",
+    "pinyin": "chóngxīn again",
+    "english": "again; once more; re-",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5157",
+    "chinese": "出口",
+    "pinyin": "chū kǒu export",
+    "english": "an exit",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5158",
+    "chinese": "打印",
+    "pinyin": "dǎyìn Print",
+    "english": "to affix a seal",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5159",
+    "chinese": "大家",
+    "pinyin": "dàjiā everybody",
+    "english": "everyone",
+    "pos": "pronoun",
+    "hsk": 2
+  },
+  {
+    "id": "w5160",
+    "chinese": "大人",
+    "pinyin": "dà rén adult",
+    "english": "adult",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5161",
+    "chinese": "大小",
+    "pinyin": "dà xiǎo size",
+    "english": "large and small",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5162",
+    "chinese": "带来",
+    "pinyin": "dài lái bring",
+    "english": "to bring",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5163",
+    "chinese": "但是",
+    "pinyin": "dàn shì",
+    "english": "but; however",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5164",
+    "chinese": "当时",
+    "pinyin": "dāngshí at that time",
+    "english": "then; at that time",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5165",
+    "chinese": "地铁站",
+    "pinyin": "dì tiě zhàn subway station",
+    "english": "subway station",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5166",
+    "chinese": "而且",
+    "pinyin": "ér qiě and",
+    "english": "(not only ...) but also",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5167",
+    "chinese": "发现",
+    "pinyin": "fāxiàn find",
+    "english": "to notice; to become aware of",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5168",
+    "chinese": "方法",
+    "pinyin": "fāngfǎ Method",
+    "english": "method; way; technique; procedure",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5169",
+    "chinese": "方面",
+    "pinyin": "fāngmiàn Aspect",
+    "english": "respect",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5170",
+    "chinese": "方向",
+    "pinyin": "fāngxiàng direction",
+    "english": "direction; orientation",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5171",
+    "chinese": "分开",
+    "pinyin": "fēn kāi",
+    "english": "separate; part",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5172",
+    "chinese": "刚才",
+    "pinyin": "gāngcái just",
+    "english": "just now",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5173",
+    "chinese": "刚刚",
+    "pinyin": "gāng gāng",
+    "english": "just; only; just a moment ago",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5174",
+    "chinese": "高中",
+    "pinyin": "gāo zhōng senior high school",
+    "english": "senior high school (abbr. for 高級中學|高级中学[gao1 ji2 zhong1 xue2])",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5175",
+    "chinese": "公交车",
+    "pinyin": "gōng jiāo chē bus",
+    "english": "public transport vehicle",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5176",
+    "chinese": "公司",
+    "pinyin": "gōngsī company",
+    "english": "company; firm; corporation",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5177",
+    "chinese": "狗",
+    "pinyin": "gǒu Dog",
+    "english": "dog",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5178",
+    "chinese": "过去",
+    "pinyin": "guò qù go",
+    "english": "over; pass by",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5179",
+    "chinese": "好像",
+    "pinyin": "hǎoxiàng Be like",
+    "english": "as if",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5180",
+    "chinese": "黑",
+    "pinyin": "hēi black",
+    "english": "Heilongjiang Province (abbr. for 黑龍江省|黑龙江省[Hei1 long2 jiang1 Sheng3])",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5181",
+    "chinese": "黑板",
+    "pinyin": "hēibǎn blackboard",
+    "english": "blackboard",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5182",
+    "chinese": "黑色",
+    "pinyin": "hēi sè black",
+    "english": "black",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5183",
+    "chinese": "红",
+    "pinyin": "hóng red",
+    "english": "surname Hong",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5184",
+    "chinese": "红色",
+    "pinyin": "hóng sè red",
+    "english": "red (color)",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5185",
+    "chinese": "黄",
+    "pinyin": "huáng yellow",
+    "english": "surname Huang or Hwang",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5186",
+    "chinese": "黄色",
+    "pinyin": "huáng sè yellow",
+    "english": "yellow",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5187",
+    "chinese": "活动",
+    "pinyin": "huódòng activity",
+    "english": "to exercise; to move about; to work out",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5188",
+    "chinese": "鸡",
+    "pinyin": "jī chicken",
+    "english": "fowl",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5189",
+    "chinese": "讲",
+    "pinyin": "jiǎng speak",
+    "english": "to speak",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5190",
+    "chinese": "脚",
+    "pinyin": "jiǎo foot",
+    "english": "foot",
+    "pos": "measure_word",
+    "hsk": 2
+  },
+  {
+    "id": "w5191",
+    "chinese": "接着",
+    "pinyin": "jiēzhe Next",
+    "english": "to catch and hold on",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5192",
+    "chinese": "今后",
+    "pinyin": "jīn hòu from now",
+    "english": "on; in the future",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5193",
+    "chinese": "进行",
+    "pinyin": "jìnxíng Conduct",
+    "english": "(of a process etc) to proceed; to be in progress; to be underway",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5194",
+    "chinese": "近",
+    "pinyin": "jìn near",
+    "english": "near",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5195",
+    "chinese": "经常",
+    "pinyin": "jīngcháng Often",
+    "english": "frequently; constantly; regularly; often",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5196",
+    "chinese": "可是",
+    "pinyin": "kěshì however",
+    "english": "but; however",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5197",
+    "chinese": "蓝",
+    "pinyin": "lán blue",
+    "english": "surname Lan",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5198",
+    "chinese": "蓝色",
+    "pinyin": "lán sè blue",
+    "english": "blue (color)",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5199",
+    "chinese": "脸",
+    "pinyin": "liǎn face",
+    "english": "face",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5200",
+    "chinese": "绿",
+    "pinyin": "lǜ green",
+    "english": "used in names",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5201",
+    "chinese": "绿色",
+    "pinyin": "lǜ sè green",
+    "english": "green",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5202",
+    "chinese": "卖",
+    "pinyin": "mài sell",
+    "english": "to sell",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5203",
+    "chinese": "猫",
+    "pinyin": "māo cat",
+    "english": "cat (CL:隻|只[zhi1])",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5206",
+    "chinese": "那么",
+    "pinyin": "nà me like",
+    "english": "that; in that way",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5207",
+    "chinese": "那样",
+    "pinyin": "nà yàng that",
+    "english": "kind; like that; such",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5208",
+    "chinese": "鸟",
+    "pinyin": "niǎo bird",
+    "english": "variant of 屌[diao3]",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5209",
+    "chinese": "便宜",
+    "pinyin": "piányi Cheap",
+    "english": "convenient",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5210",
+    "chinese": "漂亮",
+    "pinyin": "piàoliang Well",
+    "english": "done!； beautiful",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5211",
+    "chinese": "平时",
+    "pinyin": "píngshí peacetime",
+    "english": "ordinarily",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5212",
+    "chinese": "其他",
+    "pinyin": "qítā Other",
+    "english": "other",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5213",
+    "chinese": "其中",
+    "pinyin": "qízhōng among",
+    "english": "among",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5214",
+    "chinese": "千",
+    "pinyin": "qiān thousand",
+    "english": "thousand",
+    "pos": "numeral",
+    "hsk": 2
+  },
+  {
+    "id": "w5215",
+    "chinese": "前年",
+    "pinyin": "qián nián the year before last",
+    "english": "the year before last",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5216",
+    "chinese": "清楚",
+    "pinyin": "qīngchu clear",
+    "english": "clear",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5217",
+    "chinese": "全部",
+    "pinyin": "quánbù whole",
+    "english": "whole; all",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5218",
+    "chinese": "全体",
+    "pinyin": "quán tǐ",
+    "english": "all; entire; whole",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5219",
+    "chinese": "然后",
+    "pinyin": "ránhòu Then",
+    "english": "then; after that; afterwards",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5220",
+    "chinese": "入口",
+    "pinyin": "rùkǒu Entrance",
+    "english": "entrance",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5221",
+    "chinese": "上周",
+    "pinyin": "shàng zhōu last week",
+    "english": "last week",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5222",
+    "chinese": "生活",
+    "pinyin": "shēnghuó Life",
+    "english": "to live",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5223",
+    "chinese": "十分",
+    "pinyin": "shífēn very",
+    "english": "very",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5224",
+    "chinese": "事情",
+    "pinyin": "shìqing Thing",
+    "english": "affair; matter; thing; business",
+    "pos": "adjective",
+    "hsk": 2
+  },
+  {
+    "id": "w5225",
+    "chinese": "说明",
+    "pinyin": "shuōmíng Explain",
+    "english": "to explain",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5226",
+    "chinese": "所以",
+    "pinyin": "suǒ yǐ so",
+    "english": "therefore",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5227",
+    "chinese": "所有",
+    "pinyin": "suǒyǒu All",
+    "english": "all",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5228",
+    "chinese": "它",
+    "pinyin": "tā it",
+    "english": "it",
+    "pos": "pronoun",
+    "hsk": 2
+  },
+  {
+    "id": "w5229",
+    "chinese": "听说",
+    "pinyin": "tīng shuō be",
+    "english": "told; hear of",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5230",
+    "chinese": "同时",
+    "pinyin": "tóngshí meanwhile",
+    "english": "at the same time; simultaneously",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5231",
+    "chinese": "同事",
+    "pinyin": "tóngshì Colleague",
+    "english": "colleague; co-worker",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5232",
+    "chinese": "头",
+    "pinyin": "tóu",
+    "english": "head; beginning or end; side; (measure word)",
+    "pos": "measure_word",
+    "hsk": 2
+  },
+  {
+    "id": "w5233",
+    "chinese": "完成",
+    "pinyin": "wánchéng complete",
+    "english": "to complete; to accomplish",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5234",
+    "chinese": "万",
+    "pinyin": "wàn ten thousand",
+    "english": "used in 万俟[Mo4 qi2]",
+    "pos": "numeral",
+    "hsk": 2
+  },
+  {
+    "id": "w5235",
+    "chinese": "为什么",
+    "pinyin": "wèishénme Why",
+    "english": "why?",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5236",
+    "chinese": "喂",
+    "pinyin": "wèi",
+    "english": "hello; hey",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5237",
+    "chinese": "问题",
+    "pinyin": "wèntí problem",
+    "english": "question",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5238",
+    "chinese": "下周",
+    "pinyin": "xià zhōu next week",
+    "english": "next week",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5239",
+    "chinese": "相同",
+    "pinyin": "xiāngtóng identical",
+    "english": "identical; same",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5240",
+    "chinese": "小时候",
+    "pinyin": "xiǎo shí hou in",
+    "english": "one's childhood; when one was young",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5241",
+    "chinese": "许多",
+    "pinyin": "xǔduō many",
+    "english": "many",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5242",
+    "chinese": "颜色",
+    "pinyin": "yánsè colour",
+    "english": "color",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5243",
+    "chinese": "眼",
+    "pinyin": "yǎn eye",
+    "english": "eye (CL:隻|只[zhi1],雙|双[shuang1])",
+    "pos": "measure_word",
+    "hsk": 2
+  },
+  {
+    "id": "w5244",
+    "chinese": "眼睛",
+    "pinyin": "yǎnjing Eye",
+    "english": "eye",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5245",
+    "chinese": "一共",
+    "pinyin": "yígòng Altogether",
+    "english": "in total; altogether",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5246",
+    "chinese": "一路平安",
+    "pinyin": "yí lù píng ān safe",
+    "english": "journey; have a pleasant journey",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5247",
+    "chinese": "一路顺风",
+    "pinyin": "yí lù shùn fēng Bon voyage",
+    "english": "to have a pleasant journey (idiom)",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5248",
+    "chinese": "已经",
+    "pinyin": "yǐjīng Already",
+    "english": "already",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5249",
+    "chinese": "以后",
+    "pinyin": "yǐ hòu",
+    "english": "after; later on; afterwards; later",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5250",
+    "chinese": "以前",
+    "pinyin": "yǐqián before",
+    "english": "before",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5251",
+    "chinese": "一点点",
+    "pinyin": "yì diǎn diǎn a little bit",
+    "english": "a little bit",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5252",
+    "chinese": "亿",
+    "pinyin": "yì",
+    "english": "100 million",
+    "pos": "numeral",
+    "hsk": 2
+  },
+  {
+    "id": "w5253",
+    "chinese": "因为",
+    "pinyin": "yīn wèi because",
+    "english": "because",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5254",
+    "chinese": "有人",
+    "pinyin": "yǒu rén",
+    "english": "someone; there's someone",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5255",
+    "chinese": "鱼",
+    "pinyin": "yú fish",
+    "english": "surname Yu",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5256",
+    "chinese": "原来",
+    "pinyin": "yuánlái",
+    "english": "Original; formerly",
+    "pos": "adverb",
+    "hsk": 2
+  },
+  {
+    "id": "w5257",
+    "chinese": "月份",
+    "pinyin": "yuè fèn month",
+    "english": "month",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5258",
+    "chinese": "咱",
+    "pinyin": "zán",
+    "english": "we; us",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5259",
+    "chinese": "咱们",
+    "pinyin": "zánmen We",
+    "english": "we or us (including both the speaker and the person(s) spoken to)",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5260",
+    "chinese": "早晨",
+    "pinyin": "zǎo chén morning",
+    "english": "early morning",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5261",
+    "chinese": "怎么样",
+    "pinyin": "zěnmeyàng How about",
+    "english": "how?",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5262",
+    "chinese": "这么",
+    "pinyin": "zhè me",
+    "english": "so; such; this way; like this",
+    "pos": "pronoun",
+    "hsk": 2
+  },
+  {
+    "id": "w5263",
+    "chinese": "这样",
+    "pinyin": "zhè yàng",
+    "english": "so; such; like this; this way",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5264",
+    "chinese": "只要",
+    "pinyin": "zhǐyào as long as",
+    "english": "so long as; provided; if",
+    "pos": "conjunction",
+    "hsk": 2
+  },
+  {
+    "id": "w5265",
+    "chinese": "周",
+    "pinyin": "zhōu week",
+    "english": "surname Zhou",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5266",
+    "chinese": "自己",
+    "pinyin": "zìjǐ",
+    "english": "Own, self",
+    "pos": "pronoun",
+    "hsk": 2
+  },
+  {
+    "id": "w5267",
+    "chinese": "嘴",
+    "pinyin": "zuǐ mouth",
+    "english": "mouth",
+    "pos": "noun",
+    "hsk": 2
+  },
+  {
+    "id": "w5268",
+    "chinese": "做饭",
+    "pinyin": "zuò fàn cook",
+    "english": "to prepare a meal",
+    "pos": "verb",
+    "hsk": 2
+  },
+  {
+    "id": "w5269",
+    "chinese": "本来",
+    "pinyin": "běnlái originally",
+    "english": "original",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5270",
+    "chinese": "不仅",
+    "pinyin": "bùjǐn not only",
+    "english": "not just; not limited to",
+    "pos": "conjunction",
+    "hsk": 3
+  },
+  {
+    "id": "w5271",
+    "chinese": "曾经",
+    "pinyin": "céngjīng once",
+    "english": "once",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5272",
+    "chinese": "长城",
+    "pinyin": "Chángchéng The Great Wall",
+    "english": "the Great Wall",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5273",
+    "chinese": "初中",
+    "pinyin": "chū zhōng junior high school",
+    "english": "junior high school (abbr. for 初級中學|初级中学[chu1 ji2 zhong1 xue2])",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5274",
+    "chinese": "从来",
+    "pinyin": "cónglái Always",
+    "english": "always",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5275",
+    "chinese": "地区",
+    "pinyin": "dìqū region",
+    "english": "region; area (informal or geographical term)",
+    "pos": "adjective",
+    "hsk": 3
+  },
+  {
+    "id": "w5276",
+    "chinese": "方式",
+    "pinyin": "fāngshì mode",
+    "english": "way; method; manner; mode; pattern (of behavior etc)",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5277",
+    "chinese": "父母",
+    "pinyin": "fù mǔ father and",
+    "english": "mother; parents",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5278",
+    "chinese": "父亲",
+    "pinyin": "fùqīn father",
+    "english": "father",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5279",
+    "chinese": "赶紧",
+    "pinyin": "gǎnjǐn Quickly",
+    "english": "hurriedly",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5280",
+    "chinese": "赶快",
+    "pinyin": "gǎnkuài Come on",
+    "english": "quickly; at once",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5281",
+    "chinese": "工厂",
+    "pinyin": "gōngchǎng factory",
+    "english": "factory",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5282",
+    "chinese": "国内",
+    "pinyin": "guó nèi",
+    "english": "domestic; internal",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5283",
+    "chinese": "后年",
+    "pinyin": "hòu nián the year after next",
+    "english": "the year after next",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5284",
+    "chinese": "互相",
+    "pinyin": "hùxiāng each other",
+    "english": "each other",
+    "pos": "adverb",
+    "hsk": 3
+  },
+  {
+    "id": "w5286",
+    "chinese": "将来",
+    "pinyin": "jiānglái future",
+    "english": "in the future",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5287",
+    "chinese": "结束",
+    "pinyin": "jiéshù End",
+    "english": "termination",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5288",
+    "chinese": "旧",
+    "pinyin": "jiù used",
+    "english": "old",
+    "pos": "adjective",
+    "hsk": 3
+  },
+  {
+    "id": "w5289",
+    "chinese": "据说",
+    "pinyin": "jùshuō allegedly",
+    "english": "it is said that; reportedly",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5290",
+    "chinese": "开始",
+    "pinyin": "kāishǐ start",
+    "english": "to begin",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5291",
+    "chinese": "看起来",
+    "pinyin": "kàn qǐ lái look like",
+    "english": "seemingly; apparently; looks as if; appears to be; gives the impression that; seems on the face of it to be",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5292",
+    "chinese": "里面",
+    "pinyin": "lǐ miàn",
+    "english": "inside; interior",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5293",
+    "chinese": "立刻",
+    "pinyin": "lìkè immediately",
+    "english": "immediately; at once; right away",
+    "pos": "adverb",
+    "hsk": 3
+  },
+  {
+    "id": "w5294",
+    "chinese": "另外",
+    "pinyin": "lìngwài in addition",
+    "english": "additional",
+    "pos": "conjunction",
+    "hsk": 3
+  },
+  {
+    "id": "w5295",
+    "chinese": "美",
+    "pinyin": "měi",
+    "english": "beautiful; pretty",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5296",
+    "chinese": "母亲",
+    "pinyin": "mǔqīn mother",
+    "english": "mother",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5297",
+    "chinese": "其实",
+    "pinyin": "qíshí actually",
+    "english": "actually; in fact; really",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5298",
+    "chinese": "容易",
+    "pinyin": "róngyì easily",
+    "english": "easy; straightforward",
+    "pos": "adjective",
+    "hsk": 3
+  },
+  {
+    "id": "w5299",
+    "chinese": "上来",
+    "pinyin": "shàng lái come up",
+    "english": "to come up",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5300",
+    "chinese": "上面",
+    "pinyin": "shàng miàn",
+    "english": "above; on top of",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5301",
+    "chinese": "上去",
+    "pinyin": "shàng qù go up",
+    "english": "to go up",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5302",
+    "chinese": "时",
+    "pinyin": "shí",
+    "english": "time; times; hour; season; tense",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5303",
+    "chinese": "事件",
+    "pinyin": "shìjiàn Event",
+    "english": "incident; event",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5304",
+    "chinese": "事实",
+    "pinyin": "shìshí Fact",
+    "english": "fact",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5305",
+    "chinese": "事实上",
+    "pinyin": "shì shí shàng in",
+    "english": "fact; actually",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5306",
+    "chinese": "外面",
+    "pinyin": "wài miàn",
+    "english": "outside; outdoors; outward appearance",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5307",
+    "chinese": "下来",
+    "pinyin": "xià lái come",
+    "english": "down; get down",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5308",
+    "chinese": "下面",
+    "pinyin": "xià miàn",
+    "english": "below; under; next",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5309",
+    "chinese": "下去",
+    "pinyin": "xià qù go",
+    "english": "down; descend; go on; continue",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5310",
+    "chinese": "相当",
+    "pinyin": "xiāngdāng Quite",
+    "english": "equivalent to",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5311",
+    "chinese": "以来",
+    "pinyin": "yǐlái Since",
+    "english": "since (used after a specified time or event)",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5312",
+    "chinese": "因此",
+    "pinyin": "yīncǐ therefore",
+    "english": "thus; consequently; as a result",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5313",
+    "chinese": "整个",
+    "pinyin": "zhěnggè Whole",
+    "english": "whole",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5314",
+    "chinese": "只是",
+    "pinyin": "zhǐ shì",
+    "english": "merely; only; just",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5315",
+    "chinese": "只有",
+    "pinyin": "zhǐ yǒu only",
+    "english": "only have ...; there is only ...",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5316",
+    "chinese": "钟",
+    "pinyin": "zhōng",
+    "english": "bell; clock; call bell; time",
+    "pos": "noun",
+    "hsk": 3
+  },
+  {
+    "id": "w5317",
+    "chinese": "左右",
+    "pinyin": "zuǒyòu About",
+    "english": "left and right",
+    "pos": "verb",
+    "hsk": 3
+  },
+  {
+    "id": "w5318",
+    "chinese": "按时",
+    "pinyin": "ànshí on time",
+    "english": "on time",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5319",
+    "chinese": "此外",
+    "pinyin": "cǐwài in addition",
+    "english": "besides; in addition; moreover; furthermore",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5320",
+    "chinese": "从此",
+    "pinyin": "cóngcǐ from then on",
+    "english": "from now on",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5321",
+    "chinese": "地面",
+    "pinyin": "dì miàn",
+    "english": "ground; floor; surface",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5322",
+    "chinese": "地下",
+    "pinyin": "dì xià",
+    "english": "underground; subterranean; secret",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5324",
+    "chinese": "格外",
+    "pinyin": "géwài especially",
+    "english": "especially; particularly; even more than usual",
+    "pos": "adjective",
+    "hsk": 4
+  },
+  {
+    "id": "w5325",
+    "chinese": "极其",
+    "pinyin": "jíqí extremely",
+    "english": "extremely",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5326",
+    "chinese": "解释",
+    "pinyin": "jiěshì explain",
+    "english": "explanation",
+    "pos": "verb",
+    "hsk": 4
+  },
+  {
+    "id": "w5327",
+    "chinese": "看来",
+    "pinyin": "kàn lái it",
+    "english": "seems; it appears",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5328",
+    "chinese": "立即",
+    "pinyin": "lìjí immediately",
+    "english": "immediately",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5329",
+    "chinese": "了解",
+    "pinyin": "liǎojiě understand",
+    "english": "to understand",
+    "pos": "verb",
+    "hsk": 4
+  },
+  {
+    "id": "w5330",
+    "chinese": "妻子",
+    "pinyin": "qīzi Wife",
+    "english": "wife and children",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5331",
+    "chinese": "其余",
+    "pinyin": "qíyú Rest",
+    "english": "the rest",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5332",
+    "chinese": "却",
+    "pinyin": "què but",
+    "english": "old variant of 卻|却[que4]",
+    "pos": "verb",
+    "hsk": 4
+  },
+  {
+    "id": "w5333",
+    "chinese": "然而",
+    "pinyin": "however",
+    "english": "rán'ér",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5334",
+    "chinese": "上个月",
+    "pinyin": "shàng gè yu last month",
+    "english": "è",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5335",
+    "chinese": "上楼",
+    "pinyin": "shàng lóu go upstairs",
+    "english": "to go upstairs",
+    "pos": "verb",
+    "hsk": 4
+  },
+  {
+    "id": "w5336",
+    "chinese": "下个月",
+    "pinyin": "xià gè yuè next month",
+    "english": "next month",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5337",
+    "chinese": "下楼",
+    "pinyin": "xià lóu go",
+    "english": "downstairs; come downstairs",
+    "pos": "verb",
+    "hsk": 4
+  },
+  {
+    "id": "w5338",
+    "chinese": "研究生",
+    "pinyin": "yán jiū shēng",
+    "english": "postgraduate; graduate student",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5339",
+    "chinese": "邮局",
+    "pinyin": "yóujú Post Office",
+    "english": "post office",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5340",
+    "chinese": "幼儿园",
+    "pinyin": "Kindergarten",
+    "english": "yòu'éryuán",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5341",
+    "chinese": "丈夫",
+    "pinyin": "zhàngfu husband",
+    "english": "husband",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5342",
+    "chinese": "之后",
+    "pinyin": "zhī hòu",
+    "english": "later; after; afterwards",
+    "pos": "preposition",
+    "hsk": 4
+  },
+  {
+    "id": "w5343",
+    "chinese": "之间",
+    "pinyin": "zhī jiān",
+    "english": "between; among",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5344",
+    "chinese": "之前",
+    "pinyin": "zhī qián",
+    "english": "before; prior to",
+    "pos": "preposition",
+    "hsk": 4
+  },
+  {
+    "id": "w5345",
+    "chinese": "著名",
+    "pinyin": "zhùmíng famous",
+    "english": "famous",
+    "pos": "noun",
+    "hsk": 4
+  },
+  {
+    "id": "w5346",
+    "chinese": "餐馆",
+    "pinyin": "cān guǎn restaurant",
+    "english": "restaurant",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5348",
+    "chinese": "耳朵",
+    "pinyin": "ěrduo Ears",
+    "english": "ear",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5349",
+    "chinese": "邻居",
+    "pinyin": "línjū neighbor",
+    "english": "neighbor",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5350",
+    "chinese": "偶尔",
+    "pinyin": "occasionally",
+    "english": "ǒu'ěr",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5351",
+    "chinese": "也好",
+    "pinyin": "yě hǎo may as",
+    "english": "well; no matter whether",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5352",
+    "chinese": "用来",
+    "pinyin": "yòng lái be used",
+    "english": "for; used to",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5353",
+    "chinese": "由此",
+    "pinyin": "yóu cǐ from",
+    "english": "this; therefrom; thus",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5354",
+    "chinese": "再次",
+    "pinyin": "zài cì once",
+    "english": "more; once again; one more time",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5355",
+    "chinese": "只不过",
+    "pinyin": "zhǐ bú guò",
+    "english": "only; just; merely",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5356",
+    "chinese": "转让",
+    "pinyin": "zhuǎnràng make",
+    "english": "over; transfer",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5357",
+    "chinese": "转向",
+    "pinyin": "zhuǎn xiàng turn",
+    "english": "to; sheer off; change direction",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5358",
+    "chinese": "装饰",
+    "pinyin": "zhuāngshì decorate",
+    "english": "to decorate",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5359",
+    "chinese": "撞",
+    "pinyin": "zhuàng Hit",
+    "english": "to knock against",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5360",
+    "chinese": "资本",
+    "pinyin": "zīběn capital",
+    "english": "capital (economics)",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5361",
+    "chinese": "资产",
+    "pinyin": "zīchǎn",
+    "english": "capital; asset",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5362",
+    "chinese": "资助",
+    "pinyin": "zīzhù give financial aid",
+    "english": "to subsidize",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5363",
+    "chinese": "子弹",
+    "pinyin": "zǐdàn Bullet",
+    "english": "bullet",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5364",
+    "chinese": "仔细",
+    "pinyin": "zǐxì careful",
+    "english": "careful; attentive; cautious",
+    "pos": "verb",
+    "hsk": 5
+  },
+  {
+    "id": "w5365",
+    "chinese": "副",
+    "pinyin": "fù",
+    "english": "secondary; auxiliary; subsidiary",
+    "pos": "measure_word",
+    "hsk": 6
+  },
+  {
+    "id": "w5369",
+    "chinese": "料",
+    "pinyin": "liào",
+    "english": "expect; anticipate; guess",
+    "pos": "verb",
+    "hsk": 6
+  },
+  {
+    "id": "w5370",
+    "chinese": "命",
+    "pinyin": "mìng",
+    "english": "life; order; fate",
+    "pos": "verb",
+    "hsk": 6
+  },
+  {
+    "id": "w5371",
+    "chinese": "戏曲",
+    "pinyin": "xì qǔ",
+    "english": "drama; Chinese opera",
+    "pos": "noun",
+    "hsk": 6
+  },
+  {
+    "id": "w5372",
+    "chinese": "极了",
+    "pinyin": "jí le",
+    "english": "extremely; to the utmost (degree complement after adjectives)",
+    "pos": "particle",
+    "hsk": 4
+  },
+  {
+    "id": "w5373",
+    "chinese": "分之",
+    "pinyin": "fēn zhī",
+    "english": "fraction marker: X分之Y means Y/X (e.g. 百分之五十 = 50%)",
+    "pos": "particle",
+    "hsk": 4
+  },
+  {
+    "id": "w5374",
+    "chinese": "文艺界",
+    "pinyin": "wén yì jiè",
+    "english": "literary and art world; cultural circles",
+    "pos": "noun",
+    "hsk": 6
+  },
+  {
+    "id": "w5375",
+    "chinese": "影响力",
+    "pinyin": "yǐng xiǎng lì",
+    "english": "influence; clout; power to affect",
+    "pos": "noun",
+    "hsk": 6
+  },
+  {
+    "id": "w5376",
+    "chinese": "秘书长",
+    "pinyin": "mì shū zhǎng",
+    "english": "secretary-general",
+    "pos": "noun",
+    "hsk": 6
+  },
+  {
+    "id": "w5377",
+    "chinese": "上班族",
+    "pinyin": "shàng bān zú",
+    "english": "office workers; white-collar workers; working commuters",
+    "pos": "noun",
+    "hsk": 5
+  },
+  {
+    "id": "w5378",
+    "chinese": "好容易",
+    "pinyin": "hǎo róng yì",
+    "english": "with great difficulty; barely; finally (after much effort) — NOT \"very easily\"",
+    "pos": "adverb",
+    "hsk": 5
+  }
+]
