@@ -353,6 +353,38 @@ function playFallbackTTS(text, onDone){
   }
   next();
 }
+function speakZh(text){
+  var txt = String(text||'').replace(/\s+/g,' ').trim();
+  if(!txt) return;
+  var spd = parseFloat((document.getElementById('speed-sel')||{}).value||'1');
+  stopAllAudio();
+  if(typeof speechSynthesis==='undefined'){
+    playFallbackTTS(txt);
+    return;
+  }
+  try{ speechSynthesis.resume(); }catch(e){}
+  ensureVoices(function(){
+    var u=new SpeechSynthesisUtterance(txt);u.lang='zh-CN';u.rate=spd||1;u.volume=ttsVolume;
+    if(zhVoice)u.voice=zhVoice;
+    var started=false, finished=false;
+    u.onstart=function(){ started=true; };
+    u.onend=function(){ finished=true; };
+    u.onerror=function(){
+      if(finished) return;
+      finished=true;
+      try{ speechSynthesis.cancel(); }catch(e){}
+      playFallbackTTS(txt);
+    };
+    setTimeout(function(){
+      if(finished) return;
+      if(!started){
+        try{ speechSynthesis.cancel(); }catch(e){}
+        playFallbackTTS(txt);
+      }
+    }, 1200);
+    setTimeout(function(){ speechSynthesis.speak(u); }, 0);
+  });
+}
 document.body.addEventListener('click',function(e){
   var btn=e.target.closest('.tts-btn');if(!btn)return;
   e.stopPropagation();
@@ -402,6 +434,14 @@ document.body.addEventListener('click',function(e){
     }, 1200);
     setTimeout(function(){ speechSynthesis.speak(u); }, 0);
   });
+});
+document.body.addEventListener('click',function(e){
+  var edit = e.target.closest('[data-edit-word], .edit-word, .edit-btn');
+  if(!edit) return;
+  var tr = edit.closest('tr');
+  if(!tr) return;
+  var zh = tr.querySelector('.zh');
+  if(zh) speakZh(zh.textContent);
 });
 /* inject TTS into wordcells */
 document.querySelectorAll('.wordcell').forEach(function(cell){
@@ -511,7 +551,7 @@ document.getElementById('hz-practice-btn') && document.getElementById('hz-practi
     practiceDiv.style.cssText = 'margin-top:12px;text-align:center';
     popup.appendChild(practiceDiv);
   }
-  practiceDiv.innerHTML = '<div id="hz-practice-canvas" style="display:inline-block;border:2px solid #e94560;border-radius:4px"></div><div id="hz-practice-msg" style="margin-top:8px;font-size:.9em;color:#666">Write the character stroke by stroke</div><button id="hz-practice-retry" style="margin-top:8px;padding:4px 12px;cursor:pointer">&#8635; Retry</button>';
+  practiceDiv.innerHTML = '<div id="hz-practice-canvas" style="display:inline-block;border:2px solid #e94560;border-radius:4px"></div><div id="hz-practice-msg" style="margin-top:8px;font-size:.9em;color:#666">Пишите иероглиф по штрихам</div><button id="hz-practice-retry" style="margin-top:8px;padding:4px 12px;cursor:pointer">&#8635; Повторить</button>';
 
   if(_hzPracticeWriter) try{ _hzPracticeWriter.cancelQuiz(); }catch(e){}
 
@@ -529,11 +569,11 @@ document.getElementById('hz-practice-btn') && document.getElementById('hz-practi
   _hzPracticeWriter.quiz({
     onMistake: function(strokeData){
       var msg = document.getElementById('hz-practice-msg');
-      if(msg) msg.textContent = 'Stroke '+(strokeData.strokeNum+1)+': try again (' + strokeData.mistakesOnStroke + ' mistake' + (strokeData.mistakesOnStroke!==1?'s':'') + ')';
+      if(msg) msg.textContent = 'Штрих '+(strokeData.strokeNum+1)+': попробуйте снова (ошибок: ' + strokeData.mistakesOnStroke + ')';
     },
     onCorrectStroke: function(strokeData){
       var msg = document.getElementById('hz-practice-msg');
-      if(msg) msg.textContent = 'Stroke '+(strokeData.strokeNum+1)+' correct! (' + strokeData.strokesRemaining + ' remaining)';
+      if(msg) msg.textContent = 'Штрих '+(strokeData.strokeNum+1)+' верно! (осталось: ' + strokeData.strokesRemaining + ')';
     },
     onComplete: function(summaryData){
       var msg = document.getElementById('hz-practice-msg');
@@ -545,11 +585,11 @@ document.getElementById('hz-practice-btn') && document.getElementById('hz-practi
     if(_hzPracticeWriter) _hzPracticeWriter.quiz({
       onMistake: function(strokeData){
         var msg = document.getElementById('hz-practice-msg');
-        if(msg) msg.textContent = 'Stroke '+(strokeData.strokeNum+1)+': try again (' + strokeData.mistakesOnStroke + ' mistake' + (strokeData.mistakesOnStroke!==1?'s':'') + ')';
+        if(msg) msg.textContent = 'Штрих '+(strokeData.strokeNum+1)+': попробуйте снова (ошибок: ' + strokeData.mistakesOnStroke + ')';
       },
       onCorrectStroke: function(strokeData){
         var msg = document.getElementById('hz-practice-msg');
-        if(msg) msg.textContent = 'Stroke '+(strokeData.strokeNum+1)+' correct! (' + strokeData.strokesRemaining + ' remaining)';
+        if(msg) msg.textContent = 'Штрих '+(strokeData.strokeNum+1)+' верно! (осталось: ' + strokeData.strokesRemaining + ')';
       },
       onComplete: function(summaryData){
         var msg = document.getElementById('hz-practice-msg');
@@ -1742,8 +1782,9 @@ window.EN_DICT = {
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('[data-key]').forEach(function(tr){
     var key = tr.getAttribute('data-key');
-    // Priority: EN_DICT → existing data-en in HTML → empty (never fall back to Russian)
-    var en = window.EN_DICT[key] || tr.getAttribute('data-en') || '';
+    // Priority: data-en in HTML → EN_DICT → empty (never fall back to Russian)
+    var en = (tr.getAttribute('data-en')||'').trim();
+    if(!en) en = window.EN_DICT[key] || '';
     tr.setAttribute('data-en', en);
     var enSpan = tr.querySelector('.trans-en');
     if(enSpan) enSpan.textContent = en;
@@ -1845,10 +1886,9 @@ function setLang(lang){
 
   /* subtitle */
   var sub = document.querySelector('.subtitle');
-  var mm = ' &nbsp;&middot;&nbsp; <a href="mindmap.html" style="color:#4f8ef7;text-decoration:none;font-weight:600">🔗 ' + (isEn ? 'Mindmap (Beta)' : 'Mindmap (Бета)') + '</a>';
   if(sub) sub.innerHTML = isEn
-    ? (_wc + ' words &nbsp;&middot;&nbsp; Grouped by part of speech' + mm)
-    : (_wc + ' \u0441\u043b\u043e\u0432 &nbsp;&middot;&nbsp; \u0421\u0433\u0440\u0443\u043f\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u043f\u043e \u0447\u0430\u0441\u0442\u044f\u043c \u0440\u0435\u0447\u0438' + mm);
+    ? (_wc + ' words &nbsp;&middot;&nbsp; Grouped by part of speech')
+    : (_wc + ' слов &nbsp;&middot;&nbsp; Сгруппировано по частям речи');
 
   /* TOC heading */
   var tocH3 = document.querySelector('.toc h3');
@@ -1933,6 +1973,13 @@ function setLang(lang){
   });
   var posLbl = document.getElementById('pos-filter-label');
   if(posLbl) posLbl.textContent = isEn ? 'POS:' : '\u0427\u0430\u0441\u0442\u044c \u0440\u0435\u0447\u0438:';
+  /* HSK / Texts labels */
+  var hskLbl = document.querySelector('#tb-row-hsk .tb-label');
+  if(hskLbl) hskLbl.textContent = isEn ? 'HSK level:' : 'Уровень HSK:';
+  var hskAll = document.querySelector('.hsk-btn[data-hsk=\"all\"]');
+  if(hskAll) hskAll.textContent = isEn ? 'All' : 'Все';
+  var textLbl = document.querySelector('#tb-row-texts .tb-label');
+  if(textLbl) textLbl.textContent = isEn ? 'Texts:' : 'Тексты:';
 
   /* Alpha filter — swap alphabet panel + reset filter when switching language */
   var ruWrap = document.getElementById('alpha-ru-wrap');
@@ -1948,11 +1995,7 @@ function setLang(lang){
   var showAll = document.getElementById('btn-show-all-cols');
   if(showAll){ showAll.textContent = isEn ? '\u21ba All' : '\u21ba \u0412\u0441\u0435'; showAll.title = isEn ? 'Show all columns' : '\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u044c \u0432\u0441\u0435 \u043a\u043e\u043b\u043e\u043d\u043a\u0438'; }
   var csvBtn = document.getElementById('btn-export-csv');
-  if(csvBtn){ csvBtn.title = isEn ? 'Export to Excel/CSV' : '\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0432 Excel/CSV'; }
-  var pdfBtn = document.getElementById('btn-export-pdf');
-  if(pdfBtn){ pdfBtn.title = isEn ? 'Print / Save as PDF' : '\u041f\u0435\u0447\u0430\u0442\u044c / \u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u0430\u043a PDF'; }
-
-  /* sort buttons */
+  if(csvBtn){ csvBtn.title = isEn ? 'Export to Excel/CSV' : '\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u0432 Excel/CSV'; }/* sort buttons */
   var sortMap = {
     'sort-default':   ['\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e', 'Default'],
     'sort-pinyin':    ['Pinyin A\u2013Z',                                                      'Pinyin A\u2013Z'],
@@ -1988,7 +2031,13 @@ function setLang(lang){
     btnSave.textContent  = isEn ? 'Save snapshot'       : '\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0441\u043d\u0438\u043c\u043e\u043a';
   if(btnSnap)  btnSnap.textContent  = isEn ? 'Snapshots \u25be'     : '\u0421\u043d\u0438\u043c\u043a\u0438 \u25be';
   if(btnReset) btnReset.textContent = isEn ? '\u21ba Reset'         : '\u21ba \u0421\u0431\u0440\u043e\u0441';
-  if(btnPal)   btnPal.textContent   = isEn ? '\ud83c\udfa8 Palette \u25be' : '\ud83c\udfa8 \u041f\u0430\u043b\u0438\u0442\u0440\u0430 \u25be';
+  if(btnPal)   btnPal.textContent   = isEn ? '🎨 Palette ▾' : '🎨 Палитра ▾';
+  /* study / quiz buttons */
+  var btnStudy = document.getElementById('btn-study');
+  if(btnStudy){ btnStudy.textContent = isEn ? '📚 Study' : '📚 Учить'; btnStudy.title = isEn ? 'Flashcards' : 'Режим карточек'; }
+  var btnQuiz = document.getElementById('btn-quiz');
+  if(btnQuiz){ btnQuiz.textContent = isEn ? '🧩 Quiz' : '🧩 Тест'; btnQuiz.title = isEn ? 'Multiple choice quiz' : 'Тест с вариантами'; }
+
 
   /* word count label */
   var wcWrap = document.getElementById('hsk-word-count');
@@ -2223,6 +2272,7 @@ function updateEmptyGroups(){
     return !tr.classList.contains('hsk-hide') &&
            !tr.classList.contains('pos-hide') &&
            !tr.classList.contains('alpha-hide') &&
+           !tr.classList.contains('text-hide') &&
            !tr.classList.contains('sr-hide');
   }
   function tableHasVisibleRows(tbl){
@@ -2266,7 +2316,7 @@ function getVisibleRowCount(){
   var n = 0;
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
     if(tr.classList.contains('hsk-hide') || tr.classList.contains('pos-hide') ||
-       tr.classList.contains('alpha-hide') || tr.classList.contains('sr-hide')) return;
+       tr.classList.contains('alpha-hide') || tr.classList.contains('text-hide') || tr.classList.contains('sr-hide')) return;
     n++;
   });
   return n;
@@ -2278,7 +2328,7 @@ function renumVisible(){
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)').forEach(function(tb){
     Array.prototype.forEach.call(tb.rows, function(tr){
       if(tr.classList.contains('hsk-hide') || tr.classList.contains('pos-hide') ||
-         tr.classList.contains('alpha-hide') || tr.classList.contains('sr-hide')) return;
+         tr.classList.contains('alpha-hide') || tr.classList.contains('text-hide') || tr.classList.contains('sr-hide')) return;
       var c = tr.querySelector('.rownum');
       if(c) c.textContent = ++n;
     });
@@ -2531,7 +2581,8 @@ function rebuildView(){
   var q       = inp ? inp.value.trim() : '';
   var lang    = langSel ? langSel.value : 'ru';
   var bySection = !rd || rd.checked;
-  var forceFlat = activeHSKLevels && activeHSKLevels.size > 0;
+  var textFilterActive = !!window._textFilterActive;
+  var forceFlat = (activeHSKLevels && activeHSKLevels.size > 0) || textFilterActive;
   if(forceFlat) bySection = false;
 
   // Use flat filtered view when:
@@ -2545,7 +2596,7 @@ function rebuildView(){
 
   var allRows = [];
   document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
-    if(!tr.classList.contains('hsk-hide') && !tr.classList.contains('pos-hide') && !tr.classList.contains('alpha-hide')) allRows.push(tr);
+    if(!tr.classList.contains('hsk-hide') && !tr.classList.contains('pos-hide') && !tr.classList.contains('alpha-hide') && !tr.classList.contains('text-hide')) allRows.push(tr);
   });
 
   if(!useFlat){
@@ -2586,6 +2637,10 @@ function rebuildView(){
     }
     return zhTxt.includes(qn) || pyTxt.includes(qn) || transTxt.includes(qn);
   }) : allRows;
+
+  if(textFilterActive && currentSort === 'default'){
+    matched = sortRowsByHsk(matched, false);
+  }
 
   // Apply global sort to matched rows when a non-default sort is active
   if(currentSort !== 'default'){
@@ -2668,14 +2723,23 @@ function updateDragState(){
 
 /* ── Flashcard study mode ──────────────────────────────────────── */
 (function(){
-  var deck = [], pos = 0, known = 0, unknown = 0;
+  var deck=[], pos=0, known=0, learning=0, unknown=0;
   var overlay = document.getElementById('study-overlay');
+  if(!overlay) return;
   var isEn = function(){ return document.body.classList.contains('lang-en'); };
+
+  function rowVisible(tr){
+    return !tr.classList.contains('sr-hide') &&
+           !tr.classList.contains('hsk-hide') &&
+           !tr.classList.contains('pos-hide') &&
+           !tr.classList.contains('alpha-hide') &&
+           !tr.classList.contains('text-hide');
+  }
 
   function buildDeck(){
     deck = [];
     document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
-      if(tr.classList.contains('sr-hide') || tr.classList.contains('hsk-hide') || tr.classList.contains('pos-hide') || tr.classList.contains('alpha-hide')) return;
+      if(!rowVisible(tr)) return;
       deck.push(tr);
     });
     // shuffle
@@ -2698,14 +2762,15 @@ function updateDragState(){
     document.getElementById('study-pos').textContent = idx+1;
     document.getElementById('study-total').textContent = deck.length;
     document.getElementById('study-known').textContent = known;
+    document.getElementById('study-learning').textContent = learning;
     document.getElementById('study-unknown').textContent = unknown;
     document.getElementById('study-back').style.display='none';
     document.getElementById('study-front').style.display='flex';
     document.getElementById('study-show').style.display='';
-    document.getElementById('study-hard').style.display='none';
-    document.getElementById('study-good').style.display='none';
+    document.getElementById('study-know').style.display='none';
+    document.getElementById('study-learning').style.display='none';
+    document.getElementById('study-dont').style.display='none';
     document.getElementById('study-summary').style.display='none';
-    // Bug5: progress bar
     var pb = document.getElementById('study-prog-bar');
     if(pb && deck.length) pb.style.width = (idx/deck.length*100)+'%';
   }
@@ -2713,18 +2778,30 @@ function updateDragState(){
   function showAnswer(){
     document.getElementById('study-back').style.display='flex';
     document.getElementById('study-show').style.display='none';
-    document.getElementById('study-hard').style.display='';
-    document.getElementById('study-good').style.display='';
-    // TTS
-    if(window.speechSynthesis){
-      var u=new SpeechSynthesisUtterance(document.getElementById('study-zh').textContent);
-      u.lang='zh-CN'; u.rate=0.9; u.volume=ttsVolume;
-      speechSynthesis.speak(u);
+    document.getElementById('study-know').style.display='';
+    document.getElementById('study-learning').style.display='';
+    document.getElementById('study-dont').style.display='';
+    speakZh(document.getElementById('study-zh').textContent);
+  }
+
+  function markRow(tr, status){
+    if(!tr) return;
+    var lcb = tr.querySelector('.learn-cb');
+    var fcb = tr.querySelector('.fam-cb');
+    if(status === 'learned' && lcb){
+      lcb.checked = true;
+      lcb.dispatchEvent(new Event('change', {bubbles:true}));
+    } else if(status === 'fam' && fcb){
+      fcb.checked = true;
+      fcb.dispatchEvent(new Event('change', {bubbles:true}));
     }
   }
 
-  function grade(didKnow){
-    if(didKnow) known++; else unknown++;
+  function applyStatus(kind){
+    var tr = deck[pos];
+    if(kind === 'learned'){ known++; markRow(tr, 'learned'); }
+    else if(kind === 'learning'){ learning++; markRow(tr, 'fam'); }
+    else { unknown++; }
     pos++;
     if(pos >= deck.length){ showSummary(); return; }
     showCard(pos);
@@ -2734,71 +2811,86 @@ function updateDragState(){
     document.getElementById('study-front').style.display='none';
     document.getElementById('study-back').style.display='none';
     document.getElementById('study-show').style.display='none';
-    document.getElementById('study-hard').style.display='none';
-    document.getElementById('study-good').style.display='none';
+    document.getElementById('study-know').style.display='none';
+    document.getElementById('study-learning').style.display='none';
+    document.getElementById('study-dont').style.display='none';
     document.getElementById('study-summary').style.display='flex';
     var pct = deck.length ? Math.round(known/deck.length*100) : 0;
     var isEnS = document.body.classList.contains('lang-en');
     document.getElementById('study-summary-text').innerHTML =
-      (isEnS ? '<b>Known:</b> ' : '<b>\u0417\u043d\u0430\u043b:</b> ') + known + '/' + deck.length + ' (' + pct + '%)'
-      + (isEnS ? '  &nbsp; <b>Unknown:</b> ' : '  &nbsp; <b>\u041d\u0435 \u0437\u043d\u0430\u043b:</b> ') + unknown;
+      (isEnS ? '<b>Known:</b> ' : '<b>Знаю:</b> ') + known + '/' + deck.length + ' (' + pct + '%)'
+      + (isEnS ? '  &nbsp; <b>Learning:</b> ' : '  &nbsp; <b>Учусь:</b> ') + learning
+      + (isEnS ? '  &nbsp; <b>Don\'t know:</b> ' : '  &nbsp; <b>Не знаю:</b> ') + unknown;
   }
 
   function openStudy(){
     buildDeck();
-    pos=0; known=0; unknown=0;
-    if(!deck.length){ alert('No cards to study!'); return; }
+    pos=0; known=0; learning=0; unknown=0;
+    if(!deck.length){ alert(isEn() ? 'No cards to study!' : 'Нет карточек для изучения!'); return; }
     overlay.style.display='flex';
     showCard(0);
   }
 
   function closeStudy(){
     overlay.style.display='none';
-    if(window.speechSynthesis) speechSynthesis.cancel();
+    stopAllAudio();
   }
 
   document.getElementById('btn-study').addEventListener('click', openStudy);
   document.getElementById('study-close').addEventListener('click', closeStudy);
   document.getElementById('study-close2').addEventListener('click', closeStudy);
   document.getElementById('study-show').addEventListener('click', showAnswer);
-  document.getElementById('study-hard').addEventListener('click', function(){ grade(false); });
-  document.getElementById('study-good').addEventListener('click', function(){ grade(true); });
-  var skipBtn = document.getElementById('study-skip');
-  if(skipBtn) skipBtn.addEventListener('click', function(){ grade(false); });
+  document.getElementById('study-know').addEventListener('click', function(){ applyStatus('learned'); });
+  document.getElementById('study-learning').addEventListener('click', function(){ applyStatus('learning'); });
+  document.getElementById('study-dont').addEventListener('click', function(){ applyStatus('dont'); });
   document.getElementById('study-again').addEventListener('click', function(){
-    pos=0; known=0; unknown=0;
+    pos=0; known=0; learning=0; unknown=0;
     for(var i=deck.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=deck[i];deck[i]=deck[j];deck[j]=tmp; }
     showCard(0);
   });
   document.getElementById('study-zh').addEventListener('click', function(){
-    if(window.speechSynthesis){
-      var u=new SpeechSynthesisUtterance(this.textContent);
-      u.lang='zh-CN'; u.rate=0.9; u.volume=ttsVolume; speechSynthesis.speak(u);
-    }
+    speakZh(this.textContent);
   });
-  // Keyboard: space=show/next, right=know, left=hard, esc=close
   document.addEventListener('keydown', function(e){
     if(overlay.style.display==='none') return;
     if(e.key==='Escape'){ closeStudy(); return; }
     var back = document.getElementById('study-back');
     if(e.key===' '||e.key==='Enter'){
-      if(back.style.display==='none') showAnswer(); else grade(true);
+      if(back.style.display==='none') showAnswer(); else applyStatus('learned');
       e.preventDefault();
     }
-    if(e.key==='ArrowRight' && back.style.display!=='none') grade(true);
-    if(e.key==='ArrowLeft' && back.style.display!=='none') grade(false);
+    if(e.key==='ArrowRight' && back.style.display!=='none') applyStatus('learned');
+    if(e.key==='ArrowDown' && back.style.display!=='none') applyStatus('learning');
+    if(e.key==='ArrowLeft' && back.style.display!=='none') applyStatus('dont');
   });
 })();
-
 /* ── Multiple-choice quiz ──────────────────────────────────────── */
 (function(){
-  var deck=[], qPos=0, score=0, answered=false;
+  var deck=[], qPos=0, score=0, answered=false, statusChosen=false;
   var overlay = document.getElementById('quiz-overlay');
+  if(!overlay) return;
+  var setup = document.getElementById('quiz-setup');
+  var main = document.getElementById('quiz-main');
+  var quizLevels = new Set();
+  var hidePy = false;
+
+  function rowVisible(tr){
+    return !tr.classList.contains('sr-hide') &&
+           !tr.classList.contains('hsk-hide') &&
+           !tr.classList.contains('pos-hide') &&
+           !tr.classList.contains('alpha-hide') &&
+           !tr.classList.contains('text-hide');
+  }
 
   function getRows(){
     var rows=[];
     document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody) tr').forEach(function(tr){
-      if(!tr.classList.contains('sr-hide')&&!tr.classList.contains('hsk-hide')&&!tr.classList.contains('pos-hide')&&!tr.classList.contains('alpha-hide')) rows.push(tr);
+      if(!rowVisible(tr)) return;
+      if(quizLevels.size){
+        var h = tr.getAttribute('data-hsk') || '';
+        if(!quizLevels.has(h)) return;
+      }
+      rows.push(tr);
     });
     return rows;
   }
@@ -2816,27 +2908,40 @@ function updateDragState(){
     return '';
   }
 
+  function updatePinyinVisibility(){
+    var py = document.getElementById('quiz-py');
+    if(py) py.style.display = hidePy ? 'none' : '';
+    var card = document.getElementById('quiz-card');
+    if(card) card.classList.toggle('quiz-hide-py', hidePy);
+    var btn = document.getElementById('quiz-toggle-py');
+    if(btn) btn.textContent = hidePy ? 'Пиньинь: показать' : 'Пиньинь: скрыть';
+  }
+
   function buildQuiz(){
     var all=shuffle(getRows().slice());
-    var qs = parseInt((document.getElementById('quiz-size')||{value:'20'}).value)||20;
+    var qs = parseInt((document.getElementById('quiz-size')||{value:'50'}).value)||50;
     deck=all.slice(0,Math.min(qs,all.length));
     qPos=0; score=0;
   }
 
   function showQuestion(idx){
     if(idx>=deck.length){showSummary();return;}
-    answered=false;
+    answered=false; statusChosen=false;
     var tr=deck[idx];
     document.getElementById('quiz-pos').textContent=idx+1;
     document.getElementById('quiz-total').textContent=deck.length;
     document.getElementById('quiz-score').textContent=score;
     document.getElementById('quiz-zh').textContent=getText(tr,'zh');
     document.getElementById('quiz-py').textContent=getText(tr,'py');
+    updatePinyinVisibility();
     document.getElementById('quiz-feedback').style.display='none';
     document.getElementById('quiz-feedback').className='';
     document.getElementById('quiz-summary').style.display='none';
+    var qa = document.getElementById('quiz-actions');
+    if(qa) qa.style.display='none';
+    var nextBtn = document.getElementById('quiz-next');
+    if(nextBtn) nextBtn.disabled = true;
 
-    // 4 choices: 1 correct + 3 random wrong
     var all=getRows();
     var wrong=shuffle(all.filter(function(r){return r!==tr;})).slice(0,3);
     var choices=shuffle([tr].concat(wrong));
@@ -2861,55 +2966,117 @@ function updateDragState(){
         if(isCorrect){
           score++;
           document.getElementById('quiz-score').textContent=score;
-          fb.textContent='✓ Correct!';fb.className='ok';
+          fb.textContent='✓ Верно!';fb.className='ok';
         } else {
-          fb.textContent='✗ '+getText(tr,'trans');fb.className='err';
+          fb.textContent='✗ Неверно';fb.className='err';
         }
-        // TTS
-        if(window.speechSynthesis){
-          var u=new SpeechSynthesisUtterance(getText(tr,'zh'));
-          u.lang='zh-CN';u.rate=0.9;u.volume=ttsVolume;speechSynthesis.speak(u);
-        }
-        // Auto-advance after 1.5s
-        setTimeout(function(){ qPos++; showQuestion(qPos); }, 1500);
+        speakZh(getText(tr,'zh'));
+        if(qa) qa.style.display='flex';
       });
       qc.appendChild(btn);
     });
   }
 
+  function markRow(tr, status){
+    if(!tr) return;
+    var lcb = tr.querySelector('.learn-cb');
+    var fcb = tr.querySelector('.fam-cb');
+    if(status === 'learned' && lcb){
+      lcb.checked = true;
+      lcb.dispatchEvent(new Event('change', {bubbles:true}));
+    } else if(status === 'fam' && fcb){
+      fcb.checked = true;
+      fcb.dispatchEvent(new Event('change', {bubbles:true}));
+    }
+  }
+
+  function applyStatus(kind){
+    if(statusChosen) return;
+    statusChosen = true;
+    var tr = deck[qPos];
+    if(kind === 'learned') markRow(tr, 'learned');
+    else if(kind === 'learning') markRow(tr, 'fam');
+    var nextBtn = document.getElementById('quiz-next');
+    if(nextBtn) nextBtn.disabled = false;
+  }
+
   function showSummary(){
     document.getElementById('quiz-choices').innerHTML='';
     document.getElementById('quiz-feedback').style.display='none';
+    var qa = document.getElementById('quiz-actions');
+    if(qa) qa.style.display='none';
     var pct=deck.length?Math.round(score/deck.length*100):0;
     var emoji = pct >= 80 ? '🎉' : pct >= 60 ? '👍' : '💪';
     document.getElementById('quiz-summary-text').innerHTML =
-      emoji + ' Score: <b>' + score + '/' + deck.length + '</b> (' + pct + '%)<br>'
-      + (pct >= 80 ? 'Excellent!' : pct >= 60 ? 'Good job!' : 'Keep practicing!');
+      emoji + ' Счёт: <b>' + score + '/' + deck.length + '</b><br>Оценка: <b>' + pct + '/100</b>';
     document.getElementById('quiz-summary').style.display='block';
   }
 
+  function openSetup(){
+    if(setup) setup.style.display='flex';
+    if(main) main.style.display='none';
+    document.getElementById('quiz-summary').style.display='none';
+  }
+
   function open(){
-    buildQuiz();
-    if(!deck.length){alert('No words to quiz!');return;}
     overlay.style.display='flex';
+    openSetup();
+  }
+
+  function startQuiz(){
+    hidePy = !!(document.getElementById('quiz-hide-py')||{}).checked;
+    updatePinyinVisibility();
+    buildQuiz();
+    if(!deck.length){ alert('Нет слов для теста!'); return; }
+    if(setup) setup.style.display='none';
+    if(main) main.style.display='flex';
     showQuestion(0);
   }
 
   function close(){
     overlay.style.display='none';
-    if(window.speechSynthesis) speechSynthesis.cancel();
+    stopAllAudio();
   }
 
-  document.getElementById('btn-quiz').addEventListener('click',open);
-  document.getElementById('quiz-close').addEventListener('click',close);
-  document.getElementById('quiz-close2').addEventListener('click',close);
-  document.getElementById('quiz-again').addEventListener('click',function(){buildQuiz();showQuestion(0);});
-  document.getElementById('quiz-zh').addEventListener('click',function(){
+  function nextQuestion(){
+    if(!answered || !statusChosen) return;
+    qPos++; showQuestion(qPos);
+  }
+
+  var levelWrap = document.getElementById('quiz-levels');
+  if(levelWrap){
+    levelWrap.querySelectorAll('.quiz-level-btn').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var lvl = this.getAttribute('data-level');
+        if(lvl === 'all'){
+          quizLevels.clear();
+        } else {
+          if(quizLevels.has(lvl)) quizLevels.delete(lvl); else quizLevels.add(lvl);
+        }
+        var hasSel = quizLevels.size > 0;
+        levelWrap.querySelectorAll('.quiz-level-btn').forEach(function(b){
+          var l = b.getAttribute('data-level');
+          b.classList.toggle('active', l === 'all' ? !hasSel : quizLevels.has(l));
+        });
+      });
+    });
+  }
+
+  document.getElementById('btn-quiz').addEventListener('click', open);
+  document.getElementById('quiz-start').addEventListener('click', startQuiz);
+  document.getElementById('quiz-exit').addEventListener('click', close);
+  document.getElementById('quiz-setup-close').addEventListener('click', close);
+  document.getElementById('quiz-close').addEventListener('click', close);
+  document.getElementById('quiz-close2').addEventListener('click', close);
+  document.getElementById('quiz-again').addEventListener('click', startQuiz);
+  document.getElementById('quiz-next').addEventListener('click', nextQuestion);
+  document.getElementById('quiz-know').addEventListener('click', function(){ applyStatus('learned'); });
+  document.getElementById('quiz-learning').addEventListener('click', function(){ applyStatus('learning'); });
+  document.getElementById('quiz-dont').addEventListener('click', function(){ applyStatus('dont'); });
+  document.getElementById('quiz-toggle-py').addEventListener('click', function(){ hidePy = !hidePy; updatePinyinVisibility(); });
+  document.getElementById('quiz-zh').addEventListener('click', function(){
     var tr=deck[qPos];
-    if(tr&&window.speechSynthesis){
-      var u=new SpeechSynthesisUtterance(getText(tr,'zh'));
-      u.lang='zh-CN';u.rate=0.9;u.volume=ttsVolume;speechSynthesis.speak(u);
-    }
+    if(tr) speakZh(getText(tr,'zh'));
   });
   document.addEventListener('keydown',function(e){
     if(overlay.style.display==='none') return;
@@ -2919,9 +3086,12 @@ function updateDragState(){
       var idx=parseInt(e.key)-1;
       if(btns[idx]&&!answered) btns[idx].click();
     }
+    if((e.key==='Enter' || e.key===' ') && answered && statusChosen){
+      e.preventDefault();
+      nextQuestion();
+    }
   });
 })();
-
 document.addEventListener('DOMContentLoaded', function(){
   var btns = {
     'sort-default': 'default',
@@ -3260,121 +3430,6 @@ setTimeout(function(){
   }
 })();
 
-/* ── PDF Export (direct download) ─────────────────────────────── */
-(function(){
-  var btn = document.getElementById('btn-export-pdf');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    if(typeof html2pdf === 'undefined'){
-      alert('PDF export is not available yet. Please reload the page.');
-      return;
-    }
-    var isEn = document.body.classList.contains('lang-en');
-    var today = new Date().toISOString().slice(0,10);
-
-    // Collect visible rows grouped by POS section (same data source as Excel export)
-    var sections = {};
-    var sectionOrder = [];
-    function rowVisible(tr){
-      return !tr.classList.contains('hsk-hide') &&
-             !tr.classList.contains('pos-hide') &&
-             !tr.classList.contains('alpha-hide') &&
-             !tr.classList.contains('sr-hide');
-    }
-    document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(!rowVisible(tr)) return;
-      var sec = tr.getAttribute('data-section') || 'other';
-      if(!sections[sec]){ sections[sec] = []; sectionOrder.push(sec); }
-      sections[sec].push(tr);
-    });
-
-    var secLabels = {
-      pos_noun:'Nouns 名词', pos_verb:'Verbs 动词', pos_adj:'Adjectives 形容词',
-      pos_adv:'Adverbs 副词', pos_mw:'Measure Words 量词', pos_particle:'Particles 助词',
-      pos_conj:'Conjunctions 连词', pos_prep:'Prepositions 介词', pos_pron:'Pronouns 代词'
-    };
-
-    var rows = '';
-    var n = 0;
-    function limitTranslationText(txt, maxParts){
-      if(!txt) return '';
-      var t = String(txt).trim();
-      if(!t) return t;
-      var parts = t.split(/[;；]/).map(function(p){ return p.trim(); }).filter(Boolean);
-      var sep = '; ';
-      if(parts.length <= 1){
-        parts = t.split(',').map(function(p){ return p.trim(); }).filter(Boolean);
-        sep = ', ';
-      }
-      if(parts.length <= 1) return t;
-      return parts.slice(0, maxParts).join(sep);
-    }
-    sectionOrder.forEach(function(sec){
-      rows += '<tr class="sec-hdr"><td colspan="7">'+(secLabels[sec]||sec)+'</td></tr>';
-      sections[sec].forEach(function(tr){
-        n++;
-        var zh  = tr.getAttribute('data-key') || '';
-        var py  = tr.getAttribute('data-py') || '';
-        var trans = isEn ? (tr.getAttribute('data-en')||'') : (tr.getAttribute('data-ru')||'');
-        trans = limitTranslationText(trans, 2);
-        var hsk = tr.getAttribute('data-hsk') || '';
-        var exZh = (tr.querySelector('.ex-zh')||{}).textContent || '';
-        var exPy = (tr.querySelector('.ex-py')||{}).textContent || '';
-        rows += '<tr><td>'+n+'</td><td class="zh">'+zh+'</td><td>'+py+'</td><td>'+
-          trans.replace(/</g,'&lt;')+'</td><td>HSK'+hsk+'</td><td>'+
-          exZh+'</td><td class="sm">'+exPy+'</td></tr>';
-      });
-    });
-
-    var wrap = document.createElement('div');
-    wrap.id = 'pdf-export-wrap';
-    wrap.style.cssText = 'position:fixed;left:0;top:0;width:210mm;padding:8mm;background:#fff;color:#000;z-index:99998;';
-    wrap.innerHTML =
-      '<style>'+
-        '.pdf-root{font-family:Arial,"Noto Sans SC",sans-serif;font-size:10px}'+
-        '.pdf-root h1{font-size:16px;text-align:center;margin:0 0 4px}'+
-        '.pdf-root .sub{text-align:center;color:#666;font-size:9px;margin:0 0 8px}'+
-        '.pdf-root table{width:100%;border-collapse:collapse}'+
-        '.pdf-root th{background:#e94560;color:#fff;padding:4px 5px;text-align:left;font-size:9px}'+
-        '.pdf-root td{padding:3px 5px;border:1px solid #ddd;vertical-align:top;font-size:9px}'+
-        '.pdf-root .zh{font-size:13px;font-weight:bold}'+
-        '.pdf-root .sec-hdr td{background:#1a1a2e;color:#fff;font-weight:bold;padding:5px 8px;font-size:10px}'+
-        '.pdf-root .sm{font-size:8px;color:#888}'+
-        '.pdf-root tr{page-break-inside:avoid}'+
-      '</style>'+
-      '<div class="pdf-root">'+
-        '<h1>HSK 1\u20136 Master Dictionary</h1>'+
-        '<div class="sub">Generated '+today+' &nbsp;\u00b7&nbsp; '+n+' words</div>'+
-        '<table><thead><tr><th>#</th><th>Word</th><th>Pinyin</th><th>'+(isEn?'English':'Russian')+'</th><th>HSK</th><th>Example</th><th>Example Pinyin</th></tr></thead>'+
-        '<tbody>'+rows+'</tbody></table>'+
-      '</div>';
-
-    var overlay = document.createElement('div');
-    overlay.id = 'pdf-export-overlay';
-    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:99999;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;font-weight:600;';
-    overlay.textContent = isEn ? 'Generating PDF\u2026' : '\u0424\u043e\u0440\u043c\u0438\u0440\u0443\u0435\u043c PDF\u2026';
-
-    document.body.appendChild(wrap);
-    document.body.appendChild(overlay);
-
-    var opt = {
-      margin: 6,
-      filename: 'HSK_Dictionary_' + today + '.pdf',
-      image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: { scale: 1.6, useCORS: true, letterRendering: true },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-      pagebreak: { mode: ['css', 'legacy'] }
-    };
-    html2pdf().set(opt).from(wrap).save().then(function(){
-      if(wrap.parentNode) wrap.parentNode.removeChild(wrap);
-      if(overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    }).catch(function(){
-      if(wrap.parentNode) wrap.parentNode.removeChild(wrap);
-      if(overlay.parentNode) overlay.parentNode.removeChild(overlay);
-    });
-  });
-})();
-
 /* ── Excel Export (SheetJS) ──────────────────────────────────────── */
 (function(){
   var btn = document.getElementById('btn-export-csv');
@@ -3413,38 +3468,4 @@ setTimeout(function(){
   });
 })();
 
-/* ── Anki Export (tab-separated .txt) ──────────────────────────── */
-(function(){
-  var btn = document.getElementById('btn-export-anki');
-  if(!btn) return;
-  btn.addEventListener('click', function(){
-    var today = new Date().toISOString().slice(0,10);
-    var lines = [];
-    document.querySelectorAll('tr[data-key]').forEach(function(tr){
-      if(tr.offsetParent === null) return;
-      var zh  = tr.getAttribute('data-key') || '';
-      var py  = tr.getAttribute('data-py')  || '';
-      var en  = tr.getAttribute('data-en')  || '';
-      var ru  = tr.getAttribute('data-ru')  || '';
-      var hsk = tr.getAttribute('data-hsk') || '';
-      var pos = (tr.getAttribute('data-section') || '').replace('pos_','');
-      var exZh = (tr.querySelector('.ex-zh') || {}).textContent || '';
-      var exPy = (tr.querySelector('.ex-py') || {}).textContent || '';
-      // Front: Chinese + pinyin; Back: translation + example
-      var front = zh + '<br>' + py;
-      var back  = ru + (en ? '<br>' + en : '');
-      if(exZh) back += '<br><br>' + exZh + '<br>' + exPy;
-      var tags  = 'HSK' + hsk + ' ' + pos;
-      // Escape tabs/newlines in content
-      function esc(s){ return s.replace(/\t/g,' ').replace(/\r?\n/g,' '); }
-      lines.push(esc(front) + '\t' + esc(back) + '\t' + tags);
-    });
-    // UTF-8 BOM + tab-separated
-    var bom = '\ufeff';
-    var blob = new Blob([bom + lines.join('\n')], {type:'text/plain;charset=utf-8'});
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url; a.download = 'HSK_Anki_' + today + '.txt'; a.click();
-    URL.revokeObjectURL(url);
-  });
-})();
+
