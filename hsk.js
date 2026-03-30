@@ -2970,8 +2970,8 @@ function updateDragState(){
         } else {
           fb.textContent='✗ Неверно';fb.className='err';
         }
-        speakZh(getText(tr,'zh'));
-        if(qa) qa.style.display='flex';
+                if(qa){ qa.style.display='flex'; qa.style.visibility='visible'; }
+        try{ speakZh(getText(tr,'zh')); }catch(e){}
       });
       qc.appendChild(btn);
     });
@@ -3467,5 +3467,10 @@ setTimeout(function(){
     }
   });
 })();
+
+
+
+
+
 
 
