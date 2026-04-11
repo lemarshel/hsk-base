@@ -3510,25 +3510,33 @@ setTimeout(function(){
   });
 })();
 
-/* ── Chinese News Player ─────────────────────────────────────── */
+/* ── Channels Player ─────────────────────────────────────────── */
 (function(){
-  var NEWS_CHANNELS = [
-    {
-      id: 'cctv13',
-      label: 'CCTV-13 新闻',
-      qualities: [
-        { label: '1080p', url: 'https://cdn3.163189.xyz/163189/cctv13' }
-      ]
-    },
-    {
-      id: 'phoenix-info',
-      label: '凤凰资讯',
-      qualities: [
-        { label: '720p', url: 'http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8' },
-        { label: '576p', url: 'http://125.210.152.18:9090/live/FHZX_1200.m3u8' }
-      ]
+  var ALL_CHANNELS = window.ALL_CHANNELS || [];
+
+  function buildChannelMap(list){
+    var map = Object.create(null);
+    var seen = Object.create(null);
+    for(var i=0;i<list.length;i++){
+      var row = list[i];
+      if(!row || row.length < 2) continue;
+      var name = String(row[0] || '').trim();
+      var url = String(row[1] || '').trim();
+      var label = String(row[2] || 'auto').trim();
+      if(!name || !url) continue;
+      var key = name + '||' + url;
+      if(seen[key]) continue;
+      seen[key] = true;
+      if(!map[name]) map[name] = [];
+      map[name].push({ label: label || 'auto', url: url });
     }
-  ];
+    var names = Object.keys(map);
+    names.sort(function(a,b){ return a.localeCompare(b); });
+    names.forEach(function(n){
+      map[n].sort(function(a,b){ return a.label.localeCompare(b.label); });
+    });
+    return { map: map, names: names };
+  }
 
   function initNews(){
     var chanSel = document.getElementById('news-channel');
@@ -3539,27 +3547,50 @@ setTimeout(function(){
     var player = document.getElementById('news-player');
     if(!chanSel || !qualSel || !openBtn || !overlay || !player) return;
 
-    NEWS_CHANNELS.forEach(function(ch){
+    var built = buildChannelMap(ALL_CHANNELS);
+    var map = built.map;
+    var names = built.names;
+    if(!names.length){
+      chanSel.innerHTML = '';
+      var empty = document.createElement('option');
+      empty.value = '';
+      empty.textContent = 'No channels';
+      chanSel.appendChild(empty);
+      chanSel.disabled = true;
+      qualSel.disabled = true;
+      openBtn.disabled = true;
+      return;
+    }
+
+    var frag = document.createDocumentFragment();
+    for(var i=0;i<names.length;i++){
       var opt = document.createElement('option');
-      opt.value = ch.id;
-      opt.textContent = ch.label;
-      chanSel.appendChild(opt);
-    });
+      opt.value = names[i];
+      opt.textContent = names[i];
+      frag.appendChild(opt);
+    }
+    chanSel.appendChild(frag);
 
     function syncQuality(){
-      var ch = null;
-      for(var i=0;i<NEWS_CHANNELS.length;i++){
-        if(NEWS_CHANNELS[i].id === chanSel.value){ ch = NEWS_CHANNELS[i]; break; }
+      var name = chanSel.value || names[0];
+      var list = map[name] || [];
+      if(!list.length){
+        qualSel.innerHTML = '';
+        var o = document.createElement('option');
+        o.value = '';
+        o.textContent = '—';
+        qualSel.appendChild(o);
+        qualSel.disabled = true;
+        return;
       }
-      if(!ch){ ch = NEWS_CHANNELS[0]; chanSel.value = ch.id; }
       qualSel.innerHTML = '';
-      ch.qualities.forEach(function(q){
+      list.forEach(function(q){
         var o = document.createElement('option');
         o.value = q.url;
         o.textContent = q.label;
         qualSel.appendChild(o);
       });
-      qualSel.disabled = ch.qualities.length <= 1;
+      qualSel.disabled = list.length <= 1;
     }
 
     function openPlayer(){
@@ -3581,7 +3612,7 @@ setTimeout(function(){
 
     chanSel.addEventListener('change', syncQuality);
     openBtn.addEventListener('click', function(){
-      if(!chanSel.value) chanSel.value = NEWS_CHANNELS[0].id;
+      if(!chanSel.value) chanSel.value = names[0];
       syncQuality();
       openPlayer();
     });
