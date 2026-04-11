@@ -159,6 +159,19 @@ body.dark .quiz-choice:hover{border-color:#e94560}
 #quiz-exit{padding:8px 18px;background:#f5f5f5;color:#333;border:1px solid #ccc;border-radius:8px;cursor:pointer}
 #quiz-exit:hover{background:#eee}
 
+/* ── Chinese news overlay ───────────────────────────────────── */
+#news-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:9002;display:flex;align-items:center;justify-content:center}
+#news-card{background:#fff;border-radius:14px;padding:14px;width:min(980px,94vw);display:flex;flex-direction:column;gap:10px;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+#news-header{display:flex;align-items:center;gap:8px;font-size:.95em;color:#333}
+#news-title{font-weight:600}
+#news-close{margin-left:auto;background:none;border:none;cursor:pointer;font-size:1.2em;color:#999}
+#news-player{width:100%;height:min(70vh,560px);background:#000;border-radius:10px}
+#tb-row-news select{padding:4px 6px;border:1px solid #ccc;border-radius:4px;font-size:.82em}
+#tb-row-news .cdx-btn{padding:4px 10px;font-size:.82em}
+body.dark #news-card{background:#1a1a2e;color:#e0e0e0}
+body.dark #news-title{color:#e0e0e0}
+body.dark #news-close{color:#bbb}
+
 /* ── Familiar section ────────────────────────────────────────── */
 #fam-section{background:#fffde7;border-top:3px solid #f39c12;padding:20px 0;margin-top:30px}
 #fam-section>h2{color:#e67e22;border-bottom:2px solid #f39c12;padding-bottom:8px;padding-left:12px;margin:0 0 12px}

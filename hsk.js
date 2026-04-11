@@ -3474,3 +3474,142 @@ setTimeout(function(){
 
 
 
+/* ── Anki Export (tab-separated .txt) ──────────────────────────── */
+(function(){
+  var btn = document.getElementById('btn-export-anki');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var today = new Date().toISOString().slice(0,10);
+    var lines = [];
+    document.querySelectorAll('tr[data-key]').forEach(function(tr){
+      if(tr.offsetParent === null) return;
+      var zh  = tr.getAttribute('data-key') || '';
+      var py  = tr.getAttribute('data-py')  || '';
+      var en  = tr.getAttribute('data-en')  || '';
+      var ru  = tr.getAttribute('data-ru')  || '';
+      var hsk = tr.getAttribute('data-hsk') || '';
+      var pos = (tr.getAttribute('data-section') || '').replace('pos_','');
+      var exZh = (tr.querySelector('.ex-zh') || {}).textContent || '';
+      var exPy = (tr.querySelector('.ex-py') || {}).textContent || '';
+      // Front: Chinese + pinyin; Back: translation + example
+      var front = zh + '<br>' + py;
+      var back  = ru + (en ? '<br>' + en : '');
+      if(exZh) back += '<br><br>' + exZh + '<br>' + exPy;
+      var tags  = 'HSK' + hsk + ' ' + pos;
+      // Escape tabs/newlines in content
+      function esc(s){ return s.replace(/\t/g,' ').replace(/\r?\n/g,' '); }
+      lines.push(esc(front) + '\t' + esc(back) + '\t' + tags);
+    });
+    // UTF-8 BOM + tab-separated
+    var bom = '\ufeff';
+    var blob = new Blob([bom + lines.join('\n')], {type:'text/plain;charset=utf-8'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'HSK_Anki_' + today + '.txt'; a.click();
+    URL.revokeObjectURL(url);
+  });
+})();
+
+/* ── Chinese News Player ─────────────────────────────────────── */
+(function(){
+  var NEWS_CHANNELS = [
+    {
+      id: 'cctv13',
+      label: 'CCTV-13 新闻',
+      qualities: [
+        { label: '1080p', url: 'https://live-play.cctvnews.cctv.com/cctv/merge_cctv13.m3u8' }
+      ]
+    },
+    {
+      id: 'phoenix-info',
+      label: '凤凰资讯',
+      qualities: [
+        { label: '720p', url: 'http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8' },
+        { label: '576p', url: 'http://125.210.152.18:9090/live/FHZX_1200.m3u8' }
+      ]
+    },
+    {
+      id: 'cctvplus1',
+      label: 'CCTV+ 1',
+      qualities: [
+        { label: '600p', url: 'https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8' }
+      ]
+    },
+    {
+      id: 'cctvplus2',
+      label: 'CCTV+ 2',
+      qualities: [
+        { label: '600p', url: 'https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8' }
+      ]
+    }
+  ];
+
+  function initNews(){
+    var chanSel = document.getElementById('news-channel');
+    var qualSel = document.getElementById('news-quality');
+    var openBtn = document.getElementById('btn-news-open');
+    var overlay = document.getElementById('news-overlay');
+    var closeBtn = document.getElementById('news-close');
+    var player = document.getElementById('news-player');
+    if(!chanSel || !qualSel || !openBtn || !overlay || !player) return;
+
+    NEWS_CHANNELS.forEach(function(ch){
+      var opt = document.createElement('option');
+      opt.value = ch.id;
+      opt.textContent = ch.label;
+      chanSel.appendChild(opt);
+    });
+
+    function syncQuality(){
+      var ch = null;
+      for(var i=0;i<NEWS_CHANNELS.length;i++){
+        if(NEWS_CHANNELS[i].id === chanSel.value){ ch = NEWS_CHANNELS[i]; break; }
+      }
+      if(!ch){ ch = NEWS_CHANNELS[0]; chanSel.value = ch.id; }
+      qualSel.innerHTML = '';
+      ch.qualities.forEach(function(q){
+        var o = document.createElement('option');
+        o.value = q.url;
+        o.textContent = q.label;
+        qualSel.appendChild(o);
+      });
+      qualSel.disabled = ch.qualities.length <= 1;
+    }
+
+    function openPlayer(){
+      var url = qualSel.value;
+      if(!url) return;
+      overlay.style.display = 'flex';
+      player.src = url;
+      player.load();
+      var p = player.play();
+      if(p && typeof p.catch === 'function'){ p.catch(function(){}); }
+    }
+
+    function closePlayer(){
+      overlay.style.display = 'none';
+      player.pause();
+      player.removeAttribute('src');
+      player.load();
+    }
+
+    chanSel.addEventListener('change', syncQuality);
+    openBtn.addEventListener('click', function(){
+      if(!chanSel.value) chanSel.value = NEWS_CHANNELS[0].id;
+      syncQuality();
+      openPlayer();
+    });
+    if(closeBtn) closeBtn.addEventListener('click', closePlayer);
+    overlay.addEventListener('click', function(e){
+      if(e.target === overlay) closePlayer();
+    });
+
+    syncQuality();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', initNews);
+  } else {
+    initNews();
+  }
+})();
