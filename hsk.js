@@ -3517,7 +3517,7 @@ setTimeout(function(){
       id: 'cctv13',
       label: 'CCTV-13 新闻',
       qualities: [
-        { label: '1080p', url: 'https://live-play.cctvnews.cctv.com/cctv/merge_cctv13.m3u8' }
+        { label: '1080p', url: 'https://cdn3.163189.xyz/163189/cctv13' }
       ]
     },
     {
@@ -3526,20 +3526,6 @@ setTimeout(function(){
       qualities: [
         { label: '720p', url: 'http://223.110.245.167/ott.js.chinamobile.com/PLTV/3/224/3221226923/index.m3u8' },
         { label: '576p', url: 'http://125.210.152.18:9090/live/FHZX_1200.m3u8' }
-      ]
-    },
-    {
-      id: 'cctvplus1',
-      label: 'CCTV+ 1',
-      qualities: [
-        { label: '600p', url: 'https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL1.smil/playlist.m3u8' }
-      ]
-    },
-    {
-      id: 'cctvplus2',
-      label: 'CCTV+ 2',
-      qualities: [
-        { label: '600p', url: 'https://cd-live-stream.news.cctvplus.com/live/smil:CHANNEL2.smil/playlist.m3u8' }
       ]
     }
   ];
