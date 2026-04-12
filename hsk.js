@@ -3527,6 +3527,7 @@ setTimeout(function(){
   function qualityRank(label){
     var t = String(label || '').toLowerCase().trim();
     if(t === 'auto') return -1;
+    if(t === 'best') return 10000;
     var m = t.match(/(\d+)\s*p/);
     if(m) return parseInt(m[1],10);
     return 9999;
@@ -3555,6 +3556,14 @@ setTimeout(function(){
     var names = Object.keys(map);
     names.sort(function(a,b){ return a.localeCompare(b); });
     names.forEach(function(n){
+      var items = map[n].items || [];
+      var nonAuto = items.filter(function(it){ return String(it.label||'').toLowerCase().trim() !== 'auto'; });
+      if(nonAuto.length){
+        items = nonAuto;
+      } else if(items.length) {
+        items = [{ label: 'best', url: items[0].url }];
+      }
+      map[n].items = items;
       map[n].items.sort(function(a,b){
         var ra = qualityRank(a.label), rb = qualityRank(b.label);
         if(ra !== rb) return ra - rb;
@@ -3587,6 +3596,7 @@ setTimeout(function(){
     var captionDict = null;
     var trackListenerAttached = false;
     var captionState = { cc: true, py: true, tr: true };
+    var currentIndex = 0;
 
     if(ccBtn) ccBtn.classList.add('active');
     if(pyBtn) pyBtn.classList.add('active');
@@ -3824,6 +3834,8 @@ setTimeout(function(){
 
     function syncQuality(){
       var name = chanSel.value || names[0];
+      var idx = names.indexOf(name);
+      if(idx >= 0) currentIndex = idx;
       var list = map[name] ? map[name].items : [];
       if(!list.length){
         qualSel.innerHTML = '';
@@ -3888,7 +3900,10 @@ setTimeout(function(){
 
     chanSel.addEventListener('focus', renderOptions);
     chanSel.addEventListener('mousedown', renderOptions);
-    chanSel.addEventListener('change', syncQuality);
+    chanSel.addEventListener('change', function(){
+      syncQuality();
+      if(overlay.style.display === 'flex'){ openPlayer(); }
+    });
     openBtn.addEventListener('click', function(){
       renderOptions();
       if(!chanSel.value) chanSel.value = names[0];
@@ -3900,6 +3915,28 @@ setTimeout(function(){
       if(e.target === overlay) closePlayer();
     });
 
+    function setChannelByIndex(idx){
+      if(!names.length) return;
+      if(idx < 0) idx = names.length - 1;
+      if(idx >= names.length) idx = 0;
+      currentIndex = idx;
+      renderOptions();
+      chanSel.value = names[currentIndex];
+      syncQuality();
+      if(overlay.style.display === 'flex'){ openPlayer(); }
+    }
+
+    var prevBtn = document.getElementById('news-prev');
+    var nextBtn = document.getElementById('news-next');
+    if(prevBtn) prevBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      setChannelByIndex(currentIndex - 1);
+    });
+    if(nextBtn) nextBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      setChannelByIndex(currentIndex + 1);
+    });
+
     window.updateNewsLang = function(){
       if(placeholderOpt){
         placeholderOpt.textContent = getSelectLabel();
@@ -3909,6 +3946,10 @@ setTimeout(function(){
     };
 
     syncQuality();
+    if(names.length){
+      currentIndex = names.indexOf(chanSel.value || names[0]);
+      if(currentIndex < 0) currentIndex = 0;
+    }
   }
 
   if(document.readyState === 'loading'){
