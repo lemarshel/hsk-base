@@ -1933,6 +1933,8 @@ function setLang(lang){
   var ruOpt = document.querySelector('#search-lang option[value="ru"]');
   if(ruOpt) ruOpt.textContent = isEn ? 'Russian' : '\u0420\u0443\u0441\u0441\u043a\u0438\u0439';
 
+  if(window.updateNewsLang) window.updateNewsLang();
+
   /* collapse / expand */
   var bca = document.getElementById('btn-col-all');
   var bea = document.getElementById('btn-exp-all');
@@ -3530,6 +3532,10 @@ setTimeout(function(){
     return 9999;
   }
 
+  function getSelectLabel(){
+    return document.body.classList.contains('lang-en') ? 'Select channel' : 'Выбор канала';
+  }
+
   function buildChannelMap(list){
     var map = Object.create(null);
     var seen = Object.create(null);
@@ -3791,12 +3797,21 @@ setTimeout(function(){
       return;
     }
 
-    chanSel.innerHTML = '<option value="">Select channel</option>';
+    var placeholderOpt = null;
+    chanSel.innerHTML = '';
+    placeholderOpt = document.createElement('option');
+    placeholderOpt.value = '';
+    placeholderOpt.textContent = getSelectLabel();
+    chanSel.appendChild(placeholderOpt);
 
     function renderOptions(){
       if(optionsRendered) return;
       optionsRendered = true;
       chanSel.innerHTML = '';
+      placeholderOpt = document.createElement('option');
+      placeholderOpt.value = '';
+      placeholderOpt.textContent = getSelectLabel();
+      chanSel.appendChild(placeholderOpt);
       var frag = document.createDocumentFragment();
       for(var i=0;i<names.length;i++){
         var opt = document.createElement('option');
@@ -3827,7 +3842,16 @@ setTimeout(function(){
         qualSel.appendChild(o);
       });
       qualSel.disabled = list.length <= 1;
-      qualSel.value = '0';
+      var bestIdx = 0;
+      var bestRank = -1;
+      for(var bi=0; bi<list.length; bi++){
+        var r = qualityRank(list[bi].label);
+        if(r > bestRank){
+          bestRank = r;
+          bestIdx = bi;
+        }
+      }
+      qualSel.value = String(bestIdx);
     }
 
     function getSelectedUrl(){
@@ -3875,6 +3899,14 @@ setTimeout(function(){
     overlay.addEventListener('click', function(e){
       if(e.target === overlay) closePlayer();
     });
+
+    window.updateNewsLang = function(){
+      if(placeholderOpt){
+        placeholderOpt.textContent = getSelectLabel();
+      } else if(chanSel && chanSel.options && chanSel.options.length){
+        chanSel.options[0].textContent = getSelectLabel();
+      }
+    };
 
     syncQuality();
   }
