@@ -14,6 +14,18 @@ body{background:#fff;color:#1a1a2e}
 body.dark #toolbar{border-bottom-width:0!important;border-bottom-style:none!important}
 body.sepia #toolbar{border-bottom-width:0!important;border-bottom-style:none!important}
 
+/* ── Performance: skip offscreen layout/paint ───────────────────────── */
+.toc,
+.grp-wrap,
+table,
+#filtered-view{
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 800px;
+}
+
+.virt-hidden{display:none!important}
+.virt-spacer td{padding:0!important;border:none!important;height:0!important}
+
 @supports (content-visibility: auto) {
   .grp-wrap { content-visibility: auto; contain-intrinsic-size: 800px 600px; }
 }
