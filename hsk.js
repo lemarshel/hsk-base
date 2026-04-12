@@ -3513,6 +3513,22 @@ setTimeout(function(){
 /* ── Channels Player ─────────────────────────────────────────── */
 (function(){
   var ALL_CHANNELS = window.ALL_CHANNELS || [];
+  var NAME_MAP = window.CHANNEL_NAME_MAP || {};
+
+  function translateName(name){
+    if(NAME_MAP && NAME_MAP[name]) return NAME_MAP[name];
+    if(/^CCTV[-\s]?(\d+)$/i.test(name)) return 'CCTV-' + RegExp.$1;
+    if(/^CGTN/i.test(name)) return 'CGTN 新闻';
+    return name;
+  }
+
+  function qualityRank(label){
+    var t = String(label || '').toLowerCase().trim();
+    if(t === 'auto') return -1;
+    var m = t.match(/(\d+)\s*p/);
+    if(m) return parseInt(m[1],10);
+    return 9999;
+  }
 
   function buildChannelMap(list){
     var map = Object.create(null);
@@ -3524,16 +3540,20 @@ setTimeout(function(){
       var url = String(row[1] || '').trim();
       var label = String(row[2] || 'auto').trim();
       if(!name || !url) continue;
-      var key = name + '||' + url;
+      var key = name + '||' + url + '||' + label;
       if(seen[key]) continue;
       seen[key] = true;
-      if(!map[name]) map[name] = [];
-      map[name].push({ label: label || 'auto', url: url });
+      if(!map[name]) map[name] = { display: translateName(name), items: [] };
+      map[name].items.push({ label: label || 'auto', url: url });
     }
     var names = Object.keys(map);
     names.sort(function(a,b){ return a.localeCompare(b); });
     names.forEach(function(n){
-      map[n].sort(function(a,b){ return a.label.localeCompare(b.label); });
+      map[n].items.sort(function(a,b){
+        var ra = qualityRank(a.label), rb = qualityRank(b.label);
+        if(ra !== rb) return ra - rb;
+        return a.label.localeCompare(b.label);
+      });
     });
     return { map: map, names: names };
   }
@@ -3545,11 +3565,220 @@ setTimeout(function(){
     var overlay = document.getElementById('news-overlay');
     var closeBtn = document.getElementById('news-close');
     var player = document.getElementById('news-player');
+    var ccBtn = document.getElementById('news-cc');
+    var pyBtn = document.getElementById('news-py');
+    var trBtn = document.getElementById('news-tr');
+    var capBox = document.getElementById('news-captions');
+    var capZh = capBox ? capBox.querySelector('.cap-zh') : null;
+    var capPy = capBox ? capBox.querySelector('.cap-py') : null;
+    var capTr = capBox ? capBox.querySelector('.cap-tr') : null;
     if(!chanSel || !qualSel || !openBtn || !overlay || !player) return;
 
     var built = buildChannelMap(ALL_CHANNELS);
     var map = built.map;
     var names = built.names;
+    var optionsRendered = false;
+    var captionDict = null;
+    var trackListenerAttached = false;
+    var captionState = { cc: true, py: true, tr: true };
+
+    if(ccBtn) ccBtn.classList.add('active');
+    if(pyBtn) pyBtn.classList.add('active');
+    if(trBtn) trBtn.classList.add('active');
+
+    function updateCaptionVisibility(){
+      if(!capBox) return;
+      capBox.classList.toggle('hidden', !captionState.cc);
+      if(capPy) capPy.style.display = captionState.py ? '' : 'none';
+      if(capTr) capTr.style.display = captionState.tr ? '' : 'none';
+    }
+
+    function toggleCaption(btn, key){
+      if(!btn) return;
+      btn.addEventListener('click', function(){
+        captionState[key] = !captionState[key];
+        btn.classList.toggle('active', captionState[key]);
+        updateCaptionVisibility();
+      });
+    }
+
+    toggleCaption(ccBtn, 'cc');
+    toggleCaption(pyBtn, 'py');
+    toggleCaption(trBtn, 'tr');
+    updateCaptionVisibility();
+
+    function buildCaptionDict(){
+      if(captionDict) return captionDict;
+      var map = Object.create(null);
+      var maxLen = 1;
+      document.querySelectorAll('tbody tr').forEach(function(tr){
+        var zh = tr.querySelector('.zh');
+        if(!zh) return;
+        var word = zh.textContent.trim();
+        if(!word) return;
+        var py = tr.querySelector('.py');
+        var en = tr.querySelector('.trans-en');
+        var ru = tr.querySelector('.trans-ru');
+        map[word] = {
+          py: py ? py.textContent.trim() : '',
+          en: en ? en.textContent.trim() : '',
+          ru: ru ? ru.textContent.trim() : ''
+        };
+        if(word.length > maxLen) maxLen = word.length;
+      });
+      captionDict = { map: map, maxLen: maxLen };
+      return captionDict;
+    }
+
+    function isPunct(ch){
+      return /[\\s\\u3000\\u3002\\uff0c\\uff1f\\uff01\\uff1b\\uff1a.,!?;:"'()\\[\\]{}]/.test(ch);
+    }
+
+    function segmentChinese(text){
+      var dict = buildCaptionDict();
+      var tokens = [];
+      var i = 0;
+      while(i < text.length){
+        var ch = text[i];
+        if(isPunct(ch)){
+          tokens.push(ch);
+          i += 1;
+          continue;
+        }
+        var matched = '';
+        var maxLen = Math.min(dict.maxLen, text.length - i);
+        for(var l=maxLen; l>1; l--){
+          var s = text.substr(i, l);
+          if(dict.map[s]){ matched = s; break; }
+        }
+        if(matched){
+          tokens.push(matched);
+          i += matched.length;
+        } else {
+          tokens.push(ch);
+          i += 1;
+        }
+      }
+      return tokens;
+    }
+
+    function buildCaptionLines(text){
+      var dict = buildCaptionDict();
+      var tokens = segmentChinese(text);
+      var isEn = document.body.classList.contains('lang-en');
+      var pyParts = [];
+      var trParts = [];
+      tokens.forEach(function(tok){
+        var entry = dict.map[tok];
+        if(entry){
+          if(entry.py) pyParts.push(entry.py);
+          var tr = isEn ? entry.en : (entry.ru || entry.en);
+          if(tr) trParts.push(tr);
+        }
+      });
+      return { zh: text, py: pyParts.join(' '), tr: trParts.join(' ') };
+    }
+
+    function setCaption(text){
+      if(!capBox || !capZh) return;
+      if(!text){
+        capZh.textContent = '';
+        if(capPy) capPy.textContent = '';
+        if(capTr) capTr.textContent = '';
+        return;
+      }
+      var lines = buildCaptionLines(text);
+      capZh.textContent = lines.zh;
+      if(capPy) capPy.textContent = lines.py;
+      if(capTr) capTr.textContent = lines.tr;
+    }
+
+    function clearCaptions(){
+      if(capZh) capZh.textContent = '';
+      if(capPy) capPy.textContent = '';
+      if(capTr) capTr.textContent = '';
+    }
+
+    function hookTrack(track){
+      if(!track || track._hskHooked) return;
+      track._hskHooked = true;
+      try{ track.mode = 'hidden'; }catch(e){}
+      track.oncuechange = function(){
+        var cueText = '';
+        if(track.activeCues && track.activeCues.length){
+          var parts = [];
+          for(var i=0;i<track.activeCues.length;i++){
+            if(track.activeCues[i] && track.activeCues[i].text){
+              parts.push(track.activeCues[i].text);
+            }
+          }
+          cueText = parts.join(' ');
+        }
+        setCaption(cueText);
+      };
+    }
+
+    function hookTracks(){
+      var list = player.textTracks;
+      if(!list) return;
+      for(var i=0;i<list.length;i++){
+        hookTrack(list[i]);
+      }
+      if(list.addEventListener && !trackListenerAttached){
+        list.addEventListener('addtrack', function(e){
+          hookTrack(e.track);
+        });
+        trackListenerAttached = true;
+      }
+    }
+
+    function clearTracks(){
+      var tracks = player.querySelectorAll('track');
+      for(var i=0;i<tracks.length;i++){
+        tracks[i].parentNode.removeChild(tracks[i]);
+      }
+    }
+
+    function resolveUrl(base, rel){
+      try { return new URL(rel, base).toString(); } catch(e){ return rel; }
+    }
+
+    function getAttr(line, key){
+      var re = new RegExp(key + '=\"([^\"]+)\"');
+      var m = line.match(re);
+      return m ? m[1] : '';
+    }
+
+    function attachSubtitleTrackFromManifest(url){
+      if(!url || url.indexOf('.m3u8') === -1) return;
+      fetch(url).then(function(r){ return r.text(); }).then(function(text){
+        var lines = text.split(/\\r?\\n/);
+        var sub = null;
+        lines.forEach(function(line){
+          if(line.indexOf('EXT-X-MEDIA') === -1) return;
+          if(line.indexOf('TYPE=SUBTITLES') === -1) return;
+          if(sub) return;
+          var uri = getAttr(line, 'URI');
+          if(!uri) return;
+          sub = {
+            uri: resolveUrl(url, uri),
+            name: getAttr(line, 'NAME') || 'Subtitles',
+            lang: getAttr(line, 'LANGUAGE') || 'zh'
+          };
+        });
+        if(!sub) return;
+        clearTracks();
+        var t = document.createElement('track');
+        t.kind = 'subtitles';
+        t.label = sub.name;
+        t.srclang = sub.lang;
+        t.src = sub.uri;
+        t.default = true;
+        player.appendChild(t);
+        hookTracks();
+      }).catch(function(){});
+    }
+
     if(!names.length){
       chanSel.innerHTML = '';
       var empty = document.createElement('option');
@@ -3562,18 +3791,25 @@ setTimeout(function(){
       return;
     }
 
-    var frag = document.createDocumentFragment();
-    for(var i=0;i<names.length;i++){
-      var opt = document.createElement('option');
-      opt.value = names[i];
-      opt.textContent = names[i];
-      frag.appendChild(opt);
+    chanSel.innerHTML = '<option value="">Select channel</option>';
+
+    function renderOptions(){
+      if(optionsRendered) return;
+      optionsRendered = true;
+      chanSel.innerHTML = '';
+      var frag = document.createDocumentFragment();
+      for(var i=0;i<names.length;i++){
+        var opt = document.createElement('option');
+        opt.value = names[i];
+        opt.textContent = map[names[i]].display || names[i];
+        frag.appendChild(opt);
+      }
+      chanSel.appendChild(frag);
     }
-    chanSel.appendChild(frag);
 
     function syncQuality(){
       var name = chanSel.value || names[0];
-      var list = map[name] || [];
+      var list = map[name] ? map[name].items : [];
       if(!list.length){
         qualSel.innerHTML = '';
         var o = document.createElement('option');
@@ -3584,21 +3820,35 @@ setTimeout(function(){
         return;
       }
       qualSel.innerHTML = '';
-      list.forEach(function(q){
+      list.forEach(function(q, idx){
         var o = document.createElement('option');
-        o.value = q.url;
+        o.value = String(idx);
         o.textContent = q.label;
         qualSel.appendChild(o);
       });
       qualSel.disabled = list.length <= 1;
+      qualSel.value = '0';
+    }
+
+    function getSelectedUrl(){
+      var name = chanSel.value || names[0];
+      var list = map[name] ? map[name].items : [];
+      var idx = parseInt(qualSel.value, 10);
+      if(isNaN(idx)) idx = 0;
+      var q = list[idx] || list[0];
+      return q ? q.url : '';
     }
 
     function openPlayer(){
-      var url = qualSel.value;
+      var url = getSelectedUrl();
       if(!url) return;
       overlay.style.display = 'flex';
+      clearCaptions();
+      clearTracks();
       player.src = url;
       player.load();
+      hookTracks();
+      attachSubtitleTrackFromManifest(url);
       var p = player.play();
       if(p && typeof p.catch === 'function'){ p.catch(function(){}); }
     }
@@ -3608,10 +3858,15 @@ setTimeout(function(){
       player.pause();
       player.removeAttribute('src');
       player.load();
+      clearCaptions();
+      clearTracks();
     }
 
+    chanSel.addEventListener('focus', renderOptions);
+    chanSel.addEventListener('mousedown', renderOptions);
     chanSel.addEventListener('change', syncQuality);
     openBtn.addEventListener('click', function(){
+      renderOptions();
       if(!chanSel.value) chanSel.value = names[0];
       syncQuality();
       openPlayer();
