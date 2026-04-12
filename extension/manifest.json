@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "HSK News Transcriber",
+  "version": "0.1.0",
+  "permissions": ["tabCapture", "activeTab", "scripting", "storage", "offscreen"],
+  "host_permissions": [
+    "https://lemarshel.github.io/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://lemarshel.github.io/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "HSK News Transcriber"
+  }
+}

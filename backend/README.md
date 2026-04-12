@@ -1,10 +1,9 @@
 # Live News Transcription Backend
 
-This service accepts a stream URL over WebSocket and transcribes Mandarin Chinese audio using faster-whisper.
+This service accepts tab audio over WebSocket and transcribes Mandarin Chinese audio using faster-whisper.
 
 ## Requirements
 - Python 3.9+
-- ffmpeg available on PATH
 
 ## Setup
 ```bash
@@ -17,6 +16,10 @@ python -m venv .venv
 ```bash
 .venv\Scripts\uvicorn main:app --host 0.0.0.0 --port 8000
 ```
+
+## WebSocket endpoints
+- `/ws/audio` (extension sends PCM audio from the active tab)
+- `/ws/subs?room=<id>&translate=1` (website receives subtitles)
 
 ## Optional English translation
 Set environment variables:

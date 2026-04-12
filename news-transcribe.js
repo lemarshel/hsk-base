@@ -66,14 +66,18 @@
     if(liveStatus) liveStatus.textContent = msg || "";
   }
 
-  function resolveWsUrl(){
-    if(window.NEWS_TRANSCRIBE_WS) return window.NEWS_TRANSCRIBE_WS;
-    var proto = (location.protocol === "https:") ? "wss://" : "ws://";
-    var host = location.hostname || "localhost";
-    if(host && host !== "localhost" && host !== "127.0.0.1"){
-      host = "localhost";
+  function resolveSubsUrl(room, translate){
+    var base = window.NEWS_SUB_WS;
+    if(!base){
+      var proto = (location.protocol === "https:") ? "wss://" : "ws://";
+      var host = location.hostname || "localhost";
+      if(host && host !== "localhost" && host !== "127.0.0.1"){
+        host = "localhost";
+      }
+      base = proto + host + ":8000/ws/subs";
     }
-    return proto + host + ":8000/ws/transcribe";
+    var qs = "?room=" + encodeURIComponent(room || "") + "&translate=" + (translate ? "1" : "0");
+    return base + qs;
   }
 
   function clearLive(){
@@ -131,7 +135,7 @@
 
   function connectWs(){
     if(state.ws && (state.ws.readyState === 0 || state.ws.readyState === 1)) return;
-    var wsUrl = resolveWsUrl();
+    var wsUrl = resolveSubsUrl(state.currentUrl, isTranslateEnabled());
     if(location.protocol === "https:" && wsUrl.indexOf("ws://") === 0){
       setStatus("HTTPS page blocks ws://. Use wss:// or open locally (http/file).");
       return;
@@ -143,7 +147,7 @@
       return;
     }
     state.ws.onopen = function(){
-      setStatus("Connecting...");
+      setStatus("Listening...");
     };
     state.ws.onmessage = function(ev){
       try{
@@ -163,37 +167,21 @@
     return video.currentSrc || video.src || "";
   }
 
-  function sendStart(url){
-    if(!state.ws || state.ws.readyState !== 1) return;
-    try{
-      state.ws.send(JSON.stringify({
-        type: "start",
-        url: url,
-        translate: isTranslateEnabled()
-      }));
-      setStatus("Listening...");
-    }catch(e){}
+  function makeRoomId(){
+    return "room_" + Date.now() + "_" + Math.random().toString(36).slice(2,8);
   }
 
   function startTranscription(){
     if(state.running) return;
     if(!isOverlayOpen()) return;
-    var url = getStreamUrl();
-    if(!url){
-      setStatus("Waiting for stream URL...");
-      setTimeout(startTranscription, 500);
-      return;
+    if(!state.currentUrl){
+      state.currentUrl = makeRoomId();
     }
-    state.currentUrl = url;
+    var card = document.getElementById("news-card");
+    if(card) card.dataset.room = state.currentUrl;
+    window.NEWS_SUB_ROOM = state.currentUrl;
     setStatus("Connecting to transcription server...");
     connectWs();
-    if(state.ws && state.ws.readyState === 1){
-      sendStart(url);
-    }else if(state.ws){
-      state.ws.addEventListener("open", function(){
-        sendStart(url);
-      }, { once: true });
-    }
     state.running = true;
     updateVisibility();
   }
@@ -202,17 +190,25 @@
     if(!state.running) return;
     state.running = false;
     if(state.ws){
-      try{ state.ws.send(JSON.stringify({ type: "stop" })); }catch(e){}
       try{ state.ws.close(); }catch(e){}
     }
     state.ws = null;
     setStatus("");
+    var card = document.getElementById("news-card");
+    if(card) card.dataset.room = "";
+    window.NEWS_SUB_ROOM = "";
   }
 
   function onOverlayChange(){
     updateVisibility();
     if(isOverlayOpen()){
       clearLive();
+      if(!state.currentUrl){
+        state.currentUrl = makeRoomId();
+      }
+      var card = document.getElementById("news-card");
+      if(card) card.dataset.room = state.currentUrl;
+      window.NEWS_SUB_ROOM = state.currentUrl;
       if(!video.paused) startTranscription();
     } else {
       stopTranscription();
@@ -229,12 +225,7 @@
   video.addEventListener("loadedmetadata", function(){ if(isOverlayOpen()) startTranscription(); });
   video.addEventListener("loadstart", function(){
     if(isOverlayOpen()){
-      var url = getStreamUrl();
-      if(url && url !== state.currentUrl){
-        stopTranscription();
-        state.currentUrl = url;
-        startTranscription();
-      }
+      // room stays the same; no need to restart for URL changes
     }
   });
   video.addEventListener("pause", stopTranscription);
@@ -246,8 +237,10 @@
   if(trBtn) trBtn.addEventListener("click", function(){
     updateVisibility();
     if(state.running){
-      stopTranscription();
-      startTranscription();
+      // reconnect subtitle socket with new translate flag
+      if(state.ws) try{ state.ws.close(); }catch(e){}
+      state.ws = null;
+      connectWs();
     }
     renderHistory();
   });
