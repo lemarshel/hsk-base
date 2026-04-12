@@ -3875,9 +3875,18 @@ setTimeout(function(){
       return q ? q.url : '';
     }
 
+    function updateNewsTitle(){
+      var titleEl = document.getElementById('news-title');
+      if(!titleEl) return;
+      var name = chanSel.value || names[0];
+      var display = map[name] ? map[name].display : name;
+      titleEl.textContent = display || 'Chinese News';
+    }
+
     function openPlayer(){
       var url = getSelectedUrl();
       if(!url) return;
+      updateNewsTitle();
       overlay.style.display = 'flex';
       clearCaptions();
       clearTracks();
@@ -3902,12 +3911,14 @@ setTimeout(function(){
     chanSel.addEventListener('mousedown', renderOptions);
     chanSel.addEventListener('change', function(){
       syncQuality();
+      updateNewsTitle();
       if(overlay.style.display === 'flex'){ openPlayer(); }
     });
     openBtn.addEventListener('click', function(){
       renderOptions();
       if(!chanSel.value) chanSel.value = names[0];
       syncQuality();
+      updateNewsTitle();
       openPlayer();
     });
     if(closeBtn) closeBtn.addEventListener('click', closePlayer);
@@ -3923,6 +3934,7 @@ setTimeout(function(){
       renderOptions();
       chanSel.value = names[currentIndex];
       syncQuality();
+      updateNewsTitle();
       if(overlay.style.display === 'flex'){ openPlayer(); }
     }
 
@@ -3943,9 +3955,11 @@ setTimeout(function(){
       } else if(chanSel && chanSel.options && chanSel.options.length){
         chanSel.options[0].textContent = getSelectLabel();
       }
+      updateNewsTitle();
     };
 
     syncQuality();
+    updateNewsTitle();
     if(names.length){
       currentIndex = names.indexOf(chanSel.value || names[0]);
       if(currentIndex < 0) currentIndex = 0;
