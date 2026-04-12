@@ -16,7 +16,7 @@ async function ensureOffscreen() {
   offscreenReady = true;
 }
 
-async function startCapture(tabId, room) {
+async function startCapture(tabId, room, wsUrl) {
   if (!tabId || !room) return;
   const streamId = await chrome.tabCapture.getMediaStreamId({ targetTabId: tabId });
   await ensureOffscreen();
@@ -25,7 +25,7 @@ async function startCapture(tabId, room) {
     type: "start_capture",
     streamId,
     room,
-    wsUrl: DEFAULT_WS
+    wsUrl: wsUrl || DEFAULT_WS
   });
 }
 
@@ -38,7 +38,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
   if (!msg || msg.to === "offscreen") return;
   if (msg.type === "news_open") {
     const tabId = sender?.tab?.id;
-    startCapture(tabId, msg.room);
+    startCapture(tabId, msg.room, msg.wsUrl);
   }
   if (msg.type === "news_close") {
     stopCapture();

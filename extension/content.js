@@ -13,6 +13,10 @@
     return card.dataset.room || "";
   }
 
+  function getAudioWs(){
+    return card.dataset.audioWs || "";
+  }
+
   function onChange(){
     const nowOpen = isOpen();
     if (nowOpen === openState) return;
@@ -20,7 +24,7 @@
     if (nowOpen) {
       const room = getRoom();
       if (room) {
-        chrome.runtime.sendMessage({ type: "news_open", room });
+        chrome.runtime.sendMessage({ type: "news_open", room, wsUrl: getAudioWs() });
       }
     } else {
       chrome.runtime.sendMessage({ type: "news_close" });
@@ -34,7 +38,7 @@
     if (isOpen()) {
       const room = getRoom();
       if (room) {
-        chrome.runtime.sendMessage({ type: "news_open", room });
+        chrome.runtime.sendMessage({ type: "news_open", room, wsUrl: getAudioWs() });
       }
     }
   });

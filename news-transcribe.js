@@ -21,6 +21,10 @@
     currentUrl: ""
   };
 
+  var LS_SUB_WS = "news_sub_ws";
+  var LS_AUDIO_WS = "news_audio_ws";
+  var LS_PORT = "news_sub_port";
+
   function $(sel){ return document.querySelector(sel); }
 
   var overlay = $(CONFIG.OVERLAY_SELECTOR);
@@ -66,16 +70,43 @@
     if(liveStatus) liveStatus.textContent = msg || "";
   }
 
-  function resolveSubsUrl(room, translate){
+  function resolveBasePort(){
+    var p = "";
+    try{ p = localStorage.getItem(LS_PORT) || ""; }catch(e){}
+    if(!p) p = "8000";
+    return p;
+  }
+
+  function resolveSubsBase(){
     var base = window.NEWS_SUB_WS;
+    if(!base){
+      try{ base = localStorage.getItem(LS_SUB_WS) || ""; }catch(e){}
+    }
     if(!base){
       var proto = (location.protocol === "https:") ? "wss://" : "ws://";
       var host = location.hostname || "localhost";
       if(host && host !== "localhost" && host !== "127.0.0.1"){
         host = "localhost";
       }
-      base = proto + host + ":8000/ws/subs";
+      base = proto + host + ":" + resolveBasePort() + "/ws/subs";
     }
+    return base;
+  }
+
+  function resolveAudioWs(){
+    var ws = window.NEWS_AUDIO_WS;
+    if(!ws){
+      try{ ws = localStorage.getItem(LS_AUDIO_WS) || ""; }catch(e){}
+    }
+    if(!ws){
+      var proto = (location.protocol === "https:") ? "wss://" : "ws://";
+      ws = proto + "localhost:" + resolveBasePort() + "/ws/audio";
+    }
+    return ws;
+  }
+
+  function resolveSubsUrl(room, translate){
+    var base = resolveSubsBase();
     var qs = "?room=" + encodeURIComponent(room || "") + "&translate=" + (translate ? "1" : "0");
     return base + qs;
   }
@@ -178,7 +209,10 @@
       state.currentUrl = makeRoomId();
     }
     var card = document.getElementById("news-card");
-    if(card) card.dataset.room = state.currentUrl;
+    if(card){
+      card.dataset.room = state.currentUrl;
+      card.dataset.audioWs = resolveAudioWs();
+    }
     window.NEWS_SUB_ROOM = state.currentUrl;
     setStatus("Connecting to transcription server...");
     connectWs();
