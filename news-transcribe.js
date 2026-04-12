@@ -17,9 +17,6 @@
     ws: null,
     recorder: null,
     mediaStream: null,
-    audioCtx: null,
-    audioSrc: null,
-    audioDest: null,
     running: false,
     history: [],
     lastZh: "",
@@ -34,7 +31,6 @@
   var ccBtn = $(CONFIG.CC_BUTTON);
   var trBtn = $(CONFIG.TR_BUTTON);
   if(!overlay || !video || !subBox) return;
-  try{ video.crossOrigin = "anonymous"; }catch(e){}
 
   // Build UI under the video (within existing subtitles box)
   var liveWrap = document.createElement("div");
@@ -180,21 +176,6 @@
     };
   }
 
-  function cleanupAudioContext(){
-    if(state.audioSrc){
-      try{ state.audioSrc.disconnect(); }catch(e){}
-    }
-    if(state.audioDest){
-      try{ state.audioDest.disconnect(); }catch(e){}
-    }
-    if(state.audioCtx){
-      try{ state.audioCtx.close(); }catch(e){}
-    }
-    state.audioCtx = null;
-    state.audioSrc = null;
-    state.audioDest = null;
-  }
-
   function getAudioStream(){
     var capture = video.captureStream || video.mozCaptureStream;
     if(capture){
@@ -203,22 +184,6 @@
         var audioTracks = fullStream.getAudioTracks();
         if(audioTracks && audioTracks.length){
           return new MediaStream(audioTracks);
-        }
-      }catch(e){}
-    }
-    // Fallback: Web Audio capture
-    if(window.AudioContext || window.webkitAudioContext){
-      try{
-        var Ctx = window.AudioContext || window.webkitAudioContext;
-        state.audioCtx = state.audioCtx || new Ctx();
-        state.audioSrc = state.audioSrc || state.audioCtx.createMediaElementSource(video);
-        state.audioDest = state.audioDest || state.audioCtx.createMediaStreamDestination();
-        // Ensure audio still plays
-        state.audioSrc.connect(state.audioCtx.destination);
-        state.audioSrc.connect(state.audioDest);
-        var dstTracks = state.audioDest.stream.getAudioTracks();
-        if(dstTracks && dstTracks.length){
-          return state.audioDest.stream;
         }
       }catch(e){}
     }
@@ -278,7 +243,6 @@
       }catch(e){}
     }
     state.mediaStream = null;
-    cleanupAudioContext();
     if(state.ws){
       try{ state.ws.send(JSON.stringify({ type: "stop" })); }catch(e){}
       try{ state.ws.close(); }catch(e){}
