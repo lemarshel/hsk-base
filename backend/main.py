@@ -32,6 +32,12 @@ async def ws_transcribe(ws: WebSocket):
             loop,
         )
 
+    def status(msg: str):
+        asyncio.run_coroutine_threadsafe(
+            send_json({"type": "status", "text": msg}),
+            loop,
+        )
+
     try:
         while True:
             msg = await ws.receive_json()
@@ -44,7 +50,11 @@ async def ws_transcribe(ws: WebSocket):
                     session = None
                 if url:
                     stop_evt.clear()
-                    session = transcriber.start(url, emit, stop_evt)
+                    status("Starting transcription...")
+                    try:
+                        session = transcriber.start(url, emit, stop_evt, status)
+                    except Exception as exc:
+                        status(f"Failed to start ffmpeg: {exc}")
             elif mtype == "stop":
                 if session:
                     session.stop()

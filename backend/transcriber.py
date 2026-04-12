@@ -53,17 +53,20 @@ class StreamTranscriber:
         url: str,
         on_result: Callable[[str, bool], None],
         stop_evt: threading.Event,
+        on_status: Optional[Callable[[str], None]] = None,
     ) -> TranscriptionSession:
-        proc = self._start_ffmpeg(url)
+        proc = self._start_ffmpeg(url, on_status)
         thread = threading.Thread(
             target=self._run_loop,
             args=(proc, on_result, stop_evt),
             daemon=True,
         )
         thread.start()
+        if on_status:
+            threading.Thread(target=self._monitor_proc, args=(proc, on_status, stop_evt), daemon=True).start()
         return TranscriptionSession(proc, thread, stop_evt)
 
-    def _start_ffmpeg(self, url: str) -> subprocess.Popen:
+    def _start_ffmpeg(self, url: str, on_status: Optional[Callable[[str], None]] = None) -> subprocess.Popen:
         cmd = [
             "ffmpeg",
             "-hide_banner",
@@ -85,12 +88,40 @@ class StreamTranscriber:
             str(SAMPLE_RATE),
             "pipe:1",
         ]
-        return subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            bufsize=0,
-        )
+        try:
+            return subprocess.Popen(
+                cmd,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                bufsize=0,
+            )
+        except FileNotFoundError:
+            if on_status:
+                on_status("ffmpeg not found on PATH.")
+            raise
+        except Exception as exc:
+            if on_status:
+                on_status(f"ffmpeg start error: {exc}")
+            raise
+
+    def _monitor_proc(self, proc: subprocess.Popen, on_status: Callable[[str], None], stop_evt: threading.Event):
+        sent = False
+        while not stop_evt.is_set():
+            if proc.poll() is not None:
+                if not sent:
+                    on_status("ffmpeg stopped. Stream may be offline.")
+                    sent = True
+                break
+            if proc.stderr and not sent:
+                try:
+                    line = proc.stderr.readline().decode("utf-8", "ignore").strip()
+                    if line:
+                        on_status(f"ffmpeg: {line[:160]}")
+                        sent = True
+                        break
+                except Exception:
+                    pass
+            time.sleep(0.2)
 
     def _run_loop(self, proc: subprocess.Popen, on_result: Callable[[str, bool], None], stop_evt: threading.Event):
         last_norm = ""

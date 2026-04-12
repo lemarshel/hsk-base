@@ -112,7 +112,12 @@
   }
 
   function handleMessage(data){
-    if(!data || data.type !== "subtitle") return;
+    if(!data) return;
+    if(data.type === "status"){
+      setStatus(data.text || "");
+      return;
+    }
+    if(data.type !== "subtitle") return;
     var zh = (data.text || "").trim();
     var en = (data.translation || "").trim();
     if(!zh || zh === state.lastZh) return;
@@ -147,7 +152,7 @@
       }catch(e){}
     };
     state.ws.onclose = function(){
-      if(state.running) setStatus("Disconnected.");
+      if(state.running) setStatus("Disconnected from server.");
     };
     state.ws.onerror = function(){
       if(state.running) setStatus("Connection error.");
@@ -180,6 +185,7 @@
       return;
     }
     state.currentUrl = url;
+    setStatus("Connecting to transcription server...");
     connectWs();
     if(state.ws && state.ws.readyState === 1){
       sendStart(url);
