@@ -171,9 +171,12 @@ body.dark .quiz-choice:hover{border-color:#e94560}
 #news-player-wrap{position:relative}
 #news-player{width:100%;height:min(70vh,560px);background:#000;border-radius:10px}
 #news-captions{position:absolute;left:12px;right:12px;bottom:12px;background:rgba(0,0,0,.65);color:#fff;border-radius:8px;padding:8px 10px;font-size:.95em;line-height:1.35;pointer-events:none}
-.news-nav-btn{position:absolute;bottom:-36px;width:36px;height:28px;border:none;border-radius:8px;background:#1f2136;color:#fff;font-size:18px;cursor:pointer}
-.news-nav-btn#news-prev{left:12px}
-.news-nav-btn#news-next{right:12px}
+#news-under{display:flex;align-items:center;gap:10px;margin-top:8px}
+#news-subtitles{flex:1;min-height:42px;background:rgba(0,0,0,.35);border-radius:8px;padding:8px 10px;color:#fff;font-size:.9em;line-height:1.35}
+#news-subtitles .cap-py{color:#ffe8b3;font-size:.85em}
+#news-subtitles .cap-tr{color:#cde7ff;font-size:.85em;margin-top:2px}
+.news-nav-btn{width:36px;height:32px;border:none;border-radius:8px;background:#e43c5c;color:#fff;font-size:18px;cursor:pointer}
+.news-nav-btn:hover{filter:brightness(1.05)}
 #news-captions .cap-py{font-size:.85em;color:#ffe8b3;margin-top:2px}
 #news-captions .cap-tr{font-size:.85em;color:#cde7ff;margin-top:2px}
 #news-captions.hidden{display:none}

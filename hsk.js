@@ -3585,8 +3585,9 @@ setTimeout(function(){
     var trBtn = document.getElementById('news-tr');
     var capBox = document.getElementById('news-captions');
     var capZh = capBox ? capBox.querySelector('.cap-zh') : null;
-    var capPy = capBox ? capBox.querySelector('.cap-py') : null;
-    var capTr = capBox ? capBox.querySelector('.cap-tr') : null;
+    var subBox = document.getElementById('news-subtitles');
+    var capPy = subBox ? subBox.querySelector('.cap-py') : null;
+    var capTr = subBox ? subBox.querySelector('.cap-tr') : null;
     if(!chanSel || !qualSel || !openBtn || !overlay || !player) return;
 
     var built = buildChannelMap(ALL_CHANNELS);
@@ -3603,8 +3604,7 @@ setTimeout(function(){
     if(trBtn) trBtn.classList.add('active');
 
     function updateCaptionVisibility(){
-      if(!capBox) return;
-      capBox.classList.toggle('hidden', !captionState.cc);
+      if(capBox) capBox.classList.toggle('hidden', !captionState.cc);
       if(capPy) capPy.style.display = captionState.py ? '' : 'none';
       if(capTr) capTr.style.display = captionState.tr ? '' : 'none';
     }
@@ -3696,7 +3696,7 @@ setTimeout(function(){
     }
 
     function setCaption(text){
-      if(!capBox || !capZh) return;
+      if(!capZh) return;
       if(!text){
         capZh.textContent = '';
         if(capPy) capPy.textContent = '';
