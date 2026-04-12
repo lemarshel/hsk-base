@@ -15,12 +15,10 @@
 
   var state = {
     ws: null,
-    recorder: null,
-    mediaStream: null,
     running: false,
     history: [],
     lastZh: "",
-    retryCount: 0
+    currentUrl: ""
   };
 
   function $(sel){ return document.querySelector(sel); }
@@ -78,18 +76,6 @@
     return proto + host + ":8000/ws/transcribe";
   }
 
-  function pickMime(){
-    var prefs = [
-      "audio/webm;codecs=opus",
-      "audio/webm",
-      "audio/ogg;codecs=opus"
-    ];
-    for(var i=0;i<prefs.length;i++){
-      if(window.MediaRecorder && MediaRecorder.isTypeSupported(prefs[i])) return prefs[i];
-    }
-    return "";
-  }
-
   function clearLive(){
     if(liveZh) liveZh.textContent = "";
     if(liveEn) liveEn.textContent = "";
@@ -126,16 +112,16 @@
   }
 
   function handleMessage(data){
-    if(!data || data.type !== "transcript") return;
-    var zh = (data.zh || "").trim();
-    var en = (data.en || "").trim();
+    if(!data || data.type !== "subtitle") return;
+    var zh = (data.text || "").trim();
+    var en = (data.translation || "").trim();
     if(!zh || zh === state.lastZh) return;
     state.lastZh = zh;
     if(liveZh) liveZh.textContent = zh;
     if(liveEn){
       liveEn.textContent = (isTranslateEnabled() ? en : "");
     }
-    pushHistory(zh, en);
+    if(data.is_final) pushHistory(zh, en);
   }
 
   function connectWs(){
@@ -151,16 +137,8 @@
       setStatus("Live transcription unavailable (WebSocket failed).");
       return;
     }
-    state.ws.binaryType = "arraybuffer";
     state.ws.onopen = function(){
-      try{
-        state.ws.send(JSON.stringify({
-          type: "start",
-          lang: "zh",
-          translate: isTranslateEnabled()
-        }));
-      }catch(e){}
-      setStatus("Listening...");
+      setStatus("Connecting...");
     };
     state.ws.onmessage = function(ev){
       try{
@@ -176,56 +154,40 @@
     };
   }
 
-  function getAudioStream(){
-    var capture = video.captureStream || video.mozCaptureStream;
-    if(capture){
-      try{
-        var fullStream = capture.call(video);
-        var audioTracks = fullStream.getAudioTracks();
-        if(audioTracks && audioTracks.length){
-          return new MediaStream(audioTracks);
-        }
-      }catch(e){}
-    }
-    return null;
+  function getStreamUrl(){
+    return video.currentSrc || video.src || "";
+  }
+
+  function sendStart(url){
+    if(!state.ws || state.ws.readyState !== 1) return;
+    try{
+      state.ws.send(JSON.stringify({
+        type: "start",
+        url: url,
+        translate: isTranslateEnabled()
+      }));
+      setStatus("Listening...");
+    }catch(e){}
   }
 
   function startTranscription(){
     if(state.running) return;
     if(!isOverlayOpen()) return;
-    if(!video) return;
-    var audioStream = getAudioStream();
-    if(!audioStream){
-      state.retryCount += 1;
-      if(state.retryCount <= 3){
-        setStatus("Waiting for audio...");
-        setTimeout(startTranscription, 900);
-      }else{
-        setStatus("Audio capture blocked (CORS or no audio track).");
-      }
+    var url = getStreamUrl();
+    if(!url){
+      setStatus("Waiting for stream URL...");
+      setTimeout(startTranscription, 500);
       return;
     }
-    state.retryCount = 0;
-    state.mediaStream = audioStream;
-    var mime = pickMime();
-    try{
-      state.recorder = new MediaRecorder(state.mediaStream, mime ? { mimeType: mime } : undefined);
-    }catch(e){
-      setStatus("Recording not supported.");
-      return;
-    }
-
+    state.currentUrl = url;
     connectWs();
-
-    state.recorder.ondataavailable = function(ev){
-      if(!ev.data || !ev.data.size) return;
-      if(!state.ws || state.ws.readyState !== 1) return;
-      ev.data.arrayBuffer().then(function(buf){
-        if(state.ws && state.ws.readyState === 1) state.ws.send(buf);
-      }).catch(function(){});
-    };
-    state.recorder.onerror = function(){ setStatus("Recorder error."); };
-    state.recorder.start(CONFIG.CHUNK_MS);
+    if(state.ws && state.ws.readyState === 1){
+      sendStart(url);
+    }else if(state.ws){
+      state.ws.addEventListener("open", function(){
+        sendStart(url);
+      }, { once: true });
+    }
     state.running = true;
     updateVisibility();
   }
@@ -233,16 +195,6 @@
   function stopTranscription(){
     if(!state.running) return;
     state.running = false;
-    try{
-      if(state.recorder && state.recorder.state !== "inactive") state.recorder.stop();
-    }catch(e){}
-    state.recorder = null;
-    if(state.mediaStream){
-      try{
-        state.mediaStream.getTracks().forEach(function(t){ t.stop(); });
-      }catch(e){}
-    }
-    state.mediaStream = null;
     if(state.ws){
       try{ state.ws.send(JSON.stringify({ type: "stop" })); }catch(e){}
       try{ state.ws.close(); }catch(e){}
@@ -255,7 +207,6 @@
     updateVisibility();
     if(isOverlayOpen()){
       clearLive();
-      state.retryCount = 0;
       if(!video.paused) startTranscription();
     } else {
       stopTranscription();
@@ -269,6 +220,17 @@
   // Video events
   video.addEventListener("play", function(){ if(isOverlayOpen()) startTranscription(); });
   video.addEventListener("playing", function(){ if(isOverlayOpen()) startTranscription(); });
+  video.addEventListener("loadedmetadata", function(){ if(isOverlayOpen()) startTranscription(); });
+  video.addEventListener("loadstart", function(){
+    if(isOverlayOpen()){
+      var url = getStreamUrl();
+      if(url && url !== state.currentUrl){
+        stopTranscription();
+        state.currentUrl = url;
+        startTranscription();
+      }
+    }
+  });
   video.addEventListener("pause", stopTranscription);
   video.addEventListener("ended", stopTranscription);
   video.addEventListener("emptied", stopTranscription);
@@ -277,13 +239,9 @@
   if(ccBtn) ccBtn.addEventListener("click", updateVisibility);
   if(trBtn) trBtn.addEventListener("click", function(){
     updateVisibility();
-    if(state.running && state.ws && state.ws.readyState === 1){
-      try{
-        state.ws.send(JSON.stringify({
-          type: "config",
-          translate: isTranslateEnabled()
-        }));
-      }catch(e){}
+    if(state.running){
+      stopTranscription();
+      startTranscription();
     }
     renderHistory();
   });
