@@ -37,6 +37,8 @@ function getMainRows(){
     return tb.id !== 'learned-tbody' && tb.id !== 'fam-tbody';
   });
 }
+window.getMainRows = getMainRows;
+window.getAllTbodies = getAllTbodies;
 
 /* ── Script loader (lazy deps) ─────────────────────────────────── */
 var _cdxScriptPromises = {};
@@ -2659,7 +2661,8 @@ function renumVisible(){
 }
 
 document.addEventListener('DOMContentLoaded', function(){
-  var total = getMainRows().length;
+  var rows = (typeof getMainRows === 'function') ? getMainRows() : (window.getMainRows ? window.getMainRows() : []);
+  var total = rows.length || 0;
   updateWordCount(total);
   renumVisible();
 });
