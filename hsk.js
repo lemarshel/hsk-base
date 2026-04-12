@@ -2700,7 +2700,9 @@ function rebuildView(){
 var _virtTables = [];
 var _virtDirty = true;
 var _virtTick = false;
+var _virtInitDone = false;
 var VIRT_BUFFER_PX = 1200;
+var VIRT_MIN_ROWS = 80;
 
 function isRowFiltered(tr){
   return tr.classList.contains('hsk-hide') ||
@@ -2729,7 +2731,9 @@ function markVirtualDirty(){ _virtDirty = true; }
 
 function recalcVirtualHeights(){
   _virtTables.forEach(function(info){
-    info.heights = info.rows.map(function(r){ return r.getBoundingClientRect().height || 28; });
+    var h = info.defaultHeight || 28;
+    info.heights = new Array(info.rows.length);
+    for(var i=0;i<info.rows.length;i++) info.heights[i] = h;
   });
   markVirtualDirty();
 }
@@ -2746,7 +2750,7 @@ function buildVisible(info){
       continue;
     }
     vis.push(r);
-    var h = info.heights[i] || r.getBoundingClientRect().height || 28;
+    var h = info.heights[i] || info.defaultHeight || 28;
     heights.push(h);
     total += h;
     prefix.push(total);
@@ -2818,25 +2822,30 @@ function queueVirtualUpdate(force){
 }
 
 function initVirtualTables(){
+  if(_virtInitDone) return;
+  _virtInitDone = true;
   var tbodies = document.querySelectorAll('tbody[id]:not(#learned-tbody):not(#fam-tbody)');
   tbodies.forEach(function(tb){
     var rows = Array.prototype.slice.call(tb.rows);
-    if(!rows.length) return;
+    if(!rows.length || rows.length < VIRT_MIN_ROWS) return;
     var table = tb.closest('table');
     if(!table) return;
     rows.forEach(function(r,i){ r._virtIndex = i; });
+    var defaultHeight = rows[0].getBoundingClientRect().height || 28;
     var colCount = rows[0].children.length || (table.querySelectorAll('thead th').length || 6);
     var top = makeSpacerTbody(colCount);
     var bottom = makeSpacerTbody(colCount);
     table.insertBefore(top.tbody, tb);
     if(tb.nextSibling) table.insertBefore(bottom.tbody, tb.nextSibling);
     else table.appendChild(bottom.tbody);
-    var heights = rows.map(function(r){ return r.getBoundingClientRect().height || 28; });
+    var heights = new Array(rows.length);
+    for(var i=0;i<rows.length;i++) heights[i] = defaultHeight;
     _virtTables.push({
       tbody: tb,
       table: table,
       rows: rows,
       heights: heights,
+      defaultHeight: defaultHeight,
       topPad: top,
       botPad: bottom,
       visible: [],
@@ -2854,7 +2863,21 @@ function initVirtualTables(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', initVirtualTables);
+document.addEventListener('DOMContentLoaded', function(){
+  function kick(){
+    initVirtualTables();
+  }
+  if('requestIdleCallback' in window){
+    requestIdleCallback(kick, { timeout: 1500 });
+  } else {
+    setTimeout(kick, 1500);
+  }
+  var firstScroll = function(){
+    kick();
+    window.removeEventListener('scroll', firstScroll);
+  };
+  window.addEventListener('scroll', firstScroll, { passive: true });
+});
 
 function applySort(mode){
   currentSort = mode;
