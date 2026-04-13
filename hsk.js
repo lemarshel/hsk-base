@@ -4064,7 +4064,8 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
 
 /* ── Channels Player ─────────────────────────────────────────── */
 (function(){
-  var ALL_CHANNELS = window.ALL_CHANNELS || [];
+  var TV_CHANNELS = window.TV_CHANNELS || window.ALL_CHANNELS || [];
+  var RADIO_CHANNELS = window.RADIO_CHANNELS || [];
   var NAME_MAP = window.CHANNEL_NAME_MAP || {};
 
   function translateName(name){
@@ -4084,7 +4085,18 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
   }
 
   function getSelectLabel(){
-    return document.body.classList.contains('lang-en') ? 'Select channel' : 'Выбор канала';
+    var typeSel = document.getElementById('news-type');
+    var type = typeSel ? typeSel.value : 'tv';
+    var isEn = document.body.classList.contains('lang-en');
+    if(type === 'radio'){
+      return isEn ? 'Select station' : '\u0412\u044b\u0431\u043e\u0440 \u0441\u0442\u0430\u043d\u0446\u0438\u0438';
+    }
+    return isEn ? 'Select channel' : '\u0412\u044b\u0431\u043e\u0440 \u043a\u0430\u043d\u0430\u043b\u0430';
+  }
+
+  function getSourceList(type){
+    if(type === 'radio' && RADIO_CHANNELS && RADIO_CHANNELS.length){ return RADIO_CHANNELS; }
+    return TV_CHANNELS || [];
   }
 
   function buildChannelMap(list){
@@ -4124,12 +4136,16 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
   }
 
   function initNews(){
+    var typeSel = document.getElementById('news-type');
     var chanSel = document.getElementById('news-channel');
     var qualSel = document.getElementById('news-quality');
     var openBtn = document.getElementById('btn-news-open');
     var overlay = document.getElementById('news-overlay');
     var closeBtn = document.getElementById('news-close');
     var player = document.getElementById('news-player');
+    var audio = document.getElementById('news-audio');
+    var volumeInput = document.getElementById('news-volume');
+    var volumeValue = document.getElementById('news-vol-val');
     var ccBtn = document.getElementById('news-cc');
     var pyBtn = document.getElementById('news-py');
     var trBtn = document.getElementById('news-tr');
@@ -4140,9 +4156,8 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
     var capTr = subBox ? subBox.querySelector('.cap-tr') : null;
     if(!chanSel || !qualSel || !openBtn || !overlay || !player) return;
 
-    var built = buildChannelMap(ALL_CHANNELS);
-    var map = built.map;
-    var names = built.names;
+    var map = Object.create(null);
+    var names = [];
     var optionsRendered = false;
     var captionDict = null;
     var trackListenerAttached = false;
@@ -4172,6 +4187,59 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
     toggleCaption(pyBtn, 'py');
     toggleCaption(trBtn, 'tr');
     updateCaptionVisibility();
+
+    function isRadioMode(){
+      return typeSel && typeSel.value === 'radio';
+    }
+
+    function updateActionLabel(){
+      if(!openBtn) return;
+      var ru = openBtn.querySelector('.trans-ru');
+      var en = openBtn.querySelector('.trans-en');
+      var radio = isRadioMode();
+      var ruText = radio ? '\u0421\u043b\u0443\u0448\u0430\u0442\u044c' : '\u0421\u043c\u043e\u0442\u0440\u0435\u0442\u044c';
+      var enText = radio ? 'Listen' : 'Watch';
+      if(ru) ru.textContent = ruText;
+      if(en) en.textContent = enText;
+      if(!ru && !en){
+        openBtn.textContent = document.body.classList.contains('lang-en') ? enText : ruText;
+      }
+    }
+
+    function updateTypeLabels(){
+      if(!typeSel) return;
+      var isEn = document.body.classList.contains('lang-en');
+      var tvLabel = isEn ? 'TV' : '\u0422\u0412';
+      var radioLabel = isEn ? 'Radio' : '\u0420\u0430\u0434\u0438\u043e';
+      for(var i=0;i<typeSel.options.length;i++){
+        var opt = typeSel.options[i];
+        if(opt.value === 'tv') opt.textContent = tvLabel;
+        if(opt.value === 'radio') opt.textContent = radioLabel;
+      }
+    }
+
+    function setModeUI(){
+      if(!overlay) return;
+      overlay.classList.toggle('radio-mode', isRadioMode());
+    }
+
+    function applyVolume(){
+      var v = 1;
+      if(volumeInput){
+        var raw = parseInt(volumeInput.value, 10);
+        if(isNaN(raw)) raw = 100;
+        raw = Math.max(0, Math.min(100, raw));
+        v = raw / 100;
+      }
+      if(player) player.volume = v;
+      if(audio) audio.volume = v;
+      if(volumeValue) volumeValue.textContent = Math.round(v * 100) + '%';
+    }
+
+    if(volumeInput){
+      volumeInput.addEventListener('input', applyVolume);
+    }
+    applyVolume();
 
     function buildCaptionDict(){
       if(captionDict) return captionDict;
@@ -4345,25 +4413,6 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
       }).catch(function(){});
     }
 
-    if(!names.length){
-      chanSel.innerHTML = '';
-      var empty = document.createElement('option');
-      empty.value = '';
-      empty.textContent = 'No channels';
-      chanSel.appendChild(empty);
-      chanSel.disabled = true;
-      qualSel.disabled = true;
-      openBtn.disabled = true;
-      return;
-    }
-
-    var placeholderOpt = null;
-    chanSel.innerHTML = '';
-    placeholderOpt = document.createElement('option');
-    placeholderOpt.value = '';
-    placeholderOpt.textContent = getSelectLabel();
-    chanSel.appendChild(placeholderOpt);
-
     function renderOptions(){
       if(optionsRendered) return;
       optionsRendered = true;
@@ -4381,6 +4430,30 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
       }
       chanSel.appendChild(frag);
     }
+
+    function rebuildChannels(){
+      var type = typeSel ? typeSel.value : 'tv';
+      var built = buildChannelMap(getSourceList(type));
+      map = built.map;
+      names = built.names;
+      optionsRendered = false;
+      renderOptions();
+      syncQuality();
+      updateNewsTitle();
+      updateActionLabel();
+      updateTypeLabels();
+      setModeUI();
+      if(!names.length){
+        chanSel.disabled = true;
+        qualSel.disabled = true;
+        openBtn.disabled = true;
+      } else {
+        chanSel.disabled = false;
+        openBtn.disabled = false;
+      }
+    }
+
+    var placeholderOpt = null;
 
     function syncQuality(){
       var name = chanSel.value || names[0];
@@ -4433,15 +4506,35 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
       titleEl.textContent = display || 'Chinese News';
     }
 
+    function stopMedia(el){
+      if(!el) return;
+      try{ el.pause(); }catch(e){}
+      el.removeAttribute('src');
+      el.load();
+    }
+
     function openPlayer(){
       var url = getSelectedUrl();
       if(!url) return;
       updateNewsTitle();
       overlay.style.display = 'flex';
+      setModeUI();
       clearCaptions();
       clearTracks();
+      var useRadio = isRadioMode();
+      if(useRadio && audio){
+        stopMedia(player);
+        audio.src = url;
+        audio.load();
+        applyVolume();
+        var ap = audio.play();
+        if(ap && typeof ap.catch === 'function'){ ap.catch(function(){}); }
+        return;
+      }
+      stopMedia(audio);
       player.src = url;
       player.load();
+      applyVolume();
       hookTracks();
       attachSubtitleTrackFromManifest(url);
       var p = player.play();
@@ -4450,15 +4543,20 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
 
     function closePlayer(){
       overlay.style.display = 'none';
-      player.pause();
-      player.removeAttribute('src');
-      player.load();
+      stopMedia(player);
+      stopMedia(audio);
       clearCaptions();
       clearTracks();
     }
 
     chanSel.addEventListener('focus', renderOptions);
     chanSel.addEventListener('mousedown', renderOptions);
+    if(typeSel){
+      typeSel.addEventListener('change', function(){
+        rebuildChannels();
+        if(overlay.style.display === 'flex'){ openPlayer(); }
+      });
+    }
     chanSel.addEventListener('change', function(){
       syncQuality();
       updateNewsTitle();
@@ -4506,14 +4604,12 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
         chanSel.options[0].textContent = getSelectLabel();
       }
       updateNewsTitle();
+      updateActionLabel();
+      updateTypeLabels();
+      setModeUI();
     };
 
-    syncQuality();
-    updateNewsTitle();
-    if(names.length){
-      currentIndex = names.indexOf(chanSel.value || names[0]);
-      if(currentIndex < 0) currentIndex = 0;
-    }
+    rebuildChannels();
   }
 
   if(document.readyState === 'loading'){
@@ -4523,3 +4619,297 @@ function cdxConfirm(msg, onOk, okLabel, cancelLabel){
   }
 })();
 
+
+
+
+
+/* ?? News reader (static) ??????????????????????????????????? */
+(function(){
+  var btn = document.getElementById('btn-news-read');
+  var overlay = document.getElementById('news-read-overlay');
+  if(!btn || !overlay) return;
+
+  var DATA_URL = 'news_data.json';
+  var closeBtn = document.getElementById('news-read-close');
+  var channelSel = document.getElementById('news-read-channel');
+  var articlesBox = document.getElementById('news-read-articles');
+  var linesBox = document.getElementById('news-read-lines');
+  var titleEl = document.getElementById('news-read-article-title');
+  var statusEl = document.getElementById('news-read-status');
+  var pyBtn = document.getElementById('news-read-py');
+  var trBtn = document.getElementById('news-read-tr');
+  var audioBtn = document.getElementById('news-read-audio');
+  var headerTitle = document.getElementById('news-read-title');
+
+  var audio = new Audio();
+  audio.preload = 'none';
+
+  var data = null;
+  var channels = [];
+  var channelMap = Object.create(null);
+  var articles = [];
+  var currentLines = [];
+  var lineEls = [];
+  var audioIndex = -1;
+  var audioPlaying = false;
+  var playToken = 0;
+
+  function isEn(){ return document.body.classList.contains('lang-en'); }
+  function t(en, ru){ return isEn() ? en : ru; }
+
+  function setStatus(msg){ if(statusEl) statusEl.textContent = msg || ''; }
+
+  function updateHeaderTitle(){
+    if(!headerTitle) return;
+    headerTitle.textContent = t('News Reader', '\u0427\u0442\u0435\u043d\u0438\u0435 \u043d\u043e\u0432\u043e\u0441\u0442\u0435\u0439');
+  }
+
+  function updateAudioBtnLabel(){
+    if(!audioBtn) return;
+    audioBtn.textContent = audioPlaying ? t('Stop', '\u0421\u0442\u043e\u043f') : t('Play', '\u0421\u043b\u0443\u0448\u0430\u0442\u044c');
+  }
+
+  function loadData(){
+    if(data) return Promise.resolve(data);
+    if(window.NEWS_DATA){
+      data = window.NEWS_DATA || {};
+      channels = data.channels || [];
+      channelMap = Object.create(null);
+      channels.forEach(function(ch){ channelMap[ch.id] = ch; });
+      return Promise.resolve(data);
+    }
+    return fetch(DATA_URL, { cache: 'no-store' }).then(function(r){
+      if(!r.ok) throw new Error('HTTP ' + r.status);
+      return r.json();
+    }).then(function(d){
+      data = d || {};
+      channels = data.channels || [];
+      channelMap = Object.create(null);
+      channels.forEach(function(ch){ channelMap[ch.id] = ch; });
+      return data;
+    });
+  }
+
+  function openOverlay(){
+    overlay.style.display = 'flex';
+    updateHeaderTitle();
+    updateAudioBtnLabel();
+    setStatus(t('Loading channels...', '\u0417\u0430\u0433\u0440\u0443\u0437\u043a\u0430 \u043a\u0430\u043d\u0430\u043b\u043e\u0432...'));
+    loadData().then(function(){
+      renderChannels();
+      setStatus(t('Select a channel to load articles.', '\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043a\u0430\u043d\u0430\u043b \u0434\u043b\u044f \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438 \u0441\u0442\u0430\u0442\u0435\u0439.'));
+    }).catch(function(){
+      setStatus(t('news_data.json not found. Run news_build.py first.', '\u041d\u0435\u0442 news_data.json. \u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0435 news_build.py.'));
+    });
+  }
+
+  function closeOverlay(){
+    overlay.style.display = 'none';
+    stopAudio();
+  }
+
+  btn.addEventListener('click', openOverlay);
+  if(closeBtn) closeBtn.addEventListener('click', closeOverlay);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeOverlay(); });
+
+  function toggleReadOption(btnEl, cls){
+    if(!btnEl) return;
+    btnEl.addEventListener('click', function(){
+      btnEl.classList.toggle('active');
+      overlay.classList.toggle(cls, !btnEl.classList.contains('active'));
+    });
+  }
+
+  toggleReadOption(pyBtn, 'hide-pinyin');
+  toggleReadOption(trBtn, 'hide-translation');
+
+  function renderChannels(){
+    if(!channelSel) return;
+    channelSel.innerHTML = '';
+    var ph = document.createElement('option');
+    ph.value = '';
+    ph.textContent = t('Select channel', '\u0412\u044b\u0431\u043e\u0440 \u043a\u0430\u043d\u0430\u043b\u0430');
+    channelSel.appendChild(ph);
+    channels.forEach(function(ch){
+      var opt = document.createElement('option');
+      opt.value = ch.id;
+      opt.textContent = ch.name || ch.id;
+      channelSel.appendChild(opt);
+    });
+  }
+
+  function renderArticles(){
+    if(!articlesBox) return;
+    articlesBox.innerHTML = '';
+    if(!articles.length){
+      var empty = document.createElement('div');
+      empty.textContent = t('No articles found.', '\u0421\u0442\u0430\u0442\u0435\u0439 \u043d\u0435\u0442.');
+      empty.style.fontSize = '.85em';
+      empty.style.color = '#777';
+      articlesBox.appendChild(empty);
+      return;
+    }
+    articles.forEach(function(a, idx){
+      var item = document.createElement('div');
+      item.className = 'news-article-item';
+      item.dataset.idx = String(idx);
+      item.textContent = a.title || a.link || ('Article ' + (idx + 1));
+      item.addEventListener('click', function(){
+        articlesBox.querySelectorAll('.news-article-item').forEach(function(el){ el.classList.remove('active'); });
+        item.classList.add('active');
+        loadArticle(a);
+      });
+      articlesBox.appendChild(item);
+    });
+  }
+
+  function renderLines(lines){
+    if(!linesBox) return;
+    linesBox.innerHTML = '';
+    currentLines = lines || [];
+    lineEls = [];
+    currentLines.forEach(function(line, idx){
+      var wrap = document.createElement('div');
+      wrap.className = 'news-line';
+      wrap.dataset.idx = String(idx);
+      var zh = document.createElement('div');
+      zh.className = 'line-zh';
+      zh.textContent = line.zh || '';
+      wrap.appendChild(zh);
+      var py = document.createElement('div');
+      py.className = 'line-py';
+      py.textContent = line.py || '';
+      wrap.appendChild(py);
+      var en = document.createElement('div');
+      en.className = 'line-tr-en';
+      en.textContent = line.en || '';
+      wrap.appendChild(en);
+      var ru = document.createElement('div');
+      ru.className = 'line-tr-ru';
+      ru.textContent = line.ru || '';
+      wrap.appendChild(ru);
+      linesBox.appendChild(wrap);
+      lineEls.push(wrap);
+    });
+  }
+
+  function clearLines(){
+    if(linesBox) linesBox.innerHTML = '';
+    if(titleEl) titleEl.textContent = '';
+    currentLines = [];
+    lineEls = [];
+  }
+
+  function highlightLine(idx){
+    lineEls.forEach(function(el, i){
+      el.classList.toggle('is-reading', i === idx);
+    });
+  }
+
+  function stopAudio(){
+    audioPlaying = false;
+    playToken += 1;
+    audioIndex = -1;
+    try{ audio.pause(); }catch(e){}
+    audio.removeAttribute('src');
+    audio.load();
+    if(window.speechSynthesis){ window.speechSynthesis.cancel(); }
+    highlightLine(-1);
+    updateAudioBtnLabel();
+  }
+
+  function startAudio(){
+    if(audioPlaying) return;
+    if(!currentLines.length){
+      setStatus(t('Load an article first.', '\u0421\u043d\u0430\u0447\u0430\u043b\u0430 \u043e\u0442\u043a\u0440\u043e\u0439\u0442\u0435 \u0441\u0442\u0430\u0442\u044c\u044e.'));
+      return;
+    }
+    audioPlaying = true;
+    audioIndex = -1;
+    playToken += 1;
+    updateAudioBtnLabel();
+    playNext(playToken);
+  }
+
+  function playLine(line, done){
+    if(line.audio){
+      audio.onended = done;
+      audio.onerror = done;
+      audio.src = line.audio;
+      audio.play().catch(function(){ done(); });
+      return;
+    }
+    if(window.speechSynthesis){
+      var u = new SpeechSynthesisUtterance(line.zh || '');
+      u.lang = 'zh-CN';
+      u.rate = 1;
+      u.onend = done;
+      u.onerror = done;
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(u);
+      return;
+    }
+    setTimeout(done, 300);
+  }
+
+  function playNext(token){
+    if(!audioPlaying || token !== playToken) return;
+    audioIndex += 1;
+    if(audioIndex >= currentLines.length){
+      stopAudio();
+      return;
+    }
+    var line = currentLines[audioIndex];
+    if(!line || !line.zh){
+      playNext(token);
+      return;
+    }
+    highlightLine(audioIndex);
+    playLine(line, function(){
+      playNext(token);
+    });
+  }
+
+  if(audioBtn){
+    audioBtn.addEventListener('click', function(){
+      if(audioPlaying){
+        stopAudio();
+        return;
+      }
+      startAudio();
+    });
+  }
+
+  if(channelSel){
+    channelSel.addEventListener('change', function(){
+      var id = channelSel.value;
+      if(!id) return;
+      loadArticles(id);
+    });
+  }
+
+  function loadArticles(channelId){
+    clearLines();
+    var ch = channelMap[channelId];
+    articles = ch && ch.articles ? ch.articles : [];
+    renderArticles();
+    setStatus(articles.length ? '' : t('No articles found.', '\u0421\u0442\u0430\u0442\u0435\u0439 \u043d\u0435\u0442.'));
+  }
+
+  function loadArticle(article){
+    if(!article) return;
+    stopAudio();
+    if(titleEl) titleEl.textContent = article.title || '';
+    renderLines(article.lines || []);
+    setStatus('');
+    startAudio();
+  }
+
+  var prevUpdate = window.updateNewsLang;
+  window.updateNewsLang = function(){
+    if(prevUpdate) prevUpdate();
+    updateHeaderTitle();
+    updateAudioBtnLabel();
+    renderChannels();
+  };
+})();

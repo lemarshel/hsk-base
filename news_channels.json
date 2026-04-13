@@ -1,0 +1,17 @@
+[
+  {
+    "id": "chinanews",
+    "name": "中国新闻网",
+    "rss": "https://www.chinanews.com/rss/scroll-news.xml"
+  },
+  {
+    "id": "people",
+    "name": "人民网",
+    "rss": "http://www.people.com.cn/rss/politics.xml"
+  },
+  {
+    "id": "chinadaily",
+    "name": "China Daily",
+    "rss": "http://www.chinadaily.com.cn/rss/china_rss.xml"
+  }
+]
